@@ -64,7 +64,7 @@ jobs:
                   "body_exists":body.exists(),
                   "body_len":body.stat().st_size if body.exists() else 0,
               }
-              if body.exists() and body.read_bytes()[:4] == b"PK\\x03\\x04":
+              if body.exists() and body.read_bytes()[:4] == bytes.fromhex("504b0304"):
                   try:
                       with zipfile.ZipFile(body) as zf:
                           bad = zf.testzip()
