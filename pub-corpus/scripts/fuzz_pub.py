@@ -325,6 +325,9 @@ def main() -> int:
     summary = {
         "schema": SCHEMA,
         "target_kind": args.target_kind,
+        "chaptera_upstream_commit": os.environ.get("CHAPTERA_UPSTREAM_COMMIT"),
+        "github_run_id": os.environ.get("GITHUB_RUN_ID"),
+        "github_sha": os.environ.get("GITHUB_SHA"),
         "seed": args.seed,
         "iterations": args.iterations,
         "seed_sha256s": [path.stem.lower() for path in seeds],
