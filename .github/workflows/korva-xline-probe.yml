@@ -21,6 +21,51 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Validate retained runtime-blocked contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          r = json.loads(Path("research/korva-xline-01/probe-summary.json").read_text())
+          assert r["schema_version"] == "chaptera.korva-xline.summary.v1"
+          assert r["conclusion"]["closure_class"] == "runtime_blocked"
+          assert r["conclusion"]["three_way_korva_libmspub_chaptera_completed"] is False
+          assert r["conclusion"]["model_change_authorized"] is False
+          assert r["conclusion"]["pub_wire_format_claim_authorized"] is False
+
+          k = r["korva_runtime"]
+          assert k["missing_libraries"] == []
+          assert k["help_exit"] == 124
+          assert k["version_exit"] == 124
+          assert k["direct_pub_argument_exit"] == 124
+          assert k["produced_document_before_sha256"] == k["produced_document_after_sha256"]
+
+          sample = r["fixtures"]["Sample.pub"]
+          assert sample["text_comparison"]["word_multiset_equal"] is True
+          assert sample["text_comparison"]["normalized_order_equal"] is False
+          assert sample["text_comparison"]["promotion"] == "not_promoted"
+
+          for name in ("SampleBrochure.pub", "SampleNewsletter.pub"):
+              fx = r["fixtures"][name]
+              assert fx["chaptera"]["supported"] is True
+              assert fx["libmspub"]["supported"] is False
+              assert fx["arbitration"]["chaptera_image_exactly_matches_raw_payload"] is True
+              assert fx["chaptera"]["jpeg_sha256"] == fx["raw"]["jpeg_sha256"]
+              assert fx["chaptera"]["jpeg_byte_len"] == fx["raw"]["jpeg_byte_len"]
+
+          assert r["guardrails"]["korva_layout_vote_allowed"] is False
+          assert r["guardrails"]["korva_style_vote_allowed"] is False
+          assert r["guardrails"]["korva_geometry_vote_allowed"] is False
+          assert r["guardrails"]["static_korva_reconstruction_substituted_for_runtime"] is False
+          print(json.dumps({
+              "closure": r["conclusion"]["closure_class"],
+              "korva_exits": [k["help_exit"], k["version_exit"], k["direct_pub_argument_exit"]],
+              "brochure_raw_jpeg": r["fixtures"]["SampleBrochure.pub"]["raw"]["jpeg_sha256"],
+              "newsletter_raw_jpeg": r["fixtures"]["SampleNewsletter.pub"]["raw"]["jpeg_sha256"],
+          }, sort_keys=True))
+          PY
+
       - name: Prepare public tools
         run: |
           set -euxo pipefail
