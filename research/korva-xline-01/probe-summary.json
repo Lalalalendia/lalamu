@@ -1,0 +1,126 @@
+{
+  "schema_version": "chaptera.korva-xline.summary.v1",
+  "execution": {
+    "repository": "Lalalalendia/lalamu",
+    "issue": 15,
+    "pull_request": 16,
+    "head_sha": "dc5a3688d32408194b3d56f235ad86007735e1fd",
+    "workflow_run": 36423531958,
+    "artifact_id": 10970109954,
+    "artifact_digest": "sha256:62ecfb92b084be47cb7612999bff0c7d58a03ebc66c7c39a1e45aa5088964975"
+  },
+  "identities": {
+    "korva_version": "1.8.7",
+    "korva_deb_sha256": "e0a2abde284c4c714262c07afab168659387a797f033a869d0db1b1f4bfa010c",
+    "libmspub_tools": "0.1.4-3build7",
+    "chaptera_rar_sha": "46459108710350280f0c2761e9c8435899734bd2",
+    "apache_poi_sha": "942d95d85b15d0dfdb3bc9ba1b4f273f277757c8"
+  },
+  "guardrails": {
+    "korva_layout_vote_allowed": false,
+    "korva_style_vote_allowed": false,
+    "korva_geometry_vote_allowed": false,
+    "only_text_and_jpeg_png_recovery_scored": true,
+    "private_pub_bytes_used": false,
+    "static_korva_reconstruction_substituted_for_runtime": false
+  },
+  "korva_runtime": {
+    "status": "runtime_blocked",
+    "missing_libraries": [],
+    "help_exit": 124,
+    "version_exit": 124,
+    "direct_pub_argument_exit": 124,
+    "stdout_or_stderr_error": false,
+    "produced_document_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "produced_document_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "resource_import_static_hit_count": 308,
+    "exact_blocker": "Exact Korva 1.8.7 starts with all dynamic libraries resolved under Xvfb, but --help, --version, and a direct Sample.pub argv invocation remain in the GUI event loop until the bounded timeout (exit 124), emit no machine-readable import result, and create no observed document artifact. No reproducible headless/runtime extraction interface was established."
+  },
+  "fixtures": {
+    "Sample.pub": {
+      "byte_len": 72192,
+      "sha256": "6fefdef46b87c767150878dc384549cb2d2ec2ac54de25f8ddb3a5628301107e",
+      "chaptera": {
+        "supported": true,
+        "story_count": 6,
+        "image_count": 0
+      },
+      "libmspub": {
+        "supported": true,
+        "tool_exit": 0,
+        "normalized_text_length": 487,
+        "image_count": 0
+      },
+      "raw": {
+        "jpeg_png_count": 0
+      },
+      "text_comparison": {
+        "chaptera_normalized_text_length": 487,
+        "libmspub_normalized_text_length": 487,
+        "chaptera_word_count": 103,
+        "libmspub_word_count": 103,
+        "word_multiset_equal": true,
+        "normalized_order_equal": false,
+        "promotion": "not_promoted",
+        "reason": "Text-order disagreement was observed but was not independently joined to raw Quill ordering in this bounded run."
+      }
+    },
+    "SampleBrochure.pub": {
+      "byte_len": 161792,
+      "sha256": "ffed034ac87e679f0bd08ff9cf74ad11c0e0e510a42b1bc1a7502415f6c29c87",
+      "chaptera": {
+        "supported": true,
+        "story_count": 20,
+        "image_count": 1,
+        "jpeg_sha256": "2fbfcdaeb1376c41beb523e48d0e1205b398b8fe81417ebdcd49c541d35e8b50",
+        "jpeg_byte_len": 11516
+      },
+      "libmspub": {
+        "supported": false,
+        "tool_exit": 1,
+        "stderr": "ERROR: SVG Generation failed!"
+      },
+      "raw": {
+        "jpeg_png_count": 1,
+        "jpeg_offset": 103505,
+        "jpeg_byte_len": 11516,
+        "jpeg_sha256": "2fbfcdaeb1376c41beb523e48d0e1205b398b8fe81417ebdcd49c541d35e8b50"
+      },
+      "arbitration": {
+        "chaptera_image_exactly_matches_raw_payload": true
+      }
+    },
+    "SampleNewsletter.pub": {
+      "byte_len": 291840,
+      "sha256": "6a825ba26ba35d6e885acdc62e859591ed37cb0ff7480b554b9cb362b644dfcf",
+      "chaptera": {
+        "supported": true,
+        "story_count": 44,
+        "image_count": 1,
+        "jpeg_sha256": "2478d1169c54e19bced4ab07d558ef4ca98cd27c21187a2654c253018c10e841",
+        "jpeg_byte_len": 36497
+      },
+      "libmspub": {
+        "supported": false,
+        "tool_exit": 1,
+        "stderr": "ERROR: SVG Generation failed!"
+      },
+      "raw": {
+        "jpeg_png_count": 1,
+        "jpeg_offset": 100261,
+        "jpeg_byte_len": 36497,
+        "jpeg_sha256": "2478d1169c54e19bced4ab07d558ef4ca98cd27c21187a2654c253018c10e841"
+      },
+      "arbitration": {
+        "chaptera_image_exactly_matches_raw_payload": true
+      }
+    }
+  },
+  "conclusion": {
+    "three_way_korva_libmspub_chaptera_completed": false,
+    "closure_class": "runtime_blocked",
+    "bounded_secondary_findings_retained": true,
+    "model_change_authorized": false,
+    "pub_wire_format_claim_authorized": false
+  }
+}

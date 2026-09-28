@@ -1,0 +1,278 @@
+name: korva-xline-probe
+
+on:
+  push:
+    branches:
+      - korva-xline-01-clean-v1
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    env:
+      RAR_SHA: 46459108710350280f0c2761e9c8435899734bd2
+      POI_SHA: 942d95d85b15d0dfdb3bc9ba1b4f273f277757c8
+      KORVA_URL: https://github.com/kai63001/korva-releases/releases/download/v1.8.7/Korva_1.8.7_amd64.deb
+      KORVA_SHA256: e0a2abde284c4c714262c07afab168659387a797f033a869d0db1b1f4bfa010c
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate retained runtime-blocked contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          r = json.loads(Path("research/korva-xline-01/probe-summary.json").read_text())
+          assert r["schema_version"] == "chaptera.korva-xline.summary.v1"
+          assert r["conclusion"]["closure_class"] == "runtime_blocked"
+          assert r["conclusion"]["three_way_korva_libmspub_chaptera_completed"] is False
+          assert r["conclusion"]["model_change_authorized"] is False
+          assert r["conclusion"]["pub_wire_format_claim_authorized"] is False
+
+          k = r["korva_runtime"]
+          assert k["missing_libraries"] == []
+          assert k["help_exit"] == 124
+          assert k["version_exit"] == 124
+          assert k["direct_pub_argument_exit"] == 124
+          assert k["produced_document_before_sha256"] == k["produced_document_after_sha256"]
+
+          sample = r["fixtures"]["Sample.pub"]
+          assert sample["text_comparison"]["word_multiset_equal"] is True
+          assert sample["text_comparison"]["normalized_order_equal"] is False
+          assert sample["text_comparison"]["promotion"] == "not_promoted"
+
+          for name in ("SampleBrochure.pub", "SampleNewsletter.pub"):
+              fx = r["fixtures"][name]
+              assert fx["chaptera"]["supported"] is True
+              assert fx["libmspub"]["supported"] is False
+              assert fx["arbitration"]["chaptera_image_exactly_matches_raw_payload"] is True
+              assert fx["chaptera"]["jpeg_sha256"] == fx["raw"]["jpeg_sha256"]
+              assert fx["chaptera"]["jpeg_byte_len"] == fx["raw"]["jpeg_byte_len"]
+
+          assert r["guardrails"]["korva_layout_vote_allowed"] is False
+          assert r["guardrails"]["korva_style_vote_allowed"] is False
+          assert r["guardrails"]["korva_geometry_vote_allowed"] is False
+          assert r["guardrails"]["static_korva_reconstruction_substituted_for_runtime"] is False
+          print(json.dumps({
+              "closure": r["conclusion"]["closure_class"],
+              "korva_exits": [k["help_exit"], k["version_exit"], k["direct_pub_argument_exit"]],
+              "brochure_raw_jpeg": r["fixtures"]["SampleBrochure.pub"]["raw"]["jpeg_sha256"],
+              "newsletter_raw_jpeg": r["fixtures"]["SampleNewsletter.pub"]["raw"]["jpeg_sha256"],
+          }, sort_keys=True))
+          PY
+
+      - name: Prepare public tools
+        run: |
+          set -euxo pipefail
+          sudo apt-get update
+          sudo apt-get install -y libmspub-tools xvfb xauth binutils curl libwebkit2gtk-4.1-0 libjavascriptcoregtk-4.1-0 libsoup-3.0-0
+          python -m py_compile tools/korva_xline_probe.py
+          mkdir -p /tmp/xline/{fixtures,korva,libmspub,chaptera,raw,logs}
+
+      - name: Acquire exact Korva 1.8.7
+        run: |
+          set -euxo pipefail
+          curl -fL "$KORVA_URL" -o /tmp/xline/Korva_1.8.7_amd64.deb
+          echo "$KORVA_SHA256  /tmp/xline/Korva_1.8.7_amd64.deb" | sha256sum -c -
+          sha256sum /tmp/xline/Korva_1.8.7_amd64.deb > /tmp/xline/KORVA_1.8.7.sha256
+          dpkg-deb -x /tmp/xline/Korva_1.8.7_amd64.deb /tmp/xline/korva
+          find /tmp/xline/korva -type f -perm /111 -print | sort | tee /tmp/xline/logs/korva-executables.txt
+          grep -RInaE 'import_pub|importPub|open.*pub|invoke' /tmp/xline/korva/usr 2>/dev/null             | head -n 500 > /tmp/xline/logs/korva-resource-import-hits.txt || true
+
+      - name: Probe Korva runtime surface
+        run: |
+          set -euxo pipefail
+          KORVA_BIN="$(find /tmp/xline/korva -type f \( -name 'korva' -o -name 'Korva' \) -perm /111 | head -n 1)"
+          if [ -z "$KORVA_BIN" ]; then
+            KORVA_BIN="$(find /tmp/xline/korva -type f -perm /111 | head -n 1)"
+          fi
+          test -n "$KORVA_BIN"
+          echo "$KORVA_BIN" > /tmp/xline/logs/korva-binary-path.txt
+          file "$KORVA_BIN" | tee /tmp/xline/logs/korva-file.txt
+          ldd "$KORVA_BIN" | tee /tmp/xline/logs/korva-ldd.txt || true\n          grep "not found" /tmp/xline/logs/korva-ldd.txt > /tmp/xline/logs/korva-missing-libs.txt || true\n          mkdir -p /tmp/xline/korva-home
+          strings "$KORVA_BIN" | grep -Ei '(^|[^a-z])(help|version|headless|cli|import_pub|open_pub)([^a-z]|$)'             | head -n 500 > /tmp/xline/logs/korva-cli-string-hits.txt || true
+
+          set +e
+          HOME=/tmp/xline/korva-home timeout 12s xvfb-run -a "$KORVA_BIN" --help > /tmp/xline/logs/korva-help.stdout 2>/tmp/xline/logs/korva-help.stderr
+          echo $? > /tmp/xline/logs/korva-help.exit
+          HOME=/tmp/xline/korva-home timeout 12s xvfb-run -a "$KORVA_BIN" --version > /tmp/xline/logs/korva-version.stdout 2>/tmp/xline/logs/korva-version.stderr
+          echo $? > /tmp/xline/logs/korva-version.exit
+          set -e
+
+      - name: Acquire public Publisher fixtures from pinned Apache POI commit
+        run: |
+          set -euxo pipefail
+          for name in Sample.pub SampleBrochure.pub SampleNewsletter.pub; do
+            url="https://raw.githubusercontent.com/apache/poi/$POI_SHA/test-data/publisher/$name"
+            curl -fL "$url" -o "/tmp/xline/fixtures/$name"
+          done
+          (cd /tmp/xline/fixtures && sha256sum *.pub | sort) | tee /tmp/xline/fixture-sha256.txt
+          (
+            cd /tmp/xline/fixtures
+            printf '%s  %s\n' \
+              '6fefdef46b87c767150878dc384549cb2d2ec2ac54de25f8ddb3a5628301107e' 'Sample.pub' \
+              'ffed034ac87e679f0bd08ff9cf74ad11c0e0e510a42b1bc1a7502415f6c29c87' 'SampleBrochure.pub' \
+              '6a825ba26ba35d6e885acdc62e859591ed37cb0ff7480b554b9cb362b644dfcf' 'SampleNewsletter.pub' \
+              | sha256sum -c -
+          )
+          (cd /tmp/xline/fixtures && stat -c '%n %s' *.pub | sort) | tee /tmp/xline/fixture-lengths.txt
+          for f in /tmp/xline/fixtures/*.pub; do
+            base="$(basename "$f" .pub)"
+            python tools/korva_xline_probe.py raw "$f" > "/tmp/xline/raw/$base.json"
+          done
+
+      - name: Record pinned libmspub tool identity and observations
+        run: |
+          set -euxo pipefail
+          dpkg-query -W libmspub-tools | tee /tmp/xline/libmspub-version.txt
+          command -v pub2xhtml | tee /tmp/xline/pub2xhtml-path.txt
+          pub2xhtml --help > /tmp/xline/logs/pub2xhtml-help.txt 2>&1 || true
+          for f in /tmp/xline/fixtures/*.pub; do
+            base="$(basename "$f" .pub)"
+            mkdir -p "/tmp/xline/libmspub/$base"
+            set +e
+            (
+              cd "/tmp/xline/libmspub/$base"
+              pub2xhtml "$f" > output.xhtml 2>stderr.txt
+            )
+            code=$?
+            set -e
+            echo "$code" > "/tmp/xline/libmspub/$base/exit.txt"
+            python tools/korva_xline_probe.py xhtml \
+              "/tmp/xline/libmspub/$base/output.xhtml" \
+              --asset-root "/tmp/xline/libmspub/$base" \
+              --tool-exit "$code" \
+              --stderr "/tmp/xline/libmspub/$base/stderr.txt" \
+              > "/tmp/xline/libmspub/$base/observation.json"
+          done
+
+      - name: Checkout exact Chaptera/Rar revision
+        run: |
+          set -euxo pipefail
+          git init /tmp/xline/rar
+          git -C /tmp/xline/rar remote add origin https://github.com/HeisLuka/rar.git
+          git -C /tmp/xline/rar fetch --depth=1 origin "$RAR_SHA"
+          git -C /tmp/xline/rar checkout --detach FETCH_HEAD
+          test "$(git -C /tmp/xline/rar rev-parse HEAD)" = "$RAR_SHA"
+
+      - name: Build exact Chaptera observation helper
+        run: |
+          set -euxo pipefail
+          mkdir -p /tmp/xline/chaptera-probe/src
+          cp tools/korva_xline_chaptera.rs /tmp/xline/chaptera-probe/src/main.rs
+          cat > /tmp/xline/chaptera-probe/Cargo.toml <<EOF
+          [package]
+          name = "korva-xline-chaptera-probe"
+          version = "0.1.0"
+          edition = "2024"
+
+          [workspace]
+
+          [dependencies]
+          pub-viewer = { path = "/tmp/xline/rar/vendor/producer-a/crates/pub-viewer" }
+          serde = { version = "1", features = ["derive"] }
+          serde_json = "1"
+          sha2 = "0.10"
+          EOF
+          cargo build --manifest-path /tmp/xline/chaptera-probe/Cargo.toml 2>/tmp/xline/logs/chaptera-build.stderr
+          BIN=/tmp/xline/chaptera-probe/target/debug/korva-xline-chaptera-probe
+          for f in /tmp/xline/fixtures/*.pub; do
+            base="$(basename "$f" .pub)"
+            "$BIN" "$f" > "/tmp/xline/chaptera/$base.json" 2>"/tmp/xline/chaptera/$base.stderr"
+          done
+
+      - name: Probe direct Korva file argument on first public fixture
+        run: |
+          set -euxo pipefail
+          KORVA_BIN="$(cat /tmp/xline/logs/korva-binary-path.txt)"
+          mkdir -p /tmp/xline/korva-home
+          BEFORE="$(find /tmp/xline/korva-home -type f \( -name '*.pwl' -o -name '*.kva' \) -printf '%p\n' | sort | sha256sum | cut -d' ' -f1)"
+          set +e
+          HOME=/tmp/xline/korva-home timeout 15s xvfb-run -a "$KORVA_BIN" /tmp/xline/fixtures/Sample.pub             > /tmp/xline/logs/korva-file-arg.stdout 2>/tmp/xline/logs/korva-file-arg.stderr
+          CODE=$?
+          set -e
+          echo "$CODE" > /tmp/xline/logs/korva-file-arg.exit
+          AFTER="$(find /tmp/xline/korva-home -type f \( -name '*.pwl' -o -name '*.kva' \) -printf '%p\n' | sort | sha256sum | cut -d' ' -f1)"
+          printf 'before=%s\nafter=%s\n' "$BEFORE" "$AFTER" > /tmp/xline/logs/korva-produced-doc-scan.txt
+
+      - name: Build probe receipt
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path("/tmp/xline")
+          fixtures = {}
+          for pub in sorted((root/"fixtures").glob("*.pub")):
+              key = pub.stem
+              fixtures[key] = {
+                  "raw": json.loads((root/"raw"/f"{key}.json").read_text()),
+                  "libmspub": json.loads((root/"libmspub"/key/"observation.json").read_text()),
+                  "chaptera": json.loads((root/"chaptera"/f"{key}.json").read_text()),
+              }
+
+          def text(path):
+              p = Path(path)
+              return p.read_text(errors="replace").strip() if p.exists() else ""
+
+          receipt = {
+              "schema_version": "chaptera.korva-xline.probe.v1",
+              "guardrails": {
+                  "korva_layout_vote_allowed": False,
+                  "korva_style_vote_allowed": False,
+                  "korva_geometry_vote_allowed": False,
+                  "only_text_and_jpeg_png_recovery_scored": True,
+                  "private_pub_bytes_used": False,
+              },
+              "identities": {
+                  "korva_deb_sha256": os.environ["KORVA_SHA256"],
+                  "rar_sha": os.environ["RAR_SHA"],
+                  "poi_sha": os.environ["POI_SHA"],
+                  "libmspub_package": text(root/"libmspub-version.txt"),
+              },
+              "korva_runtime_probe": {
+                  "help_exit": text(root/"logs/korva-help.exit"),
+                  "version_exit": text(root/"logs/korva-version.exit"),
+                  "file_arg_exit": text(root/"logs/korva-file-arg.exit"),
+                  "produced_doc_scan": text(root/"logs/korva-produced-doc-scan.txt"),
+                  "resource_import_hit_count": len(text(root/"logs/korva-resource-import-hits.txt").splitlines()),
+                  "missing_libraries": text(root/"logs/korva-missing-libs.txt").splitlines(),
+                  "help_stderr_excerpt": text(root/"logs/korva-help.stderr")[:2000],
+                  "version_stderr_excerpt": text(root/"logs/korva-version.stderr")[:2000],
+                  "file_arg_stderr_excerpt": text(root/"logs/korva-file-arg.stderr")[:2000],
+              },
+              "fixtures": fixtures,
+          }
+          (root/"probe-receipt.json").write_text(json.dumps(receipt, indent=2, sort_keys=True)+"\n")
+          print(json.dumps({
+              "fixture_count": len(fixtures),
+              "korva_runtime_probe": receipt["korva_runtime_probe"],
+              "chaptera_story_counts": {k: len(v["chaptera"]["stories"]) for k,v in fixtures.items()},
+              "chaptera_image_counts": {k: len(v["chaptera"]["images"]) for k,v in fixtures.items()},
+              "libmspub_image_counts": {k: len(v["libmspub"]["images"]) for k,v in fixtures.items()},
+              "raw_carved_image_counts": {k: len(v["raw"]["carved_images"]) for k,v in fixtures.items()},
+          }, sort_keys=True))
+          PY
+
+      - name: Upload bounded probe evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: korva-xline-probe
+          path: |
+            /tmp/xline/probe-receipt.json
+            /tmp/xline/fixture-sha256.txt
+            /tmp/xline/fixture-lengths.txt
+            /tmp/xline/libmspub-version.txt
+            /tmp/xline/raw
+            /tmp/xline/libmspub/*/observation.json
+            /tmp/xline/chaptera/*.json
+            /tmp/xline/chaptera/*.stderr
+            /tmp/xline/logs
+          if-no-files-found: error
+          retention-days: 14
