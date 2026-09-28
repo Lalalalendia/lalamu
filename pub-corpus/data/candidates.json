@@ -230,5 +230,181 @@
     ],
     "notes": "Interreg France-Wallonie-Vlaanderen bilingual FR/NL A3 priority-4 poster.",
     "recover_wayback": true
+  },
+  {
+    "id": "belgium-sclera-geel-20",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_filename": "geel-20.pub",
+    "urls": [
+      "https://sclera.be/resources/img/iris/1000woorden/sjablonen/geel-20.pub"
+    ],
+    "recover_wayback": true,
+    "notes": "Sclera VZW public Belgian visual-communication Publisher template."
+  },
+  {
+    "id": "belgium-sclera-groen-20",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_filename": "groen-20.pub",
+    "urls": [
+      "https://sclera.be/resources/img/iris/1000woorden/sjablonen/groen-20.pub"
+    ],
+    "recover_wayback": true,
+    "notes": "Sclera VZW public Belgian visual-communication Publisher template."
+  },
+  {
+    "id": "belgium-sclera-blauw-20",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_filename": "blauw-20.pub",
+    "urls": [
+      "https://sclera.be/resources/img/iris/1000woorden/sjablonen/blauw-20.pub"
+    ],
+    "recover_wayback": true,
+    "notes": "Sclera VZW public Belgian visual-communication Publisher template."
+  },
+  {
+    "id": "belgium-sclera-rood-20",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_filename": "rood-20.pub",
+    "urls": [
+      "https://sclera.be/resources/img/iris/1000woorden/sjablonen/rood-20.pub"
+    ],
+    "recover_wayback": true,
+    "notes": "Sclera VZW public Belgian visual-communication Publisher template."
+  },
+  {
+    "id": "belgium-sclera-grijs-20",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_filename": "grijs-20.pub",
+    "urls": [
+      "https://sclera.be/resources/img/iris/1000woorden/sjablonen/grijs-20.pub"
+    ],
+    "recover_wayback": true,
+    "notes": "Sclera VZW public Belgian visual-communication Publisher template."
+  },
+  {
+    "id": "belgium-sclera-geel-30",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_filename": "geel-30.pub",
+    "urls": [
+      "https://sclera.be/resources/img/iris/1000woorden/sjablonen/geel-30.pub"
+    ],
+    "recover_wayback": true,
+    "notes": "Sclera VZW public Belgian visual-communication Publisher template."
+  },
+  {
+    "id": "belgium-sclera-groen-30",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_filename": "groen-30.pub",
+    "urls": [
+      "https://sclera.be/resources/img/iris/1000woorden/sjablonen/groen-30.pub"
+    ],
+    "recover_wayback": true,
+    "notes": "Sclera VZW public Belgian visual-communication Publisher template."
+  },
+  {
+    "id": "belgium-sclera-blauw-30",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_filename": "blauw-30.pub",
+    "urls": [
+      "https://sclera.be/resources/img/iris/1000woorden/sjablonen/blauw-30.pub"
+    ],
+    "recover_wayback": true,
+    "notes": "Sclera VZW public Belgian visual-communication Publisher template."
+  },
+  {
+    "id": "belgium-sclera-rood-30",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_filename": "rood-30.pub",
+    "urls": [
+      "https://sclera.be/resources/img/iris/1000woorden/sjablonen/rood-30.pub"
+    ],
+    "recover_wayback": true,
+    "notes": "Sclera VZW public Belgian visual-communication Publisher template."
+  },
+  {
+    "id": "belgium-sclera-grijs-30",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_filename": "grijs-30.pub",
+    "urls": [
+      "https://sclera.be/resources/img/iris/1000woorden/sjablonen/grijs-30.pub"
+    ],
+    "recover_wayback": true,
+    "notes": "Sclera VZW public Belgian visual-communication Publisher template."
+  },
+  {
+    "id": "belgium-sclera-bladwijzer-3",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_filename": "bladwijzer-3.pub",
+    "urls": [
+      "https://sclera.be/resources/img/iris/1000woorden/sjablonen/bladwijzer-3.pub"
+    ],
+    "recover_wayback": true,
+    "notes": "Sclera VZW public Belgian visual-communication Publisher template."
+  },
+  {
+    "id": "belgium-sclera-bladwijzer-8",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_filename": "bladwijzer-8.pub",
+    "urls": [
+      "https://sclera.be/resources/img/iris/1000woorden/sjablonen/bladwijzer-8.pub"
+    ],
+    "recover_wayback": true,
+    "notes": "Sclera VZW public Belgian visual-communication Publisher template."
+  },
+  {
+    "id": "belgium-uhasselt-kuleuven-a1-nl-fixed",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_filename": "A1-NL-fixed.pub",
+    "urls": [
+      "https://drive.usercontent.google.com/download?id=1OwcJ_VpPyrZiEpDqJ1NQ1Tz2FmfPAit-&export=download&confirm=t",
+      "https://drive.google.com/uc?export=download&id=1OwcJ_VpPyrZiEpDqJ1NQ1Tz2FmfPAit-"
+    ],
+    "notes": "UHasselt/KU Leuven current 2026-2027 A1 master-thesis poster template, Dutch fixed red/blue stripes."
+  },
+  {
+    "id": "belgium-uhasselt-kuleuven-a1-nl-custom",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_filename": "A1-NL-custom.pub",
+    "urls": [
+      "https://drive.usercontent.google.com/download?id=1OrUYojgyegixzcuhSmGZ0Vhxt-YmIYLP&export=download&confirm=t",
+      "https://drive.google.com/uc?export=download&id=1OrUYojgyegixzcuhSmGZ0Vhxt-YmIYLP"
+    ],
+    "notes": "UHasselt/KU Leuven current 2026-2027 A1 master-thesis poster template, Dutch customizable stripe colors."
+  },
+  {
+    "id": "belgium-uhasselt-kuleuven-a1-en-fixed",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_filename": "A1-EN-fixed.pub",
+    "urls": [
+      "https://drive.usercontent.google.com/download?id=1Oh5fuOJWq3Y54FiuNqCp_e9dA8hWn8P2&export=download&confirm=t",
+      "https://drive.google.com/uc?export=download&id=1Oh5fuOJWq3Y54FiuNqCp_e9dA8hWn8P2"
+    ],
+    "notes": "UHasselt/KU Leuven current 2026-2027 A1 master-thesis poster template, English fixed red/blue stripes."
+  },
+  {
+    "id": "belgium-uhasselt-kuleuven-a1-en-custom",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_filename": "A1-EN-custom.pub",
+    "urls": [
+      "https://drive.usercontent.google.com/download?id=1Onqfc6ZamC2OsClxYw6K7kq2O7Fj0uAi&export=download&confirm=t",
+      "https://drive.google.com/uc?export=download&id=1Onqfc6ZamC2OsClxYw6K7kq2O7Fj0uAi"
+    ],
+    "notes": "UHasselt/KU Leuven current 2026-2027 A1 master-thesis poster template, English customizable stripe colors."
   }
 ]
