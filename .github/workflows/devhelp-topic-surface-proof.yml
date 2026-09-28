@@ -19,6 +19,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install parser dependency
+        run: python -m pip install beautifulsoup4==4.12.3
+
       - name: Validate source-safe parsers
         run: |
           python -m py_compile             tools/devhelp_topic_surface.py             tools/devhelp_chm_normalize.py             tests/test_devhelp_topic_surface.py             tests/test_devhelp_chm_normalize.py
@@ -54,7 +57,6 @@ jobs:
           cp -L "$CHM_LIB" /tmp/chm-extractor-runtime/lib/libchm.so.1
           printf '%s\n' '#!/usr/bin/env bash'             'set -euo pipefail'             'ROOT="$(cd "$(dirname "$0")" && pwd)"'             'export LD_LIBRARY_PATH="$ROOT/lib:${LD_LIBRARY_PATH:-}"'             'exec "$ROOT/extract_chmLib" "$@"'             > /tmp/chm-extractor-runtime/run-extract.sh
           chmod +x /tmp/chm-extractor-runtime/run-extract.sh
-          /tmp/chm-extractor-runtime/run-extract.sh 2>&1 | grep -q "usage:" || true
           sha256sum             /tmp/chm-extractor-runtime/extract_chmLib             /tmp/chm-extractor-runtime/lib/libchm.so.1             > /tmp/chm-extractor-runtime/SHA256SUMS
 
       - name: Upload extractor runtime
@@ -65,34 +67,37 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
-      - name: Validate retained full normalized result when present
+      - name: Validate retained body-structure diff
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-
-          p = Path("research/devhelp-xver-01/normalized-body-diff.json")
+          p = Path("research/devhelp-xver-01/body-structure-diff.json")
           if not p.exists():
-              print("full normalized result not committed yet; runtime artifact produced")
+              print("body-structure diff not committed yet")
               raise SystemExit(0)
-
           r = json.loads(p.read_text(encoding="utf-8"))
-          assert r["schema_version"] == "chaptera.devhelp-xver.normalized.v1"
-          assert r["source_2002"]["chm_sha256"] == "688a5a4c5ec209740ba2506e322fc9c8070747c0d9cc7b59560e0a0bea2acf51"
-          assert r["source_2003"]["chm_sha256"] == "796e0a899e5b691d04895590206113f112816fe161250486b787f82af4ac5418"
-          assert len(r["added_topic_ids"]) == 207
-          assert len(r["removed_topic_ids"]) == 7
-          assert r["evidence_boundary"]["topic_body_text_retained"] is False
-          assert r["evidence_boundary"]["topic_body_structure_extracted"] is True
+          assert r["schema_version"] == "chaptera.devhelp-xver.body-structure-diff.v1"
+          assert r["sources"]["p2002"]["chm_sha256"] == "688a5a4c5ec209740ba2506e322fc9c8070747c0d9cc7b59560e0a0bea2acf51"
+          assert r["sources"]["p2003"]["chm_sha256"] == "796e0a899e5b691d04895590206113f112816fe161250486b787f82af4ac5418"
+          assert r["sources"]["p2002"]["topic_count"] == 692
+          assert r["sources"]["p2003"]["topic_count"] == 892
+          assert r["surface"]["common_count"] == 685
+          assert r["surface"]["added_count"] == 207
+          assert r["surface"]["removed_count"] == 7
+          assert len(r["signature_changes"]) == 8
+          assert len(r["argument_changes"]) == 8
+          assert len(r["enum_group_changes"]) == 8
+          assert len(r["rename_move_candidates"]) == 3
+          assert r["evidence_boundary"]["full_help_prose_committed"] is False
           assert r["evidence_boundary"]["pub_wire_format_claims_allowed"] is False
-          for version in ("source_2002", "source_2003"):
-              coverage = r[version]["coverage"]
-              assert coverage.get("links", 0) > 0
-              assert coverage.get("syntax", 0) > 0
           print(json.dumps({
-              "p2002_topics": r["source_2002"]["topic_count"],
-              "p2003_topics": r["source_2003"]["topic_count"],
-              "coverage_2002": r["source_2002"]["coverage"],
-              "coverage_2003": r["source_2003"]["coverage"],
+              "signature_changes": [row["topic_id"] for row in r["signature_changes"]],
+              "argument_changes": [row["topic_id"] for row in r["argument_changes"]],
+              "enum_group_changes": [row["topic_id"] for row in r["enum_group_changes"]],
+              "rename_move_candidates": [
+                  [row["from"], row["to"]]
+                  for row in r["rename_move_candidates"]
+              ],
           }, sort_keys=True))
           PY
