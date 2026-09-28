@@ -37,7 +37,8 @@ jobs:
       - name: Compile lab scripts
         run: |
           set -euo pipefail
-          python -m py_compile             pub-corpus/scripts/corpus_intelligence.py             pub-corpus/scripts/oracle_differential.py             pub-corpus/scripts/fuzz_pub.py
+          python -m py_compile             pub-corpus/scripts/corpus_intelligence.py             pub-corpus/scripts/oracle_differential.py             pub-corpus/scripts/fuzz_pub.py \
+            pub-corpus/scripts/page_role_sweep.py
 
       - name: Exercise structural census on admitted corpus
         run: |
