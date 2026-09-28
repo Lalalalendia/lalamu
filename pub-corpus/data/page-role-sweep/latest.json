@@ -1,0 +1,4688 @@
+{
+  "candidate_predicate_scoreboard": [
+    {
+      "evaluated_file_count": 19,
+      "exact_file_count": 15,
+      "max_absolute_count_error": 4,
+      "per_file": [
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 1,
+          "sha256": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "16ea75ba3cba286af382619a9edc2d7940d3e4f74a83577520b470c9fbc2852d"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 4,
+          "selected_count": 4,
+          "sha256": "4029d4a1bf5be89d745c079b9c06ab33e5bdceb997a4761c5e11238110d879c9"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 1,
+          "sha256": "4758095aa58927b1aefa23c384bb16cd598e6732ef2af5af68471118dc25c567"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "712e1db9cefd0af613b12fb776720ac5d67ebe772468f2e47cb26a1f2e6ce28a"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "800d2648854fb3fe1f9314a1ea7b7969d79cd9cb9b12cc454a71dde8177b2450"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 5,
+          "selected_count": 1,
+          "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "9923f422543b1ed43c090042c9e4256072df6fd961c06975e2b64335e09e9a15"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "b61be87eda0fbf77249a51993da5fe744446bc8ff0d25d4a922e4e29f8f29cd1"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 1,
+          "sha256": "bbaefcbdcdd2dbe51a636ed554c14d6f5353c98e795b5f88d26f79542e5d93ba"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190"
+        }
+      ],
+      "predicate": "applied_master_absent",
+      "total_absolute_count_error": 7
+    },
+    {
+      "evaluated_file_count": 19,
+      "exact_file_count": 12,
+      "max_absolute_count_error": 1,
+      "per_file": [
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 2,
+          "sha256": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 3,
+          "sha256": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 2,
+          "sha256": "16ea75ba3cba286af382619a9edc2d7940d3e4f74a83577520b470c9fbc2852d"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 2,
+          "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 4,
+          "selected_count": 4,
+          "sha256": "4029d4a1bf5be89d745c079b9c06ab33e5bdceb997a4761c5e11238110d879c9"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 2,
+          "sha256": "4758095aa58927b1aefa23c384bb16cd598e6732ef2af5af68471118dc25c567"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 2,
+          "sha256": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "712e1db9cefd0af613b12fb776720ac5d67ebe772468f2e47cb26a1f2e6ce28a"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 2,
+          "sha256": "800d2648854fb3fe1f9314a1ea7b7969d79cd9cb9b12cc454a71dde8177b2450"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 5,
+          "selected_count": 5,
+          "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "9923f422543b1ed43c090042c9e4256072df6fd961c06975e2b64335e09e9a15"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 2,
+          "sha256": "b61be87eda0fbf77249a51993da5fe744446bc8ff0d25d4a922e4e29f8f29cd1"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 2,
+          "sha256": "bbaefcbdcdd2dbe51a636ed554c14d6f5353c98e795b5f88d26f79542e5d93ba"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190"
+        }
+      ],
+      "predicate": "shape_or_group_child>0",
+      "total_absolute_count_error": 7
+    },
+    {
+      "evaluated_file_count": 19,
+      "exact_file_count": 11,
+      "max_absolute_count_error": 1,
+      "per_file": [
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 2,
+          "sha256": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 3,
+          "sha256": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 2,
+          "sha256": "16ea75ba3cba286af382619a9edc2d7940d3e4f74a83577520b470c9fbc2852d"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 2,
+          "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 4,
+          "selected_count": 3,
+          "sha256": "4029d4a1bf5be89d745c079b9c06ab33e5bdceb997a4761c5e11238110d879c9"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 2,
+          "sha256": "4758095aa58927b1aefa23c384bb16cd598e6732ef2af5af68471118dc25c567"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 2,
+          "sha256": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "712e1db9cefd0af613b12fb776720ac5d67ebe772468f2e47cb26a1f2e6ce28a"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 2,
+          "sha256": "800d2648854fb3fe1f9314a1ea7b7969d79cd9cb9b12cc454a71dde8177b2450"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 5,
+          "selected_count": 5,
+          "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "9923f422543b1ed43c090042c9e4256072df6fd961c06975e2b64335e09e9a15"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 2,
+          "sha256": "b61be87eda0fbf77249a51993da5fe744446bc8ff0d25d4a922e4e29f8f29cd1"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 2,
+          "sha256": "bbaefcbdcdd2dbe51a636ed554c14d6f5353c98e795b5f88d26f79542e5d93ba"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190"
+        }
+      ],
+      "predicate": "shape_child_count>0",
+      "total_absolute_count_error": 8
+    },
+    {
+      "evaluated_file_count": 19,
+      "exact_file_count": 2,
+      "max_absolute_count_error": 5,
+      "per_file": [
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 0,
+          "sha256": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178"
+        },
+        {
+          "absolute_count_error": 2,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 0,
+          "sha256": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 0,
+          "sha256": "16ea75ba3cba286af382619a9edc2d7940d3e4f74a83577520b470c9fbc2852d"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 0,
+          "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a"
+        },
+        {
+          "absolute_count_error": 3,
+          "libmspub_lineage_page_count": 4,
+          "selected_count": 1,
+          "sha256": "4029d4a1bf5be89d745c079b9c06ab33e5bdceb997a4761c5e11238110d879c9"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 2,
+          "sha256": "4758095aa58927b1aefa23c384bb16cd598e6732ef2af5af68471118dc25c567"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 0,
+          "sha256": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 0,
+          "sha256": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 0,
+          "sha256": "712e1db9cefd0af613b12fb776720ac5d67ebe772468f2e47cb26a1f2e6ce28a"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 0,
+          "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 0,
+          "sha256": "800d2648854fb3fe1f9314a1ea7b7969d79cd9cb9b12cc454a71dde8177b2450"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 5,
+          "selected_count": 0,
+          "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 0,
+          "sha256": "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 0,
+          "sha256": "9923f422543b1ed43c090042c9e4256072df6fd961c06975e2b64335e09e9a15"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 0,
+          "sha256": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 0,
+          "sha256": "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 0,
+          "sha256": "b61be87eda0fbf77249a51993da5fe744446bc8ff0d25d4a922e4e29f8f29cd1"
+        },
+        {
+          "absolute_count_error": 2,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 0,
+          "sha256": "bbaefcbdcdd2dbe51a636ed554c14d6f5353c98e795b5f88d26f79542e5d93ba"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190"
+        }
+      ],
+      "predicate": "group_child_count>0",
+      "total_absolute_count_error": 25
+    },
+    {
+      "evaluated_file_count": 19,
+      "exact_file_count": 0,
+      "max_absolute_count_error": 4,
+      "per_file": [
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 5,
+          "sha256": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 6,
+          "sha256": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 5,
+          "sha256": "16ea75ba3cba286af382619a9edc2d7940d3e4f74a83577520b470c9fbc2852d"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 5,
+          "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 4,
+          "selected_count": 8,
+          "sha256": "4029d4a1bf5be89d745c079b9c06ab33e5bdceb997a4761c5e11238110d879c9"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 6,
+          "sha256": "4758095aa58927b1aefa23c384bb16cd598e6732ef2af5af68471118dc25c567"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 5,
+          "sha256": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 5,
+          "sha256": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 5,
+          "sha256": "712e1db9cefd0af613b12fb776720ac5d67ebe772468f2e47cb26a1f2e6ce28a"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 5,
+          "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 5,
+          "sha256": "800d2648854fb3fe1f9314a1ea7b7969d79cd9cb9b12cc454a71dde8177b2450"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 5,
+          "selected_count": 9,
+          "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 5,
+          "sha256": "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 5,
+          "sha256": "9923f422543b1ed43c090042c9e4256072df6fd961c06975e2b64335e09e9a15"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 5,
+          "sha256": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 5,
+          "sha256": "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 5,
+          "sha256": "b61be87eda0fbf77249a51993da5fe744446bc8ff0d25d4a922e4e29f8f29cd1"
+        },
+        {
+          "absolute_count_error": 3,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 5,
+          "sha256": "bbaefcbdcdd2dbe51a636ed554c14d6f5353c98e795b5f88d26f79542e5d93ba"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 5,
+          "sha256": "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190"
+        }
+      ],
+      "predicate": "applied_master_present",
+      "total_absolute_count_error": 75
+    },
+    {
+      "evaluated_file_count": 19,
+      "exact_file_count": 0,
+      "max_absolute_count_error": 8,
+      "per_file": [
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 7,
+          "sha256": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "16ea75ba3cba286af382619a9edc2d7940d3e4f74a83577520b470c9fbc2852d"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a"
+        },
+        {
+          "absolute_count_error": 8,
+          "libmspub_lineage_page_count": 4,
+          "selected_count": 12,
+          "sha256": "4029d4a1bf5be89d745c079b9c06ab33e5bdceb997a4761c5e11238110d879c9"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 7,
+          "sha256": "4758095aa58927b1aefa23c384bb16cd598e6732ef2af5af68471118dc25c567"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "712e1db9cefd0af613b12fb776720ac5d67ebe772468f2e47cb26a1f2e6ce28a"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "800d2648854fb3fe1f9314a1ea7b7969d79cd9cb9b12cc454a71dde8177b2450"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 5,
+          "selected_count": 10,
+          "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "9923f422543b1ed43c090042c9e4256072df6fd961c06975e2b64335e09e9a15"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "b61be87eda0fbf77249a51993da5fe744446bc8ff0d25d4a922e4e29f8f29cd1"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 6,
+          "sha256": "bbaefcbdcdd2dbe51a636ed554c14d6f5353c98e795b5f88d26f79542e5d93ba"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190"
+        }
+      ],
+      "predicate": "oid_pair_complete",
+      "total_absolute_count_error": 97
+    },
+    {
+      "evaluated_file_count": 19,
+      "exact_file_count": 0,
+      "max_absolute_count_error": 8,
+      "per_file": [
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 7,
+          "sha256": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "16ea75ba3cba286af382619a9edc2d7940d3e4f74a83577520b470c9fbc2852d"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a"
+        },
+        {
+          "absolute_count_error": 8,
+          "libmspub_lineage_page_count": 4,
+          "selected_count": 12,
+          "sha256": "4029d4a1bf5be89d745c079b9c06ab33e5bdceb997a4761c5e11238110d879c9"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 7,
+          "sha256": "4758095aa58927b1aefa23c384bb16cd598e6732ef2af5af68471118dc25c567"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "712e1db9cefd0af613b12fb776720ac5d67ebe772468f2e47cb26a1f2e6ce28a"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "800d2648854fb3fe1f9314a1ea7b7969d79cd9cb9b12cc454a71dde8177b2450"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 5,
+          "selected_count": 10,
+          "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "9923f422543b1ed43c090042c9e4256072df6fd961c06975e2b64335e09e9a15"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "b61be87eda0fbf77249a51993da5fe744446bc8ff0d25d4a922e4e29f8f29cd1"
+        },
+        {
+          "absolute_count_error": 4,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 6,
+          "sha256": "bbaefcbdcdd2dbe51a636ed554c14d6f5353c98e795b5f88d26f79542e5d93ba"
+        },
+        {
+          "absolute_count_error": 5,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 6,
+          "sha256": "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190"
+        }
+      ],
+      "predicate": "pgt_type_is_none",
+      "total_absolute_count_error": 97
+    }
+  ],
+  "chaptera_upstream_commit": "69f1e6628a8c81e9986db8329c00a391f4c0f777",
+  "heuristic_warning": "Predicate scores are discovery aids only. The comparison count comes from the libmspub parser lineage; LibreOffice is not an independent Publisher parser vote. A candidate predicate requires separate source-semantic validation before use.",
+  "observed_pgt_types": [],
+  "receipt_sha256": "d27469e260ec46c220fc62e64262b418d1e609ec69518f6e5c679deb0dea6133",
+  "records": [
+    {
+      "byte_len": 204800,
+      "chaptera_viewer_page_count": 6,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "d1582f4c2f8781f1189ac89d510bb76cac20c9d4e14cb200a5d4886c47044893",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "belgium-sclera-rood-20",
+          "source_filename": "rood-20.pub",
+          "source_type": "institutional-web",
+          "source_url": "https://sclera.be/resources/img/iris/1000woorden/sjablonen/rood-20.pub"
+        },
+        "topology_fingerprint": "ebd07a36e2daceb8bc444bcb123350a29838925adfd66d17797188864e24c6b7"
+      },
+      "libmspub_lineage_page_count": 1,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 45,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 45
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 17,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 17
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178"
+    },
+    {
+      "byte_len": 3505664,
+      "chaptera_viewer_page_count": 7,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "f84df6de48d206d85e3d8743aa43258341a3a379f967f4e30422983aa5c87062",
+        "provenance_document_hint": "brochure",
+        "source": {
+          "candidate_id": "github-bluejunimo-industrial-revolution-brochure",
+          "source_filename": "Socials 9 - Industrial Revolution Brochure.pub",
+          "source_path": "assets/files/Socials 9 - Industrial Revolution Brochure.pub",
+          "source_repo": "bluejunimo/school",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/bluejunimo/school/master/assets/files/Socials%209%20-%20Industrial%20Revolution%20Brochure.pub"
+        },
+        "topology_fingerprint": "332809b42fec84ac3f46b7dfdb31dde3a8e7328ea9dab353f517a0ea091090ea"
+      },
+      "libmspub_lineage_page_count": 2,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 7,
+          "controlling": [
+            {
+              "contents_seq_num": 341,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 34,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 266
+            },
+            {
+              "contents_seq_num": 363,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 40,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 343
+            },
+            {
+              "contents_seq_num": 364,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 34,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 293
+            }
+          ],
+          "document_page_list_entry_count": 7,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 2,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 9,
+                "119": 1,
+                "32": 2,
+                "76": 1,
+                "77": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 9
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 16,
+                "119": 1,
+                "32": 5,
+                "76": 1,
+                "77": 1,
+                "96": 1
+              },
+              "contents_seq_num": 343,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 1,
+              "shape_child_count": 16
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 1,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 1,
+              "shape_child_count": 1
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 6,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba"
+    },
+    {
+      "byte_len": 188928,
+      "chaptera_viewer_page_count": 6,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "2cd555a18c62966fb1648b05a7375c13404488b0319b0df871a21e2958b030ed",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "belgium-sclera-bladwijzer-8",
+          "source_filename": "bladwijzer-8.pub",
+          "source_type": "institutional-web",
+          "source_url": "https://sclera.be/resources/img/iris/1000woorden/sjablonen/bladwijzer-8.pub"
+        },
+        "topology_fingerprint": "bde3d6413b42d36087de4d3d97a3c76a8dd1a2fe30fe6fa441f90f90860d99a8"
+      },
+      "libmspub_lineage_page_count": 1,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 18,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 18
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 11,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 11
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "16ea75ba3cba286af382619a9edc2d7940d3e4f74a83577520b470c9fbc2852d"
+    },
+    {
+      "byte_len": 215040,
+      "chaptera_viewer_page_count": 6,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "d1582f4c2f8781f1189ac89d510bb76cac20c9d4e14cb200a5d4886c47044893",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "belgium-sclera-rood-30",
+          "source_filename": "rood-30.pub",
+          "source_type": "institutional-web",
+          "source_url": "https://sclera.be/resources/img/iris/1000woorden/sjablonen/rood-30.pub"
+        },
+        "topology_fingerprint": "131b01ce24ab883ae7a3ed1cd7eb00131c93e55a83a6be881cc4fce7329683e9"
+      },
+      "libmspub_lineage_page_count": 1,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 65,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 65
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 17,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 17
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a"
+    },
+    {
+      "byte_len": 342016,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "523e98e96a545d5ed28110943257aaa98d0fabd9203db62f118fdd7a3ef1f23b",
+        "provenance_document_hint": "booklet",
+        "source": {
+          "candidate_id": "github-tatawebsite-clubbooklet2008",
+          "source_filename": "Clubbooklet2008.pub",
+          "source_path": "Documents/2008/Clubbooklet2008.pub",
+          "source_repo": "RhydianJenkins/tatawebsite",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/RhydianJenkins/tatawebsite/master/Documents/2008/Clubbooklet2008.pub"
+        },
+        "topology_fingerprint": "05a5383d9745b81197b8cbf29f0169181d883b3ce5bbc844ff6acc5ae5bf5bc7"
+      },
+      "libmspub_lineage_page_count": 21,
+      "probe": {
+        "error": "parse mature-0x2C Contents header for PAGE-role observation: неожиданное семейство Contents: ожидалось Family0x2c, найдено Family0x22",
+        "returncode": 1,
+        "status": "rejected"
+      },
+      "sha256": "2b1a2c5183d2fa83fdf9b0e0bf386bc0861b034e08f00fb3fc4171857c097576"
+    },
+    {
+      "byte_len": 202240,
+      "chaptera_viewer_page_count": 12,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "abb4d274624fa0a16be4f3090e11f85f211fecd02733c6ef7cbf2e6b0c5321cd",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "github-savemypublisherfiles-cookbook",
+          "source_filename": "Cookbook.pub",
+          "source_path": "Example Folder/Cookbook.pub",
+          "source_repo": "jyor0385/SaveMyPublisherFiles",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/jyor0385/SaveMyPublisherFiles/main/Example%20Folder/Cookbook.pub"
+        },
+        "topology_fingerprint": "80dc11c8f84bf76cd818fb0e5748b20fe5f428674b27b00f82770306333b12ba"
+      },
+      "libmspub_lineage_page_count": 4,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 12,
+          "document_page_list_entry_count": 12,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "1": 1,
+                "119": 1,
+                "32": 2,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 1
+            },
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 2,
+                "96": 1
+              },
+              "contents_seq_num": 308,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 2,
+                "96": 1
+              },
+              "contents_seq_num": 330,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "child_raw_type_counts": {
+                "1": 2,
+                "119": 1,
+                "76": 2,
+                "96": 1
+              },
+              "contents_seq_num": 345,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 2
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "16": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 308,
+              "child_raw_type_counts": {
+                "119": 1,
+                "48": 1,
+                "96": 1
+              },
+              "contents_seq_num": 293,
+              "document_ordinal": 5,
+              "group_child_count": 1,
+              "oid_dword0": 2,
+              "oid_dword1": 1,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 330,
+              "child_raw_type_counts": {
+                "1": 1,
+                "119": 1,
+                "16": 1,
+                "96": 1
+              },
+              "contents_seq_num": 318,
+              "document_ordinal": 6,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 4,
+              "shape_child_count": 1
+            },
+            {
+              "applied_master_seq_num": 345,
+              "child_raw_type_counts": {
+                "119": 1,
+                "16": 2,
+                "96": 1
+              },
+              "contents_seq_num": 322,
+              "document_ordinal": 7,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 3,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 8,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 9,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 10,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 11,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "4029d4a1bf5be89d745c079b9c06ab33e5bdceb997a4761c5e11238110d879c9"
+    },
+    {
+      "byte_len": 545792,
+      "chaptera_viewer_page_count": 7,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "39b4e737c4d7eb55030fe7137f1446245f2bbea7c3d15a0e245b6035c84db31a",
+        "provenance_document_hint": "poster",
+        "source": {
+          "candidate_id": "belgium-interreg-fwvl-priority-1",
+          "source_filename": "Template_Affiche A3 FWVL_priorité 1_FR-NL.pub",
+          "source_type": "institutional-web",
+          "source_url": "https://web.archive.org/web/20240808070952/https://www.interreg-fwvl.eu/sites/default/files/uploads/fr/Template_Affiche%20A3%20FWVL_priorit%C3%A9%201_FR-NL.pub"
+        },
+        "topology_fingerprint": "81ecb926f824fb624b515aa43026e26cef24bdacb2e7c72475c0a5cfdc8e21a5"
+      },
+      "libmspub_lineage_page_count": 2,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 7,
+          "document_page_list_entry_count": 7,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 23,
+                "119": 1,
+                "48": 2,
+                "96": 1
+              },
+              "contents_seq_num": 325,
+              "document_ordinal": 1,
+              "group_child_count": 2,
+              "oid_dword0": 2,
+              "oid_dword1": 1,
+              "shape_child_count": 23
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 23,
+                "119": 1,
+                "48": 2,
+                "96": 1
+              },
+              "contents_seq_num": 442,
+              "document_ordinal": 2,
+              "group_child_count": 2,
+              "oid_dword0": 2,
+              "oid_dword1": 5,
+              "shape_child_count": 23
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 6,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "4758095aa58927b1aefa23c384bb16cd598e6732ef2af5af68471118dc25c567"
+    },
+    {
+      "byte_len": 204800,
+      "chaptera_viewer_page_count": 6,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "d1582f4c2f8781f1189ac89d510bb76cac20c9d4e14cb200a5d4886c47044893",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "belgium-sclera-groen-20",
+          "source_filename": "groen-20.pub",
+          "source_type": "institutional-web",
+          "source_url": "https://sclera.be/resources/img/iris/1000woorden/sjablonen/groen-20.pub"
+        },
+        "topology_fingerprint": "c2f10a86bfde8a1698543e5e13812ce11f9849fce2f0c699d2ea40ec97e84e5e"
+      },
+      "libmspub_lineage_page_count": 1,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 45,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 45
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 17,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 17
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78"
+    },
+    {
+      "byte_len": 9351168,
+      "chaptera_viewer_page_count": 6,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "83219be7e145733457d376cca0bdf4051e1056d1593ac5b7fd604e6aee718870",
+        "provenance_document_hint": "advertisement",
+        "source": {
+          "candidate_id": "github-dawoodshahzad-art-auction-ad",
+          "source_filename": "Art Auction Ad.pub",
+          "source_path": "Art Auction Ad.pub",
+          "source_repo": "dawoodshahzad07/Excel-Publisher-Project-Files",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/dawoodshahzad07/Excel-Publisher-Project-Files/main/Art%20Auction%20Ad.pub"
+        },
+        "topology_fingerprint": "a0f39b2ca966653d7b5ffc042c0ce1afd0df81aa04f2b331e3045ae4587697ad"
+      },
+      "libmspub_lineage_page_count": 1,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "controlling": [
+            {
+              "contents_seq_num": 444,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 28,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 266
+            },
+            {
+              "contents_seq_num": 446,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 28,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 293
+            }
+          ],
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 3,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 57,
+                "119": 1,
+                "77": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 57
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 2,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa"
+    },
+    {
+      "byte_len": 97280,
+      "chaptera_viewer_page_count": 6,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "dcb53503360b645b7d61607184d93e687ffa32dd428996b7feede09879d5f4f0",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "github-petalcat-pub2pdf-sample",
+          "source_filename": "sample.pub",
+          "source_path": "tests/fixtures/sample.pub",
+          "source_repo": "PetalCat/pub2pdf",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/PetalCat/pub2pdf/main/tests/fixtures/sample.pub"
+        },
+        "topology_fingerprint": "3430bcf2da51ba24be16c077aa8672bd9dda1bedac4a662ecb220efc4dc9cbc0"
+      },
+      "libmspub_lineage_page_count": 1,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 1,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 0,
+              "shape_child_count": 1
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "712e1db9cefd0af613b12fb776720ac5d67ebe772468f2e47cb26a1f2e6ce28a"
+    },
+    {
+      "byte_len": 542208,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {},
+      "libmspub_lineage_page_count": null,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 7,
+          "document_page_list_entry_count": 7,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 23,
+                "119": 1,
+                "48": 2,
+                "96": 1
+              },
+              "contents_seq_num": 325,
+              "document_ordinal": 1,
+              "group_child_count": 2,
+              "oid_dword0": 2,
+              "oid_dword1": 1,
+              "shape_child_count": 23
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 23,
+                "119": 1,
+                "48": 2,
+                "96": 1
+              },
+              "contents_seq_num": 286,
+              "document_ordinal": 2,
+              "group_child_count": 2,
+              "oid_dword0": 2,
+              "oid_dword1": 6,
+              "shape_child_count": 23
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 6,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "770daf58c214d6f848af676b6a53c04934f7c1499e5674837a18a2f63875dc90"
+    },
+    {
+      "byte_len": 97792,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "2b8295f382b8f697f9f67695fa86ad1104bbee2d2dc9e1e3984e07881cd878ac",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "github-altpublisher-shape-test",
+          "sibling_oracle": {
+            "expected_git_blob_sha1": "4dbc5a133977bf97d7b31007a4b259e2e5431dac",
+            "expected_size": 42951,
+            "type": "image",
+            "url": "https://raw.githubusercontent.com/jhopkins44/AltPublisher/main/ShapeTest.png"
+          },
+          "source_filename": "ShapeTest.pub",
+          "source_path": "ShapeTest.pub",
+          "source_repo": "jhopkins44/AltPublisher",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/jhopkins44/AltPublisher/main/ShapeTest.pub"
+        },
+        "topology_fingerprint": "f94c7261b1a7f988d7d5d48236d86a62b6bbb53eb4caae011665a5f2be9a5695"
+      },
+      "libmspub_lineage_page_count": 1,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 4,
+                "119": 1,
+                "32": 2,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 0,
+              "shape_child_count": 4
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb"
+    },
+    {
+      "byte_len": 217088,
+      "chaptera_viewer_page_count": 6,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "e5e7c3eb4c27afb501a4f1a97addd526e9684a70323f83793f5f654f97d3937b",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "belgium-uhasselt-kuleuven-a1-nl-fixed",
+          "source_filename": "A1-NL-fixed.pub",
+          "source_type": "institutional-web",
+          "source_url": "https://drive.usercontent.google.com/download?id=1OwcJ_VpPyrZiEpDqJ1NQ1Tz2FmfPAit-&export=download&confirm=t"
+        },
+        "topology_fingerprint": "588ac9ca1a310e4135c43e707d3273245f7439cfd5406528824de162bb16fe88"
+      },
+      "libmspub_lineage_page_count": 1,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "1": 4,
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 4
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 9,
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 9
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "800d2648854fb3fe1f9314a1ea7b7969d79cd9cb9b12cc454a71dde8177b2450"
+    },
+    {
+      "byte_len": 215040,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {},
+      "libmspub_lineage_page_count": null,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 65,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 65
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 17,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 17
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "9271c1e5e57fa885d953a9d4cee5a4ccb5e10ac9a93c0a5aa7027683b6cece77"
+    },
+    {
+      "byte_len": 6412288,
+      "chaptera_viewer_page_count": 10,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "47efd1847ccc23a7734e2277371af1182059055985078fbf94cb5fe5df9ac7b0",
+        "provenance_document_hint": "manual",
+        "source": {
+          "candidate_id": "github-emhodges-kroy-manual",
+          "sibling_oracle": {
+            "expected_git_blob_sha1": "ec95bc942e23c1f052105a8282b2942822f006d9",
+            "expected_size": 864858,
+            "type": "pdf",
+            "url": "https://raw.githubusercontent.com/EMHodges/SEPR-game/master/docs/manuals/KroyManual-1.0.pdf"
+          },
+          "source_filename": "KroyManualEditable-1.0.pub",
+          "source_path": "docs/manuals/KroyManualEditable-1.0.pub",
+          "source_repo": "EMHodges/SEPR-game",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/EMHodges/SEPR-game/master/docs/manuals/KroyManualEditable-1.0.pub"
+        },
+        "topology_fingerprint": "0a6785074a35e812abc6b677a517172f4d163e29eb3ca407916979eed1fcd8b7"
+      },
+      "libmspub_lineage_page_count": 5,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 10,
+          "controlling": [
+            {
+              "contents_seq_num": 294,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 34,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 293
+            },
+            {
+              "contents_seq_num": 295,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 34,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 266
+            }
+          ],
+          "document_page_list_entry_count": 10,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 3,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 341,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 4,
+              "shape_child_count": 3
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 1,
+                "119": 1,
+                "77": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 1
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 1,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 297,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 1,
+              "shape_child_count": 1
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 7,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 301,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 2,
+              "shape_child_count": 7
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 5,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 311,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 3,
+              "shape_child_count": 5
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 6,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 7,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 8,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 9,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70"
+    },
+    {
+      "byte_len": 199680,
+      "chaptera_viewer_page_count": 6,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "42a8a5f5aa62f5993f0342956879ac345b793c277bfadf872ec52b449626ed35",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "github-legonois-publishertopdf-file-01",
+          "source_filename": "file-01.pub",
+          "source_path": "test/file-01.pub",
+          "source_repo": "Legonois/PublisherToPDF",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/Legonois/PublisherToPDF/main/test/file-01.pub"
+        },
+        "topology_fingerprint": "9e09f523530ce8d8c0c5adbc569c2e3c6905a18741f0e2172cd03c465255694d"
+      },
+      "libmspub_lineage_page_count": 1,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 9,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 0,
+              "shape_child_count": 9
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6"
+    },
+    {
+      "byte_len": 95744,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {},
+      "libmspub_lineage_page_count": null,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 4,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 4
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "990cf478aed51a6e7fdd63556bf7402699d6a3eb1fdabaf8b18a621353878a46"
+    },
+    {
+      "byte_len": 114688,
+      "chaptera_viewer_page_count": 6,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "b3562999d143b17534af8334d928c316c7ffb71b96e804d7a0ff26bab39973e1",
+        "provenance_document_hint": "poster",
+        "source": {
+          "anchor_text": "CTR-Branded Poster Template for MS Publisher (.pub, 72 x 36 banner size)",
+          "candidate_id": "utexas-ctr-poster2014",
+          "locator_snapshot": "https://cloud.wikis.utexas.edu/wiki/spaces/ctrsupport/pages/62489949",
+          "source_filename": "Poster2014.pub",
+          "source_type": "institutional-web",
+          "source_url": "https://library.ctr.utexas.edu/ctr-publications/Poster2014.pub"
+        },
+        "topology_fingerprint": "9638183d8c76f31651117bb2a91670a82a76a31f804c3c6a013af57cad986a34"
+      },
+      "libmspub_lineage_page_count": 1,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 11,
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 0,
+              "shape_child_count": 11
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "9923f422543b1ed43c090042c9e4256072df6fd961c06975e2b64335e09e9a15"
+    },
+    {
+      "byte_len": 204800,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {},
+      "libmspub_lineage_page_count": null,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 45,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 45
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 17,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 17
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "9d6580b5a1c21543803410d44dd6e0a76aaa4b45ef6652e52afb9fbe4087bd06"
+    },
+    {
+      "byte_len": 2465280,
+      "chaptera_viewer_page_count": 6,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "9b42d0f75b74ea774098faa7c455e5f46f01119263e3a63705e89028e0ba88ad",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "github-altpublisher-legend-loot",
+          "sibling_oracle": {
+            "expected_git_blob_sha1": "02caed6162b01d7f33e0f32d7c8ede8c1529d7a2",
+            "expected_size": 622703,
+            "type": "image",
+            "url": "https://raw.githubusercontent.com/jhopkins44/AltPublisher/main/LEGEND_LOOT.png"
+          },
+          "source_filename": "LEGEND_LOOT.pub",
+          "source_path": "LEGEND_LOOT.pub",
+          "source_repo": "jhopkins44/AltPublisher",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/jhopkins44/AltPublisher/main/LEGEND_LOOT.pub"
+        },
+        "topology_fingerprint": "35ad5e6e6843a171a6751b24b9bfc0de49ae8dac25d5abd34b494334cf6aa03c"
+      },
+      "libmspub_lineage_page_count": 1,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 227,
+                "119": 1,
+                "32": 49,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 0,
+              "shape_child_count": 227
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf"
+    },
+    {
+      "byte_len": 226816,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {},
+      "libmspub_lineage_page_count": null,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "1": 2,
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 2
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 17,
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 17
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "a8f7c5abc07397d32d1a208f5e9dbaec9b906e83fee1565f468759b357553f60"
+    },
+    {
+      "byte_len": 176128,
+      "chaptera_viewer_page_count": 6,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "5b0b23ff0006ad4b9310bfb240cfe56ee3da4e92a5c8277f716362d82f901ba8",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "aspose-c-1",
+          "source_filename": "1.pub",
+          "source_path": "Examples/Data/1.pub",
+          "source_repo": "aspose-pub/Aspose.PUB-for-C",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/aspose-pub/Aspose.PUB-for-C/master/Examples/Data/1.pub"
+        },
+        "topology_fingerprint": "574fd7579cf00c4cf50e777d198e9de6235efc85db7f06237cbac18f9478650b"
+      },
+      "libmspub_lineage_page_count": 1,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 5,
+                "119": 1,
+                "32": 23,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 0,
+              "shape_child_count": 5
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621"
+    },
+    {
+      "byte_len": 183296,
+      "chaptera_viewer_page_count": 6,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "58493cf601a1d4c4cb9e53e02a52374357f2cf97202999d2f2b20a597cf7dcb4",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "belgium-sclera-bladwijzer-3",
+          "source_filename": "bladwijzer-3.pub",
+          "source_type": "institutional-web",
+          "source_url": "https://sclera.be/resources/img/iris/1000woorden/sjablonen/bladwijzer-3.pub"
+        },
+        "topology_fingerprint": "c4207b0498c2a71072a3ee9a3322ac71568d7c4956bcfd57898ea0ab9dbcfebd"
+      },
+      "libmspub_lineage_page_count": 1,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 8,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 8
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 11,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 11
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "b61be87eda0fbf77249a51993da5fe744446bc8ff0d25d4a922e4e29f8f29cd1"
+    },
+    {
+      "byte_len": 293376,
+      "chaptera_viewer_page_count": 6,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "a53709bdc1156151c98948e48f349599be25decc0bd3636156d6d75fc414bcc4",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "anchor_text": "Federal Financial Aid IRS Retrieval Tool Update",
+          "candidate_id": "heritage-bible-college-bre-bs-cc",
+          "locator_snapshot": "https://github.com/nickdenardis/edu-inventory/blob/d94b2f746ea7a335d23fde4f7f94f32cf1d755d2/snapshots/html/heritagebiblecollege.edu.html",
+          "source_filename": "BRE BS CC.pub",
+          "source_type": "historical-web",
+          "source_url": "https://web.archive.org/web/20120627003448id_/http://www.heritagebiblecollege.edu:80/Portals/0/Documents/BRE%20BS%20CC.pub"
+        },
+        "topology_fingerprint": "26d752329313b09b78a482f1170763a8f62612b4bcc6bf715ecb9960ac01f734"
+      },
+      "libmspub_lineage_page_count": 2,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "controlling": [
+            {
+              "contents_seq_num": 333,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 34,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 266
+            },
+            {
+              "contents_seq_num": 369,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 40,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 334
+            },
+            {
+              "contents_seq_num": 370,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 34,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 289
+            }
+          ],
+          "document_page_list_entry_count": 7,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 2,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 14,
+                "119": 1,
+                "32": 4,
+                "77": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 14
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 4,
+                "119": 1,
+                "77": 1,
+                "96": 1
+              },
+              "contents_seq_num": 334,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 1,
+              "shape_child_count": 4
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 1,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 273,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 277,
+              "document_ordinal": 6,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 1
+        },
+        "status": "success"
+      },
+      "sha256": "bbaefcbdcdd2dbe51a636ed554c14d6f5353c98e795b5f88d26f79542e5d93ba"
+    },
+    {
+      "byte_len": 210944,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {},
+      "libmspub_lineage_page_count": null,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "1": 4,
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 4
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 9,
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 9
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "bd51e69bdf8ad0de0e190a0d013782ceebc85acdda22948de0b84be1c7aa28f1"
+    },
+    {
+      "byte_len": 215040,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {},
+      "libmspub_lineage_page_count": null,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 65,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 65
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 17,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 17
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "c13eb49efa38041a767d326cd231160457c4c13c3bf252c6dc167cd57f07b4bb"
+    },
+    {
+      "byte_len": 204800,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {},
+      "libmspub_lineage_page_count": null,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 45,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 45
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 17,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 17
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "c19fb45f346d671fa9746a1ac6e5fa083a72b184adfa617a565d8e14b4151ebd"
+    },
+    {
+      "byte_len": 204800,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {},
+      "libmspub_lineage_page_count": null,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 45,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 45
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 17,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 17
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "d2239f6c60f2a7520c02f01e37ad5899873366e4481fc6a1952d58f074d508b1"
+    },
+    {
+      "byte_len": 227840,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {},
+      "libmspub_lineage_page_count": null,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "1": 2,
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 2
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 17,
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 17
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "de57184e48477cd9af2a1a4f0aee85cb3ea988558ef92be2ad54bbc6f547fa53"
+    },
+    {
+      "byte_len": 699904,
+      "chaptera_viewer_page_count": 6,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "9ee08377bebe3c38787d79676e9757ebdc54af297ae3e11cd2cfdf34b8b7bbd6",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "aspose-c-christmas-bottom",
+          "source_filename": "christmasBottom.pub",
+          "source_path": "Examples/Data/christmasBottom.pub",
+          "source_repo": "aspose-pub/Aspose.PUB-for-C",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/aspose-pub/Aspose.PUB-for-C/master/Examples/Data/christmasBottom.pub"
+        },
+        "topology_fingerprint": "d3a3a8d167fc98606f90e6612d7a42690ffd43c85d18db118e73874f099600b9"
+      },
+      "libmspub_lineage_page_count": 1,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 79,
+                "119": 1,
+                "32": 36,
+                "48": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 1,
+              "oid_dword0": 2,
+              "oid_dword1": 0,
+              "shape_child_count": 79
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190"
+    },
+    {
+      "byte_len": 215040,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {},
+      "libmspub_lineage_page_count": null,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 65,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 65
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 17,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 17
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "f2990235617259921c959ddff24dc30ca438ed44dc0126b57e6943fa4b6e7dcc"
+    },
+    {
+      "byte_len": 546304,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {},
+      "libmspub_lineage_page_count": null,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 7,
+          "document_page_list_entry_count": 7,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 23,
+                "119": 1,
+                "48": 2,
+                "96": 1
+              },
+              "contents_seq_num": 325,
+              "document_ordinal": 1,
+              "group_child_count": 2,
+              "oid_dword0": 2,
+              "oid_dword1": 1,
+              "shape_child_count": 23
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 23,
+                "119": 1,
+                "48": 2,
+                "96": 1
+              },
+              "contents_seq_num": 286,
+              "document_ordinal": 2,
+              "group_child_count": 2,
+              "oid_dword0": 2,
+              "oid_dword1": 6,
+              "shape_child_count": 23
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 6,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "f4f23d04d29f20407b9e5c1f57f8df84e71084d9e8cd4f0c1cc0064737053de7"
+    },
+    {
+      "byte_len": 215040,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {},
+      "libmspub_lineage_page_count": null,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 65,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 0,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 65
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 17,
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 17
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 272,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 275,
+              "document_ordinal": 4,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 279,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 0
+        },
+        "status": "success"
+      },
+      "sha256": "fa901f49124264ab5cca37ec98deb07ef83b13ffc91666af719cce0c0f73f186"
+    }
+  ],
+  "schema": "lalamu.pub-page-role-sweep.v1",
+  "scored_file_count": 19,
+  "status_counts": {
+    "rejected": 1,
+    "success": 32
+  }
+}
