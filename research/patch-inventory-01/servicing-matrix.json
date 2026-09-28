@@ -1,0 +1,1015 @@
+{
+  "schema_version": "chaptera.publisher-servicing.v1",
+  "task": "PATCH-INVENTORY-01",
+  "authority": "PUB-T-484",
+  "generated_date": "2026-09-28",
+  "policy": {
+    "office_suite_boundary_is_not_publisher_binary_delta": true,
+    "missing_kb_is_recorded_as_gap_not_guessed": true,
+    "release_date_requires_source": true,
+    "click_to_run_rows_use_build_servicing_not_service_pack_fiction": true,
+    "update_package_execution_performed": false
+  },
+  "target_generations": [
+    "Publisher 97",
+    "Publisher 98",
+    "Publisher 2000",
+    "Publisher 2002",
+    "Publisher 2003",
+    "Publisher 2007",
+    "Publisher 2010",
+    "Publisher 2013",
+    "Publisher 2016",
+    "Publisher 2019",
+    "Publisher 2021",
+    "Publisher LTSC 2021",
+    "Publisher for Microsoft 365"
+  ],
+  "sources": {
+    "office_xp_lifecycle": {
+      "authority": "microsoft_learn_lifecycle",
+      "url": "https://learn.microsoft.com/en-us/lifecycle/products/office-xp",
+      "supports": [
+        "rtm_date",
+        "service_pack_dates",
+        "suite_generation"
+      ]
+    },
+    "ms06_054": {
+      "authority": "microsoft_security_bulletin",
+      "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2006/ms06-054",
+      "supports": [
+        "publisher_2002_sp3_applicability",
+        "publisher_2003_sp1_sp2_applicability"
+      ]
+    },
+    "publisher_2003_lifecycle": {
+      "authority": "microsoft_learn_lifecycle",
+      "url": "https://learn.microsoft.com/en-us/lifecycle/products/microsoft-office-publisher-2003",
+      "supports": [
+        "publisher_rtm_date"
+      ]
+    },
+    "office_2003_lifecycle": {
+      "authority": "microsoft_learn_lifecycle",
+      "url": "https://learn.microsoft.com/en-us/lifecycle/products/microsoft-office-2003",
+      "supports": [
+        "service_pack_dates",
+        "suite_generation"
+      ]
+    },
+    "office_2003_sp1_news": {
+      "authority": "microsoft_news",
+      "url": "https://news.microsoft.com/source/2004/07/27/microsoft-delivers-continued-improvement-with-office-2003-service-pack-1/",
+      "supports": [
+        "sp1_availability_date"
+      ]
+    },
+    "office_2003_sp3_catalog": {
+      "authority": "microsoft_update_catalog",
+      "url": "https://www.catalog.update.microsoft.com/Search.aspx?q=KB923618",
+      "supports": [
+        "sp3_kb_identity"
+      ]
+    },
+    "publisher_2007_lifecycle": {
+      "authority": "microsoft_learn_lifecycle",
+      "url": "https://learn.microsoft.com/en-us/lifecycle/products/microsoft-office-publisher-2007",
+      "supports": [
+        "publisher_rtm_date",
+        "publisher_service_pack_dates"
+      ]
+    },
+    "office_2007_sp3_support": {
+      "authority": "microsoft_support",
+      "url": "https://support.microsoft.com/en-us/servicing/office/update/description-of-the-2007-office-suite-sp3-and-of-office-language-pack-2007-sp3",
+      "supports": [
+        "sp3_cumulative",
+        "sp3_scope"
+      ]
+    },
+    "publisher_2010_lifecycle": {
+      "authority": "microsoft_learn_lifecycle",
+      "url": "https://learn.microsoft.com/en-us/lifecycle/products/publisher-2010",
+      "supports": [
+        "publisher_rtm_date"
+      ]
+    },
+    "office_2010_lifecycle": {
+      "authority": "microsoft_learn_lifecycle",
+      "url": "https://learn.microsoft.com/en-us/lifecycle/products/microsoft-office-2010",
+      "supports": [
+        "service_pack_dates",
+        "suite_generation"
+      ]
+    },
+    "office_2010_sp1_packages": {
+      "authority": "microsoft_support",
+      "url": "https://support.microsoft.com/en-au/topic/list-of-all-office-2010-sp1-packages-890eeae7-58a2-7fad-1657-037259f3c899",
+      "supports": [
+        "sp1_kb_identity",
+        "x86_x64_packaging"
+      ]
+    },
+    "office_2010_sp2_technical": {
+      "authority": "microsoft_support",
+      "url": "https://support.microsoft.com/ru-ru/topic/technical-details-about-the-office-2010-sp2-releases-ca38aeb5-c138-be64-3689-cf905cb66a08",
+      "supports": [
+        "sp2_kb_identity",
+        "x86_x64_packaging"
+      ]
+    },
+    "ms13_042": {
+      "authority": "microsoft_security_bulletin",
+      "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2013/ms13-042",
+      "supports": [
+        "publisher_2003_sp3_package",
+        "publisher_2007_sp3_package",
+        "publisher_2010_sp1_package"
+      ]
+    },
+    "publisher_2010_sp2_security": {
+      "authority": "microsoft_support",
+      "url": "https://support.microsoft.com/en-us/topic/ms16-148-description-of-the-security-update-for-publisher-2010-december-13-2016-94e33774-3db8-e03b-dc73-7437b3fc6244",
+      "supports": [
+        "publisher_2010_sp2_applicability"
+      ]
+    },
+    "publisher_2013_lifecycle": {
+      "authority": "microsoft_learn_lifecycle",
+      "url": "https://learn.microsoft.com/en-us/lifecycle/products/publisher-2013",
+      "supports": [
+        "publisher_rtm_date"
+      ]
+    },
+    "office_2013_lifecycle": {
+      "authority": "microsoft_learn_lifecycle",
+      "url": "https://learn.microsoft.com/en-us/lifecycle/products/microsoft-office-2013",
+      "supports": [
+        "sp1_date",
+        "suite_generation"
+      ]
+    },
+    "office_2013_sp1_packages": {
+      "authority": "microsoft_support",
+      "url": "https://support.microsoft.com/en-us/topic/list-of-all-service-pack-1-sp1-updates-for-microsoft-office-2013-and-related-desktop-products-2189da14-c3b5-ef20-88a1-0c354b267f23",
+      "supports": [
+        "sp1_kb_identity",
+        "x86_x64_packaging"
+      ]
+    },
+    "office_msi_updates": {
+      "authority": "microsoft_learn_office_release_notes",
+      "url": "https://learn.microsoft.com/en-us/officeupdates/office-updates-msi",
+      "supports": [
+        "office_2016_sp_na",
+        "office_2013_latest_sp"
+      ]
+    },
+    "publisher_2016_lifecycle": {
+      "authority": "microsoft_learn_lifecycle",
+      "url": "https://learn.microsoft.com/en-us/lifecycle/products/publisher-2016",
+      "supports": [
+        "publisher_rtm_date"
+      ]
+    },
+    "publisher_2019_lifecycle": {
+      "authority": "microsoft_learn_lifecycle",
+      "url": "https://learn.microsoft.com/en-us/lifecycle/products/publisher-2019",
+      "supports": [
+        "publisher_rtm_date"
+      ]
+    },
+    "office_2019_update": {
+      "authority": "microsoft_learn_office_deployment",
+      "url": "https://learn.microsoft.com/en-us/office/2019/update",
+      "supports": [
+        "click_to_run",
+        "cumulative_updates",
+        "no_service_pack_required"
+      ]
+    },
+    "publisher_2021_lifecycle": {
+      "authority": "microsoft_learn_lifecycle",
+      "url": "https://learn.microsoft.com/en-us/lifecycle/products/publisher-2021",
+      "supports": [
+        "publisher_retail_rtm_date"
+      ]
+    },
+    "publisher_ltsc_2021_lifecycle": {
+      "authority": "microsoft_learn_lifecycle",
+      "url": "https://learn.microsoft.com/en-us/lifecycle/products/publisher-ltsc-2021",
+      "supports": [
+        "publisher_ltsc_rtm_date"
+      ]
+    },
+    "office_ltsc_2021_update": {
+      "authority": "microsoft_learn_office_deployment",
+      "url": "https://learn.microsoft.com/en-us/office/ltsc/2021/update",
+      "supports": [
+        "click_to_run",
+        "cumulative_updates",
+        "no_service_pack_required"
+      ]
+    },
+    "office_2021_update_history": {
+      "authority": "microsoft_learn_office_release_notes",
+      "url": "https://learn.microsoft.com/en-us/officeupdates/update-history-office-2021",
+      "supports": [
+        "retail_and_ltsc_update_history",
+        "cumulative_builds"
+      ]
+    },
+    "m365_update_process": {
+      "authority": "microsoft_learn_office_deployment",
+      "url": "https://learn.microsoft.com/en-us/deployoffice/overview-of-the-update-process-for-office-365-proplus",
+      "supports": [
+        "m365_click_to_run_update_process"
+      ]
+    },
+    "ms10_103": {
+      "authority": "microsoft_security_bulletin",
+      "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2010/ms10-103",
+      "supports": [
+        "publisher_2010_x86_x64_package",
+        "publisher_specific_update"
+      ]
+    }
+  },
+  "rows": [
+    {
+      "id": "pub2002-rtm",
+      "generation": "Publisher 2002",
+      "epoch_kind": "rtm",
+      "epoch_label": "Office XP original release",
+      "release_date": "2001-05-31",
+      "kb_ids": [],
+      "architecture": [
+        "x86"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": null,
+      "supersedes": [],
+      "publisher_scope": "generation_proxy",
+      "publisher_module_impact": "suite_level_unknown_modules",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "office_xp_lifecycle"
+      ],
+      "notes": "Office XP generation date is used as the first-tranche baseline proxy; exact standalone Publisher 2002 retail date remains unpinned."
+    },
+    {
+      "id": "pub2002-sp1",
+      "generation": "Publisher 2002",
+      "epoch_kind": "service_pack",
+      "epoch_label": "Office XP SP1",
+      "release_date": "2001-12-31",
+      "kb_ids": [],
+      "architecture": [
+        "x86"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": null,
+      "supersedes": [
+        "pub2002-rtm"
+      ],
+      "publisher_scope": "suite_boundary",
+      "publisher_module_impact": "suite_level_unknown_modules",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "office_xp_lifecycle"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2002-sp2",
+      "generation": "Publisher 2002",
+      "epoch_kind": "service_pack",
+      "epoch_label": "Office XP SP2",
+      "release_date": "2002-08-21",
+      "kb_ids": [],
+      "architecture": [
+        "x86"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": null,
+      "supersedes": [
+        "pub2002-sp1"
+      ],
+      "publisher_scope": "suite_boundary",
+      "publisher_module_impact": "suite_level_unknown_modules",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "office_xp_lifecycle"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2002-sp3",
+      "generation": "Publisher 2002",
+      "epoch_kind": "service_pack",
+      "epoch_label": "Office XP SP3",
+      "release_date": "2004-03-09",
+      "kb_ids": [],
+      "architecture": [
+        "x86"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": null,
+      "supersedes": [
+        "pub2002-sp2"
+      ],
+      "publisher_scope": "publisher_applicability_corroborated",
+      "publisher_module_impact": "publisher_sp3_applicability_proven_specific_delta_unknown",
+      "evidence_strength": "primary_source_publisher_applicability",
+      "source_refs": [
+        "office_xp_lifecycle",
+        "ms06_054"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2003-rtm",
+      "generation": "Publisher 2003",
+      "epoch_kind": "rtm",
+      "epoch_label": "Publisher 2003 original release",
+      "release_date": "2003-11-24",
+      "kb_ids": [],
+      "architecture": [
+        "x86"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": null,
+      "supersedes": [],
+      "publisher_scope": "publisher_specific",
+      "publisher_module_impact": "rtm_product_boundary",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "publisher_2003_lifecycle"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2003-sp1",
+      "generation": "Publisher 2003",
+      "epoch_kind": "service_pack",
+      "epoch_label": "Office 2003 SP1",
+      "release_date": "2004-07-27",
+      "kb_ids": [],
+      "architecture": [
+        "x86"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": null,
+      "supersedes": [
+        "pub2003-rtm"
+      ],
+      "publisher_scope": "publisher_applicability_corroborated",
+      "publisher_module_impact": "publisher_sp1_applicability_proven_specific_delta_unknown",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "office_2003_lifecycle",
+        "office_2003_sp1_news",
+        "ms06_054"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2003-sp2",
+      "generation": "Publisher 2003",
+      "epoch_kind": "service_pack",
+      "epoch_label": "Office 2003 SP2",
+      "release_date": "2005-09-26",
+      "kb_ids": [],
+      "architecture": [
+        "x86"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": null,
+      "supersedes": [
+        "pub2003-sp1"
+      ],
+      "publisher_scope": "publisher_applicability_corroborated",
+      "publisher_module_impact": "publisher_sp2_applicability_proven_specific_delta_unknown",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "office_2003_lifecycle",
+        "ms06_054"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2003-sp3",
+      "generation": "Publisher 2003",
+      "epoch_kind": "service_pack",
+      "epoch_label": "Office 2003 SP3",
+      "release_date": "2007-09-18",
+      "kb_ids": [
+        "923618"
+      ],
+      "architecture": [
+        "x86"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": null,
+      "supersedes": [
+        "pub2003-sp2"
+      ],
+      "publisher_scope": "publisher_applicability_corroborated",
+      "publisher_module_impact": "publisher_sp3_package_surface_proven_specific_sp_delta_unknown",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "office_2003_lifecycle",
+        "office_2003_sp3_catalog",
+        "ms13_042"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2007-rtm",
+      "generation": "Publisher 2007",
+      "epoch_kind": "rtm",
+      "epoch_label": "Publisher 2007 original release",
+      "release_date": "2007-01-27",
+      "kb_ids": [],
+      "architecture": [
+        "x86"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": null,
+      "supersedes": [],
+      "publisher_scope": "publisher_specific",
+      "publisher_module_impact": "rtm_product_boundary",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "publisher_2007_lifecycle"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2007-sp1",
+      "generation": "Publisher 2007",
+      "epoch_kind": "service_pack",
+      "epoch_label": "Publisher/Office 2007 SP1",
+      "release_date": "2007-12-11",
+      "kb_ids": [],
+      "architecture": [
+        "x86"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": null,
+      "supersedes": [
+        "pub2007-rtm"
+      ],
+      "publisher_scope": "publisher_specific_lifecycle_boundary",
+      "publisher_module_impact": "publisher_servicing_boundary_proven_specific_delta_unknown",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "publisher_2007_lifecycle"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2007-sp2",
+      "generation": "Publisher 2007",
+      "epoch_kind": "service_pack",
+      "epoch_label": "Publisher/Office 2007 SP2",
+      "release_date": "2009-04-28",
+      "kb_ids": [],
+      "architecture": [
+        "x86"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": null,
+      "supersedes": [
+        "pub2007-sp1"
+      ],
+      "publisher_scope": "publisher_specific_lifecycle_boundary",
+      "publisher_module_impact": "publisher_servicing_boundary_proven_specific_delta_unknown",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "publisher_2007_lifecycle"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2007-sp3",
+      "generation": "Publisher 2007",
+      "epoch_kind": "service_pack",
+      "epoch_label": "Publisher/Office 2007 SP3",
+      "release_date": "2011-10-25",
+      "kb_ids": [],
+      "architecture": [
+        "x86"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": true,
+      "supersedes": [
+        "pub2007-sp2"
+      ],
+      "publisher_scope": "publisher_applicability_corroborated",
+      "publisher_module_impact": "publisher_sp3_package_surface_proven_specific_sp_delta_unknown",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "publisher_2007_lifecycle",
+        "office_2007_sp3_support",
+        "ms13_042"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2010-rtm",
+      "generation": "Publisher 2010",
+      "epoch_kind": "rtm",
+      "epoch_label": "Publisher 2010 original release",
+      "release_date": "2010-07-15",
+      "kb_ids": [],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": null,
+      "supersedes": [],
+      "publisher_scope": "publisher_specific",
+      "publisher_module_impact": "rtm_product_boundary_and_publisher_specific_package_surface",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "publisher_2010_lifecycle",
+        "ms10_103"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2010-sp1",
+      "generation": "Publisher 2010",
+      "epoch_kind": "service_pack",
+      "epoch_label": "Office 2010 SP1",
+      "release_date": "2011-06-28",
+      "kb_ids": [
+        "2460049"
+      ],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": null,
+      "supersedes": [
+        "pub2010-rtm"
+      ],
+      "publisher_scope": "publisher_applicability_corroborated",
+      "publisher_module_impact": "publisher_sp1_package_surface_proven_specific_sp_delta_unknown",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "office_2010_lifecycle",
+        "office_2010_sp1_packages",
+        "ms13_042"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2010-sp2",
+      "generation": "Publisher 2010",
+      "epoch_kind": "service_pack",
+      "epoch_label": "Office 2010 SP2",
+      "release_date": "2013-07-23",
+      "kb_ids": [
+        "2687455"
+      ],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": true,
+      "supersedes": [
+        "pub2010-sp1"
+      ],
+      "publisher_scope": "publisher_applicability_corroborated",
+      "publisher_module_impact": "publisher_sp2_applicability_proven_specific_sp_delta_unknown",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "office_2010_lifecycle",
+        "office_2010_sp2_technical",
+        "publisher_2010_sp2_security"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2013-rtm",
+      "generation": "Publisher 2013",
+      "epoch_kind": "rtm",
+      "epoch_label": "Publisher 2013 original release",
+      "release_date": "2013-01-09",
+      "kb_ids": [],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": null,
+      "supersedes": [],
+      "publisher_scope": "publisher_specific",
+      "publisher_module_impact": "rtm_product_boundary",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "publisher_2013_lifecycle"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2013-sp1",
+      "generation": "Publisher 2013",
+      "epoch_kind": "service_pack",
+      "epoch_label": "Office 2013 SP1",
+      "release_date": "2014-02-25",
+      "kb_ids": [
+        "2817430"
+      ],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": null,
+      "supersedes": [
+        "pub2013-rtm"
+      ],
+      "publisher_scope": "suite_boundary",
+      "publisher_module_impact": "suite_level_unknown_modules",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "office_2013_lifecycle",
+        "office_2013_sp1_packages"
+      ],
+      "notes": "The Office 2013 SP1 package and date are primary-source pinned; this row does not claim MSPUB.EXE changed without a Publisher file manifest."
+    },
+    {
+      "id": "pub2016-rtm",
+      "generation": "Publisher 2016",
+      "epoch_kind": "rtm",
+      "epoch_label": "Publisher 2016 original release",
+      "release_date": "2015-09-22",
+      "kb_ids": [],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package-localized_or_suite-language-dependent",
+      "cumulative": null,
+      "supersedes": [],
+      "publisher_scope": "publisher_specific",
+      "publisher_module_impact": "rtm_product_boundary",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "publisher_2016_lifecycle"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2016-msi-servicing",
+      "generation": "Publisher 2016",
+      "epoch_kind": "servicing_model",
+      "epoch_label": "Office 2016 MSI public-update servicing; Service Pack = N/A",
+      "release_date": null,
+      "kb_ids": [],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "update-dependent",
+      "cumulative": false,
+      "supersedes": [],
+      "publisher_scope": "office_2016_msi_servicing_model",
+      "publisher_module_impact": "per_update_unknown_unless_publisher_package_or_file_manifest",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "office_msi_updates"
+      ],
+      "notes": "Microsoft's current MSI update index explicitly reports Latest Service Pack = N/A for Office 2016. Individual public/security updates remain separate packages."
+    },
+    {
+      "id": "pub2019-rtm",
+      "generation": "Publisher 2019",
+      "epoch_kind": "rtm",
+      "epoch_label": "Publisher 2019 original release",
+      "release_date": "2018-09-24",
+      "kb_ids": [],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "channel": [
+        "Click-to-Run"
+      ],
+      "language_scope": "product_configuration",
+      "cumulative": null,
+      "supersedes": [],
+      "publisher_scope": "publisher_specific",
+      "publisher_module_impact": "rtm_product_boundary",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "publisher_2019_lifecycle"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2019-c2r-servicing",
+      "generation": "Publisher 2019",
+      "epoch_kind": "servicing_model",
+      "epoch_label": "Office 2019 cumulative Click-to-Run builds; no service-pack step",
+      "release_date": null,
+      "kb_ids": [],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "channel": [
+        "Click-to-Run"
+      ],
+      "language_scope": "product_configuration",
+      "cumulative": true,
+      "supersedes": [],
+      "publisher_scope": "office_2019_servicing_model",
+      "publisher_module_impact": "build_level_unknown_without_publisher_binary_diff",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "office_2019_update"
+      ],
+      "notes": "Each new CDN build includes prior security/quality updates; Microsoft says no additional service packs are required after installing the current build."
+    },
+    {
+      "id": "pub2021-retail-rtm",
+      "generation": "Publisher 2021",
+      "epoch_kind": "rtm",
+      "epoch_label": "Publisher 2021 retail original release",
+      "release_date": "2021-10-05",
+      "kb_ids": [],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "channel": [
+        "Click-to-Run"
+      ],
+      "language_scope": "product_configuration",
+      "cumulative": null,
+      "supersedes": [],
+      "publisher_scope": "publisher_specific",
+      "publisher_module_impact": "rtm_product_boundary",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "publisher_2021_lifecycle"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2021-retail-servicing",
+      "generation": "Publisher 2021",
+      "epoch_kind": "servicing_model",
+      "epoch_label": "Office 2021 retail cumulative build history",
+      "release_date": null,
+      "kb_ids": [],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "channel": [
+        "Click-to-Run"
+      ],
+      "language_scope": "product_configuration",
+      "cumulative": true,
+      "supersedes": [],
+      "publisher_scope": "office_2021_retail_servicing_model",
+      "publisher_module_impact": "build_level_unknown_without_publisher_binary_diff",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "office_2021_update_history"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2021-ltsc-rtm",
+      "generation": "Publisher LTSC 2021",
+      "epoch_kind": "rtm",
+      "epoch_label": "Publisher LTSC 2021 original release",
+      "release_date": "2021-09-16",
+      "kb_ids": [],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "channel": [
+        "Click-to-Run",
+        "PerpetualVL2021"
+      ],
+      "language_scope": "product_configuration",
+      "cumulative": null,
+      "supersedes": [],
+      "publisher_scope": "publisher_specific",
+      "publisher_module_impact": "rtm_product_boundary",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "publisher_ltsc_2021_lifecycle"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "pub2021-ltsc-servicing",
+      "generation": "Publisher LTSC 2021",
+      "epoch_kind": "servicing_model",
+      "epoch_label": "Office LTSC 2021 cumulative Click-to-Run builds; no service-pack step",
+      "release_date": null,
+      "kb_ids": [],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "channel": [
+        "Click-to-Run",
+        "PerpetualVL2021"
+      ],
+      "language_scope": "product_configuration",
+      "cumulative": true,
+      "supersedes": [],
+      "publisher_scope": "office_ltsc_2021_servicing_model",
+      "publisher_module_impact": "build_level_unknown_without_publisher_binary_diff",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "office_ltsc_2021_update",
+        "office_2021_update_history"
+      ],
+      "notes": "Office LTSC 2021 uses Click-to-Run; updates are cumulative and Microsoft explicitly says no additional service packs are needed."
+    },
+    {
+      "id": "pub-m365-servicing",
+      "generation": "Publisher for Microsoft 365",
+      "epoch_kind": "servicing_model",
+      "epoch_label": "Microsoft 365 Apps Click-to-Run channel servicing",
+      "release_date": null,
+      "kb_ids": [],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "channel": [
+        "Click-to-Run",
+        "Microsoft 365 update channels"
+      ],
+      "language_scope": "product_configuration",
+      "cumulative": true,
+      "supersedes": [],
+      "publisher_scope": "continuous_suite_servicing_model",
+      "publisher_module_impact": "build_level_unknown_without_publisher_binary_diff",
+      "evidence_strength": "primary_source_boundary",
+      "source_refs": [
+        "m365_update_process"
+      ],
+      "notes": "No RTM/SP ladder is modeled for the subscription line; the useful identity is update channel + build."
+    }
+  ],
+  "gaps": [
+    {
+      "generation": "Publisher 97",
+      "gap_kind": "servicing_skeleton_unresolved",
+      "detail": "No primary-source RTM/service-pack/update chronology was pinned in this tranche. Do not infer a service-pack ladder from later Publisher security bulletins."
+    },
+    {
+      "generation": "Publisher 98",
+      "gap_kind": "servicing_skeleton_unresolved",
+      "detail": "Microsoft history confirms Publisher 98 existed in 1998, but exact RTM date and servicing-package lineage were not pinned here."
+    },
+    {
+      "generation": "Publisher 2000",
+      "gap_kind": "servicing_skeleton_unresolved",
+      "detail": "Publisher 2000 appears in later Microsoft security bulletin applicability, but its RTM/service-pack chronology was not primary-source pinned in this tranche."
+    },
+    {
+      "generation": "Publisher 2002",
+      "gap_kind": "service_pack_kb_ids",
+      "detail": "Official Lifecycle dates for Office XP SP1/SP2/SP3 are pinned; individual service-pack KB identifiers were intentionally left unresolved rather than guessed."
+    },
+    {
+      "generation": "Publisher 2003",
+      "gap_kind": "service_pack_kb_ids",
+      "detail": "SP1/SP2 dates are primary-source pinned and Publisher applicability is corroborated; SP1/SP2 KB IDs remain unresolved here. SP3 KB923618 is pinned."
+    },
+    {
+      "generation": "Publisher 2007",
+      "gap_kind": "service_pack_kb_ids",
+      "detail": "Publisher-specific Lifecycle dates pin SP1/SP2/SP3. Individual SP package KB IDs are not yet normalized in this tranche."
+    },
+    {
+      "generation": "Publisher 2013",
+      "gap_kind": "publisher_module_manifest",
+      "detail": "Office 2013 SP1 KB2817430 is pinned, but no Publisher-specific file manifest has yet been joined to prove which Publisher binaries changed at SP1."
+    },
+    {
+      "generation": "Publisher 2016",
+      "gap_kind": "click_to_run_parallel_line",
+      "detail": "This tranche pins the MSI servicing fact that Service Pack = N/A. The parallel Click-to-Run Publisher 2016 build chronology is not yet normalized."
+    },
+    {
+      "generation": "Publisher 2019",
+      "gap_kind": "publisher_binary_build_deltas",
+      "detail": "Cumulative C2R servicing is pinned; build-by-build MSPUB.EXE/MSPUB.DLL change attribution remains to be added."
+    },
+    {
+      "generation": "Publisher 2021",
+      "gap_kind": "publisher_binary_build_deltas",
+      "detail": "Retail Office 2021 cumulative update history is pinned; build-by-build Publisher binary impact remains unknown."
+    },
+    {
+      "generation": "Publisher LTSC 2021",
+      "gap_kind": "publisher_binary_build_deltas",
+      "detail": "LTSC C2R cumulative servicing is pinned; build-by-build Publisher binary impact remains unknown."
+    },
+    {
+      "generation": "Publisher for Microsoft 365",
+      "gap_kind": "publisher_inclusion_and_binary_delta_timeline",
+      "detail": "The M365 C2R update process is pinned, but this matrix does not yet enumerate every Publisher-bearing channel/build or the exact Publisher binary deltas."
+    }
+  ],
+  "summary": {
+    "first_tranche_scope": "RTM/service-pack/servicing-model skeleton plus a few Publisher-specific applicability anchors",
+    "resolved_generations_with_rows": 10,
+    "unresolved_legacy_generations": [
+      "Publisher 97",
+      "Publisher 98",
+      "Publisher 2000"
+    ],
+    "service_pack_generations_covered": [
+      "Publisher 2002",
+      "Publisher 2003",
+      "Publisher 2007",
+      "Publisher 2010",
+      "Publisher 2013"
+    ],
+    "no_service_pack_or_build_servicing_generations": [
+      "Publisher 2016",
+      "Publisher 2019",
+      "Publisher 2021",
+      "Publisher LTSC 2021",
+      "Publisher for Microsoft 365"
+    ],
+    "next_tranche": "Publisher-specific security/save/corruption updates and binary/file-manifest impact, starting with MS10-103/MS13-042 and later Publisher 2010 SP2 packages."
+  }
+}
