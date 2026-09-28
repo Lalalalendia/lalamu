@@ -720,5 +720,79 @@
       "expected_git_blob_sha1": "e49304659374fc9c3144a95b710c3d9d1c38e39c",
       "expected_size": 526855
     }
+  },
+  {
+    "id": "github-savemypublisherfiles-cookbook",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "jyor0385/SaveMyPublisherFiles",
+    "source_path": "Example Folder/Cookbook.pub",
+    "source_filename": "Cookbook.pub",
+    "expected_git_blob_sha1": "660e4197d3beb35ff2da15e907910d545bed3dfb",
+    "expected_size": 202240,
+    "urls": [
+      "https://raw.githubusercontent.com/jyor0385/SaveMyPublisherFiles/main/Example%20Folder/Cookbook.pub"
+    ],
+    "notes": "Public example Publisher document shipped with a Publisher migration utility."
+  },
+  {
+    "id": "github-altpublisher-legend-loot",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "jhopkins44/AltPublisher",
+    "source_path": "LEGEND_LOOT.pub",
+    "source_filename": "LEGEND_LOOT.pub",
+    "expected_git_blob_sha1": "74b54ae5136dda8a50622f053ee74a9f4ba8a8bf",
+    "expected_size": 2465280,
+    "urls": [
+      "https://raw.githubusercontent.com/jhopkins44/AltPublisher/main/LEGEND_LOOT.pub"
+    ],
+    "sibling_oracle": {
+      "type": "image",
+      "url": "https://raw.githubusercontent.com/jhopkins44/AltPublisher/main/LEGEND_LOOT.png",
+      "expected_git_blob_sha1": "02caed6162b01d7f33e0f32d7c8ede8c1529d7a2",
+      "expected_size": 622703
+    },
+    "notes": "AltPublisher sample with shipped reference PNG used for render comparison."
+  },
+  {
+    "id": "github-altpublisher-landscape-shape-test",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "jhopkins44/AltPublisher",
+    "source_path": "LandscapeShapeTest.pub",
+    "source_filename": "LandscapeShapeTest.pub",
+    "expected_git_blob_sha1": "e355c52dc58f210436e87248842e1c8a6302f2a7",
+    "expected_size": 95744,
+    "urls": [
+      "https://raw.githubusercontent.com/jhopkins44/AltPublisher/main/LandscapeShapeTest.pub"
+    ],
+    "sibling_oracle": {
+      "type": "image",
+      "url": "https://raw.githubusercontent.com/jhopkins44/AltPublisher/main/LandscapeShapeTest.png",
+      "expected_git_blob_sha1": "6f090534af00270239673f6f717461a434ef267d",
+      "expected_size": 38954
+    },
+    "notes": "Controlled landscape shape sample with shipped reference PNG."
+  },
+  {
+    "id": "github-altpublisher-shape-test",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "jhopkins44/AltPublisher",
+    "source_path": "ShapeTest.pub",
+    "source_filename": "ShapeTest.pub",
+    "expected_git_blob_sha1": "3d021fdff1bd6da20ede060c33fb6da17cff8da9",
+    "expected_size": 97792,
+    "urls": [
+      "https://raw.githubusercontent.com/jhopkins44/AltPublisher/main/ShapeTest.pub"
+    ],
+    "sibling_oracle": {
+      "type": "image",
+      "url": "https://raw.githubusercontent.com/jhopkins44/AltPublisher/main/ShapeTest.png",
+      "expected_git_blob_sha1": "4dbc5a133977bf97d7b31007a4b259e2e5431dac",
+      "expected_size": 42951
+    },
+    "notes": "Controlled shape sample with shipped reference PNG."
   }
 ]
