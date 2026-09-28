@@ -1,0 +1,215 @@
+name: html-vector-msi-static
+
+on:
+  push:
+    branches:
+      - html-vector-01-clean-v1
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-msi:
+    runs-on: ubuntu-24.04
+    env:
+      MEDIA_URL: https://archive.org/download/X10-14992/X10-14992.ISO
+      MEDIA_SIZE: "191750144"
+      MEDIA_SHA256: 23c495d63e2d4f4486dd28cbeebf423518d7af77f28f9abdae8484da2de13036
+      MEDIA_SHA1: a108158fe57f7bf0ff5b45c34fe4593acf320454
+      MEDIA_MD5: c3d3ee8e2257f5d01a53019238346a0a
+      EXPECTED_VOLUME: OFFICE11
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare static tools
+        run: |
+          set -euxo pipefail
+          sudo apt-get update
+          sudo apt-get install -y curl p7zip-full msitools genisoimage binutils
+          python -m py_compile tools/html_vector_msi_probe.py
+          rm -rf /tmp/html-vector
+          mkdir -p /tmp/html-vector/{disc,msi,selected}
+
+      - name: Reacquire and verify exact X10-14992 media
+        run: |
+          set -euxo pipefail
+          curl -fL --retry 4 --retry-delay 3 "$MEDIA_URL" -o /tmp/html-vector/X10-14992.ISO
+          test "$(stat -c '%s' /tmp/html-vector/X10-14992.ISO)" = "$MEDIA_SIZE"
+          echo "$MEDIA_SHA256  /tmp/html-vector/X10-14992.ISO" | sha256sum -c -
+          echo "$MEDIA_SHA1  /tmp/html-vector/X10-14992.ISO" | sha1sum -c -
+          echo "$MEDIA_MD5  /tmp/html-vector/X10-14992.ISO" | md5sum -c -
+          isoinfo -d -i /tmp/html-vector/X10-14992.ISO > /tmp/html-vector/volume.txt
+          grep -F "Volume id: $EXPECTED_VOLUME" /tmp/html-vector/volume.txt
+          7z x -y /tmp/html-vector/X10-14992.ISO -o/tmp/html-vector/disc >/tmp/html-vector/7z-extract.log
+          test -f /tmp/html-vector/disc/PUB11N.MSI
+
+          cat > /tmp/html-vector/media.json <<EOF
+          {
+            "identifier": "X10-14992",
+            "source_url": "$MEDIA_URL",
+            "byte_len": $MEDIA_SIZE,
+            "sha256": "$MEDIA_SHA256",
+            "sha1": "$MEDIA_SHA1",
+            "md5": "$MEDIA_MD5",
+            "volume_id": "$EXPECTED_VOLUME",
+            "publisher_msi_path": "PUB11N.MSI",
+            "product_language": 1033
+          }
+          EOF
+
+      - name: Export all text-safe MSI tables from exact media
+        run: |
+          set -euxo pipefail
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+
+          root = Path("/tmp/html-vector")
+          disc = root / "disc"
+          out_root = root / "msi"
+          msis = sorted(p for p in disc.rglob("*") if p.is_file() and p.suffix.lower() == ".msi")
+          if not msis:
+              raise SystemExit("no MSI files found on exact media")
+
+          skip = {"Binary", "Icon", "_Streams", "_Storages", "MsiDigitalCertificate", "MsiDigitalSignature"}
+
+          for idx, msi in enumerate(msis, start=1):
+              rel = msi.relative_to(disc).as_posix()
+              safe = f"{idx:03d}-" + rel.replace("/", "__").replace(" ", "_")
+              out = out_root / safe
+              tables_out = out / "tables"
+              tables_out.mkdir(parents=True, exist_ok=True)
+
+              data = msi.read_bytes()
+              meta = {
+                  "path": rel,
+                  "byte_len": len(data),
+                  "sha256": hashlib.sha256(data).hexdigest(),
+                  "safe_id": safe,
+              }
+
+              proc = subprocess.run(["msiinfo", "tables", str(msi)], text=True, capture_output=True)
+              if proc.returncode != 0:
+                  meta["tables_error"] = proc.stderr[-2000:]
+                  (out / "meta.json").write_text(json.dumps(meta, indent=2, sort_keys=True) + "\n")
+                  continue
+
+              tables = [line.strip() for line in proc.stdout.splitlines() if line.strip()]
+              meta["table_count"] = len(tables)
+
+              for table in tables:
+                  if table in skip:
+                      continue
+                  exported = subprocess.run(
+                      ["msiinfo", "export", str(msi), table],
+                      text=True,
+                      capture_output=True,
+                  )
+                  if exported.returncode != 0:
+                      continue
+                  (tables_out / f"{table}.idt").write_text(exported.stdout, errors="replace")
+
+              prop = tables_out / "Property.idt"
+              if prop.exists():
+                  for line in prop.read_text(errors="replace").splitlines()[3:]:
+                      fields = line.split("\t")
+                      if len(fields) >= 2:
+                          key, value = fields[0], fields[1]
+                          if key in {"ProductName", "ProductVersion", "ProductLanguage", "ProductCode"}:
+                              meta[key] = value
+
+              (out / "meta.json").write_text(json.dumps(meta, indent=2, sort_keys=True) + "\n")
+
+          (root / "msi-count.txt").write_text(str(len(msis)) + "\n")
+          print(f"msi_count={len(msis)}")
+          PY
+
+      - name: Bounded static token scan across exact media setup surface
+        run: |
+          set -euxo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import re
+          import subprocess
+
+          disc = Path("/tmp/html-vector/disc")
+          patterns = [
+              re.compile(r"pub11", re.I),
+              re.compile(r"version[ \\]+vector", re.I),
+              re.compile(r"internet[ \\]+explorer", re.I),
+          ]
+          allowed = {".msi", ".mst", ".exe", ".dll", ".ini", ".inf", ".xml", ".txt", ".htm", ".html"}
+          hits = []
+
+          for path in sorted(p for p in disc.rglob("*") if p.is_file() and p.suffix.lower() in allowed):
+              rel = path.relative_to(disc).as_posix()
+              text_parts = []
+              if path.suffix.lower() in {".ini", ".inf", ".xml", ".txt", ".htm", ".html"}:
+                  text_parts.append(path.read_text(errors="replace"))
+              else:
+                  for args in (["strings", "-a", str(path)], ["strings", "-el", str(path)]):
+                      proc = subprocess.run(args, text=True, capture_output=True)
+                      if proc.stdout:
+                          text_parts.append(proc.stdout)
+              merged = "\n".join(text_parts)
+              matched = []
+              for pat in patterns:
+                  if pat.search(merged):
+                      matched.append(pat.pattern)
+              if matched:
+                  excerpts = []
+                  for line in merged.splitlines():
+                      if any(p.search(line) for p in patterns):
+                          excerpts.append(line[:500])
+                          if len(excerpts) >= 40:
+                              break
+                  hits.append({"path": rel, "patterns": matched, "excerpts": excerpts})
+
+          Path("/tmp/html-vector/static-scan.json").write_text(
+              json.dumps({"files_with_signal": hits}, indent=2, sort_keys=True) + "\n"
+          )
+          print(json.dumps({"files_with_signal": len(hits)}))
+          PY
+
+      - name: Build source-safe discriminator receipt
+        run: |
+          set -euxo pipefail
+          python tools/html_vector_msi_probe.py             --root /tmp/html-vector             --out /tmp/html-vector/html-vector-receipt.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          r = json.loads(Path("/tmp/html-vector/html-vector-receipt.json").read_text())
+          c = r["conclusion"]
+          assert r["media"]["sha256"] == "23c495d63e2d4f4486dd28cbeebf423518d7af77f28f9abdae8484da2de13036"
+          assert r["media"]["volume_id"] == "OFFICE11"
+          assert r["coverage"]["all_msis_on_exact_media_scanned"] is True
+          assert r["scope"]["publisher_or_office_installed"] is False
+          assert r["scope"]["publisher_executed"] is False
+          assert c["verdict"] in {
+              "direct_setup_write_proven",
+              "indirect_setup_write_candidate_requires_bounded_followup",
+              "bounded_exact_media_negative_native_registry_diff_still_required",
+          }
+          print(json.dumps(c, sort_keys=True))
+          PY
+
+      - name: Upload source-safe static evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-vector-msi-static
+          path: |
+            /tmp/html-vector/html-vector-receipt.json
+            /tmp/html-vector/media.json
+            /tmp/html-vector/volume.txt
+            /tmp/html-vector/msi-count.txt
+            /tmp/html-vector/msi/*/meta.json
+            /tmp/html-vector/static-scan.json
+          if-no-files-found: error
+          retention-days: 14
