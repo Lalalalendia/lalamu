@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 import re
 import statistics
+import xml.etree.ElementTree as ET
 import zipfile
 
 CFB_MAGIC = bytes.fromhex("d0cf11e0a1b11ae1")
@@ -23,14 +24,6 @@ UTF16_ASCII_RE = re.compile(rb"(?:[\x20-\x7e]\x00){3,}")
 
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
-
-
-def sha256(path: Path) -> str:
-    h = hashlib.sha256()
-    with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(1024 * 1024), b""):
-            h.update(chunk)
-    return h.hexdigest()
 
 
 def magic_kind(data: bytes) -> str:
@@ -83,6 +76,52 @@ def printable_strings(data: bytes, limit: int = 160) -> list[str]:
     return values
 
 
+def parse_bbstore_xml(data: bytes) -> dict | None:
+    start = data.find(b"<?xml")
+    if start < 0:
+        return None
+    end_marker = b"</BBStore>"
+    end = data.find(end_marker, start)
+    if end < 0:
+        return {"parse_error": "BBStore closing tag not found"}
+    raw = data[start : end + len(end_marker)]
+
+    text = None
+    encoding = None
+    root = None
+    for candidate in ("utf-8", "windows-1252", "latin-1"):
+        try:
+            text = raw.decode(candidate)
+            root = ET.fromstring(text)
+            encoding = candidate
+            break
+        except (UnicodeDecodeError, ET.ParseError):
+            continue
+    if text is None or encoding is None or root is None:
+        return {
+            "parse_error": "BBStore XML could not be decoded/parsed",
+            "xml_byte_len": len(raw),
+            "xml_sha256": sha256_bytes(raw),
+        }
+
+    items = []
+    for item in root.findall(".//Item"):
+        fields = {}
+        for child in list(item):
+            fields[child.tag] = child.text or ""
+        items.append(fields)
+
+    return {
+        "encoding": encoding,
+        "xml_byte_len": len(raw),
+        "xml_sha256": sha256_bytes(raw),
+        "root_tag": root.tag,
+        "version": root.attrib.get("version"),
+        "item_count": len(items),
+        "items": items,
+    }
+
+
 def safe_property(value):
     if isinstance(value, (str, int, float, bool)) or value is None:
         return value
@@ -125,6 +164,10 @@ def ole_inventory(path: Path) -> dict:
                     row["token_hits"] = token_hits(payload)
                     if name in STRING_STREAMS:
                         row["printable_strings"] = printable_strings(payload)
+                    if name == "BBStoreInfo14":
+                        parsed = parse_bbstore_xml(payload)
+                        if parsed is not None:
+                            row["bbstore_xml"] = parsed
                 except Exception as exc:
                     row["read_error"] = str(exc)
                 result["streams"].append(row)
@@ -187,6 +230,10 @@ def summarize(rows: list[dict]) -> dict:
     stream_profiles = collections.Counter()
     bb_strings = collections.Counter()
     compobj_strings = collections.Counter()
+    bb_versions = collections.Counter()
+    bb_item_counts = collections.Counter()
+    bb_field_presence = collections.Counter()
+    bb_field_values: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
 
     for row in rows:
         cfb = row.get("cfb", {})
@@ -210,6 +257,14 @@ def summarize(rows: list[dict]) -> dict:
             strings = stream.get("printable_strings", [])
             if name == "BBStoreInfo14":
                 bb_strings.update(strings)
+                parsed = stream.get("bbstore_xml")
+                if isinstance(parsed, dict) and not parsed.get("parse_error"):
+                    bb_versions[parsed.get("version") or ""] += 1
+                    bb_item_counts[parsed.get("item_count", 0)] += 1
+                    for item in parsed.get("items", []):
+                        for field, value in item.items():
+                            bb_field_presence[field] += 1
+                            bb_field_values[field][value] += 1
             elif name == "\x01CompObj":
                 compobj_strings.update(strings)
         token_files.update(per_file_tokens)
@@ -226,9 +281,10 @@ def summarize(rows: list[dict]) -> dict:
             "size_max": max(vals) if vals else None,
         }
 
-    profile_rows = []
-    for profile, count in stream_profiles.most_common():
-        profile_rows.append({"file_count": count, "streams": list(profile)})
+    profile_rows = [
+        {"file_count": count, "streams": list(profile)}
+        for profile, count in stream_profiles.most_common()
+    ]
 
     return {
         "file_size": {
@@ -241,6 +297,24 @@ def summarize(rows: list[dict]) -> dict:
         "streams": stream_summary,
         "token_total_counts": dict(sorted(token_total.items())),
         "token_file_counts": dict(sorted(token_files.items())),
+        "bbstoreinfo14": {
+            "version_counts": dict(sorted(bb_versions.items())),
+            "item_count_distribution": {
+                str(key): value for key, value in sorted(bb_item_counts.items())
+            },
+            "field_presence_counts": dict(sorted(bb_field_presence.items())),
+            "field_unique_value_counts": {
+                field: len(values)
+                for field, values in sorted(bb_field_values.items())
+            },
+            "field_common_values": {
+                field: [
+                    {"value": value, "count": count}
+                    for value, count in values.most_common(20)
+                ]
+                for field, values in sorted(bb_field_values.items())
+            },
+        },
         "bbstoreinfo14_common_strings": [
             {"value": value, "file_count": count}
             for value, count in bb_strings.most_common(100)
@@ -257,7 +331,7 @@ def analyze_tree(root: Path) -> dict:
     rows = [analyze_file(path) for path in pbb]
     containers = collections.Counter(row["container"] for row in rows)
     return {
-        "schema_version": "chaptera.pbb.inventory.v2",
+        "schema_version": "chaptera.pbb.inventory.v3",
         "pbb_count": len(rows),
         "container_counts": dict(sorted(containers.items())),
         "corpus_summary": summarize(rows),
@@ -284,6 +358,7 @@ def main() -> int:
         "container_counts": result["container_counts"],
         "stream_profile_count": result["corpus_summary"]["stream_profile_count"],
         "token_file_counts": result["corpus_summary"]["token_file_counts"],
+        "bbstore_version_counts": result["corpus_summary"]["bbstoreinfo14"]["version_counts"],
     }, sort_keys=True))
     return 0
 
