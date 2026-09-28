@@ -159,7 +159,6 @@ impl FrameScheduler {
     }
 }
 
-
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct StormReceipt {
     pub requests: u64,
