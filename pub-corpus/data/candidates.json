@@ -406,5 +406,299 @@
       "https://drive.google.com/uc?export=download&id=1Onqfc6ZamC2OsClxYw6K7kq2O7Fj0uAi"
     ],
     "notes": "UHasselt/KU Leuven current 2026-2027 A1 master-thesis poster template, English customizable stripe colors."
+  },
+  {
+    "id": "apache-poi-51318-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/51318.pub",
+    "source_filename": "51318.pub",
+    "expected_git_blob_sha1": "728811c92dff5694520e56b6c020533b29d5295d",
+    "expected_size": 88576,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/51318.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-60685-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/60685.pub",
+    "source_filename": "60685.pub",
+    "expected_git_blob_sha1": "37d3dce70e1786e948edd5592527f90be1fae2ff",
+    "expected_size": 119296,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/60685.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-linkat0and10-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/LinkAt0And10.pub",
+    "source_filename": "LinkAt0And10.pub",
+    "expected_git_blob_sha1": "c4459fb830ef546d89a8302b4e969c36da412c43",
+    "expected_size": 64512,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/LinkAt0And10.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-linkat10-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/LinkAt10.pub",
+    "source_filename": "LinkAt10.pub",
+    "expected_git_blob_sha1": "89c4a4427197129d30e085e2cc88ef3fdcb9562f",
+    "expected_size": 64512,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/LinkAt10.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-linkat10and20and30-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/LinkAt10And20And30.pub",
+    "source_filename": "LinkAt10And20And30.pub",
+    "expected_git_blob_sha1": "5f7f747d5b0bfe2c5faaaadf6eda47244869d703",
+    "expected_size": 64512,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/LinkAt10And20And30.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-linkat10and20and30and40-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/LinkAt10And20And30And40.pub",
+    "source_filename": "LinkAt10And20And30And40.pub",
+    "expected_git_blob_sha1": "d19ddc46a34afc5c89f90873283a0bbe501ca39d",
+    "expected_size": 64512,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/LinkAt10And20And30And40.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-linkat10longer-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/LinkAt10Longer.pub",
+    "source_filename": "LinkAt10Longer.pub",
+    "expected_git_blob_sha1": "8a3dcc277ee3b9393211a1ac151a7fcefc5ed040",
+    "expected_size": 64512,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/LinkAt10Longer.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-linkat20-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/LinkAt20.pub",
+    "source_filename": "LinkAt20.pub",
+    "expected_git_blob_sha1": "091a38c71818bfc6404c82a43681d7fa3a188261",
+    "expected_size": 64512,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/LinkAt20.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-sample-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/Sample.pub",
+    "source_filename": "Sample.pub",
+    "expected_git_blob_sha1": "b870168319048c9e8631c2338eb937e6f8f62b5b",
+    "expected_size": 72192,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/Sample.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-sample2-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/Sample2.pub",
+    "source_filename": "Sample2.pub",
+    "expected_git_blob_sha1": "610362c471b81bac36e46166ae98d5f3033a7e5f",
+    "expected_size": 72704,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/Sample2.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-sample2000-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/Sample2000.pub",
+    "source_filename": "Sample2000.pub",
+    "expected_git_blob_sha1": "2c6174e5e89235f08a3e5883c785c4951728d855",
+    "expected_size": 61440,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/Sample2000.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-sample2-2010-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/Sample2_2010.pub",
+    "source_filename": "Sample2_2010.pub",
+    "expected_git_blob_sha1": "74f4566056a39ee880c847b5dd4b8234762a9489",
+    "expected_size": 73216,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/Sample2_2010.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-sample3-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/Sample3.pub",
+    "source_filename": "Sample3.pub",
+    "expected_git_blob_sha1": "4f19bec93d25f3d80501490dd108abef4f09b6cb",
+    "expected_size": 72192,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/Sample3.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-sample3-2010-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/Sample3_2010.pub",
+    "source_filename": "Sample3_2010.pub",
+    "expected_git_blob_sha1": "d2982c06bbb6e228951781f23d56ea5928893d2b",
+    "expected_size": 72704,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/Sample3_2010.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-sample4-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/Sample4.pub",
+    "source_filename": "Sample4.pub",
+    "expected_git_blob_sha1": "445df85f092970c36d4b3003d375331a707d6b3c",
+    "expected_size": 72192,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/Sample4.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-sample4-2010-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/Sample4_2010.pub",
+    "source_filename": "Sample4_2010.pub",
+    "expected_git_blob_sha1": "dd6c25b173680d33678ce1bba7a0be5fef3910f5",
+    "expected_size": 72704,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/Sample4_2010.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-sample98-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/Sample98.pub",
+    "source_filename": "Sample98.pub",
+    "expected_git_blob_sha1": "8adffda77aefed96e3afda319e2698d43dd478cb",
+    "expected_size": 61440,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/Sample98.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-samplebrochure-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/SampleBrochure.pub",
+    "source_filename": "SampleBrochure.pub",
+    "expected_git_blob_sha1": "00deec14dc6cff6d8a47b120d6d84e7e20c72166",
+    "expected_size": 161792,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/SampleBrochure.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-samplenewsletter-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/SampleNewsletter.pub",
+    "source_filename": "SampleNewsletter.pub",
+    "expected_git_blob_sha1": "94900925af5832c493784f3cb51563f838a64df8",
+    "expected_size": 291840,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/SampleNewsletter.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-sample-2010-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/Sample_2010.pub",
+    "source_filename": "Sample_2010.pub",
+    "expected_git_blob_sha1": "ace1540716820640be5c67d85db6b70f48fbc0d4",
+    "expected_size": 72704,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/Sample_2010.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "apache-poi-simple-pub",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "apache/poi",
+    "source_path": "test-data/publisher/Simple.pub",
+    "source_filename": "Simple.pub",
+    "expected_git_blob_sha1": "2397b9d01cfa159de2f73cf5c990d9698eb69567",
+    "expected_size": 65536,
+    "urls": [
+      "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/Simple.pub"
+    ],
+    "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
   }
 ]
