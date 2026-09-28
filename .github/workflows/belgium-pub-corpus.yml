@@ -1,0 +1,75 @@
+name: Belgium PUB corpus fetch
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "corpus/belgium/sources.tsv"
+      - ".github/workflows/belgium-pub-corpus.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch corpus
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p out/files
+          printf 'id\towner\tfilename\turl\thttp_code\tsize_bytes\tsha256\tmagic_hex\tfile_type\tstatus\n' > out/manifest.tsv
+
+          tail -n +2 corpus/belgium/sources.tsv | while IFS=$'\t' read -r id kind owner filename url; do
+            [ -n "$id" ] || continue
+            dest="out/files/$filename"
+            code="$(curl -L --retry 3 --retry-all-errors --connect-timeout 20 --max-time 180               -A 'Mozilla/5.0 GitHub-Actions Chaptera-Corpus/1.0'               -w '%{http_code}' -o "$dest" "$url" || true)"
+
+            if [ -s "$dest" ]; then
+              size="$(wc -c < "$dest" | tr -d ' ')"
+              sha="$(sha256sum "$dest" | awk '{print $1}')"
+              magic="$(od -An -tx1 -N8 "$dest" | tr -d ' \n')"
+              ftype="$(file -b "$dest" | tr '\t\n' '  ')"
+              status="downloaded"
+            else
+              size="0"
+              sha=""
+              magic=""
+              ftype=""
+              status="failed"
+              rm -f "$dest"
+            fi
+
+            printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n'               "$id" "$owner" "$filename" "$url" "$code" "$size" "$sha" "$magic" "$ftype" "$status"               >> out/manifest.tsv
+          done
+
+      - name: Validate likely Publisher files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import csv, pathlib
+          p = pathlib.Path("out/manifest.tsv")
+          rows = list(csv.DictReader(p.open(encoding="utf-8"), delimiter="\t"))
+          bad = []
+          for r in rows:
+              if r["filename"].lower().endswith(".pub") and r["status"] == "downloaded":
+                  # Legacy Publisher files are commonly OLE/CFB and start D0 CF 11 E0 A1 B1 1A E1.
+                  # Do not fail on other signatures; just record them for inspection.
+                  if not r["magic_hex"]:
+                      bad.append(r["id"])
+          print(f"downloaded={sum(r['status']=='downloaded' for r in rows)} total={len(rows)}")
+          if bad:
+              raise SystemExit(f"missing magic for downloaded rows: {bad}")
+          PY
+
+      - name: Upload corpus artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: belgium-pub-corpus
+          path: out/
+          if-no-files-found: error
+          retention-days: 30
