@@ -1,0 +1,63 @@
+name: patch-inventory-proof
+
+on:
+  push:
+    branches:
+      - patch-inventory-01-clean-v1
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate servicing matrix
+        run: |
+          python -m py_compile tools/validate_patch_inventory.py
+          python tools/validate_patch_inventory.py
+      - name: Emit machine-readable servicing receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          p = Path("research/patch-inventory-01/servicing-matrix.json")
+          r = json.loads(p.read_text())
+          rows = r["rows"]
+          receipt = {
+              "schema_version": "chaptera.publisher-servicing.proof.v1",
+              "matrix_schema": r["schema_version"],
+              "row_count": len(rows),
+              "source_count": len(r["sources"]),
+              "gap_count": len(r["gaps"]),
+              "rtm_rows": sum(x["epoch_kind"] == "rtm" for x in rows),
+              "service_pack_rows": sum(x["epoch_kind"] == "service_pack" for x in rows),
+              "servicing_model_rows": sum(x["epoch_kind"] == "servicing_model" for x in rows),
+              "legacy_unresolved": [
+                  g["generation"] for g in r["gaps"]
+                  if g["gap_kind"] == "servicing_skeleton_unresolved"
+              ],
+              "authority_fence": {
+                  "update_packages_executed": False,
+                  "suite_sp_implies_publisher_binary_delta": False,
+                  "missing_kb_guessed": False,
+              },
+          }
+          Path("/tmp/patch-inventory-receipt.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n"
+          )
+          print(json.dumps(receipt, sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: patch-inventory-receipt
+          path: /tmp/patch-inventory-receipt.json
+          if-no-files-found: error
+          retention-days: 14
