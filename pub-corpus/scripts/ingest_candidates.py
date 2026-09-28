@@ -211,7 +211,7 @@ def wayback_candidates(url: str) -> list[str]:
     cdx = (
         "https://web.archive.org/cdx/search/cdx?url="
         + quote(url, safe="")
-        + "&output=json&filter=statuscode:200&filter=collapse:digest"
+        + "&output=json&filter=statuscode:200&collapse=digest"
         + "&fl=timestamp,original&limit=10"
     )
     try:
