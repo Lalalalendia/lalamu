@@ -195,7 +195,8 @@
     "urls": [
       "https://www.ugent.be/re/nl/onderzoek/publicaties/facultaire-publicatiereeks/richtlijnen/sjabloon/sjabloon-cover-syllabus.pub"
     ],
-    "notes": "UGent Faculty of Law & Criminology public editable syllabus-cover Publisher template."
+    "notes": "UGent Faculty of Law & Criminology public editable syllabus-cover Publisher template.",
+    "recover_wayback": true
   },
   {
     "id": "belgium-interreg-fwvl-priority-1",
@@ -205,7 +206,8 @@
     "urls": [
       "https://www.interreg-fwvl.eu/sites/default/files/uploads/fr/Template_Affiche%20A3%20FWVL_priorit%C3%A9%201_FR-NL.pub"
     ],
-    "notes": "Interreg France-Wallonie-Vlaanderen bilingual FR/NL A3 priority-1 poster."
+    "notes": "Interreg France-Wallonie-Vlaanderen bilingual FR/NL A3 priority-1 poster.",
+    "recover_wayback": true
   },
   {
     "id": "belgium-interreg-fwvl-priority-3",
@@ -215,7 +217,8 @@
     "urls": [
       "https://www.interreg-fwvl.eu/sites/default/files/uploads/fr/Template_Affiche%20A3%20FWVL_priorit%C3%A9%203_FR-NL.pub"
     ],
-    "notes": "Interreg France-Wallonie-Vlaanderen bilingual FR/NL A3 priority-3 poster."
+    "notes": "Interreg France-Wallonie-Vlaanderen bilingual FR/NL A3 priority-3 poster.",
+    "recover_wayback": true
   },
   {
     "id": "belgium-interreg-fwvl-priority-4",
@@ -225,6 +228,7 @@
     "urls": [
       "https://www.interreg-fwvl.eu/sites/default/files/uploads/fr/Template_Affiche%20A3%20FWVL_priorit%C3%A9%204_FR-NL.pub"
     ],
-    "notes": "Interreg France-Wallonie-Vlaanderen bilingual FR/NL A3 priority-4 poster."
+    "notes": "Interreg France-Wallonie-Vlaanderen bilingual FR/NL A3 priority-4 poster.",
+    "recover_wayback": true
   }
 ]
