@@ -37,9 +37,13 @@ USER_AGENT = "lalamu-pub-corpus/1.0 (+https://github.com/Lalalalendia/lalamu)"
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
-def fetch_bytes(url: str, max_bytes: int = MAX_DOWNLOAD_BYTES) -> tuple[bytes, str, str | None]:
+def fetch_bytes(
+    url: str,
+    max_bytes: int = MAX_DOWNLOAD_BYTES,
+    timeout: float = 45,
+) -> tuple[bytes, str, str | None]:
     req = Request(url, headers={"User-Agent": USER_AGENT, "Accept": "*/*"})
-    with urlopen(req, timeout=45) as response:
+    with urlopen(req, timeout=timeout) as response:
         content_length = response.headers.get("Content-Length")
         if content_length and int(content_length) > max_bytes:
             raise ValueError(f"declared Content-Length {content_length} exceeds {max_bytes}")
@@ -217,7 +221,7 @@ def wayback_candidates(url: str) -> list[str]:
         + "&fl=timestamp,original&limit=10"
     )
     try:
-        raw, _, _ = fetch_bytes(cdx, max_bytes=512 * 1024)
+        raw, _, _ = fetch_bytes(cdx, max_bytes=512 * 1024, timeout=12)
         rows = json.loads(raw.decode("utf-8", errors="replace"))
         for row in rows[1:] if isinstance(rows, list) else []:
             if not isinstance(row, list) or len(row) < 2:
@@ -232,7 +236,7 @@ def wayback_candidates(url: str) -> list[str]:
     # snapshot; convert its replay URL to an id_ raw-byte replay when possible.
     availability = "https://archive.org/wayback/available?url=" + quote(url, safe="")
     try:
-        raw, _, _ = fetch_bytes(availability, max_bytes=512 * 1024)
+        raw, _, _ = fetch_bytes(availability, max_bytes=512 * 1024, timeout=12)
         payload = json.loads(raw.decode("utf-8", errors="replace"))
         closest = (payload.get("archived_snapshots") or {}).get("closest") or {}
         replay = str(closest.get("url") or "")
