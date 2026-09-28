@@ -1,0 +1,87 @@
+name: t746-residual-csv-locator
+
+on:
+  push:
+    branches:
+      - t746-residual-csv-locator-01
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile locator
+        run: python -m py_compile tools/locate_t746_residual_csv.py
+
+      - name: Run synthetic unit tests
+        run: python -m unittest discover -s tests -p 'test_t746_residual_csv_locator.py' -v
+
+      - name: Exercise path-free receipt contract
+        run: |
+          set -euxo pipefail
+          root="$(mktemp -d)"
+          ROOT="$root" python - <<'PY'
+          import csv
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ["ROOT"])
+          target = root / "private-user-tree" / "T733-residual-candidate.csv"
+          target.parent.mkdir(parents=True)
+          with target.open("w", newline="", encoding="utf-8") as fh:
+              writer = csv.DictWriter(
+                  fh,
+                  fieldnames=["raw_marker", "source_sha256", "seq_num", "list_id"],
+              )
+              writer.writeheader()
+              for i in range(176):
+                  writer.writerow({
+                      "raw_marker": "0x29" if i < 171 else "0x1e",
+                      "source_sha256": f"{i:064x}",
+                      "seq_num": i,
+                      "list_id": 9,
+                  })
+          PY
+
+          python tools/locate_t746_residual_csv.py             "$root"             --receipt /tmp/t746-locator-receipt.json             | tee /tmp/t746-locator-stdout.txt
+
+          ROOT="$root" python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          receipt = json.loads(Path("/tmp/t746-locator-receipt.json").read_text())
+          assert receipt["schema"] == "chaptera.t746-residual-csv-locator-receipt.v1"
+          assert receipt["candidate_count"] == 1
+          row = receipt["candidates"][0]
+          assert set(row) == {"rank", "sha256", "row_count", "score"}
+          assert row["row_count"] == 176
+          assert row["score"] >= 160
+          assert receipt["privacy"] == {
+              "local_paths_emitted": False,
+              "headers_emitted": False,
+              "csv_rows_emitted": False,
+              "pub_bytes_emitted": False,
+              "document_text_emitted": False,
+          }
+
+          encoded = json.dumps(receipt, sort_keys=True)
+          assert os.environ["ROOT"] not in encoded
+          assert "T733-residual-candidate.csv" not in encoded
+          assert "raw_marker" not in encoded
+          print(json.dumps(row, sort_keys=True))
+          PY
+
+      - name: Upload synthetic privacy-safe receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: t746-residual-csv-locator-synthetic
+          path: /tmp/t746-locator-receipt.json
+          if-no-files-found: error
+          retention-days: 14
