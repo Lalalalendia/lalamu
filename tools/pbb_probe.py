@@ -119,6 +119,45 @@ def parse_bbstore_strings(strings: list[str]) -> dict | None:
     }
 
 
+def decode_xml_payload(data: bytes) -> tuple[str | None, str | None]:
+    payload = data.rstrip(b"\\x00")
+    for encoding in ("utf-8-sig", "utf-16", "windows-1252", "latin-1"):
+        try:
+            text = payload.decode(encoding)
+        except UnicodeDecodeError:
+            continue
+        if "<BBStore" in text:
+            return text, encoding
+    return None, None
+
+
+def parse_bbstoreinfo14(data: bytes) -> dict:
+    text, encoding = decode_xml_payload(data)
+    if text is None:
+        return {"parsed": False, "error": "unable to decode BBStore XML"}
+    try:
+        root = ET.fromstring(text)
+    except ET.ParseError as exc:
+        return {"parsed": False, "encoding": encoding, "error": str(exc)}
+
+    items = []
+    for item in root.findall(".//Item"):
+        fields = {}
+        for child in list(item):
+            value = (child.text or "").strip()
+            fields[child.tag] = value
+        items.append(fields)
+
+    return {
+        "parsed": True,
+        "encoding": encoding,
+        "root_tag": root.tag,
+        "version": root.attrib.get("version"),
+        "item_count": len(items),
+        "items": items,
+    }
+
+
 def safe_property(value):
     if isinstance(value, (str, int, float, bool)) or value is None:
         return value
@@ -228,6 +267,10 @@ def summarize(rows: list[dict]) -> dict:
     stream_profiles = collections.Counter()
     bb_strings = collections.Counter()
     compobj_strings = collections.Counter()
+    bb_field_presence = collections.Counter()
+    bb_field_values: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
+    bb_parsed_files = 0
+    bb_item_counts = collections.Counter()
     bb_versions = collections.Counter()
     bb_item_counts = collections.Counter()
     bb_field_presence = collections.Counter()
@@ -321,6 +364,24 @@ def summarize(rows: list[dict]) -> dict:
             {"value": value, "file_count": count}
             for value, count in compobj_strings.most_common(50)
         ],
+        "bbstore": {
+            "parsed_file_count": bb_parsed_files,
+            "item_count_distribution": {
+                str(key): value for key, value in sorted(bb_item_counts.items())
+            },
+            "field_presence_count": dict(sorted(bb_field_presence.items())),
+            "field_unique_value_count": {
+                field: len(values)
+                for field, values in sorted(bb_field_values.items())
+            },
+            "field_common_values": {
+                field: [
+                    {"value": value, "count": count}
+                    for value, count in values.most_common(12)
+                ]
+                for field, values in sorted(bb_field_values.items())
+            },
+        },
     }
 
 
