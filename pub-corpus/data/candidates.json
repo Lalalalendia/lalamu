@@ -700,5 +700,19 @@
       "https://raw.githubusercontent.com/apache/poi/trunk/test-data/publisher/Simple.pub"
     ],
     "notes": "Apache POI Publisher test-data fixture from the canonical upstream test corpus."
+  },
+  {
+    "id": "github-dawoodshahzad-art-auction-ad",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "dawoodshahzad07/Excel-Publisher-Project-Files",
+    "source_path": "Art Auction Ad.pub",
+    "source_filename": "Art Auction Ad.pub",
+    "expected_git_blob_sha1": "e697a9cebcdd331291faaeb78d9d214fe9744877",
+    "expected_size": 9351168,
+    "urls": [
+      "https://raw.githubusercontent.com/dawoodshahzad07/Excel-Publisher-Project-Files/main/Art%20Auction%20Ad.pub"
+    ],
+    "notes": "Natural Microsoft Publisher project artifact from a public student/project repository."
   }
 ]
