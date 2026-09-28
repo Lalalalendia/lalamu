@@ -2,6 +2,16 @@ name: PUB cross-engine oracle
 
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - "pub-corpus/corpus/**/*.pub"
+      - "pub-corpus/data/manifest.jsonl"
+      - "pub-corpus/data/intelligence/**"
+      - "pub-corpus/data/oracle-differential/capability-contract.json"
+      - "pub-corpus/scripts/oracle_differential.py"
+      - "pub-corpus/scripts/capability_triage.py"
+      - "tests/test_capability_triage.py"
+      - ".github/workflows/pub-oracle-differential.yml"
   push:
     branches:
       - main
@@ -9,7 +19,10 @@ on:
       - "pub-corpus/corpus/**/*.pub"
       - "pub-corpus/data/manifest.jsonl"
       - "pub-corpus/data/intelligence/**"
+      - "pub-corpus/data/oracle-differential/capability-contract.json"
       - "pub-corpus/scripts/oracle_differential.py"
+      - "pub-corpus/scripts/capability_triage.py"
+      - "tests/test_capability_triage.py"
       - ".github/workflows/pub-oracle-differential.yml"
   schedule:
     - cron: "37 4 * * 1,4"
@@ -52,21 +65,35 @@ jobs:
           rustup toolchain install 1.94.1 --profile minimal
           cargo +1.94.1 build             --release             --manifest-path upstream/rar/vendor/producer-a/Cargo.toml             -p chaptera-producer-a
 
+      - name: Test differential classifiers
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m unittest tests/test_capability_triage.py -v
+          python -m py_compile pub-corpus/scripts/oracle_differential.py pub-corpus/scripts/capability_triage.py
+
       - name: Run bounded diverse differential
         shell: bash
         run: |
           set -euo pipefail
-          python pub-corpus/scripts/oracle_differential.py             --chaptera-bin upstream/rar/vendor/producer-a/target/release/chaptera-producer-a             --max-files 20             --timeout 60
-          python -m py_compile pub-corpus/scripts/oracle_differential.py
+          python pub-corpus/scripts/oracle_differential.py \
+            --chaptera-bin upstream/rar/vendor/producer-a/target/release/chaptera-producer-a \
+            --max-files 20 \
+            --timeout 60
+          python pub-corpus/scripts/capability_triage.py
 
-      - name: Upload differential receipt
+      - name: Upload differential receipts
         uses: actions/upload-artifact@v4
         with:
-          name: pub-oracle-differential-v1
-          path: pub-corpus/data/oracle-differential/latest.json
+          name: pub-oracle-differential-v2
+          path: |
+            pub-corpus/data/oracle-differential/latest.json
+            pub-corpus/data/oracle-differential/capability-triage.json
+            pub-corpus/data/oracle-differential/capability-contract.json
           if-no-files-found: error
 
       - name: Publish changed differential
+        if: github.event_name != 'pull_request'
         shell: bash
         run: |
           set -euo pipefail
