@@ -49,8 +49,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          rustup toolchain install 1.85.0 --profile minimal
-          cargo +1.85.0 build             --release             --manifest-path upstream/rar/vendor/producer-a/Cargo.toml             -p chaptera-producer-a
+          rustup toolchain install 1.94.1 --profile minimal
+          cargo +1.94.1 build             --release             --manifest-path upstream/rar/vendor/producer-a/Cargo.toml             -p chaptera-producer-a
 
       - name: Fuzz untrusted admission boundary
         shell: bash
