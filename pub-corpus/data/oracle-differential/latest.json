@@ -1,0 +1,1404 @@
+{
+  "issue_counts": {
+    "engine_acceptance_mismatch": 4,
+    "normalized_text_mismatch": 48,
+    "page_count_mismatch": 36
+  },
+  "receipt_sha256": "33478e0a895ec5f1633e243e40346b3c3143782f9ab0d30365e5fa86e9d06445",
+  "records": [
+    {
+      "byte_len": 204800,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libmspub",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "4fdc2f2aae05efe08ad6345adcb90b33e689fed2ba3d5bbf7bfb478e3f933416",
+          "right": "libmspub",
+          "right_value": "15b0acf0068b94cb824e425a4f4f39d063e0352ae3bbd6250cf7eee26ed855c8"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libreoffice",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "4fdc2f2aae05efe08ad6345adcb90b33e689fed2ba3d5bbf7bfb478e3f933416",
+          "right": "libreoffice",
+          "right_value": "6456c01a0485a690326b0d846eec9a0d854873d04aa21ba985c3597419d1234e"
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "libmspub",
+          "left_value": "15b0acf0068b94cb824e425a4f4f39d063e0352ae3bbd6250cf7eee26ed855c8",
+          "right": "libreoffice",
+          "right_value": "6456c01a0485a690326b0d846eec9a0d854873d04aa21ba985c3597419d1234e"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 4,
+          "image_count": 3,
+          "normalized_text_sha256": "4fdc2f2aae05efe08ad6345adcb90b33e689fed2ba3d5bbf7bfb478e3f933416",
+          "page_count": 6,
+          "scene_node_count": 62,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 27,
+          "text_chars": 484,
+          "text_words": 84
+        },
+        "libmspub": {
+          "normalized_text_sha256": "15b0acf0068b94cb824e425a4f4f39d063e0352ae3bbd6250cf7eee26ed855c8",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 145,
+          "text_words": 23,
+          "xhtml_bytes": 452085
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "6456c01a0485a690326b0d846eec9a0d854873d04aa21ba985c3597419d1234e",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 145,
+          "text_words": 23
+        }
+      },
+      "sha256": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178"
+    },
+    {
+      "byte_len": 3505664,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 7,
+          "right": "libmspub",
+          "right_value": 2
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "caef50b9fe95e6fcfdaa46dec7a89bc09f1cc2ae2edd88882fd04c12551920b7",
+          "right": "libmspub",
+          "right_value": "59ecf2101ea3bab461ca76972f70dd521de5097de89ab8596d3211caab6ac55d"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 7,
+          "right": "libreoffice",
+          "right_value": 2
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "caef50b9fe95e6fcfdaa46dec7a89bc09f1cc2ae2edd88882fd04c12551920b7",
+          "right": "libreoffice",
+          "right_value": "239def966852db418aa8d13f374af2ba33cd1a668f13aeec104579c4c38389bf"
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "libmspub",
+          "left_value": "59ecf2101ea3bab461ca76972f70dd521de5097de89ab8596d3211caab6ac55d",
+          "right": "libreoffice",
+          "right_value": "239def966852db418aa8d13f374af2ba33cd1a668f13aeec104579c4c38389bf"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 7,
+          "image_count": 4,
+          "normalized_text_sha256": "caef50b9fe95e6fcfdaa46dec7a89bc09f1cc2ae2edd88882fd04c12551920b7",
+          "page_count": 7,
+          "scene_node_count": 26,
+          "scene_surface_count": 7,
+          "status": "success",
+          "story_count": 5,
+          "text_chars": 1397,
+          "text_words": 226
+        },
+        "libmspub": {
+          "normalized_text_sha256": "59ecf2101ea3bab461ca76972f70dd521de5097de89ab8596d3211caab6ac55d",
+          "page_count": 2,
+          "status": "success",
+          "text_chars": 1508,
+          "text_words": 246,
+          "xhtml_bytes": 7377820
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "239def966852db418aa8d13f374af2ba33cd1a668f13aeec104579c4c38389bf",
+          "page_count": 2,
+          "status": "success",
+          "text_chars": 1434,
+          "text_words": 230
+        }
+      },
+      "sha256": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba"
+    },
+    {
+      "byte_len": 188928,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libmspub",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "79674572ecd01dee9d7150100d550cd4ceab89fa54639d83dd2a9f47455d7d46",
+          "right": "libmspub",
+          "right_value": "7f846dcfc8aa4bf07479383bc88dc6270edcc5252dd3e6b1eb70e41f7637e351"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libreoffice",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "79674572ecd01dee9d7150100d550cd4ceab89fa54639d83dd2a9f47455d7d46",
+          "right": "libreoffice",
+          "right_value": "7f846dcfc8aa4bf07479383bc88dc6270edcc5252dd3e6b1eb70e41f7637e351"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 4,
+          "image_count": 4,
+          "normalized_text_sha256": "79674572ecd01dee9d7150100d550cd4ceab89fa54639d83dd2a9f47455d7d46",
+          "page_count": 6,
+          "scene_node_count": 29,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 10,
+          "text_chars": 323,
+          "text_words": 55
+        },
+        "libmspub": {
+          "normalized_text_sha256": "7f846dcfc8aa4bf07479383bc88dc6270edcc5252dd3e6b1eb70e41f7637e351",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 47,
+          "text_words": 8,
+          "xhtml_bytes": 187483
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "7f846dcfc8aa4bf07479383bc88dc6270edcc5252dd3e6b1eb70e41f7637e351",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 47,
+          "text_words": 8
+        }
+      },
+      "sha256": "16ea75ba3cba286af382619a9edc2d7940d3e4f74a83577520b470c9fbc2852d"
+    },
+    {
+      "byte_len": 342016,
+      "disagreements": [
+        {
+          "kind": "engine_acceptance_mismatch",
+          "left": "chaptera",
+          "left_status": "rejected",
+          "right": "libmspub",
+          "right_status": "success"
+        },
+        {
+          "kind": "engine_acceptance_mismatch",
+          "left": "chaptera",
+          "left_status": "rejected",
+          "right": "libreoffice",
+          "right_status": "success"
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "libmspub",
+          "left_value": "81dfb6e721149f23e3d73ec0deedbb9afd507afa76622275600a4b6b90851f96",
+          "right": "libreoffice",
+          "right_value": "ae9d797034a4098fbc69c4f63e9938d2643c33251121f5e04c86d70bd5ef2fb5"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "error": "Error: open mature-0x2c Viewer geometry\n\nCaused by:\n    0: build mature-0x2C PUB source graph for Viewer\n    1: parse mature-0x2C Contents header\n    2: неожиданное семейство Contents: ожидалось Family0x2c, найдено Family0x22",
+          "returncode": 1,
+          "status": "rejected"
+        },
+        "libmspub": {
+          "normalized_text_sha256": "81dfb6e721149f23e3d73ec0deedbb9afd507afa76622275600a4b6b90851f96",
+          "page_count": 21,
+          "status": "success",
+          "text_chars": 46177,
+          "text_words": 8142,
+          "xhtml_bytes": 364782
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "ae9d797034a4098fbc69c4f63e9938d2643c33251121f5e04c86d70bd5ef2fb5",
+          "page_count": 21,
+          "status": "success",
+          "text_chars": 37071,
+          "text_words": 6301
+        }
+      },
+      "sha256": "2b1a2c5183d2fa83fdf9b0e0bf386bc0861b034e08f00fb3fc4171857c097576"
+    },
+    {
+      "byte_len": 202240,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 12,
+          "right": "libmspub",
+          "right_value": 4
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "2bd34ba2a0d770ebdc3c4291711eb585ca2ffbddc37d1706e2d8f46fab10d2bc",
+          "right": "libmspub",
+          "right_value": "e424f7fe61c728f8ffafa950fcd7a81fe17dc9452a6a171441f4c263e812ad8d"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 12,
+          "right": "libreoffice",
+          "right_value": 4
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "2bd34ba2a0d770ebdc3c4291711eb585ca2ffbddc37d1706e2d8f46fab10d2bc",
+          "right": "libreoffice",
+          "right_value": "4cce25e08d6fd967ed286f058fa4c16a463d7a3e8918b3d026566174c76677d1"
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "libmspub",
+          "left_value": "e424f7fe61c728f8ffafa950fcd7a81fe17dc9452a6a171441f4c263e812ad8d",
+          "right": "libreoffice",
+          "right_value": "4cce25e08d6fd967ed286f058fa4c16a463d7a3e8918b3d026566174c76677d1"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 10,
+          "image_count": 0,
+          "normalized_text_sha256": "2bd34ba2a0d770ebdc3c4291711eb585ca2ffbddc37d1706e2d8f46fab10d2bc",
+          "page_count": 12,
+          "scene_node_count": 10,
+          "scene_surface_count": 12,
+          "status": "success",
+          "story_count": 9,
+          "text_chars": 1416,
+          "text_words": 259
+        },
+        "libmspub": {
+          "normalized_text_sha256": "e424f7fe61c728f8ffafa950fcd7a81fe17dc9452a6a171441f4c263e812ad8d",
+          "page_count": 4,
+          "status": "success",
+          "text_chars": 1398,
+          "text_words": 262,
+          "xhtml_bytes": 20701
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "4cce25e08d6fd967ed286f058fa4c16a463d7a3e8918b3d026566174c76677d1",
+          "page_count": 4,
+          "status": "success",
+          "text_chars": 1391,
+          "text_words": 255
+        }
+      },
+      "sha256": "4029d4a1bf5be89d745c079b9c06ab33e5bdceb997a4761c5e11238110d879c9"
+    },
+    {
+      "byte_len": 545792,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 7,
+          "right": "libmspub",
+          "right_value": 2
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "2b339be3002177cff9b759a65af054b0b3324071d832c65a1e71200768633c06",
+          "right": "libmspub",
+          "right_value": "eeac61a1aea63d99dfee382319b251432d0a0b91e4d2410e793a5abe3ced04ac"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 7,
+          "right": "libreoffice",
+          "right_value": 2
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "2b339be3002177cff9b759a65af054b0b3324071d832c65a1e71200768633c06",
+          "right": "libreoffice",
+          "right_value": "0788d450adbffd0e6ea2022e7fe156a3434c464560d147fb3d7b30958114eb75"
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "libmspub",
+          "left_value": "eeac61a1aea63d99dfee382319b251432d0a0b91e4d2410e793a5abe3ced04ac",
+          "right": "libreoffice",
+          "right_value": "0788d450adbffd0e6ea2022e7fe156a3434c464560d147fb3d7b30958114eb75"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 5,
+          "image_count": 3,
+          "normalized_text_sha256": "2b339be3002177cff9b759a65af054b0b3324071d832c65a1e71200768633c06",
+          "page_count": 7,
+          "scene_node_count": 62,
+          "scene_surface_count": 7,
+          "status": "success",
+          "story_count": 20,
+          "text_chars": 1507,
+          "text_words": 244
+        },
+        "libmspub": {
+          "normalized_text_sha256": "eeac61a1aea63d99dfee382319b251432d0a0b91e4d2410e793a5abe3ced04ac",
+          "page_count": 2,
+          "status": "success",
+          "text_chars": 1507,
+          "text_words": 244,
+          "xhtml_bytes": 4757387
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "0788d450adbffd0e6ea2022e7fe156a3434c464560d147fb3d7b30958114eb75",
+          "page_count": 2,
+          "status": "success",
+          "text_chars": 1507,
+          "text_words": 244
+        }
+      },
+      "sha256": "4758095aa58927b1aefa23c384bb16cd598e6732ef2af5af68471118dc25c567"
+    },
+    {
+      "byte_len": 9351168,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libmspub",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "2b07c68186ac6ab9c7060a58925d21dd7573ce888f461b6528849c96e780e828",
+          "right": "libmspub",
+          "right_value": "6f5c8b43dbb496c14ce9c08ea3043a6dc7fb71d27d2c1e79179fa0145c07416f"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libreoffice",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "2b07c68186ac6ab9c7060a58925d21dd7573ce888f461b6528849c96e780e828",
+          "right": "libreoffice",
+          "right_value": "9fcbc63582ff9dbebde0672eb6be07076e9f87a8ff8961172813eb8152c31c36"
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "libmspub",
+          "left_value": "6f5c8b43dbb496c14ce9c08ea3043a6dc7fb71d27d2c1e79179fa0145c07416f",
+          "right": "libreoffice",
+          "right_value": "9fcbc63582ff9dbebde0672eb6be07076e9f87a8ff8961172813eb8152c31c36"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 6,
+          "image_count": 5,
+          "normalized_text_sha256": "2b07c68186ac6ab9c7060a58925d21dd7573ce888f461b6528849c96e780e828",
+          "page_count": 6,
+          "scene_node_count": 57,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 8,
+          "text_chars": 495,
+          "text_words": 82
+        },
+        "libmspub": {
+          "normalized_text_sha256": "6f5c8b43dbb496c14ce9c08ea3043a6dc7fb71d27d2c1e79179fa0145c07416f",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 496,
+          "text_words": 83,
+          "xhtml_bytes": 12219724
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "9fcbc63582ff9dbebde0672eb6be07076e9f87a8ff8961172813eb8152c31c36",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 495,
+          "text_words": 82
+        }
+      },
+      "sha256": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa"
+    },
+    {
+      "byte_len": 97280,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libmspub",
+          "right_value": 1
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libreoffice",
+          "right_value": 1
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 3,
+          "image_count": 0,
+          "normalized_text_sha256": "1075ec0dcee17a27d19fc8c614c1a31237eabea65a4701daa76661e98c120eea",
+          "page_count": 6,
+          "scene_node_count": 1,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 1,
+          "text_chars": 29,
+          "text_words": 4
+        },
+        "libmspub": {
+          "normalized_text_sha256": "1075ec0dcee17a27d19fc8c614c1a31237eabea65a4701daa76661e98c120eea",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 29,
+          "text_words": 4,
+          "xhtml_bytes": 952
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "1075ec0dcee17a27d19fc8c614c1a31237eabea65a4701daa76661e98c120eea",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 29,
+          "text_words": 4
+        }
+      },
+      "sha256": "712e1db9cefd0af613b12fb776720ac5d67ebe772468f2e47cb26a1f2e6ce28a"
+    },
+    {
+      "byte_len": 97792,
+      "disagreements": [
+        {
+          "kind": "engine_acceptance_mismatch",
+          "left": "chaptera",
+          "left_status": "rejected",
+          "right": "libmspub",
+          "right_status": "success"
+        },
+        {
+          "kind": "engine_acceptance_mismatch",
+          "left": "chaptera",
+          "left_status": "rejected",
+          "right": "libreoffice",
+          "right_status": "success"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "error": "Error: open mature-0x2c Viewer geometry\n\nCaused by:\n    0: build mature-0x2C PUB source graph for Viewer\n    1: parse mature Story catalog 0x65\n    2: MissingDeclaredCount",
+          "returncode": 1,
+          "status": "rejected"
+        },
+        "libmspub": {
+          "normalized_text_sha256": null,
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 0,
+          "text_words": 0,
+          "xhtml_bytes": 2829
+        },
+        "libreoffice": {
+          "normalized_text_sha256": null,
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 0,
+          "text_words": 0
+        }
+      },
+      "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb"
+    },
+    {
+      "byte_len": 217088,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libmspub",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "d015168a5da859a9b968d755635e89941163dad38c1c90529e21c9e42b7b0386",
+          "right": "libmspub",
+          "right_value": "23a3f134b686261c9bf924bcc49281a7a8bb3ee4ad8dc302ed324fe05648a562"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libreoffice",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "d015168a5da859a9b968d755635e89941163dad38c1c90529e21c9e42b7b0386",
+          "right": "libreoffice",
+          "right_value": "cc585b769770daed279f476066348256819e6ec6eae1a0b55f56531f492b8265"
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "libmspub",
+          "left_value": "23a3f134b686261c9bf924bcc49281a7a8bb3ee4ad8dc302ed324fe05648a562",
+          "right": "libreoffice",
+          "right_value": "cc585b769770daed279f476066348256819e6ec6eae1a0b55f56531f492b8265"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 6,
+          "image_count": 3,
+          "normalized_text_sha256": "d015168a5da859a9b968d755635e89941163dad38c1c90529e21c9e42b7b0386",
+          "page_count": 6,
+          "scene_node_count": 13,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 9,
+          "text_chars": 538,
+          "text_words": 71
+        },
+        "libmspub": {
+          "normalized_text_sha256": "23a3f134b686261c9bf924bcc49281a7a8bb3ee4ad8dc302ed324fe05648a562",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 602,
+          "text_words": 135,
+          "xhtml_bytes": 114661
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "cc585b769770daed279f476066348256819e6ec6eae1a0b55f56531f492b8265",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 538,
+          "text_words": 71
+        }
+      },
+      "sha256": "800d2648854fb3fe1f9314a1ea7b7969d79cd9cb9b12cc454a71dde8177b2450"
+    },
+    {
+      "byte_len": 6412288,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 10,
+          "right": "libmspub",
+          "right_value": 5
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 10,
+          "right": "libreoffice",
+          "right_value": 5
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "1e599a024dcc6f467a8414fce49af58121a524f9f7463b46476c023770f24654",
+          "right": "libreoffice",
+          "right_value": "a24b483c7598afc3c5d1b7d05af0b5e44bd92aec5fc744a61f59b919b81a426a"
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "libmspub",
+          "left_value": "1e599a024dcc6f467a8414fce49af58121a524f9f7463b46476c023770f24654",
+          "right": "libreoffice",
+          "right_value": "a24b483c7598afc3c5d1b7d05af0b5e44bd92aec5fc744a61f59b919b81a426a"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 4,
+          "image_count": 11,
+          "normalized_text_sha256": "1e599a024dcc6f467a8414fce49af58121a524f9f7463b46476c023770f24654",
+          "page_count": 10,
+          "scene_node_count": 17,
+          "scene_surface_count": 10,
+          "status": "success",
+          "story_count": 4,
+          "text_chars": 2085,
+          "text_words": 384
+        },
+        "libmspub": {
+          "normalized_text_sha256": "1e599a024dcc6f467a8414fce49af58121a524f9f7463b46476c023770f24654",
+          "page_count": 5,
+          "status": "success",
+          "text_chars": 2085,
+          "text_words": 384,
+          "xhtml_bytes": 8343501
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "a24b483c7598afc3c5d1b7d05af0b5e44bd92aec5fc744a61f59b919b81a426a",
+          "page_count": 5,
+          "status": "success",
+          "text_chars": 2085,
+          "text_words": 384
+        }
+      },
+      "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70"
+    },
+    {
+      "byte_len": 199680,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libmspub",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "dfbb7532f05aa563cb25312dce081ba2d204dcddabcd083ff1145e280ca01d9a",
+          "right": "libmspub",
+          "right_value": "b5d09ece12e96ce4b5dd27b3081ca5682b0b3470c205481cadcf409942e03194"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libreoffice",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "dfbb7532f05aa563cb25312dce081ba2d204dcddabcd083ff1145e280ca01d9a",
+          "right": "libreoffice",
+          "right_value": "101d3cddbe4e7e5eb866b20c4f7d1b7355424392f32e978b9e46475937c917b1"
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "libmspub",
+          "left_value": "b5d09ece12e96ce4b5dd27b3081ca5682b0b3470c205481cadcf409942e03194",
+          "right": "libreoffice",
+          "right_value": "101d3cddbe4e7e5eb866b20c4f7d1b7355424392f32e978b9e46475937c917b1"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 4,
+          "image_count": 0,
+          "normalized_text_sha256": "dfbb7532f05aa563cb25312dce081ba2d204dcddabcd083ff1145e280ca01d9a",
+          "page_count": 6,
+          "scene_node_count": 9,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 5,
+          "text_chars": 1990,
+          "text_words": 285
+        },
+        "libmspub": {
+          "normalized_text_sha256": "b5d09ece12e96ce4b5dd27b3081ca5682b0b3470c205481cadcf409942e03194",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 2006,
+          "text_words": 301,
+          "xhtml_bytes": 25497
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "101d3cddbe4e7e5eb866b20c4f7d1b7355424392f32e978b9e46475937c917b1",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 2015,
+          "text_words": 310
+        }
+      },
+      "sha256": "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6"
+    },
+    {
+      "byte_len": 114688,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libmspub",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "e99bac0def6658cf6b6328e9f15b65aa9968716716847b55e1a473cc67d1075f",
+          "right": "libmspub",
+          "right_value": "69b2ad3bfee35c36a4105fa8e7756258ed8abb231a1ccd52d14fb6b4c83e1eb2"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libreoffice",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "e99bac0def6658cf6b6328e9f15b65aa9968716716847b55e1a473cc67d1075f",
+          "right": "libreoffice",
+          "right_value": "a35d2bc9039c74badba421657f9c9c55814d70cceec6a74c38d710626013bba7"
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "libmspub",
+          "left_value": "69b2ad3bfee35c36a4105fa8e7756258ed8abb231a1ccd52d14fb6b4c83e1eb2",
+          "right": "libreoffice",
+          "right_value": "a35d2bc9039c74badba421657f9c9c55814d70cceec6a74c38d710626013bba7"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 6,
+          "image_count": 2,
+          "normalized_text_sha256": "e99bac0def6658cf6b6328e9f15b65aa9968716716847b55e1a473cc67d1075f",
+          "page_count": 6,
+          "scene_node_count": 11,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 7,
+          "text_chars": 375,
+          "text_words": 64
+        },
+        "libmspub": {
+          "normalized_text_sha256": "69b2ad3bfee35c36a4105fa8e7756258ed8abb231a1ccd52d14fb6b4c83e1eb2",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 375,
+          "text_words": 64,
+          "xhtml_bytes": 48033
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "a35d2bc9039c74badba421657f9c9c55814d70cceec6a74c38d710626013bba7",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 366,
+          "text_words": 63
+        }
+      },
+      "sha256": "9923f422543b1ed43c090042c9e4256072df6fd961c06975e2b64335e09e9a15"
+    },
+    {
+      "byte_len": 2465280,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libmspub",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "40f0b00c3d22f70ed9b2ea48a08cf97903fc92f38b09eecd3892f8b046e5e92e",
+          "right": "libmspub",
+          "right_value": "73460db82fba5d219ffa761539d7141755ce6330b9f7be799460bfb1d298abf1"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libreoffice",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "40f0b00c3d22f70ed9b2ea48a08cf97903fc92f38b09eecd3892f8b046e5e92e",
+          "right": "libreoffice",
+          "right_value": "eb14402a2e15f05a88b03d9076dd25b333170258acae2b2d109d174eddf4ecf2"
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "libmspub",
+          "left_value": "73460db82fba5d219ffa761539d7141755ce6330b9f7be799460bfb1d298abf1",
+          "right": "libreoffice",
+          "right_value": "eb14402a2e15f05a88b03d9076dd25b333170258acae2b2d109d174eddf4ecf2"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 5,
+          "image_count": 1,
+          "normalized_text_sha256": "40f0b00c3d22f70ed9b2ea48a08cf97903fc92f38b09eecd3892f8b046e5e92e",
+          "page_count": 6,
+          "scene_node_count": 227,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 96,
+          "text_chars": 491,
+          "text_words": 108
+        },
+        "libmspub": {
+          "normalized_text_sha256": "73460db82fba5d219ffa761539d7141755ce6330b9f7be799460bfb1d298abf1",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 491,
+          "text_words": 108,
+          "xhtml_bytes": 35210490
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "eb14402a2e15f05a88b03d9076dd25b333170258acae2b2d109d174eddf4ecf2",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 491,
+          "text_words": 108
+        }
+      },
+      "sha256": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf"
+    },
+    {
+      "byte_len": 176128,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libmspub",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "616a82516e575b7f79b07b224cc166f165949be941882668ef477274f9d674d4",
+          "right": "libmspub",
+          "right_value": "135e52ec8005256123b342ff062d45fedcd0cb8d69128c09f077ceb67882313f"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libreoffice",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "616a82516e575b7f79b07b224cc166f165949be941882668ef477274f9d674d4",
+          "right": "libreoffice",
+          "right_value": "135e52ec8005256123b342ff062d45fedcd0cb8d69128c09f077ceb67882313f"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 5,
+          "image_count": 1,
+          "normalized_text_sha256": "616a82516e575b7f79b07b224cc166f165949be941882668ef477274f9d674d4",
+          "page_count": 6,
+          "scene_node_count": 5,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 4,
+          "text_chars": 475,
+          "text_words": 81
+        },
+        "libmspub": {
+          "normalized_text_sha256": "135e52ec8005256123b342ff062d45fedcd0cb8d69128c09f077ceb67882313f",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 475,
+          "text_words": 81,
+          "xhtml_bytes": 104078
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "135e52ec8005256123b342ff062d45fedcd0cb8d69128c09f077ceb67882313f",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 475,
+          "text_words": 81
+        }
+      },
+      "sha256": "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621"
+    },
+    {
+      "byte_len": 183296,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libmspub",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "6e577a148a7181273b6c65d0b0e2d6f59107d9363ff61846ec2ea16db233fd52",
+          "right": "libmspub",
+          "right_value": "90b918497ea8a907fcaaf50a968291047a42a6340698ee21e68a078e3092b3e3"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libreoffice",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "6e577a148a7181273b6c65d0b0e2d6f59107d9363ff61846ec2ea16db233fd52",
+          "right": "libreoffice",
+          "right_value": "90b918497ea8a907fcaaf50a968291047a42a6340698ee21e68a078e3092b3e3"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 4,
+          "image_count": 4,
+          "normalized_text_sha256": "6e577a148a7181273b6c65d0b0e2d6f59107d9363ff61846ec2ea16db233fd52",
+          "page_count": 6,
+          "scene_node_count": 19,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 5,
+          "text_chars": 293,
+          "text_words": 50
+        },
+        "libmspub": {
+          "normalized_text_sha256": "90b918497ea8a907fcaaf50a968291047a42a6340698ee21e68a078e3092b3e3",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 17,
+          "text_words": 3,
+          "xhtml_bytes": 75074
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "90b918497ea8a907fcaaf50a968291047a42a6340698ee21e68a078e3092b3e3",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 17,
+          "text_words": 3
+        }
+      },
+      "sha256": "b61be87eda0fbf77249a51993da5fe744446bc8ff0d25d4a922e4e29f8f29cd1"
+    },
+    {
+      "byte_len": 293376,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libmspub",
+          "right_value": 2
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "40372b8d361350b210bd34d5fa88555baae1b42ee21cbf09e5c133546a3615ad",
+          "right": "libmspub",
+          "right_value": "e9ed5993e14b6ed13a2e326e17a7917496c8d93ae2301cbf348d1a3369242a94"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libreoffice",
+          "right_value": 2
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "40372b8d361350b210bd34d5fa88555baae1b42ee21cbf09e5c133546a3615ad",
+          "right": "libreoffice",
+          "right_value": "47c874c5929b00c59621d942706c2c3e5657e5ad13e31edb12026d07bef91359"
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "libmspub",
+          "left_value": "e9ed5993e14b6ed13a2e326e17a7917496c8d93ae2301cbf348d1a3369242a94",
+          "right": "libreoffice",
+          "right_value": "47c874c5929b00c59621d942706c2c3e5657e5ad13e31edb12026d07bef91359"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 6,
+          "image_count": 2,
+          "normalized_text_sha256": "40372b8d361350b210bd34d5fa88555baae1b42ee21cbf09e5c133546a3615ad",
+          "page_count": 6,
+          "scene_node_count": 18,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 15,
+          "text_chars": 4261,
+          "text_words": 612
+        },
+        "libmspub": {
+          "normalized_text_sha256": "e9ed5993e14b6ed13a2e326e17a7917496c8d93ae2301cbf348d1a3369242a94",
+          "page_count": 2,
+          "status": "success",
+          "text_chars": 4261,
+          "text_words": 612,
+          "xhtml_bytes": 175653
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "47c874c5929b00c59621d942706c2c3e5657e5ad13e31edb12026d07bef91359",
+          "page_count": 2,
+          "status": "success",
+          "text_chars": 2826,
+          "text_words": 380
+        }
+      },
+      "sha256": "bbaefcbdcdd2dbe51a636ed554c14d6f5353c98e795b5f88d26f79542e5d93ba"
+    },
+    {
+      "byte_len": 699904,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libmspub",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "09ed37ec98f532bf9aa6052cc3863c942dfc0296d810b07cf2308fcd4e404e33",
+          "right": "libmspub",
+          "right_value": "8aa57ef4ce26846fe541c4a26a5b5bb2d2e11fcd40d0af4aa1ded5fc21669f33"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libreoffice",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "09ed37ec98f532bf9aa6052cc3863c942dfc0296d810b07cf2308fcd4e404e33",
+          "right": "libreoffice",
+          "right_value": "05caa293e80996e37f659b60174fd7c860999f65e0b3b8226a790186b4a3a69f"
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "libmspub",
+          "left_value": "8aa57ef4ce26846fe541c4a26a5b5bb2d2e11fcd40d0af4aa1ded5fc21669f33",
+          "right": "libreoffice",
+          "right_value": "05caa293e80996e37f659b60174fd7c860999f65e0b3b8226a790186b4a3a69f"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 6,
+          "image_count": 5,
+          "normalized_text_sha256": "09ed37ec98f532bf9aa6052cc3863c942dfc0296d810b07cf2308fcd4e404e33",
+          "page_count": 6,
+          "scene_node_count": 79,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 22,
+          "text_chars": 255,
+          "text_words": 46
+        },
+        "libmspub": {
+          "normalized_text_sha256": "8aa57ef4ce26846fe541c4a26a5b5bb2d2e11fcd40d0af4aa1ded5fc21669f33",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 256,
+          "text_words": 47,
+          "xhtml_bytes": 4302293
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "05caa293e80996e37f659b60174fd7c860999f65e0b3b8226a790186b4a3a69f",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 255,
+          "text_words": 46
+        }
+      },
+      "sha256": "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190"
+    },
+    {
+      "byte_len": 215040,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libmspub",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "a97ab25b5c4ee02a47de57fc893d3084e955c7e321c37af03885ad783d61518f",
+          "right": "libmspub",
+          "right_value": "7e40531d8d78a9f14c9f17ede830161c50c6a395650c55be18f1f93030a1c487"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libreoffice",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "a97ab25b5c4ee02a47de57fc893d3084e955c7e321c37af03885ad783d61518f",
+          "right": "libreoffice",
+          "right_value": "2eae00bb01f6fdde3330eaf65b934240e182aa88b4805320f21b23fb5a5f40d4"
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "libmspub",
+          "left_value": "7e40531d8d78a9f14c9f17ede830161c50c6a395650c55be18f1f93030a1c487",
+          "right": "libreoffice",
+          "right_value": "2eae00bb01f6fdde3330eaf65b934240e182aa88b4805320f21b23fb5a5f40d4"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 4,
+          "image_count": 3,
+          "normalized_text_sha256": "a97ab25b5c4ee02a47de57fc893d3084e955c7e321c37af03885ad783d61518f",
+          "page_count": 6,
+          "scene_node_count": 82,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 37,
+          "text_chars": 544,
+          "text_words": 94
+        },
+        "libmspub": {
+          "normalized_text_sha256": "7e40531d8d78a9f14c9f17ede830161c50c6a395650c55be18f1f93030a1c487",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 205,
+          "text_words": 33,
+          "xhtml_bytes": 676607
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "2eae00bb01f6fdde3330eaf65b934240e182aa88b4805320f21b23fb5a5f40d4",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 205,
+          "text_words": 33
+        }
+      },
+      "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a"
+    },
+    {
+      "byte_len": 204800,
+      "disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libmspub",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "536c9ee5f84990b60019432510d9cf035253f145691c81d053b0084e345c3147",
+          "right": "libmspub",
+          "right_value": "15b0acf0068b94cb824e425a4f4f39d063e0352ae3bbd6250cf7eee26ed855c8"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libreoffice",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "536c9ee5f84990b60019432510d9cf035253f145691c81d053b0084e345c3147",
+          "right": "libreoffice",
+          "right_value": "6456c01a0485a690326b0d846eec9a0d854873d04aa21ba985c3597419d1234e"
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "libmspub",
+          "left_value": "15b0acf0068b94cb824e425a4f4f39d063e0352ae3bbd6250cf7eee26ed855c8",
+          "right": "libreoffice",
+          "right_value": "6456c01a0485a690326b0d846eec9a0d854873d04aa21ba985c3597419d1234e"
+        }
+      ],
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 4,
+          "image_count": 3,
+          "normalized_text_sha256": "536c9ee5f84990b60019432510d9cf035253f145691c81d053b0084e345c3147",
+          "page_count": 6,
+          "scene_node_count": 62,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 27,
+          "text_chars": 484,
+          "text_words": 84
+        },
+        "libmspub": {
+          "normalized_text_sha256": "15b0acf0068b94cb824e425a4f4f39d063e0352ae3bbd6250cf7eee26ed855c8",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 145,
+          "text_words": 23,
+          "xhtml_bytes": 452085
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "6456c01a0485a690326b0d846eec9a0d854873d04aa21ba985c3597419d1234e",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 145,
+          "text_words": 23
+        }
+      },
+      "sha256": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78"
+    }
+  ],
+  "schema": "lalamu.pub-oracle-differential.v1",
+  "selected_file_count": 20,
+  "selection_policy": "one-per-coarse-structure-and-source-type-then-sha-fill",
+  "tool_versions": {
+    "chaptera": "4d61540b50c800b2b24efbf1fda4926ea10c95b8",
+    "libmspub": "pub2raw 0.1.4",
+    "libreoffice": "LibreOffice 24.2.7.2 420(Build:2)"
+  }
+}
