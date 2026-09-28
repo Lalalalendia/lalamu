@@ -66,6 +66,14 @@ jobs:
           python pub-corpus/scripts/fuzz_pub.py             --target-bin upstream/rar/vendor/producer-a/target/release/chaptera-producer-a             --target-kind chaptera-viewer             --iterations 100             --timeout 2.5             --regression-dir pub-corpus/fuzz/regressions/chaptera-viewer             --summary out/fuzz/chaptera-viewer.json
           python -m py_compile pub-corpus/scripts/fuzz_pub.py
 
+      - name: Stage durable fuzz receipts
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p pub-corpus/data/fuzz/latest
+          cp out/fuzz/untrusted-worker.json pub-corpus/data/fuzz/latest/untrusted-worker.json
+          cp out/fuzz/chaptera-viewer.json pub-corpus/data/fuzz/latest/chaptera-viewer.json
+
       - name: Upload fuzz receipts
         if: always()
         uses: actions/upload-artifact@v4
@@ -74,19 +82,19 @@ jobs:
           path: out/fuzz
           if-no-files-found: warn
 
-      - name: Retain new minimized public regressions
+      - name: Publish fuzz receipts and new minimized regressions
         shell: bash
         run: |
           set -euo pipefail
-          if [[ -z "$(git status --porcelain -- pub-corpus/fuzz/regressions)" ]]; then
-            echo "No new minimized regression cases."
+          if [[ -z "$(git status --porcelain -- pub-corpus/fuzz/regressions pub-corpus/data/fuzz/latest)" ]]; then
+            echo "Fuzz receipts and regression corpus unchanged."
             exit 0
           fi
 
           git config user.name "lalamu-lab-bot"
           git config user.email "lalamu-lab-bot@users.noreply.github.com"
-          git add -- pub-corpus/fuzz/regressions
-          git commit -m "fuzz: retain minimized public PUB regression"
+          git add -- pub-corpus/fuzz/regressions pub-corpus/data/fuzz/latest
+          git commit -m "lab: refresh PUB fuzz receipts and regressions"
 
           for attempt in 1 2 3; do
             git fetch origin main
