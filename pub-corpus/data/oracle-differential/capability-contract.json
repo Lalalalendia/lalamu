@@ -1,0 +1,105 @@
+{
+  "schema": "lalamu.pub-differential-capability-contract.v1",
+  "engines": {
+    "chaptera": {
+      "lineage_group": "chaptera",
+      "role": "canonical-public-consumer-under-test",
+      "invocation_mode": "chaptera-producer-a-viewer-json-v1",
+      "metrics": {
+        "open_acceptance": {
+          "capability": "supported",
+          "semantics": "whole-file-open-success-v1",
+          "normalization": "process outcome normalized to success/rejected/timeout/unavailable/invalid-output"
+        },
+        "page_count": {
+          "capability": "partial",
+          "semantics": "chaptera-viewer-document-pages-v1",
+          "normalization": "len(document.pages)"
+        },
+        "normalized_text_sha256": {
+          "capability": "partial",
+          "semantics": "chaptera-story-text-nfkc-whitespace-v1",
+          "normalization": "concatenate canonical Story text, NFKC, collapse whitespace, SHA-256"
+        },
+        "token_multiset_sha256": {
+          "capability": "partial",
+          "semantics": "chaptera-story-token-multiset-v1",
+          "normalization": "canonical Story text, NFKC, casefold word tokens, sorted multiset, SHA-256"
+        }
+      }
+    },
+    "libmspub": {
+      "lineage_group": "libmspub",
+      "role": "independent-open-source-parser",
+      "invocation_mode": "pub2xhtml-xhtml-export-v1",
+      "metrics": {
+        "open_acceptance": {
+          "capability": "supported",
+          "semantics": "whole-file-open-success-v1",
+          "normalization": "pub2xhtml process outcome plus output existence"
+        },
+        "page_count": {
+          "capability": "partial",
+          "semantics": "libmspub-xhtml-svg-surface-count-v1",
+          "normalization": "count XHTML SVG elements"
+        },
+        "normalized_text_sha256": {
+          "capability": "partial",
+          "semantics": "libmspub-xhtml-text-nfkc-whitespace-v1",
+          "normalization": "XHTML text elements, NFKC, collapse whitespace, SHA-256"
+        },
+        "token_multiset_sha256": {
+          "capability": "partial",
+          "semantics": "libmspub-xhtml-token-multiset-v1",
+          "normalization": "XHTML text elements, NFKC, casefold word tokens, sorted multiset, SHA-256"
+        }
+      }
+    },
+    "libreoffice": {
+      "lineage_group": "libmspub",
+      "role": "downstream-consumer-of-libmspub-import-filter",
+      "invocation_mode": "libreoffice-pub-import-pdf-export-v1",
+      "metrics": {
+        "open_acceptance": {
+          "capability": "partial",
+          "semantics": "whole-file-open-success-v1",
+          "normalization": "LibreOffice headless PUB import plus PDF output existence"
+        },
+        "page_count": {
+          "capability": "partial",
+          "semantics": "libreoffice-pdf-export-page-count-v1",
+          "normalization": "pdfinfo Pages over exported PDF"
+        },
+        "normalized_text_sha256": {
+          "capability": "partial",
+          "semantics": "libreoffice-pdf-text-nfkc-whitespace-v1",
+          "normalization": "pdftotext -layout output, NFKC, collapse whitespace, SHA-256"
+        },
+        "token_multiset_sha256": {
+          "capability": "partial",
+          "semantics": "libreoffice-pdf-token-multiset-v1",
+          "normalization": "pdftotext output, NFKC, casefold word tokens, sorted multiset, SHA-256"
+        }
+      }
+    }
+  },
+  "known_chaptera_rejections": [
+    {
+      "error_contains": "Family0x22",
+      "reason_code": "chaptera-family0x22-bounded-rejection",
+      "structural_family": "0x22",
+      "linked_owners": [
+        "HeisLuka/rar#1098",
+        "HeisLuka/rar#1153"
+      ]
+    },
+    {
+      "error_contains": "MissingDeclaredCount",
+      "reason_code": "chaptera-story65-missing-declared-count",
+      "structural_family": "mature-0x2c",
+      "linked_owners": [
+        "HeisLuka/rar#1156"
+      ]
+    }
+  ]
+}
