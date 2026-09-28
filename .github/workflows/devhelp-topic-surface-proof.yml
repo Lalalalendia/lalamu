@@ -42,6 +42,87 @@ jobs:
           assert r["evidence_boundary"]["pub_wire_format_claims_allowed"] is False
           PY
 
+      - name: Validate retained structured cross-version evidence
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("research/devhelp-xver-01")
+          summary = json.loads((root / "body-structure-summary.json").read_text(encoding="utf-8"))
+          surface = json.loads((root / "added-removed.json").read_text(encoding="utf-8"))
+          sig = json.loads((root / "signature-argument-diff.json").read_text(encoding="utf-8"))
+          enums = json.loads((root / "enum-diff.json").read_text(encoding="utf-8"))
+          continuity = json.loads((root / "continuity-crosscheck.json").read_text(encoding="utf-8"))
+
+          assert summary["sources"]["p2002"]["topic_count"] == 692
+          assert summary["sources"]["p2003"]["topic_count"] == 892
+          assert summary["surface"] == {"added": 207, "common": 685, "removed": 7}
+          assert summary["sources"]["p2002"]["chm_sha256"] == "688a5a4c5ec209740ba2506e322fc9c8070747c0d9cc7b59560e0a0bea2acf51"
+          assert summary["sources"]["p2003"]["chm_sha256"] == "796e0a899e5b691d04895590206113f112816fe161250486b787f82af4ac5418"
+          assert summary["changed_common_counts"]["signatures"] == 8
+          assert summary["changed_common_counts"]["arguments"] == 8
+          assert summary["changed_common_counts"]["enum_groups"] == 8
+          assert len(summary["rename_move_candidates"]) == 3
+          assert summary["evidence_boundary"]["canonical_html_namespace_only"] is True
+          assert summary["evidence_boundary"]["full_help_prose_committed"] is False
+          assert summary["evidence_boundary"]["pub_wire_format_claims_allowed"] is False
+
+          assert surface["schema_version"] == "chaptera.devhelp-xver.added-removed.v1"
+          assert sum(len(v) for v in surface["added_by_category"].values()) == 207
+          assert sum(len(v) for v in surface["removed_by_category"].values()) == 7
+          assert surface["removed_by_category"]["property"] == [
+              "pbproDestination",
+              "pbproMultiplePagesPerSheet",
+              "pbproPageHeight",
+              "pbproPageWidth",
+          ]
+
+          assert sig["schema_version"] == "chaptera.devhelp-xver.signature-argument-diff.v2"
+          assert len(sig["signature_changes"]) == 8
+          assert len(sig["argument_changes"]) == 8
+          assert {row["topic_id"] for row in sig["signature_changes"]} == {
+              "pbmthAdd", "pbmthAddWizardPage", "pbmthDelete", "pbmthExecute",
+              "pbmthInsert", "pbmthMove", "pbmthSaveAs", "pbproRange",
+          }
+          find_record = next(row for row in sig["argument_changes"] if row["topic_id"] == "pbmthFindRecord")
+          assert find_record["requiredness_changes"] == [{
+              "name": "Field",
+              "required_2002": True,
+              "required_2003": False,
+              "type": "String",
+          }]
+
+          assert enums["schema_version"] == "chaptera.devhelp-xver.enum-diff.v1"
+          assert len(enums["enum_group_changes"]) == 8
+          execute = next(row for row in enums["enum_group_changes"] if row["topic_id"] == "pbmthExecute")
+          assert execute["diff"][0]["type"] == "PbMailMergeDestination"
+          assert execute["diff"][0]["added_constants"]["values"] == [
+              "pbMergeToExistingPublication",
+              "pbMergeToNewPublication",
+              "pbSendToPrinter",
+          ]
+
+          assert continuity["current_tlb"]["type_library_version"] == "2.3"
+          assert continuity["current_tlb"]["type_count"] == 237
+          assert continuity["current_tlb"]["funcdesc_count"] == 3015
+          assert continuity["current_tlb"]["vardesc_count"] == 1129
+          assert continuity["interpretation"]["historical_2002_to_2003_chronology_authority"] == "pinned VBAPB10.CHM pair"
+          assert continuity["interpretation"]["pub_wire_format_claims_allowed"] is False
+
+          print(json.dumps({
+              "added": 207,
+              "removed": 7,
+              "signature_changes": [row["topic_id"] for row in sig["signature_changes"]],
+              "argument_changes": [row["topic_id"] for row in sig["argument_changes"]],
+              "enum_changes": [row["topic_id"] for row in enums["enum_group_changes"]],
+              "rename_candidates": [
+                  [row["from"], row["to"]]
+                  for row in summary["rename_move_candidates"]
+              ],
+          }, sort_keys=True))
+          PY
+
       - name: Install read-only CHM extractor
         run: |
           sudo apt-get update
@@ -66,38 +147,3 @@ jobs:
           path: /tmp/chm-extractor-runtime
           if-no-files-found: error
           retention-days: 7
-
-      - name: Validate retained body-structure diff
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          p = Path("research/devhelp-xver-01/body-structure-diff.json")
-          if not p.exists():
-              print("body-structure diff not committed yet")
-              raise SystemExit(0)
-          r = json.loads(p.read_text(encoding="utf-8"))
-          assert r["schema_version"] == "chaptera.devhelp-xver.body-structure-diff.v1"
-          assert r["sources"]["p2002"]["chm_sha256"] == "688a5a4c5ec209740ba2506e322fc9c8070747c0d9cc7b59560e0a0bea2acf51"
-          assert r["sources"]["p2003"]["chm_sha256"] == "796e0a899e5b691d04895590206113f112816fe161250486b787f82af4ac5418"
-          assert r["sources"]["p2002"]["topic_count"] == 692
-          assert r["sources"]["p2003"]["topic_count"] == 892
-          assert r["surface"]["common_count"] == 685
-          assert r["surface"]["added_count"] == 207
-          assert r["surface"]["removed_count"] == 7
-          assert len(r["signature_changes"]) == 8
-          assert len(r["argument_changes"]) == 8
-          assert len(r["enum_group_changes"]) == 8
-          assert len(r["rename_move_candidates"]) == 3
-          assert r["evidence_boundary"]["full_help_prose_committed"] is False
-          assert r["evidence_boundary"]["pub_wire_format_claims_allowed"] is False
-          print(json.dumps({
-              "signature_changes": [row["topic_id"] for row in r["signature_changes"]],
-              "argument_changes": [row["topic_id"] for row in r["argument_changes"]],
-              "enum_group_changes": [row["topic_id"] for row in r["enum_group_changes"]],
-              "rename_move_candidates": [
-                  [row["from"], row["to"]]
-                  for row in r["rename_move_candidates"]
-              ],
-          }, sort_keys=True))
-          PY
