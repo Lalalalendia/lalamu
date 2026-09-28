@@ -74,5 +74,75 @@
       "https://raw.githubusercontent.com/Legonois/PublisherToPDF/main/test/file-01.pub"
     ],
     "notes": "Public converter test fixture."
+  },
+  {
+    "id": "aspose-dotnet-christmas",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "aspose-pub/Aspose.PUB-for-.NET",
+    "source_path": "Examples/Data/christmas.pub",
+    "source_filename": "christmas.pub",
+    "expected_git_blob_sha1": "1937aff3a70588c8fde65184301c2b48d6c521c3",
+    "expected_size": 717312,
+    "urls": [
+      "https://raw.githubusercontent.com/aspose-pub/Aspose.PUB-for-.NET/master/Examples/Data/christmas.pub"
+    ],
+    "notes": "Public Aspose.PUB example fixture."
+  },
+  {
+    "id": "aspose-dotnet-computer-classes-flyer",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "aspose-pub/Aspose.PUB-for-.NET",
+    "source_path": "Examples/Data/computer-classes-flyer.pub",
+    "source_filename": "computer-classes-flyer.pub",
+    "expected_git_blob_sha1": "1cfc2eec25c83da8a16de876551f68dae3053801",
+    "expected_size": 211456,
+    "urls": [
+      "https://raw.githubusercontent.com/aspose-pub/Aspose.PUB-for-.NET/master/Examples/Data/computer-classes-flyer.pub"
+    ],
+    "notes": "Public Aspose.PUB example fixture."
+  },
+  {
+    "id": "aspose-dotnet-easter-egg-hunt-flyer",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "aspose-pub/Aspose.PUB-for-.NET",
+    "source_path": "Examples/Data/easter-egg-hunt-flyer.pub",
+    "source_filename": "easter-egg-hunt-flyer.pub",
+    "expected_git_blob_sha1": "64398ae3652926d2a02dd68b142e267e363ca2bd",
+    "expected_size": 212480,
+    "urls": [
+      "https://raw.githubusercontent.com/aspose-pub/Aspose.PUB-for-.NET/master/Examples/Data/easter-egg-hunt-flyer.pub"
+    ],
+    "notes": "Public Aspose.PUB example fixture."
+  },
+  {
+    "id": "aspose-dotnet-florist-flyer",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "aspose-pub/Aspose.PUB-for-.NET",
+    "source_path": "Examples/Data/florist-flyer.pub",
+    "source_filename": "florist-flyer.pub",
+    "expected_git_blob_sha1": "3ed00dde59acd0930ba1d75b3df28328ddc79e4e",
+    "expected_size": 1424384,
+    "urls": [
+      "https://raw.githubusercontent.com/aspose-pub/Aspose.PUB-for-.NET/master/Examples/Data/florist-flyer.pub"
+    ],
+    "notes": "Public Aspose.PUB example fixture."
+  },
+  {
+    "id": "aspose-dotnet-halloween-flyer",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "aspose-pub/Aspose.PUB-for-.NET",
+    "source_path": "Examples/Data/halloween-flyer.pub",
+    "source_filename": "halloween-flyer.pub",
+    "expected_git_blob_sha1": "6610c53ff345d4e11e03b7fffd1cd128b3ae4052",
+    "expected_size": 306176,
+    "urls": [
+      "https://raw.githubusercontent.com/aspose-pub/Aspose.PUB-for-.NET/master/Examples/Data/halloween-flyer.pub"
+    ],
+    "notes": "Public Aspose.PUB example fixture."
   }
 ]
