@@ -39,47 +39,6 @@ ENGINE_LINEAGES = {
     },
 }
 
-METRIC_SEMANTICS_VERSION = "2026-09-28.v1"
-
-ENGINE_FIELD_CAPABILITIES = {
-    "chaptera": {
-        "engine_acceptance": "supported",
-        "page_count": "partial",
-        "normalized_text_sha256": "partial",
-    },
-    "libmspub": {
-        "engine_acceptance": "supported",
-        "page_count": "partial",
-        "normalized_text_sha256": "partial",
-    },
-    "libreoffice": {
-        "engine_acceptance": "partial",
-        "page_count": "partial",
-        "normalized_text_sha256": "partial",
-    },
-}
-
-METRIC_SEMANTICS = {
-    "engine_acceptance": {
-        "chaptera": "same input bytes accepted or rejected by the Chaptera public consumer",
-        "libmspub": "same input bytes accepted or rejected by libmspub",
-        "libreoffice": "same input bytes accepted or rejected after LibreOffice Publisher import",
-        "comparability": "direct acceptance status is comparable; LibreOffice is correlated with libmspub",
-    },
-    "page_count": {
-        "chaptera": "Viewer projected scene surface count",
-        "libmspub": "libmspub imported publication page count",
-        "libreoffice": "PDF page count after LibreOffice Publisher import/export",
-        "comparability": "customer-page semantic equivalence is not established; native or exhaustive paired oracle required",
-    },
-    "normalized_text_sha256": {
-        "chaptera": "hash of normalized Chaptera-extracted text serialization",
-        "libmspub": "hash of normalized libmspub-extracted text serialization",
-        "libreoffice": "hash of normalized text extracted after LibreOffice PDF export",
-        "comparability": "serialization/order is not semantic truth; token/content equivalence needs explicit evidence",
-    },
-}
-
 
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
@@ -413,85 +372,6 @@ def intelligence_index(path: Path) -> dict[str, dict[str, Any]]:
     return result
 
 
-def classify_pairwise_disagreements(
-    engines: dict[str, dict[str, Any]],
-    disagreements: list[dict[str, Any]],
-) -> list[dict[str, Any]]:
-    """Classify raw pairwise observations without turning correlated importers into votes."""
-
-    rows: list[dict[str, Any]] = []
-    for raw in disagreements:
-        row = dict(raw)
-        left = str(row.get("left") or "")
-        right = str(row.get("right") or "")
-        field = row.get("field") or (
-            "engine_acceptance" if row.get("kind") == "engine_acceptance_mismatch" else None
-        )
-        pair = {left, right}
-        left_lineage = (ENGINE_LINEAGES.get(left) or {}).get("parser_lineage")
-        right_lineage = (ENGINE_LINEAGES.get(right) or {}).get("parser_lineage")
-        row["metric_semantics_version"] = METRIC_SEMANTICS_VERSION
-        row["left_parser_lineage"] = left_lineage
-        row["right_parser_lineage"] = right_lineage
-        row["left_capability"] = (
-            ENGINE_FIELD_CAPABILITIES.get(left, {}).get(str(field), "unknown")
-        )
-        row["right_capability"] = (
-            ENGINE_FIELD_CAPABILITIES.get(right, {}).get(str(field), "unknown")
-        )
-
-        if "libreoffice" in pair:
-            row["classification"] = "correlated-oracle"
-            if row.get("kind") == "engine_acceptance_mismatch":
-                row["underlying_semantic_classification"] = "comparable"
-            elif field == "page_count":
-                row["underlying_semantic_classification"] = "needs-native-oracle"
-            else:
-                row["underlying_semantic_classification"] = "needs-native-oracle"
-            row["classification_note"] = (
-                "LibreOffice Publisher import is downstream of the libmspub parser lineage; "
-                "retain the observation for reproducibility but do not count it as an independent vote."
-            )
-        elif pair == {"chaptera", "libmspub"} and row.get("kind") == "engine_acceptance_mismatch":
-            row["classification"] = "comparable"
-            row["classification_note"] = (
-                "Acceptance/rejection of the same exact input bytes is directly comparable. "
-                "Promotion still requires the corpus admission/structural-validity gate."
-            )
-        elif pair == {"chaptera", "libmspub"} and field == "page_count":
-            row["classification"] = "needs-native-oracle"
-            row["classification_note"] = (
-                "Chaptera Viewer surfaces and libmspub imported pages are not proven to denote "
-                "the same customer-page concept."
-            )
-        elif pair == {"chaptera", "libmspub"} and field == "normalized_text_sha256":
-            left_tokens = (engines.get(left) or {}).get("token_multiset_sha256")
-            right_tokens = (engines.get(right) or {}).get("token_multiset_sha256")
-            if (
-                left_tokens is not None
-                and right_tokens is not None
-                and left_tokens == right_tokens
-            ):
-                row["classification"] = "semantic-mismatch"
-                row["classification_note"] = (
-                    "Order-insensitive token inventories match while normalized serialization differs."
-                )
-            else:
-                row["classification"] = "needs-native-oracle"
-                row["classification_note"] = (
-                    "Normalized text serialization differs and token equivalence is not established."
-                )
-        elif left_lineage == right_lineage and left_lineage is not None:
-            row["classification"] = "correlated-oracle"
-            row["classification_note"] = "Both observations share the same parser lineage."
-        else:
-            row["classification"] = "needs-native-oracle"
-            row["classification_note"] = "No bounded semantic-equivalence rule promotes this comparison."
-
-        rows.append(row)
-    return rows
-
-
 def triage_rows(engines: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
     """Interpret high-value Chaptera-vs-external gaps without majority voting.
 
@@ -513,7 +393,6 @@ def triage_rows(engines: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
         rows.append(
             {
                 "kind": "chaptera_acceptance_gap",
-                "classification": "comparable",
                 "priority": "high",
                 "chaptera_status": chaptera.get("status"),
                 "external_parser_lineage": "libmspub",
@@ -537,7 +416,6 @@ def triage_rows(engines: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
         rows.append(
             {
                 "kind": "chaptera_page_projection_gap",
-                "classification": "needs-native-oracle",
                 "priority": "high",
                 "chaptera_page_count": chaptera_pages,
                 "libmspub_page_count": external_pages,
@@ -580,7 +458,6 @@ def triage_rows(engines: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
         rows.append(
             {
                 "kind": kind,
-                "classification": "needs-native-oracle",
                 "priority": priority,
                 "chaptera_text_chars": chaptera_chars,
                 "libmspub_text_chars": external_chars,
@@ -591,23 +468,6 @@ def triage_rows(engines: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
             }
         )
     elif (
-        chaptera_tokens is not None
-        and external_tokens is not None
-        and chaptera_tokens == external_tokens
-        and chaptera.get("normalized_text_sha256")
-        != external.get("normalized_text_sha256")
-        and chaptera.get("normalized_text_sha256") is not None
-        and external.get("normalized_text_sha256") is not None
-    ):
-        rows.append(
-            {
-                "kind": "chaptera_text_order_or_punctuation_divergence",
-                "classification": "semantic-mismatch",
-                "priority": "low",
-                "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
-            }
-        )
-    elif (
         chaptera.get("normalized_text_sha256")
         != external.get("normalized_text_sha256")
         and chaptera.get("normalized_text_sha256") is not None
@@ -615,10 +475,9 @@ def triage_rows(engines: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
     ):
         rows.append(
             {
-                "kind": "chaptera_text_serialization_unresolved",
-                "classification": "needs-native-oracle",
-                "priority": "medium",
-                "note": "Normalized text differs, but token-multiset equivalence is unavailable or not equal.",
+                "kind": "chaptera_text_order_or_punctuation_divergence",
+                "priority": "low",
+                "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
             }
         )
 
@@ -630,7 +489,6 @@ def triage_rows(engines: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
             rows.append(
                 {
                     "kind": "shared_lineage_downstream_text_divergence",
-                    "classification": "correlated-oracle",
                     "priority": "low",
                     "note": "libmspub and LibreOffice share the PUB parser lineage; this difference is downstream extraction/render serialization, not an independent parser disagreement.",
                 }
@@ -667,7 +525,6 @@ def main() -> int:
 
     records: list[dict[str, Any]] = []
     issue_counter: Counter[str] = Counter()
-    classification_counter: Counter[str] = Counter()
     triage_counter: Counter[str] = Counter()
     for path in selected:
         engines = {
@@ -682,12 +539,8 @@ def main() -> int:
             ),
         }
         disagreements = disagreement_rows(engines)
-        classified_disagreements = classify_pairwise_disagreements(engines, disagreements)
         triage = triage_rows(engines)
         issue_counter.update(row["kind"] for row in disagreements)
-        classification_counter.update(
-            row["classification"] for row in classified_disagreements
-        )
         triage_counter.update(row["kind"] for row in triage)
         sha = path.stem.lower()
         records.append(
@@ -697,7 +550,6 @@ def main() -> int:
                 "corpus_context": corpus_context.get(sha) or {},
                 "engines": engines,
                 "raw_pairwise_disagreements": disagreements,
-                "classified_pairwise_disagreements": classified_disagreements,
                 "triage": triage,
             }
         )
@@ -708,12 +560,8 @@ def main() -> int:
         "selected_file_count": len(records),
         "tool_versions": tool_versions,
         "engine_lineages": ENGINE_LINEAGES,
-        "engine_field_capabilities": ENGINE_FIELD_CAPABILITIES,
-        "metric_semantics_version": METRIC_SEMANTICS_VERSION,
-        "metric_semantics": METRIC_SEMANTICS,
         "interpretation": "Pairwise observations are not votes. LibreOffice Publisher import uses the libmspub parser lineage, so LibreOffice may confirm downstream behavior but is not an independent parser lineage.",
         "raw_pairwise_issue_counts": dict(sorted(issue_counter.items())),
-        "classified_pairwise_counts": dict(sorted(classification_counter.items())),
         "triage_counts": dict(sorted(triage_counter.items())),
         "records": records,
     }
@@ -730,7 +578,6 @@ def main() -> int:
                 "schema": SCHEMA,
                 "selected_file_count": len(records),
                 "raw_pairwise_issue_counts": receipt["raw_pairwise_issue_counts"],
-                "classified_pairwise_counts": receipt["classified_pairwise_counts"],
                 "triage_counts": receipt["triage_counts"],
                 "receipt_sha256": receipt["receipt_sha256"],
             },
