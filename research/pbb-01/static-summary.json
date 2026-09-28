@@ -1,0 +1,168 @@
+{
+  "schema_version": "chaptera.pbb.static-summary.v1",
+  "task": "PBB-01",
+  "authority": "PUB-T-141",
+  "source": {
+    "known_target": "https://helfer.gemeindebriefdruckerei.de/wp-content/uploads/2016/12/v_2016_01_pub.zip",
+    "http_status": 200,
+    "content_type": "application/zip",
+    "redirect_count_https": 0,
+    "zip_byte_len": 7593658,
+    "zip_sha256": "752a519f01d2fd24ed019c547b7dff27b1509150fdce2b1a6f84e093e694f32f",
+    "zip_entry_count": 94,
+    "pbb_entry_count": 94
+  },
+  "corpus": {
+    "pbb_count": 94,
+    "container": "CFB",
+    "cfb_magic": "d0cf11e0a1b11ae1",
+    "root_clsid": "00021201-0000-0000-00C0-000000000046",
+    "compobj_strings": [
+      "Microsoft Publisher 3.0",
+      "MSPublisher.3"
+    ],
+    "file_size_bytes": {
+      "min": 599040,
+      "median": 1167872,
+      "max": 1369088
+    },
+    "stream_profile_count": 2,
+    "common_streams_present_in_all_94": [
+      "\u0001CompObj",
+      "\u0003Internal",
+      "\u0005SummaryInformation",
+      "BBStoreInfo14",
+      "Contents",
+      "Envelope",
+      "Escher/EscherDelayStm",
+      "Escher/EscherStm",
+      "Quill/QuillSub/\u0001CompObj",
+      "Quill/QuillSub/CONTENTS"
+    ],
+    "document_summary_information_present": 91,
+    "document_summary_information_absent": [
+      {
+        "filename": "DS00B001.pbb",
+        "sha256": "54b113af74d43c75813ead5d14c3dbeb1177c4041a8800b8b597f9ba16c5060b"
+      },
+      {
+        "filename": "ES01B002.pbb",
+        "sha256": "dc0f1627337fc3dc692ca3bc9025b8f22ac88cd3f233f119c148e9476b931766"
+      },
+      {
+        "filename": "ES01B003.pbb",
+        "sha256": "e0a8e126d28b253b594c8ed5e79042f1cd50b1aa77ad43d975abc374a72d50b2"
+      }
+    ],
+    "escher_delay_stream_nonzero": 89,
+    "escher_delay_stream_empty": [
+      "DS00B001.pbb",
+      "ES00B001.pbb",
+      "ES00B002.pbb",
+      "ES00B003.pbb",
+      "ES00B004.pbb"
+    ]
+  },
+  "bbstoreinfo14": {
+    "present": 94,
+    "unique_stream_sha256": 94,
+    "size_bytes": {
+      "min": 1242,
+      "median": 1361,
+      "max": 1432
+    },
+    "version_2_count": 94,
+    "one_item_count": 94,
+    "title_matches_filename_stem": 94,
+    "filename_field_matches_filename_stem": 94,
+    "field_presence_count": {
+      "Title": 94,
+      "Size": 94,
+      "Description": 94,
+      "Category": 94,
+      "Keywords": 94,
+      "Type": 94,
+      "CreationTime": 94,
+      "LastUseTime": 94,
+      "Filename": 94,
+      "PreviewText": 94,
+      "InsertGallery": 94,
+      "ShowInGallery": 94,
+      "Cct": 94,
+      "IsLinkedPicture": 94,
+      "IsRTLTextbox": 94,
+      "IsDownloaded": 94,
+      "IsBuiltIn": 94
+    },
+    "constant_fields": {
+      "Category": "GemeindebriefDruckerei",
+      "Keywords": "",
+      "Type": "1",
+      "LastUseTime": "",
+      "PreviewText": "",
+      "InsertGallery": "4",
+      "ShowInGallery": "1",
+      "Cct": "33456232",
+      "IsLinkedPicture": "0",
+      "IsRTLTextbox": "0",
+      "IsDownloaded": "0",
+      "IsBuiltIn": "0"
+    },
+    "varying_field_unique_counts": {
+      "Title": 94,
+      "Filename": 94,
+      "CreationTime": 94,
+      "Description": 66,
+      "Size": 42
+    },
+    "empty_description_count": 29
+  },
+  "stream_facts": {
+    "Contents": {
+      "present": 94,
+      "unique_sha256": 94,
+      "size_min": 7160,
+      "size_median": 7928,
+      "size_max": 15154
+    },
+    "Escher/EscherStm": {
+      "present": 94,
+      "unique_sha256": 94,
+      "size_min": 1658,
+      "size_median": 3181,
+      "size_max": 16864
+    },
+    "Quill/QuillSub/CONTENTS": {
+      "present": 94,
+      "unique_sha256": 94,
+      "size_min": 2048,
+      "size_median": 9216,
+      "size_max": 13824
+    }
+  },
+  "negative_token_scan": {
+    "ContentStore_files": 0,
+    "BBStyle_files": 0,
+    "desID_files": 0,
+    "wid_files": 0
+  },
+  "evidence": {
+    "discovery_run": 36433462813,
+    "artifact_id": 10973839918,
+    "artifact_digest": "sha256:c77dc4d7202fe1097722e55bf46407a7a58ac8b4cc89ff78c8abe99a4bdd72c5"
+  },
+  "conclusion": {
+    "public_pbb_acquisition_closed": true,
+    "container_and_metadata_inventory_closed": true,
+    "pbb_to_addbuildingblock_to_pub_comparison_completed": false,
+    "notion_task_should_close": false,
+    "next_required_discriminator": "native Publisher AddBuildingBlock -> saved/reopened PUB comparison on one recovered sentinel PBB",
+    "pub_wire_format_claim_authorized": false
+  },
+  "authority_fence": {
+    "publisher_runtime_used": false,
+    "raw_zip_or_pbb_bytes_committed": false,
+    "universal_pbb_grammar_claimed": false,
+    "add_building_block_semantics_proven": false
+  }
+}
