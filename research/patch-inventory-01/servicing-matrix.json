@@ -123,16 +123,21 @@
       "authority": "microsoft_security_bulletin",
       "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2013/ms13-042",
       "supports": [
-        "publisher_2003_sp3_package",
-        "publisher_2007_sp3_package",
-        "publisher_2010_sp1_package"
+        "publisher_2003_2007_2010_specific_packages",
+        "publisher_2003_2007_supersedence",
+        "publisher_2013_explicit_non_affected",
+        "remote_code_execution_parser_fix"
       ]
     },
     "publisher_2010_sp2_security": {
       "authority": "microsoft_support",
       "url": "https://support.microsoft.com/en-us/topic/ms16-148-description-of-the-security-update-for-publisher-2010-december-13-2016-94e33774-3db8-e03b-dc73-7437b3fc6244",
       "supports": [
-        "publisher_2010_sp2_applicability"
+        "kb3114395_identity",
+        "publisher_2010_sp2_applicability",
+        "x86_x64_package_names_and_sha256",
+        "replaces_kb2817478",
+        "publisher_file_manifest"
       ]
     },
     "publisher_2013_lifecycle": {
@@ -231,8 +236,10 @@
       "authority": "microsoft_security_bulletin",
       "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2010/ms10-103",
       "supports": [
-        "publisher_2010_x86_x64_package",
-        "publisher_specific_update"
+        "publisher_2002_2003_2007_2010_specific_packages",
+        "remote_code_execution_parser_fix",
+        "legacy_pubconv_causal_surface",
+        "publisher_2010_x86_x64_package_names"
       ]
     }
   },
@@ -924,6 +931,403 @@
         "m365_update_process"
       ],
       "notes": "No RTM/SP ladder is modeled for the subscription line; the useful identity is update channel + build."
+    },
+    {
+      "id": "pub2002-ms10-103",
+      "generation": "Publisher 2002",
+      "epoch_kind": "publisher_update",
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package_specific",
+      "cumulative": false,
+      "publisher_scope": "publisher_specific_security_update",
+      "evidence_strength": "primary_source_publisher_specific_update",
+      "epoch_label": "MS10-103 / Publisher 2002 SP3",
+      "release_date": "2010-12-14",
+      "kb_ids": [
+        "2284692"
+      ],
+      "architecture": [
+        "x86"
+      ],
+      "supersedes": [
+        "pub2002-sp3"
+      ],
+      "bulletin_id": "MS10-103",
+      "bulletin_kb": "2292970",
+      "package_names": [
+        "officeXP-KB2284692-FullFile-ENU.exe"
+      ],
+      "security_impact": "Remote Code Execution",
+      "target_surface": [
+        "Publisher parser",
+        "pubconv.dll legacy converter causal surface"
+      ],
+      "publisher_module_impact": "publisher_parser_fix_proven_pubconv_causal_surface_exact_package_file_manifest_not_joined",
+      "source_refs": [
+        "ms10_103"
+      ],
+      "notes": "Microsoft says the update corrects how Publisher parses crafted Publisher files. The bulletin also identifies pubconv.dll as the legacy-file converter surface. Do not infer that every changed file is known until KB2284692 file information is joined."
+    },
+    {
+      "id": "pub2003-ms10-103",
+      "generation": "Publisher 2003",
+      "epoch_kind": "publisher_update",
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package_specific",
+      "cumulative": false,
+      "publisher_scope": "publisher_specific_security_update",
+      "evidence_strength": "primary_source_publisher_specific_update",
+      "epoch_label": "MS10-103 / Publisher 2003 SP3",
+      "release_date": "2010-12-14",
+      "kb_ids": [
+        "2284695"
+      ],
+      "architecture": [
+        "x86"
+      ],
+      "supersedes": [
+        "pub2003-sp3"
+      ],
+      "bulletin_id": "MS10-103",
+      "bulletin_kb": "2292970",
+      "package_names": [
+        "office2003-KB2284695-FullFile-ENU.exe"
+      ],
+      "security_impact": "Remote Code Execution",
+      "target_surface": [
+        "Publisher parser",
+        "pubconv.dll legacy converter causal surface"
+      ],
+      "publisher_module_impact": "publisher_parser_fix_proven_pubconv_causal_surface_exact_package_file_manifest_not_joined",
+      "source_refs": [
+        "ms10_103"
+      ],
+      "notes": "Publisher-specific package and parser-fix purpose are primary-source pinned; exact changed-file set is not yet normalized."
+    },
+    {
+      "id": "pub2007-ms10-103",
+      "generation": "Publisher 2007",
+      "epoch_kind": "publisher_update",
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package_specific",
+      "cumulative": false,
+      "publisher_scope": "publisher_specific_security_update",
+      "evidence_strength": "primary_source_publisher_specific_update",
+      "epoch_label": "MS10-103 / Publisher 2007 SP2",
+      "release_date": "2010-12-14",
+      "kb_ids": [
+        "2284697"
+      ],
+      "architecture": [
+        "x86"
+      ],
+      "supersedes": [
+        "pub2007-sp2"
+      ],
+      "bulletin_id": "MS10-103",
+      "bulletin_kb": "2292970",
+      "package_names": [
+        "publisher2007-kb2284697-fullfile-x86-glb.exe"
+      ],
+      "security_impact": "Remote Code Execution",
+      "target_surface": [
+        "Publisher parser",
+        "pubconv.dll legacy converter causal surface"
+      ],
+      "publisher_module_impact": "publisher_parser_fix_proven_pubconv_causal_surface_exact_package_file_manifest_not_joined",
+      "source_refs": [
+        "ms10_103"
+      ],
+      "notes": "Publisher-specific package and parser-fix purpose are primary-source pinned; exact changed-file set is not yet normalized."
+    },
+    {
+      "id": "pub2010-ms10-103",
+      "generation": "Publisher 2010",
+      "epoch_kind": "publisher_update",
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package_specific",
+      "cumulative": false,
+      "publisher_scope": "publisher_specific_security_update",
+      "evidence_strength": "primary_source_publisher_specific_update",
+      "epoch_label": "MS10-103 / Publisher 2010 RTM",
+      "release_date": "2010-12-14",
+      "kb_ids": [
+        "2409055"
+      ],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "supersedes": [
+        "pub2010-rtm"
+      ],
+      "bulletin_id": "MS10-103",
+      "bulletin_kb": "2292970",
+      "package_names": [
+        "Publisher2010-kb2409055-fullfile-x86-glb.exe",
+        "Publisher2010-kb2409055-fullfile-x64-glb.exe"
+      ],
+      "security_impact": "Remote Code Execution",
+      "target_surface": [
+        "Publisher parser"
+      ],
+      "publisher_module_impact": "publisher_parser_fix_and_arch_specific_packages_proven_exact_package_file_manifest_not_joined",
+      "source_refs": [
+        "ms10_103"
+      ],
+      "notes": "The bulletin states this update is intended for inclusion in a future service pack or rollup."
+    },
+    {
+      "id": "pub2003-ms13-042",
+      "generation": "Publisher 2003",
+      "epoch_kind": "publisher_update",
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package_specific",
+      "cumulative": false,
+      "publisher_scope": "publisher_specific_security_update",
+      "evidence_strength": "primary_source_publisher_specific_update",
+      "epoch_label": "MS13-042 / Publisher 2003 SP3",
+      "release_date": "2013-05-14",
+      "kb_ids": [
+        "2810047"
+      ],
+      "architecture": [
+        "x86"
+      ],
+      "supersedes": [
+        "pub2003-ms10-103"
+      ],
+      "bulletin_id": "MS13-042",
+      "bulletin_kb": "2830397",
+      "package_names": [
+        "office2003-kb2810047-fullfile-enu.exe"
+      ],
+      "security_impact": "Remote Code Execution",
+      "replaces_kb_ids": [
+        "2553084"
+      ],
+      "target_surface": [
+        "Publisher parser"
+      ],
+      "publisher_module_impact": "publisher_specific_parser_security_package_proven_exact_file_manifest_not_joined",
+      "source_refs": [
+        "ms13_042"
+      ],
+      "notes": "Bulletin explicitly states update 2810047 replaces 2553084 from MS11-091."
+    },
+    {
+      "id": "pub2007-ms13-042",
+      "generation": "Publisher 2007",
+      "epoch_kind": "publisher_update",
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package_specific",
+      "cumulative": false,
+      "publisher_scope": "publisher_specific_security_update",
+      "evidence_strength": "primary_source_publisher_specific_update",
+      "epoch_label": "MS13-042 / Publisher 2007 SP3",
+      "release_date": "2013-05-14",
+      "kb_ids": [
+        "2597971"
+      ],
+      "architecture": [
+        "x86"
+      ],
+      "supersedes": [
+        "pub2007-sp3"
+      ],
+      "bulletin_id": "MS13-042",
+      "bulletin_kb": "2830397",
+      "package_names": [
+        "publisher2007-kb2597971-fullfile-x86-glb.exe"
+      ],
+      "security_impact": "Remote Code Execution",
+      "replaces_kb_ids": [
+        "2596705"
+      ],
+      "target_surface": [
+        "Publisher parser"
+      ],
+      "publisher_module_impact": "publisher_specific_parser_security_package_proven_exact_file_manifest_not_joined",
+      "source_refs": [
+        "ms13_042"
+      ],
+      "notes": "Bulletin explicitly states update 2597971 replaces 2596705 from MS11-091."
+    },
+    {
+      "id": "pub2010-ms13-042",
+      "generation": "Publisher 2010",
+      "epoch_kind": "publisher_update",
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package_specific",
+      "cumulative": false,
+      "publisher_scope": "publisher_specific_security_update",
+      "evidence_strength": "primary_source_publisher_specific_update",
+      "epoch_label": "MS13-042 / Publisher 2010 SP1",
+      "release_date": "2013-05-14",
+      "kb_ids": [
+        "2553147"
+      ],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "supersedes": [
+        "pub2010-sp1",
+        "pub2010-ms10-103"
+      ],
+      "bulletin_id": "MS13-042",
+      "bulletin_kb": "2830397",
+      "package_names": [
+        "publisher2010-kb2553147-fullfile-x86-glb.exe",
+        "publisher2010-kb2553147-fullfile-x64-glb.exe"
+      ],
+      "security_impact": "Remote Code Execution",
+      "replaces_kb_ids": [],
+      "target_surface": [
+        "Publisher parser"
+      ],
+      "publisher_module_impact": "publisher_specific_parser_security_package_proven_exact_file_manifest_not_joined",
+      "source_refs": [
+        "ms13_042"
+      ],
+      "notes": "Microsoft explicitly lists Publisher 2013 x86/x64 as non-affected by MS13-042."
+    },
+    {
+      "id": "pub2010-ms16-148",
+      "generation": "Publisher 2010",
+      "epoch_kind": "publisher_update",
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package_specific",
+      "cumulative": false,
+      "publisher_scope": "publisher_specific_security_update",
+      "evidence_strength": "primary_source_publisher_specific_update",
+      "epoch_label": "MS16-148 / Publisher 2010 SP2 / KB3114395",
+      "release_date": "2016-12-13",
+      "kb_ids": [
+        "3114395"
+      ],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "supersedes": [
+        "pub2010-sp2",
+        "pub2010-ms13-042"
+      ],
+      "bulletin_id": "MS16-148",
+      "bulletin_kb": "3204068",
+      "package_names": [
+        "publisher2010-kb3114395-fullfile-x86-glb.exe",
+        "publisher2010-kb3114395-fullfile-x64-glb.exe"
+      ],
+      "package_sha256": {
+        "x86": "9BF8C3771B133781B29FFE24A913D62FD9A009A8C5DA46A80E192805759063D8",
+        "x64": "0E832B9654556C8B43ADC128A6E85B4412FDA6B7989AFD7CA1FBEEB8B69774A4"
+      },
+      "security_impact": "Remote Code Execution",
+      "replaces_kb_ids": [
+        "2817478"
+      ],
+      "target_surface": [
+        "Publisher 2010 binary set"
+      ],
+      "publisher_module_impact": "exact_publisher_file_manifest_proven",
+      "file_manifest": {
+        "x86": [
+          {
+            "file": "morph9.dll",
+            "version": "14.0.7162.5000",
+            "size": 457944
+          },
+          {
+            "file": "mspub.exe",
+            "version": "14.0.7162.5000",
+            "size": 9675944
+          },
+          {
+            "file": "mspub.exe.manifest",
+            "version": null,
+            "size": 1205
+          },
+          {
+            "file": "prtf9.dll",
+            "version": "14.0.7162.5000",
+            "size": 139976
+          },
+          {
+            "file": "ptxt9.dll",
+            "version": "14.0.7177.5000",
+            "size": 635648
+          },
+          {
+            "file": "pubconv.dll",
+            "version": "14.0.7162.5000",
+            "size": 615616
+          },
+          {
+            "file": "pubtrap.dll",
+            "version": "14.0.7162.5000",
+            "size": 49344
+          }
+        ],
+        "x64": [
+          {
+            "file": "morph9.dll",
+            "version": "14.0.7162.5000",
+            "size": 633560
+          },
+          {
+            "file": "mspub.exe",
+            "version": "14.0.7162.5000",
+            "size": 12793000
+          },
+          {
+            "file": "mspub.exe.manifest",
+            "version": null,
+            "size": 1207
+          },
+          {
+            "file": "prtf9.dll",
+            "version": "14.0.7162.5000",
+            "size": 171208
+          },
+          {
+            "file": "ptxt9.dll",
+            "version": "14.0.7177.5000",
+            "size": 873728
+          },
+          {
+            "file": "pubconv.dll",
+            "version": "14.0.7162.5000",
+            "size": 846528
+          },
+          {
+            "file": "pubtrap.dll",
+            "version": "14.0.7162.5000",
+            "size": 60096
+          }
+        ]
+      },
+      "source_refs": [
+        "publisher_2010_sp2_security"
+      ],
+      "notes": "This is the strongest Publisher-specific binary-impact anchor in the second tranche: Microsoft publishes package SHA-256, supersedence, and exact x86/x64 file manifests."
     }
   ],
   "gaps": [
@@ -1010,6 +1414,39 @@
       "Publisher LTSC 2021",
       "Publisher for Microsoft 365"
     ],
-    "next_tranche": "Publisher-specific security/save/corruption updates and binary/file-manifest impact, starting with MS10-103/MS13-042 and later Publisher 2010 SP2 packages."
-  }
+    "next_tranche": "Publisher-specific security/save/corruption updates and binary/file-manifest impact, starting with MS10-103/MS13-042 and later Publisher 2010 SP2 packages.",
+    "second_tranche": {
+      "publisher_update_rows_added": 8,
+      "bulletins": [
+        "MS10-103",
+        "MS13-042",
+        "MS16-148"
+      ],
+      "exact_binary_manifest_rows": [
+        "pub2010-ms16-148"
+      ],
+      "explicit_non_affected": [
+        {
+          "event": "MS13-042",
+          "generation": "Publisher 2013"
+        }
+      ],
+      "remaining_priority": "Add Publisher-specific 2013/2016 updates and exact file manifests; resolve legacy 97/98/2000 chronology separately."
+    }
+  },
+  "negative_applicability": [
+    {
+      "event": "MS13-042",
+      "generation": "Publisher 2013",
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "status": "explicitly_non_affected",
+      "source_refs": [
+        "ms13_042"
+      ],
+      "notes": "Microsoft's bulletin lists Publisher 2013 32-bit and 64-bit editions under Non-Affected Software."
+    }
+  ]
 }
