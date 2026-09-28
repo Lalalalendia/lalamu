@@ -1,0 +1,87 @@
+name: PUB page-role evidence sweep
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "pub-corpus/data/oracle-differential/latest.json"
+      - "pub-corpus/scripts/page_role_sweep.py"
+      - "pub-corpus/tools/page-role-probe/**"
+      - ".github/workflows/pub-page-role-sweep.yml"
+  schedule:
+    - cron: "19 6 * * 2,5"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pub-page-role-evidence-sweep
+  cancel-in-progress: false
+
+jobs:
+  sweep:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch current public Chaptera source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --depth 1 https://github.com/HeisLuka/rar.git upstream/rar
+          echo "CHAPTERA_UPSTREAM_COMMIT=$(git -C upstream/rar rev-parse HEAD)" >> "$GITHUB_ENV"
+
+      - name: Build page-role probe against current Chaptera
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.94.1 --profile minimal
+          cargo +1.94.1 build             --release             --manifest-path pub-corpus/tools/page-role-probe/Cargo.toml
+
+      - name: Sweep admitted public corpus
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile pub-corpus/scripts/page_role_sweep.py
+          python pub-corpus/scripts/page_role_sweep.py             --probe-bin pub-corpus/tools/page-role-probe/target/release/lalamu-page-role-probe
+
+      - name: Upload page-role receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: pub-page-role-sweep-v1
+          path: pub-corpus/data/page-role-sweep/latest.json
+          if-no-files-found: error
+
+      - name: Publish changed page-role receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$(git status --porcelain -- pub-corpus/data/page-role-sweep)" ]]; then
+            echo "Page-role receipt unchanged."
+            exit 0
+          fi
+
+          git config user.name "lalamu-lab-bot"
+          git config user.email "lalamu-lab-bot@users.noreply.github.com"
+          git add -- pub-corpus/data/page-role-sweep
+          git commit -m "lab: refresh PUB page-role sweep"
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push raced with main on attempt ${attempt}; retrying."
+          done
+          exit 1
