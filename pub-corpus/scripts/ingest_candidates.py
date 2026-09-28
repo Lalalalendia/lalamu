@@ -240,6 +240,12 @@ def fetch_candidate(candidate: dict[str, Any]) -> tuple[bytes, str] | None:
         attempted.add(url)
         try:
             data, final_url, _ = fetch_bytes(url)
+            if candidate.get("recover_wayback") and not data.startswith(CFB_MAGIC):
+                print(
+                    f"  fetched non-CFB payload: {url} :: "
+                    f"{len(data)} bytes; trying remaining/archive sources"
+                )
+                continue
             return data, final_url
         except (HTTPError, URLError, TimeoutError, ValueError) as exc:
             print(f"  fetch failed: {url} :: {type(exc).__name__}: {exc}")
