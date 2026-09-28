@@ -20,5 +20,8 @@ fn main() {
         "measurement_semantics": "deterministic_source_free_counters",
         "receipts": receipts,
     });
-    println!(\n        "{}",\n        serde_json::to_string_pretty(&envelope).expect("serialize receipt set")\n    );
+    println!(
+        "{}",
+        serde_json::to_string_pretty(&envelope).expect("serialize receipt set")
+    );
 }
