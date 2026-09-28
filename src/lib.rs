@@ -88,7 +88,9 @@ impl FrameScheduler {
     }
 
     pub fn submit(&mut self, id: FrameIdentity) -> bool {
-        let Some(work) = self.pending else { return false; };
+        let Some(work) = self.pending else {
+            return false;
+        };
         if work.id != id || work.stage != Stage::Building {
             return false;
         }
@@ -99,7 +101,9 @@ impl FrameScheduler {
     }
 
     pub fn complete_and_present(&mut self, id: FrameIdentity) -> bool {
-        let Some(work) = self.submitted else { return false; };
+        let Some(work) = self.submitted else {
+            return false;
+        };
         if work.id != id {
             return false;
         }
