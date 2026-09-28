@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "pub-corpus/**"
+      - "tests/test_page_role_sweep.py"
       - ".github/workflows/pub-*.yml"
   push:
     branches:
@@ -39,6 +40,9 @@ jobs:
           set -euo pipefail
           python -m py_compile             pub-corpus/scripts/corpus_intelligence.py             pub-corpus/scripts/oracle_differential.py             pub-corpus/scripts/fuzz_pub.py \
             pub-corpus/scripts/page_role_sweep.py
+
+      - name: Test page-role scenario projection
+        run: python -m unittest tests/test_page_role_sweep.py -v
 
       - name: Exercise structural census on admitted corpus
         run: |

@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CORPUS = ROOT / "corpus" / "native" / "unclassified"
 DEFAULT_DIFF = ROOT / "data" / "oracle-differential" / "latest.json"
 DEFAULT_OUTPUT = ROOT / "data" / "page-role-sweep" / "latest.json"
-SCHEMA = "lalamu.pub-page-role-sweep.v1"
+SCHEMA = "lalamu.pub-page-role-sweep.v2"
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -74,6 +74,116 @@ def load_differential(path: Path) -> dict[str, dict[str, Any]]:
         str(row.get("sha256") or "").lower(): row
         for row in payload.get("records") or []
         if row.get("sha256")
+    }
+
+
+SCENARIO_PROJECTION_BASIS = "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1"
+SCENARIO_PROJECTION_APPLICABILITY = (
+    "bounded-source-observation-only; not generic visible-page authority"
+)
+
+
+def derive_scenario_projection(receipt: dict[str, Any]) -> dict[str, Any]:
+    """Resolve bounded current-scenario PageList evidence without changing Viewer semantics."""
+
+    page_lists: list[dict[str, Any]] = []
+    for controlling in receipt.get("controlling") or []:
+        for field in controlling.get("fields") or []:
+            if field.get("id") != 0x06:
+                continue
+            pgids = field.get("pgids")
+            if not isinstance(pgids, list):
+                pgids = []
+            page_lists.append(
+                {
+                    "controlling_seq_num": controlling.get("contents_seq_num"),
+                    "parent_seq_num": controlling.get("parent_seq_num"),
+                    "pgids": pgids,
+                }
+            )
+
+    common = {
+        "evidence_basis": SCENARIO_PROJECTION_BASIS,
+        "applicability": SCENARIO_PROJECTION_APPLICABILITY,
+        "controlling_page_list_count": len(page_lists),
+        "controlling_page_lists": page_lists,
+    }
+    if not page_lists:
+        return {**common, "status": "unavailable", "reason": "no_controlling_page_list"}
+    if any(not row["pgids"] for row in page_lists):
+        return {**common, "status": "unavailable", "reason": "controlling_page_list_empty"}
+
+    consensus = page_lists[0]["pgids"]
+    if any(row["pgids"] != consensus for row in page_lists[1:]):
+        return {**common, "status": "unavailable", "reason": "controlling_page_lists_disagree"}
+
+    pages_by_oid: dict[tuple[int, int], list[int]] = {}
+    document_pages: list[dict[str, Any]] = []
+    for page in receipt.get("pages") or []:
+        seq_num = page.get("contents_seq_num")
+        ordinal = page.get("document_ordinal")
+        oid0 = page.get("oid_dword0")
+        oid1 = page.get("oid_dword1")
+        if isinstance(seq_num, int) and isinstance(ordinal, int):
+            document_pages.append({"seq_num": seq_num, "ordinal": ordinal})
+        if all(isinstance(value, int) for value in (seq_num, oid0, oid1)):
+            pages_by_oid.setdefault((oid0, oid1), []).append(seq_num)
+
+    pgid_order_resolved: list[int] = []
+    seen_seq_nums: set[int] = set()
+    for raw_pgid in consensus:
+        if (
+            not isinstance(raw_pgid, list)
+            or len(raw_pgid) != 2
+            or not all(isinstance(value, int) for value in raw_pgid)
+        ):
+            return {**common, "status": "unavailable", "reason": "malformed_pgid"}
+        pgid = (raw_pgid[0], raw_pgid[1])
+        matches = pages_by_oid.get(pgid) or []
+        if not matches:
+            return {
+                **common,
+                "status": "unavailable",
+                "reason": f"pgid_has_no_page:{pgid[0]:08x}:{pgid[1]:08x}",
+            }
+        if len(matches) != 1:
+            return {
+                **common,
+                "status": "unavailable",
+                "reason": (
+                    f"pgid_is_ambiguous:{pgid[0]:08x}:{pgid[1]:08x}:"
+                    f"matches={len(matches)}"
+                ),
+            }
+        seq_num = matches[0]
+        if seq_num in seen_seq_nums:
+            return {
+                **common,
+                "status": "unavailable",
+                "reason": "controlling_page_list_repeats_page",
+            }
+        seen_seq_nums.add(seq_num)
+        pgid_order_resolved.append(seq_num)
+
+    document_order_projected = [
+        row["seq_num"]
+        for row in sorted(document_pages, key=lambda row: row["ordinal"])
+        if row["seq_num"] in seen_seq_nums
+    ]
+    if len(document_order_projected) != len(pgid_order_resolved):
+        return {
+            **common,
+            "status": "unavailable",
+            "reason": "resolved_page_missing_from_document_order",
+        }
+
+    return {
+        **common,
+        "status": "resolved",
+        "reason": None,
+        "pgids": consensus,
+        "pgid_order_resolved_seq_nums": pgid_order_resolved,
+        "document_order_projected_seq_nums": document_order_projected,
     }
 
 
@@ -155,6 +265,7 @@ def main() -> int:
     records: list[dict[str, Any]] = []
     pgt_values: set[int] = set()
     status_counts: Counter[str] = Counter()
+    scenario_projection_status_counts: Counter[str] = Counter()
 
     for path in sorted(args.corpus.rglob("*.pub")):
         sha = path.stem.lower()
@@ -175,6 +286,9 @@ def main() -> int:
         }
         if observation.get("status") == "success":
             receipt = observation["receipt"]
+            scenario_projection = derive_scenario_projection(receipt)
+            record["scenario_projection"] = scenario_projection
+            scenario_projection_status_counts[scenario_projection["status"]] += 1
             for page in receipt.get("pages") or []:
                 if isinstance(page.get("pgt_type"), int):
                     pgt_values.add(page["pgt_type"])
@@ -186,6 +300,28 @@ def main() -> int:
         if row["probe"].get("status") == "success"
         and isinstance(row.get("libmspub_lineage_page_count"), int)
     ]
+
+    scenario_scored_files = [
+        row
+        for row in records
+        if (row.get("scenario_projection") or {}).get("status") == "resolved"
+        and isinstance(row.get("libmspub_lineage_page_count"), int)
+    ]
+    scenario_exact = sum(
+        1
+        for row in scenario_scored_files
+        if len(row["scenario_projection"]["document_order_projected_seq_nums"])
+        == int(row["libmspub_lineage_page_count"])
+    )
+    scenario_projection_comparison = {
+        "evaluated_file_count": len(scenario_scored_files),
+        "exact_file_count": scenario_exact,
+        "interpretation": (
+            "Count comparison is observational only. Resolved scenario projection is derived "
+            "from unanimous OplControlling PageList Pgid -> PAGE Oid membership and then "
+            "ordered by the DOCUMENT PageList; it is not promoted as universal Viewer authority."
+        ),
+    }
 
     scoreboard: list[dict[str, Any]] = []
     for display_name, predicate_name, value in predicate_specs(sorted(pgt_values)):
@@ -237,6 +373,10 @@ def main() -> int:
         "schema": SCHEMA,
         "chaptera_upstream_commit": __import__("os").environ.get("CHAPTERA_UPSTREAM_COMMIT"),
         "status_counts": dict(sorted(status_counts.items())),
+        "scenario_projection_status_counts": dict(
+            sorted(scenario_projection_status_counts.items())
+        ),
+        "scenario_projection_comparison": scenario_projection_comparison,
         "scored_file_count": len(scored_files),
         "observed_pgt_types": sorted(pgt_values),
         "heuristic_warning": (
@@ -261,6 +401,12 @@ def main() -> int:
             {
                 "schema": SCHEMA,
                 "status_counts": receipt["status_counts"],
+                "scenario_projection_status_counts": receipt[
+                    "scenario_projection_status_counts"
+                ],
+                "scenario_projection_comparison": receipt[
+                    "scenario_projection_comparison"
+                ],
                 "scored_file_count": receipt["scored_file_count"],
                 "top_predicates": [
                     {
