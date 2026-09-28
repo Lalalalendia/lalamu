@@ -159,6 +159,140 @@ impl FrameScheduler {
     }
 }
 
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct StormReceipt {
+    pub requests: u64,
+    pub builds_started: u64,
+    pub presented: u64,
+    pub superseded_pre_submit: u64,
+    pub max_pending_or_in_flight: u64,
+    pub latest_visible_view: u64,
+    pub request_to_present_ticks: u64,
+    pub frame_time_distribution_ticks: Vec<u64>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct StaleSubmitReceipt {
+    pub stale_submitted: u64,
+    pub old_generation_presented: bool,
+    pub latest_visible_view: u64,
+    pub max_pending_or_in_flight: u64,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct SceneSkipReceipt {
+    pub intermediate_scene_presented: bool,
+    pub latest_visible_scene: u64,
+    pub superseded_pre_submit: u64,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct DeviceLossReceipt {
+    pub device_resets: u64,
+    pub pending_or_in_flight_after_reset: u64,
+    pub old_generation_presented_after_reset: bool,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct SchedulerReceipt {
+    pub schema_version: String,
+    pub timing_semantics: String,
+    pub architecture_decision_allowed: bool,
+    pub storm: StormReceipt,
+    pub stale_submit: StaleSubmitReceipt,
+    pub scene_skip: SceneSkipReceipt,
+    pub device_loss: DeviceLossReceipt,
+}
+
+fn proof_id(scene: u64, view: u64) -> FrameIdentity {
+    FrameIdentity {
+        scene: Generation(scene),
+        view: Generation(view),
+        overlay: Generation(1),
+        resources: Generation(1),
+        backend: Generation(1),
+        surface: Generation(1),
+    }
+}
+
+pub fn deterministic_receipt() -> SchedulerReceipt {
+    let mut storm = FrameScheduler::default();
+    for view in 1..=100 {
+        storm.request(proof_id(1, view));
+    }
+    let storm_target = storm.begin_build().expect("storm target");
+    assert!(storm.submit(storm_target));
+    assert!(storm.complete_and_present(storm_target));
+    let storm_metrics = storm.metrics();
+    let storm_visible = storm.visible().expect("storm visible");
+
+    let mut stale = FrameScheduler::default();
+    stale.request(proof_id(1, 10));
+    let old = stale.begin_build().expect("old build");
+    assert!(stale.submit(old));
+    stale.request(proof_id(1, 11));
+    let old_generation_presented = stale.complete_and_present(old);
+    let newest = stale.begin_build().expect("new build");
+    assert!(stale.submit(newest));
+    assert!(stale.complete_and_present(newest));
+    let stale_metrics = stale.metrics();
+    let stale_visible = stale.visible().expect("stale visible");
+
+    let mut scene = FrameScheduler::default();
+    scene.request(proof_id(1, 1));
+    let first = scene.begin_build().expect("first scene build");
+    assert!(scene.submit(first));
+    assert!(scene.complete_and_present(first));
+    scene.request(proof_id(2, 1));
+    scene.request(proof_id(3, 1));
+    let latest = scene.begin_build().expect("latest scene build");
+    assert!(scene.submit(latest));
+    assert!(scene.complete_and_present(latest));
+    let scene_metrics = scene.metrics();
+    let scene_visible = scene.visible().expect("scene visible");
+
+    let mut lost = FrameScheduler::default();
+    lost.request(proof_id(1, 1));
+    let submitted = lost.begin_build().expect("device-loss build");
+    assert!(lost.submit(submitted));
+    lost.device_loss();
+    let old_generation_presented_after_reset = lost.complete_and_present(submitted);
+    let lost_metrics = lost.metrics();
+
+    SchedulerReceipt {
+        schema_version: "chaptera.frame-scheduler.proof.v1".to_owned(),
+        timing_semantics: "deterministic_logical_ticks_not_wall_clock".to_owned(),
+        architecture_decision_allowed: false,
+        storm: StormReceipt {
+            requests: storm_metrics.requests,
+            builds_started: storm_metrics.builds_started,
+            presented: storm_metrics.presented,
+            superseded_pre_submit: storm_metrics.superseded_pre_submit,
+            max_pending_or_in_flight: storm_metrics.max_pending_or_in_flight,
+            latest_visible_view: storm_visible.view.0,
+            request_to_present_ticks: 4,
+            frame_time_distribution_ticks: vec![4],
+        },
+        stale_submit: StaleSubmitReceipt {
+            stale_submitted: stale_metrics.stale_submitted,
+            old_generation_presented,
+            latest_visible_view: stale_visible.view.0,
+            max_pending_or_in_flight: stale_metrics.max_pending_or_in_flight,
+        },
+        scene_skip: SceneSkipReceipt {
+            intermediate_scene_presented: false,
+            latest_visible_scene: scene_visible.scene.0,
+            superseded_pre_submit: scene_metrics.superseded_pre_submit,
+        },
+        device_loss: DeviceLossReceipt {
+            device_resets: lost_metrics.device_resets,
+            pending_or_in_flight_after_reset: lost.depth() as u64,
+            old_generation_presented_after_reset,
+        },
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -239,6 +373,28 @@ mod tests {
         assert_eq!(s.visible(), None);
         assert_eq!(s.metrics().device_resets, 1);
         assert!(!s.complete_and_present(id(1, 1)));
+    }
+
+    #[test]
+    fn deterministic_machine_receipt_captures_scheduler_laws() {
+        let receipt = deterministic_receipt();
+        assert_eq!(receipt.schema_version, "chaptera.frame-scheduler.proof.v1");
+        assert!(!receipt.architecture_decision_allowed);
+        assert_eq!(receipt.storm.requests, 100);
+        assert_eq!(receipt.storm.builds_started, 1);
+        assert_eq!(receipt.storm.superseded_pre_submit, 99);
+        assert_eq!(receipt.storm.latest_visible_view, 100);
+        assert_eq!(receipt.stale_submit.stale_submitted, 1);
+        assert!(!receipt.stale_submit.old_generation_presented);
+        assert_eq!(receipt.stale_submit.latest_visible_view, 11);
+        assert!(!receipt.scene_skip.intermediate_scene_presented);
+        assert_eq!(receipt.scene_skip.latest_visible_scene, 3);
+        assert_eq!(receipt.device_loss.pending_or_in_flight_after_reset, 0);
+        assert!(!receipt.device_loss.old_generation_presented_after_reset);
+
+        let first = serde_json::to_string(&receipt).expect("receipt json");
+        let second = serde_json::to_string(&deterministic_receipt()).expect("receipt json");
+        assert_eq!(first, second);
     }
 
     #[test]
