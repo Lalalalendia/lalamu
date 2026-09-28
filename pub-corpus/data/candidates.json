@@ -809,5 +809,33 @@
     "anchor_text": "CTR-Branded Poster Template for MS Publisher (.pub, 72 x 36 banner size)",
     "locator_snapshot": "https://cloud.wikis.utexas.edu/wiki/spaces/ctrsupport/pages/62489949",
     "notes": "Official UT Austin Center for Transportation Research 72 x 36 conference-poster template; required for the annual CTR Symposium."
+  },
+  {
+    "id": "github-azreasoners-ec2asp-publisher11",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "azreasoners/ARG-webpage---Archived",
+    "source_path": "ecasp/ec2asp.pub",
+    "source_filename": "ec2asp.pub",
+    "expected_git_blob_sha1": "44b24ed03e84c7abb51a9d3bf71d27f958e8a96d",
+    "expected_size": 114176,
+    "urls": [
+      "https://raw.githubusercontent.com/azreasoners/ARG-webpage---Archived/faf75b2996bb7f984365b9d4cb737af39c529ac6/ecasp/ec2asp.pub"
+    ],
+    "notes": "Publisher 11 source/export control. Existing source evidence proves current OplControlling PageList Pgid membership resolves active exported DOCUMENT-order pages [266,358]."
+  },
+  {
+    "id": "github-planet-source-code-help-publisher11",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "Planet-Source-Code/hartoto-flexible-phoone-book__1-69597",
+    "source_path": "help.pub",
+    "source_filename": "help.pub",
+    "expected_git_blob_sha1": "099df5d6ee9acb301669d1e25c47bd2cbe26a953",
+    "expected_size": 396800,
+    "urls": [
+      "https://raw.githubusercontent.com/Planet-Source-Code/hartoto-flexible-phoone-book__1-69597/1400f033db5f4a57cca6d5392f551943271b7f72/help.pub"
+    ],
+    "notes": "Independent Publisher 11 source/export control. Existing source evidence proves current OplControlling PageList Pgid membership resolves the single active exported page [266]."
   }
 ]
