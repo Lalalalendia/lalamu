@@ -1,0 +1,73 @@
+name: devhelp-topic-surface-proof
+
+on:
+  push:
+    branches:
+      - devhelp-xver-01-clean-v1
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  topic-surface:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile tools/devhelp_topic_surface.py tests/test_devhelp_topic_surface.py
+      - run: python -m unittest discover -s tests -p 'test_devhelp_topic_surface.py' -v
+      - name: Validate retained exact-source result and evidence fence
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          p = Path("research/devhelp-xver-01/topic-surface-diff.json")
+          r = json.loads(p.read_text(encoding="utf-8"))
+          assert r["schema_version"] == "chaptera.devhelp-xver.topic-surface.v1"
+          assert r["source_2002"]["byte_len"] == 656752
+          assert r["source_2002"]["sha256"] == "688a5a4c5ec209740ba2506e322fc9c8070747c0d9cc7b59560e0a0bea2acf51"
+          assert r["source_2002"]["unique_topics"] == 692
+          assert r["source_2003"]["byte_len"] == 1180470
+          assert r["source_2003"]["sha256"] == "796e0a899e5b691d04895590206113f112816fe161250486b787f82af4ac5418"
+          assert r["source_2003"]["unique_topics"] == 892
+          assert r["diff"]["common_count"] == 685
+          assert r["diff"]["added_count"] == 207
+          assert r["diff"]["removed_count"] == 7
+          assert r["diff"]["added_category_counts"]["object"] == 24
+          assert r["diff"]["added_category_counts"]["method"] == 28
+          assert r["diff"]["added_category_counts"]["property"] == 148
+          assert r["diff"]["removed_topic_ids"] == [
+              "pbevtMailMergeWizardSendToCustom",
+              "pbmthDiscardConflict",
+              "pbmthOfflineConflict",
+              "pbproDestination",
+              "pbproMultiplePagesPerSheet",
+              "pbproPageHeight",
+              "pbproPageWidth",
+          ]
+          boundary = r["evidence_boundary"]
+          assert boundary["topic_ids_and_categories_proven"] is True
+          for key in (
+              "topic_body_text_extracted",
+              "parameter_signatures_extracted",
+              "return_types_extracted",
+              "enum_values_extracted",
+              "help_topic_ids_beyond_paths_extracted",
+              "intra_help_links_extracted",
+              "pub_wire_format_claims_allowed",
+          ):
+              assert boundary[key] is False
+          print(json.dumps({
+              "p2002_topics": r["source_2002"]["unique_topics"],
+              "p2003_topics": r["source_2003"]["unique_topics"],
+              "common": r["diff"]["common_count"],
+              "added": r["diff"]["added_count"],
+              "removed": r["diff"]["removed_count"],
+              "full_devhelp_closure": False,
+          }, sort_keys=True))
+          PY
