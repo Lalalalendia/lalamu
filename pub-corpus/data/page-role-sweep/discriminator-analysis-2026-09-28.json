@@ -1,0 +1,560 @@
+{
+  "schema": "lalamu.pub-page-role-discriminator-analysis.v1",
+  "generated_from": {
+    "page_role_receipt_sha256": "d27469e260ec46c220fc62e64262b418d1e609ec69518f6e5c679deb0dea6133",
+    "differential_receipt_sha256": "9894ac2545598e1975907ceff204b29c0031af817e4cf954eec143ccb26e464f",
+    "lalamu_source_commit": "d36057ce1dd9f00f12aef850fdb19df674d78639"
+  },
+  "source_mechanism": {
+    "libmspub_commit": "2b094242f97923f918972d5f1bfd26cd915f836c",
+    "content_chunk_type_path": "src/lib/MSPUBContentChunkType.h",
+    "parser_path": "src/lib/MSPUBParser.cpp",
+    "table_raw_type_0x10_confirmed": true,
+    "mature_hardcoded_dummy_seqnums": [
+      "0x10D",
+      "0x110",
+      "0x113",
+      "0x117"
+    ],
+    "hardcoded_dummy_switch_confirmed": true,
+    "interpretation": "The hard-coded seqNums explain part of libmspub output behavior. They are fossilized importer policy and MUST NOT be copied as Chaptera native page semantics."
+  },
+  "candidate": {
+    "name": "(shape_or_group_child>0 AND oid_nonzero) OR TABLE_child",
+    "status": "discovery-only",
+    "exact_file_count": 18,
+    "evaluated_file_count": 19,
+    "total_absolute_count_error": 1,
+    "max_absolute_count_error": 1,
+    "residuals": [
+      {
+        "sha256": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba",
+        "source_filename": "Socials 9 - Industrial Revolution Brochure.pub",
+        "selected_count": 3,
+        "libmspub_lineage_page_count": 2,
+        "absolute_count_error": 1,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 1,
+            "oid_dword1": 0,
+            "shape_child_count": 9,
+            "group_child_count": 0,
+            "table_child_count": 0
+          },
+          {
+            "contents_seq_num": 343,
+            "document_ordinal": 2,
+            "oid_dword0": 1,
+            "oid_dword1": 1,
+            "shape_child_count": 16,
+            "group_child_count": 0,
+            "table_child_count": 0
+          },
+          {
+            "contents_seq_num": 269,
+            "document_ordinal": 3,
+            "oid_dword0": 2,
+            "oid_dword1": 1,
+            "shape_child_count": 1,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      }
+    ],
+    "per_file": [
+      {
+        "sha256": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178",
+        "source_filename": "rood-20.pub",
+        "selected_count": 1,
+        "libmspub_lineage_page_count": 1,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 1,
+            "oid_dword1": 0,
+            "shape_child_count": 45,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba",
+        "source_filename": "Socials 9 - Industrial Revolution Brochure.pub",
+        "selected_count": 3,
+        "libmspub_lineage_page_count": 2,
+        "absolute_count_error": 1,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 1,
+            "oid_dword1": 0,
+            "shape_child_count": 9,
+            "group_child_count": 0,
+            "table_child_count": 0
+          },
+          {
+            "contents_seq_num": 343,
+            "document_ordinal": 2,
+            "oid_dword0": 1,
+            "oid_dword1": 1,
+            "shape_child_count": 16,
+            "group_child_count": 0,
+            "table_child_count": 0
+          },
+          {
+            "contents_seq_num": 269,
+            "document_ordinal": 3,
+            "oid_dword0": 2,
+            "oid_dword1": 1,
+            "shape_child_count": 1,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "16ea75ba3cba286af382619a9edc2d7940d3e4f74a83577520b470c9fbc2852d",
+        "source_filename": "bladwijzer-8.pub",
+        "selected_count": 1,
+        "libmspub_lineage_page_count": 1,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 1,
+            "oid_dword1": 0,
+            "shape_child_count": 18,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a",
+        "source_filename": "rood-30.pub",
+        "selected_count": 1,
+        "libmspub_lineage_page_count": 1,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 1,
+            "oid_dword1": 0,
+            "shape_child_count": 65,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "4029d4a1bf5be89d745c079b9c06ab33e5bdceb997a4761c5e11238110d879c9",
+        "source_filename": "Cookbook.pub",
+        "selected_count": 4,
+        "libmspub_lineage_page_count": 4,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 4,
+            "oid_dword0": 2,
+            "oid_dword1": 0,
+            "shape_child_count": 0,
+            "group_child_count": 0,
+            "table_child_count": 1
+          },
+          {
+            "contents_seq_num": 293,
+            "document_ordinal": 5,
+            "oid_dword0": 2,
+            "oid_dword1": 1,
+            "shape_child_count": 0,
+            "group_child_count": 1,
+            "table_child_count": 0
+          },
+          {
+            "contents_seq_num": 318,
+            "document_ordinal": 6,
+            "oid_dword0": 2,
+            "oid_dword1": 4,
+            "shape_child_count": 1,
+            "group_child_count": 0,
+            "table_child_count": 1
+          },
+          {
+            "contents_seq_num": 322,
+            "document_ordinal": 7,
+            "oid_dword0": 2,
+            "oid_dword1": 3,
+            "shape_child_count": 0,
+            "group_child_count": 0,
+            "table_child_count": 2
+          }
+        ]
+      },
+      {
+        "sha256": "4758095aa58927b1aefa23c384bb16cd598e6732ef2af5af68471118dc25c567",
+        "source_filename": "Template_Affiche A3 FWVL_priorité 1_FR-NL.pub",
+        "selected_count": 2,
+        "libmspub_lineage_page_count": 2,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 325,
+            "document_ordinal": 1,
+            "oid_dword0": 2,
+            "oid_dword1": 1,
+            "shape_child_count": 23,
+            "group_child_count": 2,
+            "table_child_count": 0
+          },
+          {
+            "contents_seq_num": 442,
+            "document_ordinal": 2,
+            "oid_dword0": 2,
+            "oid_dword1": 5,
+            "shape_child_count": 23,
+            "group_child_count": 2,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78",
+        "source_filename": "groen-20.pub",
+        "selected_count": 1,
+        "libmspub_lineage_page_count": 1,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 1,
+            "oid_dword1": 0,
+            "shape_child_count": 45,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa",
+        "source_filename": "Art Auction Ad.pub",
+        "selected_count": 1,
+        "libmspub_lineage_page_count": 1,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 1,
+            "oid_dword1": 0,
+            "shape_child_count": 57,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "712e1db9cefd0af613b12fb776720ac5d67ebe772468f2e47cb26a1f2e6ce28a",
+        "source_filename": "sample.pub",
+        "selected_count": 1,
+        "libmspub_lineage_page_count": 1,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 2,
+            "oid_dword1": 0,
+            "shape_child_count": 1,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb",
+        "source_filename": "ShapeTest.pub",
+        "selected_count": 1,
+        "libmspub_lineage_page_count": 1,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 2,
+            "oid_dword1": 0,
+            "shape_child_count": 4,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "800d2648854fb3fe1f9314a1ea7b7969d79cd9cb9b12cc454a71dde8177b2450",
+        "source_filename": "A1-NL-fixed.pub",
+        "selected_count": 1,
+        "libmspub_lineage_page_count": 1,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 1,
+            "oid_dword1": 0,
+            "shape_child_count": 9,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70",
+        "source_filename": "KroyManualEditable-1.0.pub",
+        "selected_count": 5,
+        "libmspub_lineage_page_count": 5,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 341,
+            "document_ordinal": 1,
+            "oid_dword0": 2,
+            "oid_dword1": 4,
+            "shape_child_count": 3,
+            "group_child_count": 0,
+            "table_child_count": 0
+          },
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 2,
+            "oid_dword0": 1,
+            "oid_dword1": 0,
+            "shape_child_count": 1,
+            "group_child_count": 0,
+            "table_child_count": 0
+          },
+          {
+            "contents_seq_num": 297,
+            "document_ordinal": 3,
+            "oid_dword0": 2,
+            "oid_dword1": 1,
+            "shape_child_count": 1,
+            "group_child_count": 0,
+            "table_child_count": 0
+          },
+          {
+            "contents_seq_num": 301,
+            "document_ordinal": 4,
+            "oid_dword0": 2,
+            "oid_dword1": 2,
+            "shape_child_count": 7,
+            "group_child_count": 0,
+            "table_child_count": 0
+          },
+          {
+            "contents_seq_num": 311,
+            "document_ordinal": 5,
+            "oid_dword0": 2,
+            "oid_dword1": 3,
+            "shape_child_count": 5,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6",
+        "source_filename": "file-01.pub",
+        "selected_count": 1,
+        "libmspub_lineage_page_count": 1,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 2,
+            "oid_dword1": 0,
+            "shape_child_count": 9,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "9923f422543b1ed43c090042c9e4256072df6fd961c06975e2b64335e09e9a15",
+        "source_filename": "Poster2014.pub",
+        "selected_count": 1,
+        "libmspub_lineage_page_count": 1,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 2,
+            "oid_dword1": 0,
+            "shape_child_count": 11,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf",
+        "source_filename": "LEGEND_LOOT.pub",
+        "selected_count": 1,
+        "libmspub_lineage_page_count": 1,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 2,
+            "oid_dword1": 0,
+            "shape_child_count": 227,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621",
+        "source_filename": "1.pub",
+        "selected_count": 1,
+        "libmspub_lineage_page_count": 1,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 2,
+            "oid_dword1": 0,
+            "shape_child_count": 5,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "b61be87eda0fbf77249a51993da5fe744446bc8ff0d25d4a922e4e29f8f29cd1",
+        "source_filename": "bladwijzer-3.pub",
+        "selected_count": 1,
+        "libmspub_lineage_page_count": 1,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 1,
+            "oid_dword1": 0,
+            "shape_child_count": 8,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "bbaefcbdcdd2dbe51a636ed554c14d6f5353c98e795b5f88d26f79542e5d93ba",
+        "source_filename": "BRE BS CC.pub",
+        "selected_count": 2,
+        "libmspub_lineage_page_count": 2,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 1,
+            "oid_dword1": 0,
+            "shape_child_count": 14,
+            "group_child_count": 0,
+            "table_child_count": 0
+          },
+          {
+            "contents_seq_num": 334,
+            "document_ordinal": 2,
+            "oid_dword0": 1,
+            "oid_dword1": 1,
+            "shape_child_count": 4,
+            "group_child_count": 0,
+            "table_child_count": 0
+          }
+        ]
+      },
+      {
+        "sha256": "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190",
+        "source_filename": "christmasBottom.pub",
+        "selected_count": 1,
+        "libmspub_lineage_page_count": 1,
+        "absolute_count_error": 0,
+        "selected_pages": [
+          {
+            "contents_seq_num": 266,
+            "document_ordinal": 1,
+            "oid_dword0": 2,
+            "oid_dword1": 0,
+            "shape_child_count": 79,
+            "group_child_count": 1,
+            "table_child_count": 0
+          }
+        ]
+      }
+    ]
+  },
+  "paired_oracles": [
+    {
+      "source_filename": "KroyManualEditable-1.0.pub",
+      "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70",
+      "chaptera_page_count": 10,
+      "libmspub_page_count": 5,
+      "oracle": {
+        "type": "pdf",
+        "url": "https://raw.githubusercontent.com/EMHodges/SEPR-game/master/docs/manuals/KroyManual-1.0.pdf",
+        "expected_git_blob_sha1": "ec95bc942e23c1f052105a8282b2942822f006d9",
+        "expected_size": 864858
+      },
+      "evidence_strength": "strong",
+      "finding": "Sibling project PDF has 5 explicit PDF /Page objects; Chaptera exposes 10, libmspub exposes 5. Project website links the PDF and editable PUB side-by-side."
+    },
+    {
+      "source_filename": "LEGEND_LOOT.pub",
+      "sha256": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf",
+      "chaptera_page_count": 6,
+      "libmspub_page_count": 1,
+      "oracle": {
+        "type": "image",
+        "url": "https://raw.githubusercontent.com/jhopkins44/AltPublisher/main/LEGEND_LOOT.png",
+        "expected_git_blob_sha1": "02caed6162b01d7f33e0f32d7c8ede8c1529d7a2",
+        "expected_size": 622703
+      },
+      "evidence_strength": "strong",
+      "finding": "Repository analysis explicitly maps the PUB to LEGEND_LOOT.png and describes the PNG as the rendered/exported one-page 2x6 card sheet; Chaptera exposes 6, libmspub exposes 1."
+    },
+    {
+      "source_filename": "Art Auction Ad.pub",
+      "sha256": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa",
+      "chaptera_page_count": 6,
+      "libmspub_page_count": 1,
+      "oracle": {
+        "type": "image",
+        "url": "https://raw.githubusercontent.com/dawoodshahzad07/Excel-Publisher-Project-Files/main/Art%20Auction%20Ad.jpg",
+        "expected_git_blob_sha1": "e49304659374fc9c3144a95b710c3d9d1c38e39c",
+        "expected_size": 526855
+      },
+      "evidence_strength": "medium",
+      "finding": "Same repository ships a 1275x1650 JPG paired with the PUB; useful visual evidence, but one image alone does not prove the PUB contains no additional customer pages. Chaptera exposes 6, libmspub exposes 1."
+    }
+  ],
+  "conclusion": {
+    "summary": "Candidate matches 18/19 current scored files. The sole residual is not permission to copy libmspub's 0x10D/0x110/0x113/0x117 magic: native evidence already shows page-role/scenario state is more nuanced.",
+    "promotion_rule": "Use the candidate to prioritize discriminators. Production Viewer filtering still requires source-semantic validation across independent Publisher/native or paired-oracle evidence.",
+    "next_discriminator": "Separate content-bearing persisted PAGEs that are inactive in the current scenario/output projection from active customer pages; inspect scenario/page-role evidence rather than physical seqNum."
+  }
+}
