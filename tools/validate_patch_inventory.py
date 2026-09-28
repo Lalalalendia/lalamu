@@ -144,6 +144,35 @@ def main() -> int:
     }
     assert ("MS13-042", "Publisher 2013", "explicitly_non_affected") in negative
 
+    # Endpoint manifest anchors for Publisher 2013/2016.
+    assert data["policy"]["manifest_subset_must_be_labeled"] is True
+    assert rowmap["pub2013-kb5002213"]["kb_ids"] == ["5002213"]
+    assert rowmap["pub2013-kb5002213"]["replaces_kb_ids"] == ["4484347"]
+    assert rowmap["pub2013-kb5002213"]["package_sha256"]["x86"] == "D27F70BA78B7A8B3BFE97D1BB644D480DB56EC6277A8DE88CB1C8C303B6E721F"
+    assert rowmap["pub2013-kb5002213"]["package_sha256"]["x64"] == "513A10C7E3B6F55444AB6057B185B51C86F595328A0AAFE4E6F9E78A52333062"
+    assert "subset" in rowmap["pub2013-kb5002213"]["file_manifest_scope"].lower()
+    core2013 = {x["file"]: x for x in rowmap["pub2013-kb5002213"]["file_manifest_core"]["x86"]}
+    assert core2013["mspub.exe"]["version"] == "15.0.5545.1000"
+    assert core2013["pubconv.dll"]["version"] == "15.0.5545.1000"
+
+    assert rowmap["pub2016-kb5002566"]["kb_ids"] == ["5002566"]
+    assert rowmap["pub2016-kb5002566"]["replaces_kb_ids"] == ["5002492"]
+    assert rowmap["pub2016-kb5002566"]["package_sha256"]["x86"] == "98D3616C39DDC89FAD7883FE28535841F32EB2BD932877C21632517AA8547807"
+    assert rowmap["pub2016-kb5002566"]["package_sha256"]["x64"] == "CA5CA37A7B149DE8978EF85FC0951E989722CA6F7594C21CA8FB9A3DE53E0AEA"
+    assert "subset" in rowmap["pub2016-kb5002566"]["file_manifest_scope"].lower()
+    core2016x86 = {x["file"]: x for x in rowmap["pub2016-kb5002566"]["file_manifest_core"]["x86"]}
+    core2016x64 = {x["file"]: x for x in rowmap["pub2016-kb5002566"]["file_manifest_core"]["x64"]}
+    assert core2016x86["mspub.exe"]["version"] == "16.0.5460.1000"
+    assert core2016x64["mspub.exe"]["version"] == "16.0.5460.1000"
+    assert core2016x64["pubconv.dll"]["version"] == "16.0.5391.1000"
+
+    assert rowmap["pub2016-kb5002644"]["kb_ids"] == ["5002644"]
+    assert rowmap["pub2016-kb5002644"]["replaces_kb_ids"] == ["5002566"]
+    assert rowmap["pub2016-kb5002644"]["package_sha256"]["x86"] == "BBD16AA927F5CF4663A9157C88519BD11349B6D9C42C840212FD97FBB2B5AED3"
+    assert rowmap["pub2016-kb5002644"]["package_sha256"]["x64"] == "2A4A16F88B3EDBC14A86B3F6D42455AFB18D3A5F00ACEE23ABBFB16AC9593333"
+    assert rowmap["pub2016-kb5002644"]["replaces_kb_ids"] == rowmap["pub2016-kb5002566"]["kb_ids"]
+    assert "not normalize" in rowmap["pub2016-kb5002644"]["file_manifest_scope"].lower()
+
     unresolved = {gap["generation"] for gap in data["gaps"] if gap["gap_kind"] == "servicing_skeleton_unresolved"}
     assert unresolved == {"Publisher 97","Publisher 98","Publisher 2000"}
 
@@ -155,6 +184,7 @@ def main() -> int:
         "unresolved_legacy_generations": sorted(unresolved),
         "publisher_update_rows": len(publisher_updates),
         "exact_binary_manifest_rows": sum("file_manifest" in row for row in publisher_updates),
+        "endpoint_manifest_rows": sum("file_manifest_core" in row for row in publisher_updates),
     }, sort_keys=True))
     return 0
 
