@@ -1,0 +1,94 @@
+name: PUB defensive fuzz nightly
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "11 5 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pub-defensive-fuzz-nightly
+  cancel-in-progress: false
+
+jobs:
+  fuzz:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch current public Chaptera source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --depth 1 https://github.com/HeisLuka/rar.git upstream/rar
+          echo "CHAPTERA_UPSTREAM_COMMIT=$(git -C upstream/rar rev-parse HEAD)" >> "$GITHUB_ENV"
+
+      - name: Build untrusted admission worker
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.94.1 --profile minimal
+          cargo +1.94.1 build             --release             --manifest-path upstream/rar/Cargo.toml             -p chaptera-untrusted-pub-scan
+
+      - name: Build Viewer parser target
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.85.0 --profile minimal
+          cargo +1.85.0 build             --release             --manifest-path upstream/rar/vendor/producer-a/Cargo.toml             -p chaptera-producer-a
+
+      - name: Fuzz untrusted admission boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p out/fuzz
+          python pub-corpus/scripts/fuzz_pub.py             --target-bin upstream/rar/target/release/chaptera-untrusted-pub-worker             --target-kind untrusted-worker             --iterations 160             --timeout 1.5             --regression-dir pub-corpus/fuzz/regressions/untrusted-worker             --summary out/fuzz/untrusted-worker.json
+
+      - name: Fuzz Viewer open boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          python pub-corpus/scripts/fuzz_pub.py             --target-bin upstream/rar/vendor/producer-a/target/release/chaptera-producer-a             --target-kind chaptera-viewer             --iterations 100             --timeout 2.5             --regression-dir pub-corpus/fuzz/regressions/chaptera-viewer             --summary out/fuzz/chaptera-viewer.json
+          python -m py_compile pub-corpus/scripts/fuzz_pub.py
+
+      - name: Upload fuzz receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pub-defensive-fuzz-v1
+          path: out/fuzz
+          if-no-files-found: warn
+
+      - name: Retain new minimized public regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$(git status --porcelain -- pub-corpus/fuzz/regressions)" ]]; then
+            echo "No new minimized regression cases."
+            exit 0
+          fi
+
+          git config user.name "lalamu-lab-bot"
+          git config user.email "lalamu-lab-bot@users.noreply.github.com"
+          git add -- pub-corpus/fuzz/regressions
+          git commit -m "fuzz: retain minimized public PUB regression"
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push raced with main on attempt ${attempt}; retrying."
+          done
+          exit 1
