@@ -1,0 +1,37 @@
+name: open-first-useful-page-proof
+
+on:
+  push:
+    branches:
+      - open-first-useful-page-harness-01-clean-v1
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile open_first_useful_page.py tools/run_open_first_useful_page_proof.py tests/test_open_first_useful_page.py
+      - run: python -m unittest discover -s tests -v
+      - name: Exercise external runtime fixture
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          Path("/tmp/external-fixture.bin").write_bytes(b"runtime-external-source-free-fixture" + bytes(range(64)))
+          PY
+          python tools/run_open_first_useful_page_proof.py             --fixture /tmp/external-fixture.bin             --cold-runs 3             --warm-runs 3             --out /tmp/open-first-useful-page-receipt.json
+          python - <<'PY'
+          import json
+          r = json.load(open("/tmp/open-first-useful-page-receipt.json", encoding="utf-8"))
+          assert r["evidence_authority"]["architecture_decision_allowed"] is False
+          assert r["fixture_identity"]["raw_path"] is None
+          assert len(r["runs"]) == 6
+          print(json.dumps(r["summary"], sort_keys=True))
+          PY
