@@ -22,7 +22,22 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CORPUS = ROOT / "corpus" / "native" / "unclassified"
 DEFAULT_INTELLIGENCE = ROOT / "data" / "intelligence" / "latest.json"
 DEFAULT_OUTPUT = ROOT / "data" / "oracle-differential" / "latest.json"
-SCHEMA = "lalamu.pub-oracle-differential.v1"
+SCHEMA = "lalamu.pub-oracle-differential.v2"
+
+ENGINE_LINEAGES = {
+    "chaptera": {
+        "parser_lineage": "chaptera",
+        "role": "canonical-public-consumer-under-test",
+    },
+    "libmspub": {
+        "parser_lineage": "libmspub",
+        "role": "independent-open-source-parser",
+    },
+    "libreoffice": {
+        "parser_lineage": "libmspub",
+        "role": "downstream-consumer-of-libmspub-import-filter",
+    },
+}
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -40,10 +55,13 @@ def normalize_text(text: str) -> str:
 
 def text_facts(text: str) -> dict[str, Any]:
     normalized = normalize_text(text)
+    tokens = sorted(re.findall(r"\\w+", normalized.casefold(), flags=re.UNICODE))
+    token_material = "\\n".join(tokens)
     return {
         "text_chars": len(normalized),
         "text_words": len(normalized.split()) if normalized else 0,
         "normalized_text_sha256": sha256_bytes(normalized.encode("utf-8")) if normalized else None,
+        "token_multiset_sha256": sha256_bytes(token_material.encode("utf-8")) if tokens else None,
     }
 
 
@@ -336,6 +354,149 @@ def disagreement_rows(engines: dict[str, dict[str, Any]]) -> list[dict[str, Any]
     return rows
 
 
+def intelligence_index(path: Path) -> dict[str, dict[str, Any]]:
+    if not path.exists():
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    result: dict[str, dict[str, Any]] = {}
+    for row in payload.get("records") or []:
+        sha = str(row.get("sha256") or "").lower()
+        if not sha:
+            continue
+        result[sha] = {
+            "topology_fingerprint": row.get("topology_fingerprint"),
+            "coarse_structure_fingerprint": row.get("coarse_structure_fingerprint"),
+            "provenance_document_hint": row.get("provenance_document_hint"),
+            "source": row.get("source") or {},
+        }
+    return result
+
+
+def triage_rows(engines: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+    """Interpret high-value Chaptera-vs-external gaps without majority voting.
+
+    LibreOffice Publisher import is a downstream consumer of libmspub, so it
+    may confirm downstream behavior but must not be counted as an independent
+    parser lineage.
+    """
+
+    rows: list[dict[str, Any]] = []
+    chaptera = engines.get("chaptera") or {}
+    external = engines.get("libmspub") or {}
+    downstream = engines.get("libreoffice") or {}
+
+    chaptera_ok = chaptera.get("status") == "success"
+    external_ok = external.get("status") == "success"
+    downstream_ok = downstream.get("status") == "success"
+
+    if chaptera_ok != external_ok:
+        rows.append(
+            {
+                "kind": "chaptera_acceptance_gap",
+                "priority": "high",
+                "chaptera_status": chaptera.get("status"),
+                "external_parser_lineage": "libmspub",
+                "external_status": external.get("status"),
+                "libreoffice_downstream_status": downstream.get("status"),
+                "note": "LibreOffice shares the libmspub parser lineage and is not a second independent parser vote.",
+            }
+        )
+        return rows
+
+    if not chaptera_ok or not external_ok:
+        return rows
+
+    chaptera_pages = chaptera.get("page_count")
+    external_pages = external.get("page_count")
+    if (
+        isinstance(chaptera_pages, int)
+        and isinstance(external_pages, int)
+        and chaptera_pages != external_pages
+    ):
+        rows.append(
+            {
+                "kind": "chaptera_page_projection_gap",
+                "priority": "high",
+                "chaptera_page_count": chaptera_pages,
+                "libmspub_page_count": external_pages,
+                "page_delta": chaptera_pages - external_pages,
+                "libreoffice_downstream_page_count": downstream.get("page_count")
+                if downstream_ok
+                else None,
+                "downstream_matches_libmspub": downstream_ok
+                and downstream.get("page_count") == external_pages,
+                "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+            }
+        )
+
+    chaptera_tokens = chaptera.get("token_multiset_sha256")
+    external_tokens = external.get("token_multiset_sha256")
+    chaptera_chars = chaptera.get("text_chars")
+    external_chars = external.get("text_chars")
+    chaptera_words = chaptera.get("text_words")
+    external_words = external.get("text_words")
+
+    if chaptera_tokens != external_tokens and (
+        chaptera_tokens is not None or external_tokens is not None
+    ):
+        char_delta = None
+        relative_char_gap = None
+        if isinstance(chaptera_chars, int) and isinstance(external_chars, int):
+            char_delta = chaptera_chars - external_chars
+            relative_char_gap = abs(char_delta) / max(1, external_chars)
+
+        priority = "medium"
+        kind = "chaptera_text_content_gap"
+        if (
+            relative_char_gap is not None
+            and relative_char_gap >= 0.20
+            and abs(char_delta or 0) >= 32
+        ):
+            priority = "high"
+            kind = "chaptera_text_inventory_gap"
+
+        rows.append(
+            {
+                "kind": kind,
+                "priority": priority,
+                "chaptera_text_chars": chaptera_chars,
+                "libmspub_text_chars": external_chars,
+                "chaptera_text_words": chaptera_words,
+                "libmspub_text_words": external_words,
+                "text_char_delta": char_delta,
+                "relative_text_char_gap": relative_char_gap,
+            }
+        )
+    elif (
+        chaptera.get("normalized_text_sha256")
+        != external.get("normalized_text_sha256")
+        and chaptera.get("normalized_text_sha256") is not None
+        and external.get("normalized_text_sha256") is not None
+    ):
+        rows.append(
+            {
+                "kind": "chaptera_text_order_or_punctuation_divergence",
+                "priority": "low",
+                "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+            }
+        )
+
+    if downstream_ok:
+        downstream_tokens = downstream.get("token_multiset_sha256")
+        if external_tokens != downstream_tokens and (
+            external_tokens is not None or downstream_tokens is not None
+        ):
+            rows.append(
+                {
+                    "kind": "shared_lineage_downstream_text_divergence",
+                    "priority": "low",
+                    "note": "libmspub and LibreOffice share the PUB parser lineage; this difference is downstream extraction/render serialization, not an independent parser disagreement.",
+                }
+            )
+
+    return rows
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--corpus", type=Path, default=DEFAULT_CORPUS)
@@ -351,6 +512,7 @@ def main() -> int:
     args = parser.parse_args()
 
     selected = select_files(args.corpus, args.intelligence, args.max_files)
+    corpus_context = intelligence_index(args.intelligence)
     tool_versions = {
         "chaptera": os.environ.get("CHAPTERA_UPSTREAM_COMMIT"),
         "libmspub": executable_version([args.libmspub_bin, "--version"])
@@ -363,6 +525,7 @@ def main() -> int:
 
     records: list[dict[str, Any]] = []
     issue_counter: Counter[str] = Counter()
+    triage_counter: Counter[str] = Counter()
     for path in selected:
         engines = {
             "chaptera": chaptera_observation(args.chaptera_bin, path, args.timeout),
@@ -376,13 +539,18 @@ def main() -> int:
             ),
         }
         disagreements = disagreement_rows(engines)
+        triage = triage_rows(engines)
         issue_counter.update(row["kind"] for row in disagreements)
+        triage_counter.update(row["kind"] for row in triage)
+        sha = path.stem.lower()
         records.append(
             {
-                "sha256": path.stem.lower(),
+                "sha256": sha,
                 "byte_len": path.stat().st_size,
+                "corpus_context": corpus_context.get(sha) or {},
                 "engines": engines,
-                "disagreements": disagreements,
+                "raw_pairwise_disagreements": disagreements,
+                "triage": triage,
             }
         )
 
@@ -391,7 +559,10 @@ def main() -> int:
         "selection_policy": "one-per-coarse-structure-and-source-type-then-sha-fill",
         "selected_file_count": len(records),
         "tool_versions": tool_versions,
-        "issue_counts": dict(sorted(issue_counter.items())),
+        "engine_lineages": ENGINE_LINEAGES,
+        "interpretation": "Pairwise observations are not votes. LibreOffice Publisher import uses the libmspub parser lineage, so LibreOffice may confirm downstream behavior but is not an independent parser lineage.",
+        "raw_pairwise_issue_counts": dict(sorted(issue_counter.items())),
+        "triage_counts": dict(sorted(triage_counter.items())),
         "records": records,
     }
     receipt["receipt_sha256"] = stable_hash(receipt)
@@ -406,7 +577,8 @@ def main() -> int:
             {
                 "schema": SCHEMA,
                 "selected_file_count": len(records),
-                "issue_counts": receipt["issue_counts"],
+                "raw_pairwise_issue_counts": receipt["raw_pairwise_issue_counts"],
+                "triage_counts": receipt["triage_counts"],
                 "receipt_sha256": receipt["receipt_sha256"],
             },
             sort_keys=True,
