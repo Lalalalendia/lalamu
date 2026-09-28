@@ -67,6 +67,14 @@ jobs:
             curl -fL "$url" -o "/tmp/xline/fixtures/$name"
           done
           (cd /tmp/xline/fixtures && sha256sum *.pub | sort) | tee /tmp/xline/fixture-sha256.txt
+          (
+            cd /tmp/xline/fixtures
+            printf '%s  %s\n' \
+              '6fefdef46b87c767150878dc384549cb2d2ec2ac54de25f8ddb3a5628301107e' 'Sample.pub' \
+              'ffed034ac87e679f0bd08ff9cf74ad11c0e0e510a42b1bc1a7502415f6c29c87' 'SampleBrochure.pub' \
+              '6a825ba26ba35d6e885acdc62e859591ed37cb0ff7480b554b9cb362b644dfcf' 'SampleNewsletter.pub' \
+              | sha256sum -c -
+          )
           (cd /tmp/xline/fixtures && stat -c '%n %s' *.pub | sort) | tee /tmp/xline/fixture-lengths.txt
           for f in /tmp/xline/fixtures/*.pub; do
             base="$(basename "$f" .pub)"
@@ -82,11 +90,20 @@ jobs:
           for f in /tmp/xline/fixtures/*.pub; do
             base="$(basename "$f" .pub)"
             mkdir -p "/tmp/xline/libmspub/$base"
+            set +e
             (
               cd "/tmp/xline/libmspub/$base"
               pub2xhtml "$f" > output.xhtml 2>stderr.txt
             )
-            python tools/korva_xline_probe.py xhtml               "/tmp/xline/libmspub/$base/output.xhtml"               --asset-root "/tmp/xline/libmspub/$base"               > "/tmp/xline/libmspub/$base/observation.json"
+            code=$?
+            set -e
+            echo "$code" > "/tmp/xline/libmspub/$base/exit.txt"
+            python tools/korva_xline_probe.py xhtml \
+              "/tmp/xline/libmspub/$base/output.xhtml" \
+              --asset-root "/tmp/xline/libmspub/$base" \
+              --tool-exit "$code" \
+              --stderr "/tmp/xline/libmspub/$base/stderr.txt" \
+              > "/tmp/xline/libmspub/$base/observation.json"
           done
 
       - name: Checkout exact Chaptera/Rar revision
