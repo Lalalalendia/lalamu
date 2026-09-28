@@ -291,6 +291,98 @@ jobs:
           print(json.dumps({"outcome":status,"selected":validation["selected_candidate"]},sort_keys=True))
           PY
 
+      - name: Validate retained PBB static contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          expected = json.loads(Path("research/pbb-01/static-summary.json").read_text())
+          root = Path("/tmp/pbb")
+          inventory = json.loads((root/"evidence"/"pbb-inventory.json").read_text())
+          acquisition = json.loads((root/"evidence"/"acquisition-receipt.json").read_text())
+          candidate = json.loads((root/"evidence"/"candidate-validation.json").read_text())
+
+          selected = next(
+              row for row in candidate["candidates"]
+              if row["candidate"] == candidate["selected_candidate"]
+          )
+          source = expected["source"]
+          assert selected["byte_len"] == source["zip_byte_len"]
+          assert selected["sha256"] == source["zip_sha256"]
+          assert selected["zip_valid"] is True
+          assert selected["entry_count"] == source["zip_entry_count"]
+          assert selected["pbb_entry_count"] == source["pbb_entry_count"]
+
+          live = acquisition["live_attempts"][0]
+          assert live["http_code"] == str(source["http_status"])
+          assert live["content_type"].startswith(source["content_type"])
+          assert live["effective_url"] == source["known_target"]
+          assert live["zip_valid"] is True
+
+          assert inventory["schema_version"] == "chaptera.pbb.inventory.v3"
+          assert inventory["pbb_count"] == expected["corpus"]["pbb_count"]
+          assert inventory["container_counts"] == {"cfb": 94}
+
+          roots = {row["cfb"].get("root_clsid") for row in inventory["pbb"]}
+          assert roots == {expected["corpus"]["root_clsid"]}
+
+          compobj = set()
+          title_matches = 0
+          filename_matches = 0
+          for row in inventory["pbb"]:
+              stem = Path(row["filename"]).stem
+              streams = {stream["path"]: stream for stream in row["cfb"]["streams"]}
+              compobj.add(tuple(streams["\x01CompObj"]["printable_strings"]))
+              bb = streams["BBStoreInfo14"]["bbstore_xml"]
+              assert bb["version"] == "2"
+              assert bb["item_count"] == 1
+              item = bb["items"][0]
+              title_matches += item["Title"] == stem
+              filename_matches += item["Filename"] == stem
+          assert compobj == {tuple(expected["corpus"]["compobj_strings"])}
+          assert title_matches == expected["bbstoreinfo14"]["title_matches_filename_stem"]
+          assert filename_matches == expected["bbstoreinfo14"]["filename_field_matches_filename_stem"]
+
+          summary = inventory["corpus_summary"]
+          bb = summary["bbstoreinfo14"]
+          assert bb["version_counts"] == {"2": 94}
+          assert bb["item_count_distribution"] == {"1": 94}
+          assert bb["field_presence_counts"] == expected["bbstoreinfo14"]["field_presence_count"]
+          for field, value in expected["bbstoreinfo14"]["constant_fields"].items():
+              common = bb["field_common_values"][field]
+              assert common == [{"value": value, "count": 94}]
+          for field, count in expected["bbstoreinfo14"]["varying_field_unique_counts"].items():
+              assert bb["field_unique_value_counts"][field] == count
+          empty_description = next(
+              row["count"]
+              for row in bb["field_common_values"]["Description"]
+              if row["value"] == ""
+          )
+          assert empty_description == expected["bbstoreinfo14"]["empty_description_count"]
+
+          streams = summary["streams"]
+          assert streams["\x05DocumentSummaryInformation"]["file_count"] == expected["corpus"]["document_summary_information_present"]
+          assert streams["Escher/EscherDelayStm"]["nonzero_file_count"] == expected["corpus"]["escher_delay_stream_nonzero"]
+          assert streams["BBStoreInfo14"]["file_count"] == 94
+          assert streams["BBStoreInfo14"]["unique_sha256_count"] == 94
+          assert summary["token_file_counts"].get("ContentStore", 0) == 0
+          assert summary["token_file_counts"].get("BBStyle", 0) == 0
+          assert summary["token_file_counts"].get("desID", 0) == 0
+          assert summary["token_file_counts"].get("wid", 0) == 0
+
+          assert inventory["authority_fence"]["publisher_runtime_used"] is False
+          assert inventory["authority_fence"]["add_building_block_semantics_proven"] is False
+          print(json.dumps({
+              "pbb_count": inventory["pbb_count"],
+              "root_clsid": next(iter(roots)),
+              "bbstore_versions": bb["version_counts"],
+              "title_matches": title_matches,
+              "filename_matches": filename_matches,
+              "native_residual": expected["conclusion"]["next_required_discriminator"],
+          }, sort_keys=True))
+          PY
+
       - name: Upload source-safe evidence only
         uses: actions/upload-artifact@v4
         with:
