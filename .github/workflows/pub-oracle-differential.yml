@@ -1,0 +1,91 @@
+name: PUB cross-engine oracle
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "pub-corpus/corpus/**/*.pub"
+      - "pub-corpus/data/manifest.jsonl"
+      - "pub-corpus/data/intelligence/**"
+      - "pub-corpus/scripts/oracle_differential.py"
+      - ".github/workflows/pub-oracle-differential.yml"
+  schedule:
+    - cron: "37 4 * * 1,4"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pub-oracle-differential
+  cancel-in-progress: false
+
+jobs:
+  differential:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install independent public engines
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends             libmspub-tools             libreoffice-writer             poppler-utils
+
+      - name: Build current public Chaptera Viewer oracle
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --depth 1 https://github.com/HeisLuka/rar.git upstream/rar
+          UPSTREAM_SHA="$(git -C upstream/rar rev-parse HEAD)"
+          echo "CHAPTERA_UPSTREAM_COMMIT=${UPSTREAM_SHA}" >> "$GITHUB_ENV"
+          rustup toolchain install 1.85.0 --profile minimal
+          cargo +1.85.0 build             --release             --manifest-path upstream/rar/vendor/producer-a/Cargo.toml             -p chaptera-producer-a
+
+      - name: Run bounded diverse differential
+        shell: bash
+        run: |
+          set -euo pipefail
+          python pub-corpus/scripts/oracle_differential.py             --chaptera-bin upstream/rar/vendor/producer-a/target/release/chaptera-producer-a             --max-files 20             --timeout 60
+          python -m py_compile pub-corpus/scripts/oracle_differential.py
+
+      - name: Upload differential receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: pub-oracle-differential-v1
+          path: pub-corpus/data/oracle-differential/latest.json
+          if-no-files-found: error
+
+      - name: Publish changed differential
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$(git status --porcelain -- pub-corpus/data/oracle-differential)" ]]; then
+            echo "Differential receipt unchanged."
+            exit 0
+          fi
+
+          git config user.name "lalamu-lab-bot"
+          git config user.email "lalamu-lab-bot@users.noreply.github.com"
+          git add -- pub-corpus/data/oracle-differential
+          git commit -m "lab: refresh cross-engine PUB differential"
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push raced with main on attempt ${attempt}; retrying."
+          done
+          exit 1

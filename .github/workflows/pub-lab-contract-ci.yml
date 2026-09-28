@@ -1,0 +1,56 @@
+name: PUB lab contract CI
+
+on:
+  pull_request:
+    paths:
+      - "pub-corpus/**"
+      - ".github/workflows/pub-*.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "pub-corpus/scripts/corpus_intelligence.py"
+      - "pub-corpus/scripts/oracle_differential.py"
+      - "pub-corpus/scripts/fuzz_pub.py"
+      - ".github/workflows/pub-lab-contract-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install test dependency
+        run: python -m pip install --disable-pip-version-check olefile==0.47
+
+      - name: Compile lab scripts
+        run: |
+          set -euo pipefail
+          python -m py_compile             pub-corpus/scripts/corpus_intelligence.py             pub-corpus/scripts/oracle_differential.py             pub-corpus/scripts/fuzz_pub.py
+
+      - name: Exercise structural census on admitted corpus
+        run: |
+          set -euo pipefail
+          python pub-corpus/scripts/corpus_intelligence.py             --output /tmp/intelligence.json             --records-output /tmp/intelligence.jsonl
+          test -s /tmp/intelligence.json
+          test -s /tmp/intelligence.jsonl
+
+      - name: Exercise differential receipt with optional engines absent
+        run: |
+          set -euo pipefail
+          python pub-corpus/scripts/oracle_differential.py             --output /tmp/differential.json             --max-files 3             --libmspub-bin __not_installed_pub2xhtml__             --libreoffice-bin __not_installed_soffice__
+          test -s /tmp/differential.json
+
+      - name: Exercise fuzz CLI contract
+        run: python pub-corpus/scripts/fuzz_pub.py --help >/dev/null
