@@ -65,3 +65,59 @@ After this skeleton is green, add **Publisher-specific** update rows:
 5. file manifests/hashes where available, so `publisher_module_impact` can move from package applicability to actual binary delta.
 
 The matrix is research metadata only. No update package is executed and no format behavior is inferred solely from servicing chronology.
+
+## Second tranche — Publisher-specific update anchors
+
+The second pass moves from suite-level chronology to update rows where Microsoft names **Publisher itself**.
+
+### MS10-103 — 2010-12-14
+
+MS10-103 is a strong cross-generation parser/update anchor. Microsoft states that the update corrects how Publisher parses specially crafted Publisher files and publishes separate Publisher component KBs:
+
+- Publisher 2002 SP3 — KB2284692 — `officeXP-KB2284692-FullFile-ENU.exe`;
+- Publisher 2003 SP3 — KB2284695 — `office2003-KB2284695-FullFile-ENU.exe`;
+- Publisher 2007 SP2 — KB2284697 — `publisher2007-kb2284697-fullfile-x86-glb.exe`;
+- Publisher 2010 x86/x64 — KB2409055 — architecture-specific full-file packages.
+
+The bulletin also identifies `pubconv.dll` as the legacy Publisher converter surface used for older files. That makes it a causal parser/converter anchor, but not a complete package file manifest for every generation.
+
+### MS13-042 — 2013-05-14
+
+MS13-042 gives another exact Publisher-specific package wave:
+
+- Publisher 2003 SP3 — KB2810047 — replaces KB2553084;
+- Publisher 2007 SP3 — KB2597971 — replaces KB2596705;
+- Publisher 2010 SP1 x86/x64 — KB2553147 — no replaced update listed.
+
+A useful negative is explicit: **Publisher 2013 x86/x64 is listed as non-affected**. The matrix retains that negative applicability instead of inventing a 2013 update row.
+
+### MS16-148 / KB3114395 — 2016-12-13
+
+This is the first row in the current matrix with a full Publisher-specific binary-impact manifest.
+
+The Publisher 2010 SP2 update:
+- KB3114395;
+- replaces KB2817478;
+- ships x86 and x64 full-file packages;
+- has Microsoft-published SHA-256 for both packages;
+- lists exact Publisher binaries/files including `mspub.exe`, `pubconv.dll`, `ptxt9.dll`, `morph9.dll`, `prtf9.dll`, and `pubtrap.dll`.
+
+This is materially stronger than suite applicability. It is direct evidence that those Publisher file versions belong to the update payload.
+
+## Updated evidence ladder
+
+The matrix now distinguishes four different claims:
+
+1. **suite boundary** — Office SP/servicing event exists;
+2. **Publisher applicability** — Microsoft names Publisher as affected/applicable;
+3. **Publisher package identity** — exact Publisher KB/package is named;
+4. **Publisher binary impact** — Microsoft publishes the actual Publisher file manifest/hashes.
+
+Do not collapse these levels.
+
+## Residual after second tranche
+
+The matrix is still not complete:
+- Publisher 97/98/2000 servicing chronology remains primary-source unresolved;
+- Publisher 2013/2016 still need a denser Publisher-specific update/package layer;
+- Click-to-Run generations need build-level Publisher binary change attribution rather than only servicing-model identity.

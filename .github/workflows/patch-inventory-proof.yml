@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - patch-inventory-01-clean-v1
+      - patch-inventory-01-publisher-updates-v2
   pull_request:
   workflow_dispatch:
 
@@ -40,6 +41,9 @@ jobs:
               "rtm_rows": sum(x["epoch_kind"] == "rtm" for x in rows),
               "service_pack_rows": sum(x["epoch_kind"] == "service_pack" for x in rows),
               "servicing_model_rows": sum(x["epoch_kind"] == "servicing_model" for x in rows),
+              "publisher_update_rows": sum(x["epoch_kind"] == "publisher_update" for x in rows),
+              "exact_binary_manifest_rows": sum(x["epoch_kind"] == "publisher_update" and "file_manifest" in x for x in rows),
+              "negative_applicability_count": len(r.get("negative_applicability", [])),
               "legacy_unresolved": [
                   g["generation"] for g in r["gaps"]
                   if g["gap_kind"] == "servicing_skeleton_unresolved"
@@ -48,6 +52,7 @@ jobs:
                   "update_packages_executed": False,
                   "suite_sp_implies_publisher_binary_delta": False,
                   "missing_kb_guessed": False,
+                  "package_applicability_equals_binary_impact": False,
               },
           }
           Path("/tmp/patch-inventory-receipt.json").write_text(
