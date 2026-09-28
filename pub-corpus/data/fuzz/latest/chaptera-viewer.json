@@ -1,0 +1,26 @@
+{
+  "chaptera_upstream_commit": "4d61540b50c800b2b24efbf1fda4926ea10c95b8",
+  "github_run_id": "36432785469",
+  "github_sha": "18d81d10de366b285ea220c8a11c8007e0814e2b",
+  "iterations": 100,
+  "outcome_counts": {
+    "non-interesting": 100
+  },
+  "retained": [],
+  "retained_regression_count": 0,
+  "schema": "lalamu.pub-fuzz-regression.v1",
+  "seed": 20260928,
+  "seed_sha256s": [
+    "990cf478aed51a6e7fdd63556bf7402699d6a3eb1fdabaf8b18a621353878a46",
+    "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621",
+    "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6",
+    "9d6580b5a1c21543803410d44dd6e0a76aaa4b45ef6652e52afb9fbe4087bd06",
+    "bd51e69bdf8ad0de0e190a0d013782ceebc85acdda22948de0b84be1c7aa28f1",
+    "f2990235617259921c959ddff24dc30ca438ed44dc0126b57e6943fa4b6e7dcc",
+    "a8f7c5abc07397d32d1a208f5e9dbaec9b906e83fee1565f468759b357553f60",
+    "770daf58c214d6f848af676b6a53c04934f7c1499e5674837a18a2f63875dc90",
+    "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190",
+    "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa"
+  ],
+  "target_kind": "chaptera-viewer"
+}
