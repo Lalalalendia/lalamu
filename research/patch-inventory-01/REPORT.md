@@ -121,3 +121,51 @@ The matrix is still not complete:
 - Publisher 97/98/2000 servicing chronology remains primary-source unresolved;
 - Publisher 2013/2016 still need a denser Publisher-specific update/package layer;
 - Click-to-Run generations need build-level Publisher binary change attribution rather than only servicing-model identity.
+
+## Third tranche — Publisher 2013/2016 endpoint manifests
+
+This pass adds a small number of **endpoint-style binary anchors**, not another broad KB catalog.
+
+### Publisher 2013 — KB5002213 — 2023-04-11
+
+Microsoft's Publisher 2013 security page gives an unusually strong late-life anchor:
+- Publisher 2013 SP1 prerequisite;
+- MSI-only Download Center scope;
+- Publisher remote-code-execution fix for CVE-2023-28287 and CVE-2023-28295;
+- x86/x64 full-file package SHA-256;
+- replacement of KB4484347;
+- a large multilingual file manifest.
+
+The retained matrix normalizes the core x86 Publisher binary subset (`mspub.exe`, `pubconv.dll`, `ptxt9.dll`, `morph9.dll`, `prtf9.dll`, `pubtrap.dll`) and explicitly labels it as a **subset**. It does not pretend the omitted language-resource tail is absent.
+
+### Publisher 2016 — KB5002566 — 2024-09-10
+
+KB5002566 is an MSI-only Publisher 2016 security update for CVE-2024-38226. It:
+- replaces KB5002492;
+- publishes x86/x64 full-file package SHA-256;
+- gives architecture-specific Publisher file versions;
+- puts `mspub.exe` at 16.0.5460.1000 and `ptxt9.dll` at 16.0.5465.1001;
+- keeps `pubconv.dll` at 16.0.5391.1000 in the observed x64 table.
+
+The normalized manifest is deliberately limited to a core subset and marked as such.
+
+### Publisher 2016 — KB5002644 — 2026-09-08
+
+This is the latest Publisher 2016 MSI security package observed in the current research pass (observation date 2026-09-28).
+
+Microsoft records:
+- Publisher remote-code-execution vulnerabilities CVE-2026-81385 and CVE-2026-69742;
+- MSI-only scope, explicitly excluding Office 2016 Click-to-Run;
+- replacement of KB5002566;
+- exact x86/x64 full-file package SHA-256;
+- separate architecture-specific file-list downloads.
+
+The package/hash/replacement chain is normalized now. The linked external file lists are not yet normalized, so this row does **not** claim a complete binary manifest.
+
+## Why endpoint anchors matter
+
+These rows give stable binary coordinates for reverse engineering:
+- 2013: `mspub.exe 15.0.5545.1000`, `pubconv.dll 15.0.5545.1000` on the normalized x86 core;
+- 2016: `mspub.exe 16.0.5460.1000` and later package-chain identity through KB5002644.
+
+That lets future patch archaeology compare known Publisher module versions instead of treating “Office 2013/2016” as a single undifferentiated binary epoch.
