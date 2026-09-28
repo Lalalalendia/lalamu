@@ -78,10 +78,10 @@ impl FrameScheduler {
             _ => {}
         }
 
-        if let Some(submitted) = self.submitted {
-            if id.supersedes(submitted.id) {
-                self.metrics.stale_submitted += 1;
-            }
+        if let Some(submitted) = self.submitted
+            && id.supersedes(submitted.id)
+        {
+            self.metrics.stale_submitted += 1;
         }
         self.observe_depth();
     }
@@ -131,15 +131,11 @@ impl FrameScheduler {
         true
     }
 
-    pub fn device_loss(&mut self, new_backend_generation: Generation) {
+    pub fn device_loss(&mut self) {
         self.pending = None;
         self.submitted = None;
+        self.visible = None;
         self.metrics.device_resets += 1;
-
-        if let Some(mut visible) = self.visible {
-            visible.backend = new_backend_generation;
-            self.visible = None;
-        }
         self.observe_depth();
     }
 
@@ -238,7 +234,7 @@ mod tests {
         assert_eq!(s.begin_build(), Some(id(1, 1)));
         assert!(s.submit(id(1, 1)));
 
-        s.device_loss(Generation(2));
+        s.device_loss();
         assert_eq!(s.depth(), 0);
         assert_eq!(s.visible(), None);
         assert_eq!(s.metrics().device_resets, 1);
