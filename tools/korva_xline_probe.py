@@ -182,7 +182,7 @@ def main() -> int:
 
     xhtml = sub.add_parser("xhtml")
     xhtml.add_argument("file", type=Path)
-    xhtml.add_argument("--asset-root", type=Path)
+    xhtml.add_argument("--asset-root", type=Path)\n    xhtml.add_argument("--tool-exit", type=int, default=0)\n    xhtml.add_argument("--stderr", type=Path)
 
     args = ap.parse_args()
     if args.cmd == "raw":
@@ -194,7 +194,7 @@ def main() -> int:
             "carved_images": carve_images(data),
         }, indent=2, sort_keys=True))
     else:
-        print(json.dumps(xhtml_observation(args.file, args.asset_root), indent=2, sort_keys=True))
+        print(json.dumps(\n            xhtml_observation(args.file, args.asset_root, args.tool_exit, args.stderr),\n            indent=2, sort_keys=True\n        ))
     return 0
 
 
