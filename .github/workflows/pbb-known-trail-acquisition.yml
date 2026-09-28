@@ -33,7 +33,7 @@ jobs:
         run: |
           set -euxo pipefail
           python - <<'PY'
-          import json, os, subprocess
+          import json, os, subprocess, zipfile
           from pathlib import Path
 
           out = Path("/tmp/pbb")
@@ -45,17 +45,38 @@ jobs:
                   "curl","-L","--fail","--retry","2","--retry-delay","2",
                   "--connect-timeout","15","--max-time","120",
                   "-A","Mozilla/5.0 PBB-01 bounded research",
-                  "-D",str(headers),"-o",str(body),url
+                  "-D",str(headers),"-o",str(body),
+                  "-w","%{http_code}\\t%{url_effective}\\t%{content_type}\\t%{num_redirects}\\t%{size_download}",
+                  url
               ]
               proc = subprocess.run(cmd, text=True, capture_output=True)
+              fields = proc.stdout.strip().split("\t") if proc.stdout.strip() else []
               row = {
                   "kind":"live",
-                  "url":url,
+                  "requested_url":url,
                   "curl_exit":proc.returncode,
+                  "http_code":fields[0] if len(fields) > 0 else None,
+                  "effective_url":fields[1] if len(fields) > 1 else None,
+                  "content_type":fields[2] if len(fields) > 2 else None,
+                  "redirect_count":int(fields[3]) if len(fields) > 3 and fields[3].isdigit() else None,
+                  "curl_size_download":float(fields[4]) if len(fields) > 4 and fields[4] else None,
                   "stderr_excerpt":proc.stderr[-1500:],
                   "body_exists":body.exists(),
                   "body_len":body.stat().st_size if body.exists() else 0,
               }
+              if body.exists() and body.read_bytes()[:4] == b"PK\\x03\\x04":
+                  try:
+                      with zipfile.ZipFile(body) as zf:
+                          bad = zf.testzip()
+                          names = zf.namelist()
+                      row["zip_valid"] = bad is None
+                      row["entry_count"] = len(names)
+                      row["pbb_entry_count"] = sum(name.lower().endswith(".pbb") for name in names)
+                  except Exception as exc:
+                      row["zip_valid"] = False
+                      row["zip_error"] = str(exc)
+              else:
+                  row["zip_valid"] = False
               attempts.append(row)
           (out/"attempts"/"live.json").write_text(json.dumps(attempts, indent=2, sort_keys=True)+"\n")
           print(json.dumps(attempts, sort_keys=True))
@@ -69,6 +90,16 @@ jobs:
           from pathlib import Path
 
           out = Path("/tmp/pbb")
+          live = json.loads((out/"attempts"/"live.json").read_text())
+          if any(row.get("zip_valid") and row.get("pbb_entry_count", 0) > 0 for row in live):
+              result = {
+                  "skipped": True,
+                  "reason": "exact live target already recovered as a valid ZIP containing PBB files",
+              }
+              (out/"attempts"/"cdx.json").write_text(json.dumps(result, indent=2, sort_keys=True)+"\n")
+              print(json.dumps(result, sort_keys=True))
+              raise SystemExit(0)
+
           result = []
           for index, url in enumerate((os.environ["TARGET_HTTPS"], os.environ["TARGET_HTTP"]), start=1):
               q = urllib.parse.urlencode({
