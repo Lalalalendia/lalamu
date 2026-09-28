@@ -25,7 +25,7 @@ jobs:
         run: |
           set -euxo pipefail
           sudo apt-get update
-          sudo apt-get install -y libmspub-tools xvfb xauth binutils curl
+          sudo apt-get install -y libmspub-tools xvfb xauth binutils curl libwebkit2gtk-4.1-0 libjavascriptcoregtk-4.1-0 libsoup-3.0-0
           python -m py_compile tools/korva_xline_probe.py
           mkdir -p /tmp/xline/{fixtures,korva,libmspub,chaptera,raw,logs}
 
@@ -49,13 +49,13 @@ jobs:
           test -n "$KORVA_BIN"
           echo "$KORVA_BIN" > /tmp/xline/logs/korva-binary-path.txt
           file "$KORVA_BIN" | tee /tmp/xline/logs/korva-file.txt
-          ldd "$KORVA_BIN" | tee /tmp/xline/logs/korva-ldd.txt || true
+          ldd "$KORVA_BIN" | tee /tmp/xline/logs/korva-ldd.txt || true\n          grep "not found" /tmp/xline/logs/korva-ldd.txt > /tmp/xline/logs/korva-missing-libs.txt || true\n          mkdir -p /tmp/xline/korva-home
           strings "$KORVA_BIN" | grep -Ei '(^|[^a-z])(help|version|headless|cli|import_pub|open_pub)([^a-z]|$)'             | head -n 500 > /tmp/xline/logs/korva-cli-string-hits.txt || true
 
           set +e
-          timeout 12s xvfb-run -a "$KORVA_BIN" --help > /tmp/xline/logs/korva-help.stdout 2>/tmp/xline/logs/korva-help.stderr
+          HOME=/tmp/xline/korva-home timeout 12s xvfb-run -a "$KORVA_BIN" --help > /tmp/xline/logs/korva-help.stdout 2>/tmp/xline/logs/korva-help.stderr
           echo $? > /tmp/xline/logs/korva-help.exit
-          timeout 12s xvfb-run -a "$KORVA_BIN" --version > /tmp/xline/logs/korva-version.stdout 2>/tmp/xline/logs/korva-version.stderr
+          HOME=/tmp/xline/korva-home timeout 12s xvfb-run -a "$KORVA_BIN" --version > /tmp/xline/logs/korva-version.stdout 2>/tmp/xline/logs/korva-version.stderr
           echo $? > /tmp/xline/logs/korva-version.exit
           set -e
 
@@ -145,13 +145,14 @@ jobs:
         run: |
           set -euxo pipefail
           KORVA_BIN="$(cat /tmp/xline/logs/korva-binary-path.txt)"
-          BEFORE="$(find /tmp -maxdepth 3 -type f \( -name '*.pwl' -o -name '*.kva' \) -printf '%p\n' | sort | sha256sum | cut -d' ' -f1)"
+          mkdir -p /tmp/xline/korva-home
+          BEFORE="$(find /tmp/xline/korva-home -type f \( -name '*.pwl' -o -name '*.kva' \) -printf '%p\n' | sort | sha256sum | cut -d' ' -f1)"
           set +e
-          timeout 15s xvfb-run -a "$KORVA_BIN" /tmp/xline/fixtures/Sample.pub             > /tmp/xline/logs/korva-file-arg.stdout 2>/tmp/xline/logs/korva-file-arg.stderr
+          HOME=/tmp/xline/korva-home timeout 15s xvfb-run -a "$KORVA_BIN" /tmp/xline/fixtures/Sample.pub             > /tmp/xline/logs/korva-file-arg.stdout 2>/tmp/xline/logs/korva-file-arg.stderr
           CODE=$?
           set -e
           echo "$CODE" > /tmp/xline/logs/korva-file-arg.exit
-          AFTER="$(find /tmp -maxdepth 3 -type f \( -name '*.pwl' -o -name '*.kva' \) -printf '%p\n' | sort | sha256sum | cut -d' ' -f1)"
+          AFTER="$(find /tmp/xline/korva-home -type f \( -name '*.pwl' -o -name '*.kva' \) -printf '%p\n' | sort | sha256sum | cut -d' ' -f1)"
           printf 'before=%s\nafter=%s\n' "$BEFORE" "$AFTER" > /tmp/xline/logs/korva-produced-doc-scan.txt
 
       - name: Build probe receipt
@@ -196,6 +197,10 @@ jobs:
                   "file_arg_exit": text(root/"logs/korva-file-arg.exit"),
                   "produced_doc_scan": text(root/"logs/korva-produced-doc-scan.txt"),
                   "resource_import_hit_count": len(text(root/"logs/korva-resource-import-hits.txt").splitlines()),
+                  "missing_libraries": text(root/"logs/korva-missing-libs.txt").splitlines(),
+                  "help_stderr_excerpt": text(root/"logs/korva-help.stderr")[:2000],
+                  "version_stderr_excerpt": text(root/"logs/korva-version.stderr")[:2000],
+                  "file_arg_stderr_excerpt": text(root/"logs/korva-file-arg.stderr")[:2000],
               },
               "fixtures": fixtures,
           }
