@@ -22,6 +22,8 @@ struct ImageObservation {
 struct ChapteraObservation {
     schema_version: &'static str,
     engine: &'static str,
+    supported: bool,
+    error: Option<String>,
     source_byte_len: usize,
     source_sha256: String,
     stories: Vec<StoryObservation>,
@@ -52,16 +54,28 @@ fn main() {
         }
     };
 
+    let source_sha256 = sha256(&bytes);
     let environment = BoundedLayoutEnvironment {
         engine_revision: "korva-xline-chaptera-probe-v1".to_owned(),
         font_set_fingerprint: "not_scored".to_owned(),
         resource_fingerprint: "not_scored".to_owned(),
     };
+
     let document = match open_mature_0x2c_geometry(&bytes, environment) {
         Ok(document) => document,
         Err(error) => {
-            eprintln!("Chaptera open failed: {error:#}");
-            process::exit(3);
+            let observation = ChapteraObservation {
+                schema_version: "chaptera.korva-xline.chaptera-observation.v1",
+                engine: "chaptera",
+                supported: false,
+                error: Some(format!("{error:#}")),
+                source_byte_len: bytes.len(),
+                source_sha256,
+                stories: Vec::new(),
+                images: Vec::new(),
+            };
+            println!("{}", serde_json::to_string_pretty(&observation).unwrap());
+            return;
         }
     };
 
@@ -92,8 +106,10 @@ fn main() {
     let observation = ChapteraObservation {
         schema_version: "chaptera.korva-xline.chaptera-observation.v1",
         engine: "chaptera",
+        supported: true,
+        error: None,
         source_byte_len: bytes.len(),
-        source_sha256: sha256(&bytes),
+        source_sha256,
         stories,
         images,
     };
