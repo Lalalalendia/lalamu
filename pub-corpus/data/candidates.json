@@ -713,6 +713,12 @@
     "urls": [
       "https://raw.githubusercontent.com/dawoodshahzad07/Excel-Publisher-Project-Files/main/Art%20Auction%20Ad.pub"
     ],
-    "notes": "Natural Microsoft Publisher project artifact from a public student/project repository."
+    "notes": "Natural Microsoft Publisher project artifact from a public project repository. Same repository carries Art Auction Ad.jpg as a paired visual oracle.",
+    "sibling_oracle": {
+      "type": "image",
+      "url": "https://raw.githubusercontent.com/dawoodshahzad07/Excel-Publisher-Project-Files/main/Art%20Auction%20Ad.jpg",
+      "expected_git_blob_sha1": "e49304659374fc9c3144a95b710c3d9d1c38e39c",
+      "expected_size": 526855
+    }
   }
 ]
