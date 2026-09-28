@@ -985,10 +985,10 @@
       "total_absolute_count_error": 97
     }
   ],
-  "chaptera_upstream_commit": "4636645e89522d0359113562870253bba0d8637e",
+  "chaptera_upstream_commit": "6dea731432f01a29ffa104a60ed873c0bef206ec",
   "heuristic_warning": "Predicate scores are discovery aids only. The comparison count comes from the libmspub parser lineage; LibreOffice is not an independent Publisher parser vote. A candidate predicate requires separate source-semantic validation before use. In particular, do not copy libmspub's historical hard-coded DUMMY_PAGE seqNums into Chaptera; those constants are oracle-mechanism evidence, not native semantics.",
   "observed_pgt_types": [],
-  "receipt_sha256": "0081669ef621c344e996b38a09d25395496c999c6e98ba3aa074d538556c37ca",
+  "receipt_sha256": "f660ba46cec7177e0a013391fc471b7fb28e5b9932c9ba93984275b4806b8e5e",
   "records": [
     {
       "byte_len": 204800,
@@ -1095,6 +1095,14 @@
           "special_entry_count": 0
         },
         "status": "success"
+      },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
       },
       "sha256": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178"
     },
@@ -1288,6 +1296,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba"
     },
     {
@@ -1396,6 +1412,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "16ea75ba3cba286af382619a9edc2d7940d3e4f74a83577520b470c9fbc2852d"
     },
     {
@@ -1503,6 +1527,14 @@
           "special_entry_count": 0
         },
         "status": "success"
+      },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
       },
       "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a"
     },
@@ -1722,6 +1754,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "4029d4a1bf5be89d745c079b9c06ab33e5bdceb997a4761c5e11238110d879c9"
     },
     {
@@ -1845,6 +1885,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "4758095aa58927b1aefa23c384bb16cd598e6732ef2af5af68471118dc25c567"
     },
     {
@@ -1952,6 +2000,14 @@
           "special_entry_count": 0
         },
         "status": "success"
+      },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
       },
       "sha256": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78"
     },
@@ -2105,6 +2161,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa"
     },
     {
@@ -2213,6 +2277,14 @@
           "special_entry_count": 0
         },
         "status": "success"
+      },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
       },
       "sha256": "712e1db9cefd0af613b12fb776720ac5d67ebe772468f2e47cb26a1f2e6ce28a"
     },
@@ -2326,6 +2398,14 @@
           "special_entry_count": 0
         },
         "status": "success"
+      },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
       },
       "sha256": "770daf58c214d6f848af676b6a53c04934f7c1499e5674837a18a2f63875dc90"
     },
@@ -2443,6 +2523,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb"
     },
     {
@@ -2552,6 +2640,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "800d2648854fb3fe1f9314a1ea7b7969d79cd9cb9b12cc454a71dde8177b2450"
     },
     {
@@ -2649,6 +2745,14 @@
           "special_entry_count": 0
         },
         "status": "success"
+      },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
       },
       "sha256": "9271c1e5e57fa885d953a9d4cee5a4ccb5e10ac9a93c0a5aa7027683b6cece77"
     },
@@ -2864,6 +2968,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70"
     },
     {
@@ -2973,6 +3085,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6"
     },
     {
@@ -3069,6 +3189,14 @@
           "special_entry_count": 0
         },
         "status": "success"
+      },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
       },
       "sha256": "990cf478aed51a6e7fdd63556bf7402699d6a3eb1fdabaf8b18a621353878a46"
     },
@@ -3180,6 +3308,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "9923f422543b1ed43c090042c9e4256072df6fd961c06975e2b64335e09e9a15"
     },
     {
@@ -3277,6 +3413,14 @@
           "special_entry_count": 0
         },
         "status": "success"
+      },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
       },
       "sha256": "9d6580b5a1c21543803410d44dd6e0a76aaa4b45ef6652e52afb9fbe4087bd06"
     },
@@ -3395,6 +3539,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf"
     },
     {
@@ -3493,6 +3645,14 @@
           "special_entry_count": 0
         },
         "status": "success"
+      },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
       },
       "sha256": "a8f7c5abc07397d32d1a208f5e9dbaec9b906e83fee1565f468759b357553f60"
     },
@@ -3604,6 +3764,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621"
     },
     {
@@ -3711,6 +3879,14 @@
           "special_entry_count": 0
         },
         "status": "success"
+      },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
       },
       "sha256": "b61be87eda0fbf77249a51993da5fe744446bc8ff0d25d4a922e4e29f8f29cd1"
     },
@@ -3887,6 +4063,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "bbaefcbdcdd2dbe51a636ed554c14d6f5353c98e795b5f88d26f79542e5d93ba"
     },
     {
@@ -3986,6 +4170,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "bd51e69bdf8ad0de0e190a0d013782ceebc85acdda22948de0b84be1c7aa28f1"
     },
     {
@@ -4083,6 +4275,14 @@
           "special_entry_count": 0
         },
         "status": "success"
+      },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
       },
       "sha256": "c13eb49efa38041a767d326cd231160457c4c13c3bf252c6dc167cd57f07b4bb"
     },
@@ -4182,6 +4382,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "c19fb45f346d671fa9746a1ac6e5fa083a72b184adfa617a565d8e14b4151ebd"
     },
     {
@@ -4279,6 +4487,14 @@
           "special_entry_count": 0
         },
         "status": "success"
+      },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
       },
       "sha256": "d2239f6c60f2a7520c02f01e37ad5899873366e4481fc6a1952d58f074d508b1"
     },
@@ -4378,6 +4594,14 @@
           "special_entry_count": 0
         },
         "status": "success"
+      },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
       },
       "sha256": "de57184e48477cd9af2a1a4f0aee85cb3ea988558ef92be2ad54bbc6f547fa53"
     },
@@ -4490,6 +4714,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190"
     },
     {
@@ -4587,6 +4819,14 @@
           "special_entry_count": 0
         },
         "status": "success"
+      },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
       },
       "sha256": "f2990235617259921c959ddff24dc30ca438ed44dc0126b57e6943fa4b6e7dcc"
     },
@@ -4701,6 +4941,14 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "f4f23d04d29f20407b9e5c1f57f8df84e71084d9e8cd4f0c1cc0064737053de7"
     },
     {
@@ -4799,10 +5047,26 @@
         },
         "status": "success"
       },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 0,
+        "controlling_page_lists": [],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "no_controlling_page_list",
+        "status": "unavailable"
+      },
       "sha256": "fa901f49124264ab5cca37ec98deb07ef83b13ffc91666af719cce0c0f73f186"
     }
   ],
-  "schema": "lalamu.pub-page-role-sweep.v1",
+  "scenario_projection_comparison": {
+    "evaluated_file_count": 0,
+    "exact_file_count": 0,
+    "interpretation": "Count comparison is observational only. Resolved scenario projection is derived from unanimous OplControlling PageList Pgid -> PAGE Oid membership and then ordered by the DOCUMENT PageList; it is not promoted as universal Viewer authority."
+  },
+  "scenario_projection_status_counts": {
+    "unavailable": 32
+  },
+  "schema": "lalamu.pub-page-role-sweep.v2",
   "scored_file_count": 19,
   "status_counts": {
     "rejected": 1,
