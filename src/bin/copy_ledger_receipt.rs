@@ -1,4 +1,4 @@
-use copy_ledger_proof::{run_source_free_scenario, Scenario};
+use copy_ledger_proof::{Scenario, run_source_free_scenario};
 use serde_json::json;
 
 fn main() {
@@ -20,5 +20,5 @@ fn main() {
         "measurement_semantics": "deterministic_source_free_counters",
         "receipts": receipts,
     });
-    println!("{}", serde_json::to_string_pretty(&envelope).expect("serialize receipt set"));
+    println!(\n        "{}",\n        serde_json::to_string_pretty(&envelope).expect("serialize receipt set")\n    );
 }
