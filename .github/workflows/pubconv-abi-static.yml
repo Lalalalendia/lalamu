@@ -1,0 +1,179 @@
+name: pubconv-abi-static
+
+on:
+  push:
+    branches:
+      - pubconv-abi-static-01-clean-v1
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    env:
+      PACKAGE_URL: https://web.archive.org/web/20111006143949id_/http://msft-dnl.digitalrivercontent.net/msoffice/pub/X12-30247/X12-30247.exe
+      PACKAGE_SHA256: 6caa1d57b0b91485beb7cfbd38a44ab723043651a117223ef7ac735bf920c6dd
+      PACKAGE_SIZE: "233139240"
+      DLL_SHA256: 124f5b115979f4e4c0aab882851c399228174482bb124b8309860567a5980dbc
+      DLL_SIZE: "590144"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install bounded static-analysis dependencies
+        run: |
+          set -euxo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends p7zip-full msitools cabextract
+          python -m pip install --disable-pip-version-check pefile==2024.8.26 capstone==5.0.6
+          python -m py_compile tools/pubconv_abi_static.py
+          mkdir -p /tmp/pubconv-abi/{download,extracted,msi-scan,msi-extracted,out}
+
+      - name: Acquire exact archived Microsoft package
+        run: |
+          set -euxo pipefail
+          curl -fL --retry 4 --retry-delay 5 --max-time 1800 "$PACKAGE_URL"             -o /tmp/pubconv-abi/download/X12-30247.exe
+          test "$(stat -c %s /tmp/pubconv-abi/download/X12-30247.exe)" = "$PACKAGE_SIZE"
+          echo "$PACKAGE_SHA256  /tmp/pubconv-abi/download/X12-30247.exe" | sha256sum -c -
+
+      - name: Extract exact PUBCONV DLL
+        run: |
+          set -euxo pipefail
+          7z x -y /tmp/pubconv-abi/download/X12-30247.exe             -o/tmp/pubconv-abi/extracted >/tmp/pubconv-abi/out/7z.log 2>&1
+
+          : > /tmp/pubconv-abi/out/pubconv-msi-hits.txt
+          while IFS= read -r msi; do
+            safe="$(printf '%s' "$msi" | tr '/ ' '__')"
+            msiinfo export "$msi" File > "/tmp/pubconv-abi/msi-scan/$safe.File.txt" 2>/dev/null || continue
+            if grep -i 'PUBCONV' "/tmp/pubconv-abi/msi-scan/$safe.File.txt" >> /tmp/pubconv-abi/out/pubconv-msi-hits.txt; then
+              printf 'MSI=%s\n' "$msi" >> /tmp/pubconv-abi/out/pubconv-msi-hits.txt
+            fi
+          done < <(find /tmp/pubconv-abi/extracted -type f -iname '*.msi' | sort)
+
+          owner_msi="$(grep '^MSI=' /tmp/pubconv-abi/out/pubconv-msi-hits.txt | head -n1 | cut -d= -f2- || true)"
+          if [ -n "$owner_msi" ]; then
+            (
+              cd "$(dirname "$owner_msi")"
+              msiextract -C /tmp/pubconv-abi/msi-extracted "$(basename "$owner_msi")"
+            ) >/tmp/pubconv-abi/out/msiextract.log 2>&1 || true
+          fi
+
+          dll="$(find /tmp/pubconv-abi/msi-extracted /tmp/pubconv-abi/extracted -type f -iname 'PUBCONV.DLL' | head -n1 || true)"
+          if [ -z "$dll" ]; then
+            while IFS= read -r cab; do
+              d="/tmp/pubconv-abi/cab-$(basename "$cab" .cab)"
+              mkdir -p "$d"
+              7z x -y "$cab" -o"$d" >/dev/null 2>&1 || true
+            done < <(find /tmp/pubconv-abi/extracted -type f \( -iname 'EnterWW.cab' -o -iname '*WW.cab' \) | sort)
+            dll="$(find /tmp/pubconv-abi -type f -iname 'PUBCONV.DLL' | head -n1 || true)"
+          fi
+
+          test -n "$dll"
+          cp "$dll" /tmp/pubconv-abi/out/PUBCONV.DLL
+          test "$(stat -c %s /tmp/pubconv-abi/out/PUBCONV.DLL)" = "$DLL_SIZE"
+          echo "$DLL_SHA256  /tmp/pubconv-abi/out/PUBCONV.DLL" | sha256sum -c -
+
+      - name: Verify exact PE identity
+        run: |
+          python - <<'PY'
+          import pefile
+          pe = pefile.PE("/tmp/pubconv-abi/out/PUBCONV.DLL")
+          strings = {}
+          for group in getattr(pe, "FileInfo", []) or []:
+              for entry in group:
+                  if getattr(entry, "Key", b"") != b"StringFileInfo":
+                      continue
+                  for table in entry.StringTable:
+                      for k, v in table.entries.items():
+                          if isinstance(k, bytes):
+                              k = k.decode(errors="replace")
+                          if isinstance(v, bytes):
+                              v = v.decode(errors="replace")
+                          strings[str(k)] = str(v)
+          assert strings.get("FileVersion", "").startswith("12.0.4518.1014")
+          assert strings.get("ProductVersion", "").startswith("12.0.4518.1014")
+          assert strings.get("OriginalFilename", "").upper() == "PUBCONV.DLL"
+          assert pe.OPTIONAL_HEADER.CheckSum == 652414
+          assert pe.generate_checksum() == 652414
+          print(strings)
+          PY
+
+      - name: Emit bounded ABI fingerprint
+        run: |
+          set -euxo pipefail
+          python tools/pubconv_abi_static.py             /tmp/pubconv-abi/out/PUBCONV.DLL             --out /tmp/pubconv-abi/out/abi-fingerprint.json             | tee /tmp/pubconv-abi/out/summary.json
+
+      - name: Validate static evidence fence
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          p = Path("/tmp/pubconv-abi/out/abi-fingerprint.json")
+          r = json.loads(p.read_text())
+          assert r["schema_version"] == "chaptera.pubconv-abi-static.v1"
+          assert r["source"]["byte_len"] == 590144
+          assert r["source"]["sha256"] == os.environ["DLL_SHA256"]
+          assert r["source"]["file_version"].startswith("12.0.4518.1014")
+          assert r["source"]["pe_checksum_header"] == 652414
+          assert r["source"]["pe_checksum_generated"] == 652414
+          exports = r["exports"]
+          assert [row["name"] for row in exports] == [
+              "HrGetInboundConverter",
+              "HrGetOutboundConverter",
+              "HrInitFileConverterDll",
+              "TerminateFileConverterDll",
+          ]
+          assert all(row["entry_rva"] > 0 for row in exports)
+          assert all(row["ordinal"] > 0 for row in exports)
+          assert all(row["entry_instructions"] for row in exports)
+          assert all(row["interpretation_boundary"]["prototype_inferred"] is False for row in exports)
+          fence = r["global_interpretation_boundary"]
+          assert fence["runtime_activation_observed"] is False
+          assert fence["reader_writer_role_inference_authorized"] is False
+          assert fence["pub_wire_format_claim_authorized"] is False
+          assert fence["parent_pub_t_64_closed_by_this_report"] is False
+
+          acquisition = {
+              "schema_version": "chaptera.pubconv-abi-static.acquisition.v1",
+              "source_url": os.environ["PACKAGE_URL"],
+              "package_byte_len": int(os.environ["PACKAGE_SIZE"]),
+              "package_sha256": os.environ["PACKAGE_SHA256"],
+              "dll_byte_len": int(os.environ["DLL_SIZE"]),
+              "dll_sha256": os.environ["DLL_SHA256"],
+              "raw_package_or_dll_retained_in_artifact": False,
+          }
+          Path("/tmp/pubconv-abi/out/acquisition-receipt.json").write_text(
+              json.dumps(acquisition, indent=2, sort_keys=True) + "\n"
+          )
+          print(json.dumps({
+              "exports": {
+                  row["name"]: {
+                      "ordinal": row["ordinal"],
+                      "entry_rva": row["entry_rva"],
+                      "ret_cleanup": row["reachable_returns"]["cleanup_immediates"],
+                      "bounds_hit": row["reachable_cfg"]["bounds_hit"],
+                  }
+                  for row in exports
+              },
+              "fence": fence,
+          }, sort_keys=True))
+          PY
+
+      - name: Remove Microsoft binary before artifact upload
+        run: rm -f /tmp/pubconv-abi/out/PUBCONV.DLL
+
+      - name: Upload machine-readable static receipt only
+        uses: actions/upload-artifact@v4
+        with:
+          name: pubconv-abi-static
+          path: |
+            /tmp/pubconv-abi/out/abi-fingerprint.json
+            /tmp/pubconv-abi/out/acquisition-receipt.json
+            /tmp/pubconv-abi/out/summary.json
+            /tmp/pubconv-abi/out/pubconv-msi-hits.txt
+          if-no-files-found: error
+          retention-days: 14
