@@ -794,5 +794,20 @@
       "expected_size": 42951
     },
     "notes": "Controlled shape sample with shipped reference PNG."
+  },
+  {
+    "id": "utexas-ctr-poster2014",
+    "kind": "direct",
+    "source_type": "institutional-web",
+    "source_repo": null,
+    "source_path": null,
+    "source_filename": "Poster2014.pub",
+    "urls": [
+      "https://library.ctr.utexas.edu/ctr-publications/Poster2014.pub"
+    ],
+    "recover_wayback": true,
+    "anchor_text": "CTR-Branded Poster Template for MS Publisher (.pub, 72 x 36 banner size)",
+    "locator_snapshot": "https://cloud.wikis.utexas.edu/wiki/spaces/ctrsupport/pages/62489949",
+    "notes": "Official UT Austin Center for Transportation Research 72 x 36 conference-poster template; required for the annual CTR Symposium."
   }
 ]
