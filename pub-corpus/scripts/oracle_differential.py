@@ -56,7 +56,7 @@ def normalize_text(text: str) -> str:
 def text_facts(text: str) -> dict[str, Any]:
     normalized = normalize_text(text)
     tokens = sorted(re.findall(r"\w+", normalized.casefold(), flags=re.UNICODE))
-    token_material = "\\n".join(tokens)
+    token_material = "\n".join(tokens)
     return {
         "text_chars": len(normalized),
         "text_words": len(normalized.split()) if normalized else 0,

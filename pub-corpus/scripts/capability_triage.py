@@ -141,15 +141,15 @@ def classify_pair(
     right_semantics = str(right_metric.get("semantics") or "unknown")
 
     downstream = "downstream-consumer" in left_role or "downstream-consumer" in right_role
-    if left_lineage == right_lineage or downstream:
-        classification = "correlated-oracle"
-        reason = "dependent-parser-lineage"
-    elif "unsupported" in {left_capability, right_capability}:
+    if "unsupported" in {left_capability, right_capability}:
         classification = "engine-unsupported"
         reason = "metric-explicitly-unsupported"
     elif "unknown" in {left_capability, right_capability}:
         classification = "needs-native-oracle"
         reason = "metric-capability-unknown"
+    elif left_lineage == right_lineage or downstream:
+        classification = "correlated-oracle"
+        reason = "dependent-parser-lineage"
     elif left_semantics != right_semantics:
         classification = "semantic-mismatch"
         reason = "metric-semantics-not-proven-equivalent"
