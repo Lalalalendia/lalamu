@@ -86,20 +86,34 @@ def parse_bbstore_xml(data: bytes) -> dict | None:
         return {"parse_error": "BBStore closing tag not found"}
     raw = data[start : end + len(end_marker)]
 
-    text = None
     encoding = None
     root = None
+    cleaned_text = None
+    parse_errors = []
     for candidate in ("utf-8", "windows-1252", "latin-1"):
         try:
-            text = raw.decode(candidate)
-            root = ET.fromstring(text)
-            encoding = candidate
-            break
-        except (UnicodeDecodeError, ET.ParseError):
+            decoded = raw.decode(candidate)
+        except UnicodeDecodeError as exc:
+            parse_errors.append(f"{candidate}:decode:{exc}")
             continue
-    if text is None or encoding is None or root is None:
+        # BBStoreInfo14 can carry non-XML C0 control bytes around otherwise
+        # well-formed XML text. Keep XML whitespace; strip other controls.
+        cleaned = "".join(
+            ch for ch in decoded
+            if ch in "\t\n\r" or ord(ch) >= 0x20
+        )
+        try:
+            root = ET.fromstring(cleaned)
+            encoding = candidate
+            cleaned_text = cleaned
+            break
+        except ET.ParseError as exc:
+            parse_errors.append(f"{candidate}:xml:{exc}")
+
+    if root is None or encoding is None or cleaned_text is None:
         return {
             "parse_error": "BBStore XML could not be decoded/parsed",
+            "parse_attempts": parse_errors[:6],
             "xml_byte_len": len(raw),
             "xml_sha256": sha256_bytes(raw),
         }
