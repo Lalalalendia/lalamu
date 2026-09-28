@@ -2,6 +2,129 @@
   "candidate_predicate_scoreboard": [
     {
       "evaluated_file_count": 19,
+      "exact_file_count": 18,
+      "max_absolute_count_error": 1,
+      "per_file": [
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178"
+        },
+        {
+          "absolute_count_error": 1,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 3,
+          "sha256": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "16ea75ba3cba286af382619a9edc2d7940d3e4f74a83577520b470c9fbc2852d"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 4,
+          "selected_count": 4,
+          "sha256": "4029d4a1bf5be89d745c079b9c06ab33e5bdceb997a4761c5e11238110d879c9"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 2,
+          "sha256": "4758095aa58927b1aefa23c384bb16cd598e6732ef2af5af68471118dc25c567"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "712e1db9cefd0af613b12fb776720ac5d67ebe772468f2e47cb26a1f2e6ce28a"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "800d2648854fb3fe1f9314a1ea7b7969d79cd9cb9b12cc454a71dde8177b2450"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 5,
+          "selected_count": 5,
+          "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "9923f422543b1ed43c090042c9e4256072df6fd961c06975e2b64335e09e9a15"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "b61be87eda0fbf77249a51993da5fe744446bc8ff0d25d4a922e4e29f8f29cd1"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 2,
+          "selected_count": 2,
+          "sha256": "bbaefcbdcdd2dbe51a636ed554c14d6f5353c98e795b5f88d26f79542e5d93ba"
+        },
+        {
+          "absolute_count_error": 0,
+          "libmspub_lineage_page_count": 1,
+          "selected_count": 1,
+          "sha256": "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190"
+        }
+      ],
+      "predicate": "(shape_or_group_child>0 AND oid_nonzero) OR TABLE_child",
+      "total_absolute_count_error": 1
+    },
+    {
+      "evaluated_file_count": 19,
       "exact_file_count": 15,
       "max_absolute_count_error": 4,
       "per_file": [
@@ -862,10 +985,10 @@
       "total_absolute_count_error": 97
     }
   ],
-  "chaptera_upstream_commit": "69f1e6628a8c81e9986db8329c00a391f4c0f777",
-  "heuristic_warning": "Predicate scores are discovery aids only. The comparison count comes from the libmspub parser lineage; LibreOffice is not an independent Publisher parser vote. A candidate predicate requires separate source-semantic validation before use.",
+  "chaptera_upstream_commit": "4636645e89522d0359113562870253bba0d8637e",
+  "heuristic_warning": "Predicate scores are discovery aids only. The comparison count comes from the libmspub parser lineage; LibreOffice is not an independent Publisher parser vote. A candidate predicate requires separate source-semantic validation before use. In particular, do not copy libmspub's historical hard-coded DUMMY_PAGE seqNums into Chaptera; those constants are oracle-mechanism evidence, not native semantics.",
   "observed_pgt_types": [],
-  "receipt_sha256": "d27469e260ec46c220fc62e64262b418d1e609ec69518f6e5c679deb0dea6133",
+  "receipt_sha256": "0081669ef621c344e996b38a09d25395496c999c6e98ba3aa074d538556c37ca",
   "records": [
     {
       "byte_len": 204800,
