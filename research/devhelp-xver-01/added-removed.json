@@ -1,0 +1,72 @@
+{
+  "added_by_category": {
+    "howto": ["pbhowConstants"],
+    "method": [
+      "pbmthAddCatalogMergeArea","pbmthAddEmptyPictureFrame","pbmthAddSet",
+      "pbmthAddToCatalogMergeArea","pbmthAddToEveryPage","pbmthAddWebNavigationBar",
+      "pbmthBeginCustomUndoAction","pbmthChangeOrientation","pbmthConvertPublicationType",
+      "pbmthConvertToProcess","pbmthCreate","pbmthDeleteSetAndInstances",
+      "pbmthEndCustomUndoAction","pbmthExportEmailHTML","pbmthFindPlateByInkName",
+      "pbmthMoveIntoTextFlow","pbmthMoveOutOfTextFlow","pbmthRedo",
+      "pbmthRemoveCatalogMergeArea","pbmthRemoveFromCatalogMergeArea","pbmthReplace",
+      "pbmthRevertToDefaultWeight","pbmthRevertToOriginalColor","pbmthSet",
+      "pbmthSetBackgroundSoundRepeat","pbmthSetListType","pbmthUndo","pbmthWebPagePreview"
+    ],
+    "misc": ["pbmscNewMethAlpha","pbmscNewMethObj","pbmscNewObjects","pbmscNewPropsAlpha","pbmscNewPropsObj"],
+    "object": [
+      "pbobjAdvancedPrintOptions","pbobjBorderArt","pbobjBorderArtFormat","pbobjBorderArts",
+      "pbobjCatalogMergeShapes","pbobjColorsInUse","pbobjDocuments","pbobjFindReplace",
+      "pbobjHeaderFooter","pbobjInlineShapes","pbobjLabel","pbobjLabels","pbobjPageBackground",
+      "pbobjPrintablePlate","pbobjPrintablePlates","pbobjPrintableRect","pbobjSection","pbobjSections",
+      "pbobjWebNavigationBarHyperlinks","pbobjWebNavigationBarSet","pbobjWebNavigationBarSets",
+      "pbobjWebOptions","pbobjWebPageOptions","pbobjtocPages"
+    ],
+    "property": [
+      "pbproAddHebDoubleQuote","pbproAdvancedPrintOptions","pbproAllowBleeds",
+      "pbproAlwaysSaveInDefaultEncoding","pbproAutoUpdate","pbproAvailableLabels","pbproBackground",
+      "pbproBackgroundSound","pbproBackgroundSoundLoopCount","pbproBackgroundSoundLoopForever",
+      "pbproBorderArt","pbproBorderArts","pbproButtonStyle","pbproCatalogMergeItems",
+      "pbproCharBasedFirstLineIndent","pbproColorModel","pbproColorsInPalette","pbproColorsInUse",
+      "pbproColumnGutterWidth","pbproContinueNumbersFromPreviousSection","pbproDesign","pbproDocuments",
+      "pbproEffectiveResolution","pbproEmailAsImg","pbproEnableIncrementalUpload","pbproEncoding",
+      "pbproExists","pbproFieldType","pbproFileSize","pbproFilename","pbproFind","pbproFindText",
+      "pbproFooter","pbproForward","pbproFoundTextRange","pbproGraphicsResolution",
+      "pbproGutterCenterlines","pbproHasAlphaChannel","pbproHasTransparencyColor","pbproHeader",
+      "pbproHorizontalAlignment","pbproHorizontalBaseLineOffset","pbproHorizontalBaseLineSpacing",
+      "pbproHorizontalButtonCount","pbproHorizontalRepeat","pbproHorizontalScale","pbproImageFormat",
+      "pbproInUse","pbproIncludePageOnNewWebNavigationBars","pbproInk","pbproInkName","pbproInksToPrint",
+      "pbproInlineAlignment","pbproInlineShapes","pbproInlineTextRange","pbproIsDataSourceConnected",
+      "pbproIsEmpty","pbproIsGreyScale","pbproIsHeader","pbproIsHorizontal","pbproIsInline",
+      "pbproIsLeading","pbproIsLinked","pbproIsPostscriptPrinter","pbproIsTrailing","pbproIsTrueColor",
+      "pbproIsTwoPageMaster","pbproIsWizard","pbproIsWizardPage","pbproKeepLinesTogether",
+      "pbproKeepWithNext","pbproKeywords","pbproLabel","pbproLinkedFileStatus","pbproLinks",
+      "pbproListBulletFontName","pbproListBulletFontSize","pbproListBulletText","pbproListIndent",
+      "pbproListNumberSeparator","pbproListNumberStart","pbproListType","pbproLockToBaseLine",
+      "pbproMatchAlefHamza","pbproMatchCase","pbproMatchDiacritics","pbproMatchKashida",
+      "pbproMatchWholeWord","pbproMatchWidth","pbproMultiplePagesPerSheet1","pbproNegativeImage",
+      "pbproOrganizeInFolder","pbproOriginalColorsInPalette","pbproOriginalFileSize",
+      "pbproOriginalHasAlphaChannel","pbproOriginalHeight","pbproOriginalIsTrueColor",
+      "pbproOriginalResolution","pbproOriginalWidth","pbproPageHeight1","pbproPageNumberFormat",
+      "pbproPageNumberStart","pbproPageWidth1","pbproPrintBlankPlates","pbproPrintBleedMarks",
+      "pbproPrintCMYKByDefault","pbproPrintColorBars","pbproPrintCropMarks","pbproPrintDensityBars",
+      "pbproPrintJobInformation","pbproPrintMode","pbproPrintPageBackgrounds","pbproPrintPlate",
+      "pbproPrintRegistrationMarks","pbproPrintablePlates","pbproPrintableRect","pbproPublicationLayout",
+      "pbproPublicationType","pbproPublishFileName","pbproRedoActionsAvailable","pbproRelyOnVML",
+      "pbproRemovePersonalInformation","pbproReplaceScope","pbproReplaceWithText","pbproResolution",
+      "pbproRowGutterWidth","pbproSections","pbproShowHeaderFooterOnFirstPage","pbproShowOnlyWebFonts",
+      "pbproShowSelected","pbproStartInNextTextBox","pbproStartPageIndex","pbproStretchPictures",
+      "pbproUndoActionsAvailable","pbproUseCharBasedFirstLineIndent","pbproUseCustomHalftone",
+      "pbproUseOnlyPublicationFonts","pbproVerticalBaseLineOffset","pbproVerticalBaseLineSpacing",
+      "pbproVerticalRepeat","pbproVerticalScale","pbproViewHorizontalBaseLineGuides",
+      "pbproViewVerticalBaseLineGuides","pbproWebNavigationBarSetName","pbproWebNavigationBarSets",
+      "pbproWebOptions","pbproWebPageOptions","pbproWidowControl"
+    ],
+    "toc": ["pbtocommap"]
+  },
+  "removed_by_category": {
+    "event": ["pbevtMailMergeWizardSendToCustom"],
+    "method": ["pbmthDiscardConflict","pbmthOfflineConflict"],
+    "property": ["pbproDestination","pbproMultiplePagesPerSheet","pbproPageHeight","pbproPageWidth"]
+  },
+  "schema_version": "chaptera.devhelp-xver.added-removed.v1"
+}
