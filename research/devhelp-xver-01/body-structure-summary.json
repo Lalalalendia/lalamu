@@ -1,0 +1,126 @@
+{
+  "changed_common_counts": {
+    "applies_to": 40,
+    "arguments": 8,
+    "body_fingerprint": 197,
+    "enum_groups": 8,
+    "help_meta": 685,
+    "links": 100,
+    "return_type_candidates": 59,
+    "signature_parameters": 7,
+    "signatures": 8,
+    "title": 3
+  },
+  "evidence_boundary": {
+    "applicability_links_extracted": true,
+    "argument_types_extracted_when_present": true,
+    "canonical_html_namespace_only": true,
+    "enum_type_and_constant_names_extracted": true,
+    "full_help_prose_committed": false,
+    "help_topic_ids_and_metadata_extracted": true,
+    "intra_help_links_extracted": true,
+    "numeric_enum_values_only_when_present": true,
+    "pub_wire_format_claims_allowed": false,
+    "rename_move_candidates_historical_tlb_proven": false,
+    "return_type_candidates_extracted": true,
+    "signatures_extracted": true,
+    "topic_body_text_retained": false
+  },
+  "help_identity_scheme": {
+    "changed_common_count": 685,
+    "p2002": "Tnum/Filename/Ver/ProjApp",
+    "p2003": "assetid/lcid"
+  },
+  "rename_move_candidates": [
+    {
+      "confidence": "strong_candidate_not_historical_tlb_proof",
+      "from": "pbproMultiplePagesPerSheet",
+      "same_signature": true,
+      "same_title": true,
+      "signature": ["expression.MultiplePagesPerSheet"],
+      "title": "MultiplePagesPerSheet Property",
+      "to": "pbproMultiplePagesPerSheet1"
+    },
+    {
+      "confidence": "strong_candidate_not_historical_tlb_proof",
+      "from": "pbproPageHeight",
+      "same_signature": true,
+      "same_title": true,
+      "signature": ["expression.PageHeight"],
+      "title": "PageHeight Property",
+      "to": "pbproPageHeight1"
+    },
+    {
+      "confidence": "strong_candidate_not_historical_tlb_proof",
+      "from": "pbproPageWidth",
+      "same_signature": true,
+      "same_title": true,
+      "signature": ["expression.PageWidth"],
+      "title": "PageWidth Property",
+      "to": "pbproPageWidth1"
+    }
+  ],
+  "schema_version": "chaptera.devhelp-xver.body-structure-summary.v1",
+  "sources": {
+    "artifact_ids": [10802143151, 10809962912],
+    "extractor_runtime": {
+      "artifact": 10968014431,
+      "run": 36418154234
+    },
+    "p2002": {
+      "chm_byte_len": 656752,
+      "chm_sha256": "688a5a4c5ec209740ba2506e322fc9c8070747c0d9cc7b59560e0a0bea2acf51",
+      "coverage": {
+        "applies_to": 600,
+        "arguments": 133,
+        "enum_groups": 171,
+        "help_meta": 692,
+        "links": 399,
+        "return_type_candidates": 215,
+        "signatures": 598
+      },
+      "topic_count": 692
+    },
+    "p2003": {
+      "chm_byte_len": 1180470,
+      "chm_sha256": "796e0a899e5b691d04895590206113f112816fe161250486b787f82af4ac5418",
+      "coverage": {
+        "applies_to": 766,
+        "arguments": 149,
+        "enum_groups": 203,
+        "help_meta": 892,
+        "links": 500,
+        "return_type_candidates": 415,
+        "signatures": 769
+      },
+      "topic_count": 892
+    }
+  },
+  "surface": {
+    "added": 207,
+    "common": 685,
+    "removed": 7
+  },
+  "title_changes": [
+    {
+      "after": "MailMergeFilters Collection",
+      "before": "MailMergeFilters Object",
+      "topic_id": "pbobjMailMergeFilters"
+    },
+    {
+      "after": "ObjectVerbs Collection",
+      "before": "ObjectVerbs Object",
+      "topic_id": "pbobjObjectVerbs"
+    },
+    {
+      "after": "WebHiddenFields Collection",
+      "before": "WebHiddenFields Object",
+      "topic_id": "pbobjWebHiddenFields"
+    }
+  ],
+  "tlb_crosscheck_boundary": {
+    "current_inventory": "Publisher16 MSPUB.TLB 2.3 / 237 types / 3015 FUNCDESC / 1129 VARDESC / 0 decode errors",
+    "sha256": "7a831d3eabf88bc7c11fd4fd6eff4b75638d8bb5097eb3c5279332260153a3c9",
+    "use": "continuity only; not historical introduction dating"
+  }
+}
