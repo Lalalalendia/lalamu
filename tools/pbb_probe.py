@@ -65,7 +65,7 @@ def printable_strings(data: bytes, limit: int = 160) -> list[str]:
             values.append(value)
 
     for match in ASCII_RE.finditer(data):
-        accept(match.group().decode("ascii", errors="replace"))
+        accept(match.group().decode("windows-1252", errors="replace"))
         if len(values) >= limit:
             break
     if len(values) < limit:
@@ -84,52 +84,32 @@ BBSTORE_FIELDS = (
 )
 
 
-def decode_bbstore_value(data: bytes) -> str:
-    cleaned = bytes(
-        byte for byte in data
-        if byte in (9, 10, 13) or byte >= 0x20
-    )
-    for encoding in ("utf-8", "windows-1252", "latin-1"):
-        try:
-            return cleaned.decode(encoding).strip()
-        except UnicodeDecodeError:
-            continue
-    return cleaned.decode("latin-1", errors="replace").strip()
-
-
-def parse_bbstore_xml(data: bytes) -> dict | None:
-    # Parse the compact BBStore XML-like payload by byte-level tags instead of
-    # trusting the whole stream to be a standalone XML document. This preserves
-    # non-ASCII CP1252 metadata while tolerating stream framing/control bytes.
-    if b"<BBStore" not in data or b"</BBStore>" not in data:
+def parse_bbstore_strings(strings: list[str]) -> dict | None:
+    start = next((i for i, value in enumerate(strings) if value.startswith("<?xml")), None)
+    end = next((i for i, value in enumerate(strings) if value == "</BBStore>"), None)
+    if start is None or end is None or end < start:
         return None
 
-    version_match = re.search(rb'<BBStore\s+version="([^"]*)"', data, re.I)
-    item_blobs = re.findall(rb"<Item>(.*?)</Item>", data, re.I | re.S)
+    text = "".join(strings[start : end + 1])
+    try:
+        root = ET.fromstring(text)
+    except ET.ParseError as exc:
+        return {
+            "parser": "printable_run_xml_v1",
+            "parse_error": str(exc),
+            "run_count": end - start + 1,
+        }
+
     items = []
-    for blob in item_blobs:
+    for item in root.findall(".//Item"):
         fields = {}
-        for field in BBSTORE_FIELDS:
-            open_close = re.search(
-                rb"<" + field.encode("ascii") + rb">(.*?)</" + field.encode("ascii") + rb">",
-                blob,
-                re.I | re.S,
-            )
-            if open_close:
-                fields[field] = decode_bbstore_value(open_close.group(1))
-                continue
-            empty = re.search(
-                rb"<" + field.encode("ascii") + rb"\s*/>",
-                blob,
-                re.I,
-            )
-            if empty:
-                fields[field] = ""
+        for child in list(item):
+            fields[child.tag] = child.text or ""
         items.append(fields)
 
     return {
-        "parser": "bounded_tag_parser_v1",
-        "version": decode_bbstore_value(version_match.group(1)) if version_match else None,
+        "parser": "printable_run_xml_v1",
+        "version": root.attrib.get("version"),
         "item_count": len(items),
         "items": items,
     }
@@ -176,11 +156,12 @@ def ole_inventory(path: Path) -> dict:
                     row["sha256"] = sha256_bytes(payload)
                     row["token_hits"] = token_hits(payload)
                     if name in STRING_STREAMS:
-                        row["printable_strings"] = printable_strings(payload)
-                    if name == "BBStoreInfo14":
-                        parsed = parse_bbstore_xml(payload)
-                        if parsed is not None:
-                            row["bbstore_xml"] = parsed
+                        strings = printable_strings(payload)
+                        row["printable_strings"] = strings
+                        if name == "BBStoreInfo14":
+                            parsed = parse_bbstore_strings(strings)
+                            if parsed is not None:
+                                row["bbstore_xml"] = parsed
                 except Exception as exc:
                     row["read_error"] = str(exc)
                 result["streams"].append(row)
