@@ -64,9 +64,17 @@ impl FrameScheduler {
         match self.pending {
             Some(old) if id.supersedes(old.id) => {
                 self.metrics.superseded_pre_submit += 1;
-                self.pending = Some(Work { id, stage: Stage::Pending });
+                self.pending = Some(Work {
+                    id,
+                    stage: Stage::Pending,
+                });
             }
-            None => self.pending = Some(Work { id, stage: Stage::Pending }),
+            None => {
+                self.pending = Some(Work {
+                    id,
+                    stage: Stage::Pending,
+                })
+            }
             _ => {}
         }
 
@@ -95,7 +103,10 @@ impl FrameScheduler {
             return false;
         }
         self.pending = None;
-        self.submitted = Some(Work { id, stage: Stage::Submitted });
+        self.submitted = Some(Work {
+            id,
+            stage: Stage::Submitted,
+        });
         self.observe_depth();
         true
     }
@@ -145,8 +156,10 @@ impl FrameScheduler {
     }
 
     fn observe_depth(&mut self) {
-        self.metrics.max_pending_or_in_flight =
-            self.metrics.max_pending_or_in_flight.max(self.depth() as u64);
+        self.metrics.max_pending_or_in_flight = self
+            .metrics
+            .max_pending_or_in_flight
+            .max(self.depth() as u64);
     }
 }
 
