@@ -114,7 +114,7 @@ jobs:
 
           p = Path("/tmp/pubconv-abi/out/abi-fingerprint.json")
           r = json.loads(p.read_text())
-          assert r["schema_version"] == "chaptera.pubconv-abi-static.v1"
+          assert r["schema_version"] == "chaptera.pubconv-abi-static.v2"
           assert r["source"]["byte_len"] == 590144
           assert r["source"]["sha256"] == os.environ["DLL_SHA256"]
           assert r["source"]["file_version"].startswith("12.0.4518.1014")
