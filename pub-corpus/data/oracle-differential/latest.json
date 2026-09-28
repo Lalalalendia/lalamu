@@ -19,7 +19,7 @@
     "normalized_text_mismatch": 48,
     "page_count_mismatch": 36
   },
-  "receipt_sha256": "9894ac2545598e1975907ceff204b29c0031af817e4cf954eec143ccb26e464f",
+  "receipt_sha256": "2309c81662a77002fc2539beb90bc7ea6d4db238db96584866758b3cff0f6446",
   "records": [
     {
       "byte_len": 204800,
@@ -46,7 +46,7 @@
           "story_count": 27,
           "text_chars": 484,
           "text_words": 84,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "0f8802e3dd486b1a57cb5a8d0a0dd77ab7aad1003acbd4e16b75397b8ee806d6"
         },
         "libmspub": {
           "normalized_text_sha256": "15b0acf0068b94cb824e425a4f4f39d063e0352ae3bbd6250cf7eee26ed855c8",
@@ -54,7 +54,7 @@
           "status": "success",
           "text_chars": 145,
           "text_words": 23,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "d5adfbf67d6627344bf84f243a0ce268e1fbf9fe21c366267714aa78d0d95e1d",
           "xhtml_bytes": 452085
         },
         "libreoffice": {
@@ -63,7 +63,7 @@
           "status": "success",
           "text_chars": 145,
           "text_words": 23,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "d5adfbf67d6627344bf84f243a0ce268e1fbf9fe21c366267714aa78d0d95e1d"
         }
       },
       "raw_pairwise_disagreements": [
@@ -121,9 +121,14 @@
           "priority": "high"
         },
         {
-          "kind": "chaptera_text_order_or_punctuation_divergence",
-          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
-          "priority": "low"
+          "chaptera_text_chars": 484,
+          "chaptera_text_words": 84,
+          "kind": "chaptera_text_inventory_gap",
+          "libmspub_text_chars": 145,
+          "libmspub_text_words": 23,
+          "priority": "high",
+          "relative_text_char_gap": 2.3379310344827586,
+          "text_char_delta": 339
         }
       ]
     },
@@ -154,7 +159,7 @@
           "story_count": 5,
           "text_chars": 1397,
           "text_words": 226,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "6448a12b00b41b08ba9b08987718d2bf88a92934afc2929db87db9798b25f345"
         },
         "libmspub": {
           "normalized_text_sha256": "59ecf2101ea3bab461ca76972f70dd521de5097de89ab8596d3211caab6ac55d",
@@ -162,7 +167,7 @@
           "status": "success",
           "text_chars": 1508,
           "text_words": 246,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "bc97d687e1dd15adb3bf384e5d3703df3dd61ee46401df15c2ad1df3b8f32ead",
           "xhtml_bytes": 7377820
         },
         "libreoffice": {
@@ -171,7 +176,7 @@
           "status": "success",
           "text_chars": 1434,
           "text_words": 230,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "61710485d54ec2130c3403d5e0720bd9666867667ceb9ec1c64d8292d2fe3d10"
         }
       },
       "raw_pairwise_disagreements": [
@@ -229,8 +234,18 @@
           "priority": "high"
         },
         {
-          "kind": "chaptera_text_order_or_punctuation_divergence",
-          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "chaptera_text_chars": 1397,
+          "chaptera_text_words": 226,
+          "kind": "chaptera_text_content_gap",
+          "libmspub_text_chars": 1508,
+          "libmspub_text_words": 246,
+          "priority": "medium",
+          "relative_text_char_gap": 0.07360742705570292,
+          "text_char_delta": -111
+        },
+        {
+          "kind": "shared_lineage_downstream_text_divergence",
+          "note": "libmspub and LibreOffice share the PUB parser lineage; this difference is downstream extraction/render serialization, not an independent parser disagreement.",
           "priority": "low"
         }
       ]
@@ -260,7 +275,7 @@
           "story_count": 10,
           "text_chars": 323,
           "text_words": 55,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "7fac9020867ffa8d75955027f03600a867e1f27535c75bd0edf0f412382390c2"
         },
         "libmspub": {
           "normalized_text_sha256": "7f846dcfc8aa4bf07479383bc88dc6270edcc5252dd3e6b1eb70e41f7637e351",
@@ -268,7 +283,7 @@
           "status": "success",
           "text_chars": 47,
           "text_words": 8,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "d1540da94712a5bd2c236638bfc983453cfcaa0918ee35186915c44e52bb66fa",
           "xhtml_bytes": 187483
         },
         "libreoffice": {
@@ -277,7 +292,7 @@
           "status": "success",
           "text_chars": 47,
           "text_words": 8,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "d1540da94712a5bd2c236638bfc983453cfcaa0918ee35186915c44e52bb66fa"
         }
       },
       "raw_pairwise_disagreements": [
@@ -327,9 +342,14 @@
           "priority": "high"
         },
         {
-          "kind": "chaptera_text_order_or_punctuation_divergence",
-          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
-          "priority": "low"
+          "chaptera_text_chars": 323,
+          "chaptera_text_words": 55,
+          "kind": "chaptera_text_inventory_gap",
+          "libmspub_text_chars": 47,
+          "libmspub_text_words": 8,
+          "priority": "high",
+          "relative_text_char_gap": 5.872340425531915,
+          "text_char_delta": 276
         }
       ]
     },
@@ -360,7 +380,7 @@
           "status": "success",
           "text_chars": 46177,
           "text_words": 8142,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "c0b7ca69571818ec1d1ab98af7a73fc5d716c806dbcfbc855d05c7ca9b41406a",
           "xhtml_bytes": 364782
         },
         "libreoffice": {
@@ -369,7 +389,7 @@
           "status": "success",
           "text_chars": 37071,
           "text_words": 6301,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "bf18e65ab80456a5c9a75991c625eeedaece70c267f14cb6d63522eb01a37dd2"
         }
       },
       "raw_pairwise_disagreements": [
@@ -436,7 +456,7 @@
           "story_count": 9,
           "text_chars": 1416,
           "text_words": 259,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "e592a5cfcebaf42f520883a3aa0ac47a1944a668e7667da31a02bcb376a86968"
         },
         "libmspub": {
           "normalized_text_sha256": "e424f7fe61c728f8ffafa950fcd7a81fe17dc9452a6a171441f4c263e812ad8d",
@@ -444,7 +464,7 @@
           "status": "success",
           "text_chars": 1398,
           "text_words": 262,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "e1279c450e664346b6e529e840aab27f2a509c7c0beed02bfdeca37c7a119f50",
           "xhtml_bytes": 20701
         },
         "libreoffice": {
@@ -453,7 +473,7 @@
           "status": "success",
           "text_chars": 1391,
           "text_words": 255,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "24d0d2d496c7aa514619f89ff829618d0b236c59e74d6206250c0f6358181827"
         }
       },
       "raw_pairwise_disagreements": [
@@ -511,8 +531,18 @@
           "priority": "high"
         },
         {
-          "kind": "chaptera_text_order_or_punctuation_divergence",
-          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "chaptera_text_chars": 1416,
+          "chaptera_text_words": 259,
+          "kind": "chaptera_text_content_gap",
+          "libmspub_text_chars": 1398,
+          "libmspub_text_words": 262,
+          "priority": "medium",
+          "relative_text_char_gap": 0.012875536480686695,
+          "text_char_delta": 18
+        },
+        {
+          "kind": "shared_lineage_downstream_text_divergence",
+          "note": "libmspub and LibreOffice share the PUB parser lineage; this difference is downstream extraction/render serialization, not an independent parser disagreement.",
           "priority": "low"
         }
       ]
@@ -542,7 +572,7 @@
           "story_count": 20,
           "text_chars": 1507,
           "text_words": 244,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "14cbe07c8ef921b82910794cecbda049b2b0e7d7c384d8e0064d15cd6000936f"
         },
         "libmspub": {
           "normalized_text_sha256": "eeac61a1aea63d99dfee382319b251432d0a0b91e4d2410e793a5abe3ced04ac",
@@ -550,7 +580,7 @@
           "status": "success",
           "text_chars": 1507,
           "text_words": 244,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "14cbe07c8ef921b82910794cecbda049b2b0e7d7c384d8e0064d15cd6000936f",
           "xhtml_bytes": 4757387
         },
         "libreoffice": {
@@ -559,7 +589,7 @@
           "status": "success",
           "text_chars": 1507,
           "text_words": 244,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "14cbe07c8ef921b82910794cecbda049b2b0e7d7c384d8e0064d15cd6000936f"
         }
       },
       "raw_pairwise_disagreements": [
@@ -650,7 +680,7 @@
           "story_count": 8,
           "text_chars": 495,
           "text_words": 82,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "72e1f260165b07c074eaa86aab4b23ac9b1868526d1a6aa455a24bf52efa2c48"
         },
         "libmspub": {
           "normalized_text_sha256": "6f5c8b43dbb496c14ce9c08ea3043a6dc7fb71d27d2c1e79179fa0145c07416f",
@@ -658,7 +688,7 @@
           "status": "success",
           "text_chars": 496,
           "text_words": 83,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "568f0e5fb8ca3c14646b62922896f6c7135a17feb2c3ac659361661fb7972f1b",
           "xhtml_bytes": 12219724
         },
         "libreoffice": {
@@ -667,7 +697,7 @@
           "status": "success",
           "text_chars": 495,
           "text_words": 82,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "72e1f260165b07c074eaa86aab4b23ac9b1868526d1a6aa455a24bf52efa2c48"
         }
       },
       "raw_pairwise_disagreements": [
@@ -725,8 +755,18 @@
           "priority": "high"
         },
         {
-          "kind": "chaptera_text_order_or_punctuation_divergence",
-          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "chaptera_text_chars": 495,
+          "chaptera_text_words": 82,
+          "kind": "chaptera_text_content_gap",
+          "libmspub_text_chars": 496,
+          "libmspub_text_words": 83,
+          "priority": "medium",
+          "relative_text_char_gap": 0.0020161290322580645,
+          "text_char_delta": -1
+        },
+        {
+          "kind": "shared_lineage_downstream_text_divergence",
+          "note": "libmspub and LibreOffice share the PUB parser lineage; this difference is downstream extraction/render serialization, not an independent parser disagreement.",
           "priority": "low"
         }
       ]
@@ -758,7 +798,7 @@
           "story_count": 1,
           "text_chars": 29,
           "text_words": 4,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "d1dad9004840b827f9e55bf86d0eb7ade603c65356e11d237291738160aa1994"
         },
         "libmspub": {
           "normalized_text_sha256": "1075ec0dcee17a27d19fc8c614c1a31237eabea65a4701daa76661e98c120eea",
@@ -766,7 +806,7 @@
           "status": "success",
           "text_chars": 29,
           "text_words": 4,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "d1dad9004840b827f9e55bf86d0eb7ade603c65356e11d237291738160aa1994",
           "xhtml_bytes": 952
         },
         "libreoffice": {
@@ -775,7 +815,7 @@
           "status": "success",
           "text_chars": 29,
           "text_words": 4,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "d1dad9004840b827f9e55bf86d0eb7ade603c65356e11d237291738160aa1994"
         }
       },
       "raw_pairwise_disagreements": [
@@ -909,7 +949,7 @@
           "story_count": 9,
           "text_chars": 538,
           "text_words": 71,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "08dddededd7833701a60b1b6e91f0e28b5a77a8ef642d26f981d1ce60d0771e0"
         },
         "libmspub": {
           "normalized_text_sha256": "23a3f134b686261c9bf924bcc49281a7a8bb3ee4ad8dc302ed324fe05648a562",
@@ -917,7 +957,7 @@
           "status": "success",
           "text_chars": 602,
           "text_words": 135,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "2794d41ebefd3ac16e4b77efbac82772ad49f4f34380832d47248487c9cb55e9",
           "xhtml_bytes": 114661
         },
         "libreoffice": {
@@ -926,7 +966,7 @@
           "status": "success",
           "text_chars": 538,
           "text_words": 71,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "08dddededd7833701a60b1b6e91f0e28b5a77a8ef642d26f981d1ce60d0771e0"
         }
       },
       "raw_pairwise_disagreements": [
@@ -984,8 +1024,18 @@
           "priority": "high"
         },
         {
-          "kind": "chaptera_text_order_or_punctuation_divergence",
-          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "chaptera_text_chars": 538,
+          "chaptera_text_words": 71,
+          "kind": "chaptera_text_content_gap",
+          "libmspub_text_chars": 602,
+          "libmspub_text_words": 135,
+          "priority": "medium",
+          "relative_text_char_gap": 0.10631229235880399,
+          "text_char_delta": -64
+        },
+        {
+          "kind": "shared_lineage_downstream_text_divergence",
+          "note": "libmspub and LibreOffice share the PUB parser lineage; this difference is downstream extraction/render serialization, not an independent parser disagreement.",
           "priority": "low"
         }
       ]
@@ -1023,7 +1073,7 @@
           "story_count": 4,
           "text_chars": 2085,
           "text_words": 384,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "5c4caebab77307c70e7cb70e1a74be4ab0b5ffcdc102ed16255234cbcf2cd945"
         },
         "libmspub": {
           "normalized_text_sha256": "1e599a024dcc6f467a8414fce49af58121a524f9f7463b46476c023770f24654",
@@ -1031,7 +1081,7 @@
           "status": "success",
           "text_chars": 2085,
           "text_words": 384,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "5c4caebab77307c70e7cb70e1a74be4ab0b5ffcdc102ed16255234cbcf2cd945",
           "xhtml_bytes": 8343501
         },
         "libreoffice": {
@@ -1040,7 +1090,7 @@
           "status": "success",
           "text_chars": 2085,
           "text_words": 384,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "5c4caebab77307c70e7cb70e1a74be4ab0b5ffcdc102ed16255234cbcf2cd945"
         }
       },
       "raw_pairwise_disagreements": [
@@ -1118,7 +1168,7 @@
           "story_count": 5,
           "text_chars": 1990,
           "text_words": 285,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "742558924c2eb3e24ffa48797af4c0d3bf20bf9210403450f5652f1e554440be"
         },
         "libmspub": {
           "normalized_text_sha256": "b5d09ece12e96ce4b5dd27b3081ca5682b0b3470c205481cadcf409942e03194",
@@ -1126,7 +1176,7 @@
           "status": "success",
           "text_chars": 2006,
           "text_words": 301,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "2e0ce0ea30423048573d8ab3407d20ff1791e852e7e47ac0b9d06a32dac8a487",
           "xhtml_bytes": 25497
         },
         "libreoffice": {
@@ -1135,7 +1185,7 @@
           "status": "success",
           "text_chars": 2015,
           "text_words": 310,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "6181c83a6b81705a10e0051ad8ffae9a4e649062a6196ebf3a7641fa842fcf15"
         }
       },
       "raw_pairwise_disagreements": [
@@ -1193,8 +1243,18 @@
           "priority": "high"
         },
         {
-          "kind": "chaptera_text_order_or_punctuation_divergence",
-          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "chaptera_text_chars": 1990,
+          "chaptera_text_words": 285,
+          "kind": "chaptera_text_content_gap",
+          "libmspub_text_chars": 2006,
+          "libmspub_text_words": 301,
+          "priority": "medium",
+          "relative_text_char_gap": 0.007976071784646061,
+          "text_char_delta": -16
+        },
+        {
+          "kind": "shared_lineage_downstream_text_divergence",
+          "note": "libmspub and LibreOffice share the PUB parser lineage; this difference is downstream extraction/render serialization, not an independent parser disagreement.",
           "priority": "low"
         }
       ]
@@ -1226,7 +1286,7 @@
           "story_count": 7,
           "text_chars": 375,
           "text_words": 64,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "8531466b4c8fbc22d86096d47f7bac25e2013530cee96e5857e5ded359d22f13"
         },
         "libmspub": {
           "normalized_text_sha256": "69b2ad3bfee35c36a4105fa8e7756258ed8abb231a1ccd52d14fb6b4c83e1eb2",
@@ -1234,7 +1294,7 @@
           "status": "success",
           "text_chars": 375,
           "text_words": 64,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "8531466b4c8fbc22d86096d47f7bac25e2013530cee96e5857e5ded359d22f13",
           "xhtml_bytes": 48033
         },
         "libreoffice": {
@@ -1243,7 +1303,7 @@
           "status": "success",
           "text_chars": 366,
           "text_words": 63,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "1867ca9a176999d1e3679db197ff534cb583e47849fd36a6428e4792c7b4c0e8"
         }
       },
       "raw_pairwise_disagreements": [
@@ -1304,6 +1364,11 @@
           "kind": "chaptera_text_order_or_punctuation_divergence",
           "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
           "priority": "low"
+        },
+        {
+          "kind": "shared_lineage_downstream_text_divergence",
+          "note": "libmspub and LibreOffice share the PUB parser lineage; this difference is downstream extraction/render serialization, not an independent parser disagreement.",
+          "priority": "low"
         }
       ]
     },
@@ -1340,7 +1405,7 @@
           "story_count": 96,
           "text_chars": 491,
           "text_words": 108,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "3aa6a20b04d11253cc8c7758073e0316377640fa010f9785692a29bcb37675ab"
         },
         "libmspub": {
           "normalized_text_sha256": "73460db82fba5d219ffa761539d7141755ce6330b9f7be799460bfb1d298abf1",
@@ -1348,7 +1413,7 @@
           "status": "success",
           "text_chars": 491,
           "text_words": 108,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "3aa6a20b04d11253cc8c7758073e0316377640fa010f9785692a29bcb37675ab",
           "xhtml_bytes": 35210490
         },
         "libreoffice": {
@@ -1357,7 +1422,7 @@
           "status": "success",
           "text_chars": 491,
           "text_words": 108,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "3aa6a20b04d11253cc8c7758073e0316377640fa010f9785692a29bcb37675ab"
         }
       },
       "raw_pairwise_disagreements": [
@@ -1448,7 +1513,7 @@
           "story_count": 4,
           "text_chars": 475,
           "text_words": 81,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "88c3f9129ed6d6ca2dd0b4878106a2488fb905e31eb0e85f7472aeb3f785cff2"
         },
         "libmspub": {
           "normalized_text_sha256": "135e52ec8005256123b342ff062d45fedcd0cb8d69128c09f077ceb67882313f",
@@ -1456,7 +1521,7 @@
           "status": "success",
           "text_chars": 475,
           "text_words": 81,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "88c3f9129ed6d6ca2dd0b4878106a2488fb905e31eb0e85f7472aeb3f785cff2",
           "xhtml_bytes": 104078
         },
         "libreoffice": {
@@ -1465,7 +1530,7 @@
           "status": "success",
           "text_chars": 475,
           "text_words": 81,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "88c3f9129ed6d6ca2dd0b4878106a2488fb905e31eb0e85f7472aeb3f785cff2"
         }
       },
       "raw_pairwise_disagreements": [
@@ -1546,7 +1611,7 @@
           "story_count": 5,
           "text_chars": 293,
           "text_words": 50,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "e67ae5a763a859bba3277a424b437aa81ffdb6d4181ee96ebd149f48c1271fc8"
         },
         "libmspub": {
           "normalized_text_sha256": "90b918497ea8a907fcaaf50a968291047a42a6340698ee21e68a078e3092b3e3",
@@ -1554,7 +1619,7 @@
           "status": "success",
           "text_chars": 17,
           "text_words": 3,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "ca44a760a0c330ec19f36c43deb952e0718e140057460830b9c083739cc5e017",
           "xhtml_bytes": 75074
         },
         "libreoffice": {
@@ -1563,7 +1628,7 @@
           "status": "success",
           "text_chars": 17,
           "text_words": 3,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "ca44a760a0c330ec19f36c43deb952e0718e140057460830b9c083739cc5e017"
         }
       },
       "raw_pairwise_disagreements": [
@@ -1613,9 +1678,14 @@
           "priority": "high"
         },
         {
-          "kind": "chaptera_text_order_or_punctuation_divergence",
-          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
-          "priority": "low"
+          "chaptera_text_chars": 293,
+          "chaptera_text_words": 50,
+          "kind": "chaptera_text_inventory_gap",
+          "libmspub_text_chars": 17,
+          "libmspub_text_words": 3,
+          "priority": "high",
+          "relative_text_char_gap": 16.235294117647058,
+          "text_char_delta": 276
         }
       ]
     },
@@ -1646,7 +1716,7 @@
           "story_count": 15,
           "text_chars": 4261,
           "text_words": 612,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "1b2c4e9a6ae4c8096adfdd5b28f470d316feb0803f8dd96ea8f600997fe6f037"
         },
         "libmspub": {
           "normalized_text_sha256": "e9ed5993e14b6ed13a2e326e17a7917496c8d93ae2301cbf348d1a3369242a94",
@@ -1654,7 +1724,7 @@
           "status": "success",
           "text_chars": 4261,
           "text_words": 612,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "1b2c4e9a6ae4c8096adfdd5b28f470d316feb0803f8dd96ea8f600997fe6f037",
           "xhtml_bytes": 175653
         },
         "libreoffice": {
@@ -1663,7 +1733,7 @@
           "status": "success",
           "text_chars": 2826,
           "text_words": 380,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "4dfee97072a2f785be1ed9a703170d5922273291fb67b936fe73979c12e6eeb1"
         }
       },
       "raw_pairwise_disagreements": [
@@ -1724,6 +1794,11 @@
           "kind": "chaptera_text_order_or_punctuation_divergence",
           "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
           "priority": "low"
+        },
+        {
+          "kind": "shared_lineage_downstream_text_divergence",
+          "note": "libmspub and LibreOffice share the PUB parser lineage; this difference is downstream extraction/render serialization, not an independent parser disagreement.",
+          "priority": "low"
         }
       ]
     },
@@ -1754,7 +1829,7 @@
           "story_count": 22,
           "text_chars": 255,
           "text_words": 46,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "aa06b74cfe45e21bbff64302622c169572264fe0731f3b449c0ca4baf4986ca1"
         },
         "libmspub": {
           "normalized_text_sha256": "8aa57ef4ce26846fe541c4a26a5b5bb2d2e11fcd40d0af4aa1ded5fc21669f33",
@@ -1762,7 +1837,7 @@
           "status": "success",
           "text_chars": 256,
           "text_words": 47,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "c7f1f9d141203ba7a2fc9cc44f9c2886d6d6b3c4cc6166607860a8d2fa2e4827",
           "xhtml_bytes": 4302293
         },
         "libreoffice": {
@@ -1771,7 +1846,7 @@
           "status": "success",
           "text_chars": 255,
           "text_words": 46,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "aa06b74cfe45e21bbff64302622c169572264fe0731f3b449c0ca4baf4986ca1"
         }
       },
       "raw_pairwise_disagreements": [
@@ -1829,8 +1904,18 @@
           "priority": "high"
         },
         {
-          "kind": "chaptera_text_order_or_punctuation_divergence",
-          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "chaptera_text_chars": 255,
+          "chaptera_text_words": 46,
+          "kind": "chaptera_text_content_gap",
+          "libmspub_text_chars": 256,
+          "libmspub_text_words": 47,
+          "priority": "medium",
+          "relative_text_char_gap": 0.00390625,
+          "text_char_delta": -1
+        },
+        {
+          "kind": "shared_lineage_downstream_text_divergence",
+          "note": "libmspub and LibreOffice share the PUB parser lineage; this difference is downstream extraction/render serialization, not an independent parser disagreement.",
           "priority": "low"
         }
       ]
@@ -1860,7 +1945,7 @@
           "story_count": 37,
           "text_chars": 544,
           "text_words": 94,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "bce51826105944c965f96104e83cc0c482b640490e7d4ad36145e17d37a59329"
         },
         "libmspub": {
           "normalized_text_sha256": "7e40531d8d78a9f14c9f17ede830161c50c6a395650c55be18f1f93030a1c487",
@@ -1868,7 +1953,7 @@
           "status": "success",
           "text_chars": 205,
           "text_words": 33,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "f5b52c061badad8428e49d7706d5f2d0fe4e2f5de80e0fbcdd0c42ecf613d78c",
           "xhtml_bytes": 676607
         },
         "libreoffice": {
@@ -1877,7 +1962,7 @@
           "status": "success",
           "text_chars": 205,
           "text_words": 33,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "f5b52c061badad8428e49d7706d5f2d0fe4e2f5de80e0fbcdd0c42ecf613d78c"
         }
       },
       "raw_pairwise_disagreements": [
@@ -1935,9 +2020,14 @@
           "priority": "high"
         },
         {
-          "kind": "chaptera_text_order_or_punctuation_divergence",
-          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
-          "priority": "low"
+          "chaptera_text_chars": 544,
+          "chaptera_text_words": 94,
+          "kind": "chaptera_text_inventory_gap",
+          "libmspub_text_chars": 205,
+          "libmspub_text_words": 33,
+          "priority": "high",
+          "relative_text_char_gap": 1.6536585365853658,
+          "text_char_delta": 339
         }
       ]
     },
@@ -1966,7 +2056,7 @@
           "story_count": 27,
           "text_chars": 484,
           "text_words": 84,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "0f8802e3dd486b1a57cb5a8d0a0dd77ab7aad1003acbd4e16b75397b8ee806d6"
         },
         "libmspub": {
           "normalized_text_sha256": "15b0acf0068b94cb824e425a4f4f39d063e0352ae3bbd6250cf7eee26ed855c8",
@@ -1974,7 +2064,7 @@
           "status": "success",
           "text_chars": 145,
           "text_words": 23,
-          "token_multiset_sha256": null,
+          "token_multiset_sha256": "d5adfbf67d6627344bf84f243a0ce268e1fbf9fe21c366267714aa78d0d95e1d",
           "xhtml_bytes": 452085
         },
         "libreoffice": {
@@ -1983,7 +2073,7 @@
           "status": "success",
           "text_chars": 145,
           "text_words": 23,
-          "token_multiset_sha256": null
+          "token_multiset_sha256": "d5adfbf67d6627344bf84f243a0ce268e1fbf9fe21c366267714aa78d0d95e1d"
         }
       },
       "raw_pairwise_disagreements": [
@@ -2041,9 +2131,14 @@
           "priority": "high"
         },
         {
-          "kind": "chaptera_text_order_or_punctuation_divergence",
-          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
-          "priority": "low"
+          "chaptera_text_chars": 484,
+          "chaptera_text_words": 84,
+          "kind": "chaptera_text_inventory_gap",
+          "libmspub_text_chars": 145,
+          "libmspub_text_words": 23,
+          "priority": "high",
+          "relative_text_char_gap": 2.3379310344827586,
+          "text_char_delta": 339
         }
       ]
     }
@@ -2052,13 +2147,16 @@
   "selected_file_count": 20,
   "selection_policy": "one-per-coarse-structure-and-source-type-then-sha-fill",
   "tool_versions": {
-    "chaptera": "69f1e6628a8c81e9986db8329c00a391f4c0f777",
+    "chaptera": "6760067b658f91ce89f57c9a0935099adf3faadc",
     "libmspub": "pub2raw 0.1.4",
     "libreoffice": "LibreOffice 24.2.7.2 420(Build:2)"
   },
   "triage_counts": {
     "chaptera_acceptance_gap": 2,
     "chaptera_page_projection_gap": 18,
-    "chaptera_text_order_or_punctuation_divergence": 16
+    "chaptera_text_content_gap": 6,
+    "chaptera_text_inventory_gap": 5,
+    "chaptera_text_order_or_punctuation_divergence": 5,
+    "shared_lineage_downstream_text_divergence": 8
   }
 }
