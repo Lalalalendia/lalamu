@@ -53,4 +53,19 @@ jobs:
 
           git add -- pub-corpus/corpus pub-corpus/data/manifest.jsonl
           git commit -m "corpus: ingest validated novel PUB candidates"
-          git push
+
+          # Candidate discovery can advance main while this run is validating
+          # large files. Rebase the bounded corpus commit onto the latest main
+          # before pushing so a harmless candidate-queue update does not lose
+          # a completed ingest.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push raced with main on attempt ${attempt}; retrying."
+          done
+
+          echo "Failed to publish corpus admission after 3 rebased attempts." >&2
+          exit 1
