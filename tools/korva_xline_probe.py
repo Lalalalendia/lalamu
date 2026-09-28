@@ -50,8 +50,8 @@ def jpeg_len(data: bytes, start: int) -> int | None:
 
 
 def carve_images(data: bytes) -> list[dict[str, Any]]:
-    rows = []
-    seen = set()
+    rows: list[dict[str, Any]] = []
+    seen: set[tuple[int, int, str]] = set()
     for signature, mime, length_fn in (
         (PNG_SIG, "image/png", png_len),
         (JPEG_SIG, "image/jpeg", jpeg_len),
@@ -64,7 +64,8 @@ def carve_images(data: bytes) -> list[dict[str, Any]]:
             length = length_fn(data, at)
             if length and length >= len(signature):
                 payload = data[at : at + length]
-                key = (at, length, sha256(payload))
+                digest = sha256(payload)
+                key = (at, length, digest)
                 if key not in seen:
                     seen.add(key)
                     rows.append(
@@ -72,7 +73,7 @@ def carve_images(data: bytes) -> list[dict[str, Any]]:
                             "offset": at,
                             "byte_len": length,
                             "mime": mime,
-                            "sha256": key[2],
+                            "sha256": digest,
                         }
                     )
                 pos = at + max(1, length)
@@ -85,8 +86,8 @@ def carve_images(data: bytes) -> list[dict[str, Any]]:
 class XhtmlParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
-        self.text = []
-        self.images = []
+        self.text: list[str] = []
+        self.images: list[str] = []
         self.skip = 0
 
     def handle_starttag(self, tag, attrs):
@@ -111,14 +112,19 @@ class XhtmlParser(HTMLParser):
                 self.text.append(value)
 
 
-def xhtml_observation(path: Path, asset_root: Path | None) -> dict[str, Any]:
+def xhtml_observation(
+    path: Path,
+    asset_root: Path | None,
+    tool_exit: int,
+    stderr_path: Path | None,
+) -> dict[str, Any]:
     parser = XhtmlParser()
-    raw = path.read_bytes()
+    raw = path.read_bytes() if path.exists() else b""
     parser.feed(raw.decode("utf-8", errors="replace"))
     text = norm_text(" ".join(parser.text))
-    images = []
+    images: list[dict[str, Any]] = []
 
-    def add_image(payload: bytes, mime: str, origin: str):
+    def add_image(payload: bytes, mime: str, origin: str) -> None:
         images.append(
             {
                 "origin": origin,
@@ -144,7 +150,13 @@ def xhtml_observation(path: Path, asset_root: Path | None) -> dict[str, Any]:
                 continue
             if candidate.is_file():
                 suffix = candidate.suffix.lower()
-                mime = "image/png" if suffix == ".png" else "image/jpeg" if suffix in {".jpg", ".jpeg"} else "application/octet-stream"
+                mime = (
+                    "image/png"
+                    if suffix == ".png"
+                    else "image/jpeg"
+                    if suffix in {".jpg", ".jpeg"}
+                    else "application/octet-stream"
+                )
                 add_image(candidate.read_bytes(), mime, "file")
 
     if asset_root:
@@ -163,9 +175,18 @@ def xhtml_observation(path: Path, asset_root: Path | None) -> dict[str, Any]:
             mime = "image/png" if suffix == ".png" else "image/jpeg"
             add_image(payload, mime, "discovered_file")
 
+    stderr_bytes = (
+        stderr_path.read_bytes()
+        if stderr_path is not None and stderr_path.exists()
+        else b""
+    )
     return {
         "schema_version": "chaptera.korva-xline.libmspub-observation.v1",
         "engine": "libmspub",
+        "supported": tool_exit == 0,
+        "tool_exit": tool_exit,
+        "stderr_sha256": sha256(stderr_bytes),
+        "stderr_excerpt": stderr_bytes.decode("utf-8", errors="replace")[:1000],
         "xhtml_sha256": sha256(raw),
         "normalized_text": text,
         "normalized_text_sha256": sha256(text.encode()),
@@ -182,19 +203,27 @@ def main() -> int:
 
     xhtml = sub.add_parser("xhtml")
     xhtml.add_argument("file", type=Path)
-    xhtml.add_argument("--asset-root", type=Path)\n    xhtml.add_argument("--tool-exit", type=int, default=0)\n    xhtml.add_argument("--stderr", type=Path)
+    xhtml.add_argument("--asset-root", type=Path)
+    xhtml.add_argument("--tool-exit", type=int, default=0)
+    xhtml.add_argument("--stderr", type=Path)
 
     args = ap.parse_args()
     if args.cmd == "raw":
         data = args.pub.read_bytes()
-        print(json.dumps({
+        result = {
             "schema_version": "chaptera.korva-xline.raw-arbitration.v1",
             "source_byte_len": len(data),
             "source_sha256": sha256(data),
             "carved_images": carve_images(data),
-        }, indent=2, sort_keys=True))
+        }
     else:
-        print(json.dumps(\n            xhtml_observation(args.file, args.asset_root, args.tool_exit, args.stderr),\n            indent=2, sort_keys=True\n        ))
+        result = xhtml_observation(
+            args.file,
+            args.asset_root,
+            args.tool_exit,
+            args.stderr,
+        )
+    print(json.dumps(result, indent=2, sort_keys=True))
     return 0
 
 
