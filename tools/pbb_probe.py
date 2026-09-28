@@ -76,61 +76,60 @@ def printable_strings(data: bytes, limit: int = 160) -> list[str]:
     return values
 
 
-def parse_bbstore_xml(data: bytes) -> dict | None:
-    start = data.find(b"<?xml")
-    if start < 0:
-        return None
-    end_marker = b"</BBStore>"
-    end = data.find(end_marker, start)
-    if end < 0:
-        return {"parse_error": "BBStore closing tag not found"}
-    raw = data[start : end + len(end_marker)]
+BBSTORE_FIELDS = (
+    "Title", "Size", "Description", "Category", "Keywords", "Type",
+    "CreationTime", "LastUseTime", "Filename", "PreviewText",
+    "InsertGallery", "ShowInGallery", "Cct", "IsLinkedPicture",
+    "IsRTLTextbox", "IsDownloaded", "IsBuiltIn",
+)
 
-    encoding = None
-    root = None
-    cleaned_text = None
-    parse_errors = []
-    for candidate in ("utf-8", "windows-1252", "latin-1"):
+
+def decode_bbstore_value(data: bytes) -> str:
+    cleaned = bytes(
+        byte for byte in data
+        if byte in (9, 10, 13) or byte >= 0x20
+    )
+    for encoding in ("utf-8", "windows-1252", "latin-1"):
         try:
-            decoded = raw.decode(candidate)
-        except UnicodeDecodeError as exc:
-            parse_errors.append(f"{candidate}:decode:{exc}")
+            return cleaned.decode(encoding).strip()
+        except UnicodeDecodeError:
             continue
-        # BBStoreInfo14 can carry non-XML C0 control bytes around otherwise
-        # well-formed XML text. Keep XML whitespace; strip other controls.
-        cleaned = "".join(
-            ch for ch in decoded
-            if ch in "\t\n\r" or ord(ch) >= 0x20
-        )
-        try:
-            root = ET.fromstring(cleaned)
-            encoding = candidate
-            cleaned_text = cleaned
-            break
-        except ET.ParseError as exc:
-            parse_errors.append(f"{candidate}:xml:{exc}")
+    return cleaned.decode("latin-1", errors="replace").strip()
 
-    if root is None or encoding is None or cleaned_text is None:
-        return {
-            "parse_error": "BBStore XML could not be decoded/parsed",
-            "parse_attempts": parse_errors[:6],
-            "xml_byte_len": len(raw),
-            "xml_sha256": sha256_bytes(raw),
-        }
 
+def parse_bbstore_xml(data: bytes) -> dict | None:
+    # Parse the compact BBStore XML-like payload by byte-level tags instead of
+    # trusting the whole stream to be a standalone XML document. This preserves
+    # non-ASCII CP1252 metadata while tolerating stream framing/control bytes.
+    if b"<BBStore" not in data or b"</BBStore>" not in data:
+        return None
+
+    version_match = re.search(rb'<BBStore\s+version="([^"]*)"', data, re.I)
+    item_blobs = re.findall(rb"<Item>(.*?)</Item>", data, re.I | re.S)
     items = []
-    for item in root.findall(".//Item"):
+    for blob in item_blobs:
         fields = {}
-        for child in list(item):
-            fields[child.tag] = child.text or ""
+        for field in BBSTORE_FIELDS:
+            open_close = re.search(
+                rb"<" + field.encode("ascii") + rb">(.*?)</" + field.encode("ascii") + rb">",
+                blob,
+                re.I | re.S,
+            )
+            if open_close:
+                fields[field] = decode_bbstore_value(open_close.group(1))
+                continue
+            empty = re.search(
+                rb"<" + field.encode("ascii") + rb"\s*/>",
+                blob,
+                re.I,
+            )
+            if empty:
+                fields[field] = ""
         items.append(fields)
 
     return {
-        "encoding": encoding,
-        "xml_byte_len": len(raw),
-        "xml_sha256": sha256_bytes(raw),
-        "root_tag": root.tag,
-        "version": root.attrib.get("version"),
+        "parser": "bounded_tag_parser_v1",
+        "version": decode_bbstore_value(version_match.group(1)) if version_match else None,
         "item_count": len(items),
         "items": items,
     }
