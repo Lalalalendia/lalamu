@@ -208,6 +208,8 @@ def load_manifest_hashes(manifest_path: Path) -> set[str]:
 
 
 def wayback_candidates(url: str) -> list[str]:
+    out: list[str] = []
+
     cdx = (
         "https://web.archive.org/cdx/search/cdx?url="
         + quote(url, safe="")
@@ -217,17 +219,35 @@ def wayback_candidates(url: str) -> list[str]:
     try:
         raw, _, _ = fetch_bytes(cdx, max_bytes=512 * 1024)
         rows = json.loads(raw.decode("utf-8", errors="replace"))
+        for row in rows[1:] if isinstance(rows, list) else []:
+            if not isinstance(row, list) or len(row) < 2:
+                continue
+            timestamp, original = row[0], row[1]
+            out.append(f"https://web.archive.org/web/{timestamp}id_/{original}")
     except Exception as exc:
-        print(f"  wayback lookup failed for {url}: {type(exc).__name__}: {exc}")
-        return []
+        print(f"  wayback CDX lookup failed for {url}: {type(exc).__name__}: {exc}")
 
-    out: list[str] = []
-    for row in rows[1:] if isinstance(rows, list) else []:
-        if not isinstance(row, list) or len(row) < 2:
-            continue
-        timestamp, original = row[0], row[1]
-        out.append(f"https://web.archive.org/web/{timestamp}id_/{original}")
-    return out
+    # CDX is intermittently unavailable from hosted runners. The official
+    # availability endpoint is a second bounded locator for the nearest known
+    # snapshot; convert its replay URL to an id_ raw-byte replay when possible.
+    availability = "https://archive.org/wayback/available?url=" + quote(url, safe="")
+    try:
+        raw, _, _ = fetch_bytes(availability, max_bytes=512 * 1024)
+        payload = json.loads(raw.decode("utf-8", errors="replace"))
+        closest = (payload.get("archived_snapshots") or {}).get("closest") or {}
+        replay = str(closest.get("url") or "")
+        if closest.get("available") and str(closest.get("status")) == "200" and replay:
+            match = re.search(r"/web/(\\d+)(?:[a-zA-Z_]+)?/(.+)$", replay)
+            if match:
+                out.append(
+                    f"https://web.archive.org/web/{match.group(1)}id_/{match.group(2)}"
+                )
+            else:
+                out.append(replay.replace("http://web.archive.org/", "https://web.archive.org/"))
+    except Exception as exc:
+        print(f"  wayback availability lookup failed for {url}: {type(exc).__name__}: {exc}")
+
+    return list(dict.fromkeys(out))
 
 
 def fetch_candidate(candidate: dict[str, Any]) -> tuple[bytes, str] | None:
