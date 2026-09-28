@@ -65,7 +65,11 @@ def printable_strings(data: bytes, limit: int = 160) -> list[str]:
             values.append(value)
 
     for match in ASCII_RE.finditer(data):
-        accept(match.group().decode("windows-1252", errors="replace"))
+        run = match.group()
+        try:
+            accept(run.decode("utf-8"))
+        except UnicodeDecodeError:
+            accept(run.decode("windows-1252", errors="replace"))
         if len(values) >= limit:
             break
     if len(values) < limit:
