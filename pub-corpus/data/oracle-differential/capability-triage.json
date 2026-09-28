@@ -6,7 +6,7 @@
   },
   "contract_schema": "lalamu.pub-differential-capability-contract.v1",
   "input_locator": "pub-corpus/data/oracle-differential/latest.json",
-  "input_receipt_sha256": "5833aaf2af42265b2b3d542eafb48fe0a4d12a6fb81d753b10563779e6447fc0",
+  "input_receipt_sha256": "c8373c33738fe58760bfa63e4a06409cff631217fbe62ec9de9332c2dfbafed1",
   "input_schema": "lalamu.pub-oracle-differential.v2",
   "interpretation": "Raw observations are preserved. Classifications depend on explicit engine capability, metric semantics and lineage. Numeric disagreement is not a vote and is not a bug candidate unless the compared capability/semantics are aligned.",
   "metric_counts": {
@@ -45,7 +45,7 @@
     "normalized_text_mismatch": 48,
     "page_count_mismatch": 36
   },
-  "receipt_sha256": "ae15e3e6b603ac91608704183482ffe30cdd82175b1b72cfacd9170a66d6b797",
+  "receipt_sha256": "914c8e0cb97d16983395f95a1cda879bf07d4f8122e55ef991f578a5d455cf54",
   "records": [
     {
       "byte_len": 204800,
