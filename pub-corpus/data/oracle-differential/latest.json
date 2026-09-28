@@ -1,14 +1,72 @@
 {
-  "issue_counts": {
+  "engine_lineages": {
+    "chaptera": {
+      "parser_lineage": "chaptera",
+      "role": "canonical-public-consumer-under-test"
+    },
+    "libmspub": {
+      "parser_lineage": "libmspub",
+      "role": "independent-open-source-parser"
+    },
+    "libreoffice": {
+      "parser_lineage": "libmspub",
+      "role": "downstream-consumer-of-libmspub-import-filter"
+    }
+  },
+  "interpretation": "Pairwise observations are not votes. LibreOffice Publisher import uses the libmspub parser lineage, so LibreOffice may confirm downstream behavior but is not an independent parser lineage.",
+  "raw_pairwise_issue_counts": {
     "engine_acceptance_mismatch": 4,
     "normalized_text_mismatch": 48,
     "page_count_mismatch": 36
   },
-  "receipt_sha256": "33478e0a895ec5f1633e243e40346b3c3143782f9ab0d30365e5fa86e9d06445",
+  "receipt_sha256": "9894ac2545598e1975907ceff204b29c0031af817e4cf954eec143ccb26e464f",
   "records": [
     {
       "byte_len": 204800,
-      "disagreements": [
+      "corpus_context": {
+        "coarse_structure_fingerprint": "d1582f4c2f8781f1189ac89d510bb76cac20c9d4e14cb200a5d4886c47044893",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "belgium-sclera-rood-20",
+          "source_filename": "rood-20.pub",
+          "source_type": "institutional-web",
+          "source_url": "https://sclera.be/resources/img/iris/1000woorden/sjablonen/rood-20.pub"
+        },
+        "topology_fingerprint": "ebd07a36e2daceb8bc444bcb123350a29838925adfd66d17797188864e24c6b7"
+      },
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 4,
+          "image_count": 3,
+          "normalized_text_sha256": "4fdc2f2aae05efe08ad6345adcb90b33e689fed2ba3d5bbf7bfb478e3f933416",
+          "page_count": 6,
+          "scene_node_count": 62,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 27,
+          "text_chars": 484,
+          "text_words": 84,
+          "token_multiset_sha256": null
+        },
+        "libmspub": {
+          "normalized_text_sha256": "15b0acf0068b94cb824e425a4f4f39d063e0352ae3bbd6250cf7eee26ed855c8",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 145,
+          "text_words": 23,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 452085
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "6456c01a0485a690326b0d846eec9a0d854873d04aa21ba985c3597419d1234e",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 145,
+          "text_words": 23,
+          "token_multiset_sha256": null
+        }
+      },
+      "raw_pairwise_disagreements": [
         {
           "field": "page_count",
           "kind": "page_count_mismatch",
@@ -50,40 +108,73 @@
           "right_value": "6456c01a0485a690326b0d846eec9a0d854873d04aa21ba985c3597419d1234e"
         }
       ],
-      "engines": {
-        "chaptera": {
-          "diagnostic_count": 4,
-          "image_count": 3,
-          "normalized_text_sha256": "4fdc2f2aae05efe08ad6345adcb90b33e689fed2ba3d5bbf7bfb478e3f933416",
-          "page_count": 6,
-          "scene_node_count": 62,
-          "scene_surface_count": 6,
-          "status": "success",
-          "story_count": 27,
-          "text_chars": 484,
-          "text_words": 84
+      "sha256": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178",
+      "triage": [
+        {
+          "chaptera_page_count": 6,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 1,
+          "libreoffice_downstream_page_count": 1,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 5,
+          "priority": "high"
         },
-        "libmspub": {
-          "normalized_text_sha256": "15b0acf0068b94cb824e425a4f4f39d063e0352ae3bbd6250cf7eee26ed855c8",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 145,
-          "text_words": 23,
-          "xhtml_bytes": 452085
-        },
-        "libreoffice": {
-          "normalized_text_sha256": "6456c01a0485a690326b0d846eec9a0d854873d04aa21ba985c3597419d1234e",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 145,
-          "text_words": 23
+        {
+          "kind": "chaptera_text_order_or_punctuation_divergence",
+          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "priority": "low"
         }
-      },
-      "sha256": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178"
+      ]
     },
     {
       "byte_len": 3505664,
-      "disagreements": [
+      "corpus_context": {
+        "coarse_structure_fingerprint": "f84df6de48d206d85e3d8743aa43258341a3a379f967f4e30422983aa5c87062",
+        "provenance_document_hint": "brochure",
+        "source": {
+          "candidate_id": "github-bluejunimo-industrial-revolution-brochure",
+          "source_filename": "Socials 9 - Industrial Revolution Brochure.pub",
+          "source_path": "assets/files/Socials 9 - Industrial Revolution Brochure.pub",
+          "source_repo": "bluejunimo/school",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/bluejunimo/school/master/assets/files/Socials%209%20-%20Industrial%20Revolution%20Brochure.pub"
+        },
+        "topology_fingerprint": "332809b42fec84ac3f46b7dfdb31dde3a8e7328ea9dab353f517a0ea091090ea"
+      },
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 7,
+          "image_count": 4,
+          "normalized_text_sha256": "caef50b9fe95e6fcfdaa46dec7a89bc09f1cc2ae2edd88882fd04c12551920b7",
+          "page_count": 7,
+          "scene_node_count": 26,
+          "scene_surface_count": 7,
+          "status": "success",
+          "story_count": 5,
+          "text_chars": 1397,
+          "text_words": 226,
+          "token_multiset_sha256": null
+        },
+        "libmspub": {
+          "normalized_text_sha256": "59ecf2101ea3bab461ca76972f70dd521de5097de89ab8596d3211caab6ac55d",
+          "page_count": 2,
+          "status": "success",
+          "text_chars": 1508,
+          "text_words": 246,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 7377820
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "239def966852db418aa8d13f374af2ba33cd1a668f13aeec104579c4c38389bf",
+          "page_count": 2,
+          "status": "success",
+          "text_chars": 1434,
+          "text_words": 230,
+          "token_multiset_sha256": null
+        }
+      },
+      "raw_pairwise_disagreements": [
         {
           "field": "page_count",
           "kind": "page_count_mismatch",
@@ -125,40 +216,71 @@
           "right_value": "239def966852db418aa8d13f374af2ba33cd1a668f13aeec104579c4c38389bf"
         }
       ],
-      "engines": {
-        "chaptera": {
-          "diagnostic_count": 7,
-          "image_count": 4,
-          "normalized_text_sha256": "caef50b9fe95e6fcfdaa46dec7a89bc09f1cc2ae2edd88882fd04c12551920b7",
-          "page_count": 7,
-          "scene_node_count": 26,
-          "scene_surface_count": 7,
-          "status": "success",
-          "story_count": 5,
-          "text_chars": 1397,
-          "text_words": 226
+      "sha256": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba",
+      "triage": [
+        {
+          "chaptera_page_count": 7,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 2,
+          "libreoffice_downstream_page_count": 2,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 5,
+          "priority": "high"
         },
-        "libmspub": {
-          "normalized_text_sha256": "59ecf2101ea3bab461ca76972f70dd521de5097de89ab8596d3211caab6ac55d",
-          "page_count": 2,
-          "status": "success",
-          "text_chars": 1508,
-          "text_words": 246,
-          "xhtml_bytes": 7377820
-        },
-        "libreoffice": {
-          "normalized_text_sha256": "239def966852db418aa8d13f374af2ba33cd1a668f13aeec104579c4c38389bf",
-          "page_count": 2,
-          "status": "success",
-          "text_chars": 1434,
-          "text_words": 230
+        {
+          "kind": "chaptera_text_order_or_punctuation_divergence",
+          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "priority": "low"
         }
-      },
-      "sha256": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba"
+      ]
     },
     {
       "byte_len": 188928,
-      "disagreements": [
+      "corpus_context": {
+        "coarse_structure_fingerprint": "2cd555a18c62966fb1648b05a7375c13404488b0319b0df871a21e2958b030ed",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "belgium-sclera-bladwijzer-8",
+          "source_filename": "bladwijzer-8.pub",
+          "source_type": "institutional-web",
+          "source_url": "https://sclera.be/resources/img/iris/1000woorden/sjablonen/bladwijzer-8.pub"
+        },
+        "topology_fingerprint": "bde3d6413b42d36087de4d3d97a3c76a8dd1a2fe30fe6fa441f90f90860d99a8"
+      },
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 4,
+          "image_count": 4,
+          "normalized_text_sha256": "79674572ecd01dee9d7150100d550cd4ceab89fa54639d83dd2a9f47455d7d46",
+          "page_count": 6,
+          "scene_node_count": 29,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 10,
+          "text_chars": 323,
+          "text_words": 55,
+          "token_multiset_sha256": null
+        },
+        "libmspub": {
+          "normalized_text_sha256": "7f846dcfc8aa4bf07479383bc88dc6270edcc5252dd3e6b1eb70e41f7637e351",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 47,
+          "text_words": 8,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 187483
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "7f846dcfc8aa4bf07479383bc88dc6270edcc5252dd3e6b1eb70e41f7637e351",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 47,
+          "text_words": 8,
+          "token_multiset_sha256": null
+        }
+      },
+      "raw_pairwise_disagreements": [
         {
           "field": "page_count",
           "kind": "page_count_mismatch",
@@ -192,40 +314,65 @@
           "right_value": "7f846dcfc8aa4bf07479383bc88dc6270edcc5252dd3e6b1eb70e41f7637e351"
         }
       ],
-      "engines": {
-        "chaptera": {
-          "diagnostic_count": 4,
-          "image_count": 4,
-          "normalized_text_sha256": "79674572ecd01dee9d7150100d550cd4ceab89fa54639d83dd2a9f47455d7d46",
-          "page_count": 6,
-          "scene_node_count": 29,
-          "scene_surface_count": 6,
-          "status": "success",
-          "story_count": 10,
-          "text_chars": 323,
-          "text_words": 55
+      "sha256": "16ea75ba3cba286af382619a9edc2d7940d3e4f74a83577520b470c9fbc2852d",
+      "triage": [
+        {
+          "chaptera_page_count": 6,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 1,
+          "libreoffice_downstream_page_count": 1,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 5,
+          "priority": "high"
         },
-        "libmspub": {
-          "normalized_text_sha256": "7f846dcfc8aa4bf07479383bc88dc6270edcc5252dd3e6b1eb70e41f7637e351",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 47,
-          "text_words": 8,
-          "xhtml_bytes": 187483
-        },
-        "libreoffice": {
-          "normalized_text_sha256": "7f846dcfc8aa4bf07479383bc88dc6270edcc5252dd3e6b1eb70e41f7637e351",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 47,
-          "text_words": 8
+        {
+          "kind": "chaptera_text_order_or_punctuation_divergence",
+          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "priority": "low"
         }
-      },
-      "sha256": "16ea75ba3cba286af382619a9edc2d7940d3e4f74a83577520b470c9fbc2852d"
+      ]
     },
     {
       "byte_len": 342016,
-      "disagreements": [
+      "corpus_context": {
+        "coarse_structure_fingerprint": "523e98e96a545d5ed28110943257aaa98d0fabd9203db62f118fdd7a3ef1f23b",
+        "provenance_document_hint": "booklet",
+        "source": {
+          "candidate_id": "github-tatawebsite-clubbooklet2008",
+          "source_filename": "Clubbooklet2008.pub",
+          "source_path": "Documents/2008/Clubbooklet2008.pub",
+          "source_repo": "RhydianJenkins/tatawebsite",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/RhydianJenkins/tatawebsite/master/Documents/2008/Clubbooklet2008.pub"
+        },
+        "topology_fingerprint": "05a5383d9745b81197b8cbf29f0169181d883b3ce5bbc844ff6acc5ae5bf5bc7"
+      },
+      "engines": {
+        "chaptera": {
+          "error": "Error: open mature-0x2c Viewer geometry\n\nCaused by:\n    0: build mature-0x2C PUB source graph for Viewer\n    1: parse mature-0x2C Contents header\n    2: неожиданное семейство Contents: ожидалось Family0x2c, найдено Family0x22",
+          "returncode": 1,
+          "status": "rejected"
+        },
+        "libmspub": {
+          "normalized_text_sha256": "81dfb6e721149f23e3d73ec0deedbb9afd507afa76622275600a4b6b90851f96",
+          "page_count": 21,
+          "status": "success",
+          "text_chars": 46177,
+          "text_words": 8142,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 364782
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "ae9d797034a4098fbc69c4f63e9938d2643c33251121f5e04c86d70bd5ef2fb5",
+          "page_count": 21,
+          "status": "success",
+          "text_chars": 37071,
+          "text_words": 6301,
+          "token_multiset_sha256": null
+        }
+      },
+      "raw_pairwise_disagreements": [
         {
           "kind": "engine_acceptance_mismatch",
           "left": "chaptera",
@@ -249,33 +396,67 @@
           "right_value": "ae9d797034a4098fbc69c4f63e9938d2643c33251121f5e04c86d70bd5ef2fb5"
         }
       ],
-      "engines": {
-        "chaptera": {
-          "error": "Error: open mature-0x2c Viewer geometry\n\nCaused by:\n    0: build mature-0x2C PUB source graph for Viewer\n    1: parse mature-0x2C Contents header\n    2: неожиданное семейство Contents: ожидалось Family0x2c, найдено Family0x22",
-          "returncode": 1,
-          "status": "rejected"
-        },
-        "libmspub": {
-          "normalized_text_sha256": "81dfb6e721149f23e3d73ec0deedbb9afd507afa76622275600a4b6b90851f96",
-          "page_count": 21,
-          "status": "success",
-          "text_chars": 46177,
-          "text_words": 8142,
-          "xhtml_bytes": 364782
-        },
-        "libreoffice": {
-          "normalized_text_sha256": "ae9d797034a4098fbc69c4f63e9938d2643c33251121f5e04c86d70bd5ef2fb5",
-          "page_count": 21,
-          "status": "success",
-          "text_chars": 37071,
-          "text_words": 6301
+      "sha256": "2b1a2c5183d2fa83fdf9b0e0bf386bc0861b034e08f00fb3fc4171857c097576",
+      "triage": [
+        {
+          "chaptera_status": "rejected",
+          "external_parser_lineage": "libmspub",
+          "external_status": "success",
+          "kind": "chaptera_acceptance_gap",
+          "libreoffice_downstream_status": "success",
+          "note": "LibreOffice shares the libmspub parser lineage and is not a second independent parser vote.",
+          "priority": "high"
         }
-      },
-      "sha256": "2b1a2c5183d2fa83fdf9b0e0bf386bc0861b034e08f00fb3fc4171857c097576"
+      ]
     },
     {
       "byte_len": 202240,
-      "disagreements": [
+      "corpus_context": {
+        "coarse_structure_fingerprint": "abb4d274624fa0a16be4f3090e11f85f211fecd02733c6ef7cbf2e6b0c5321cd",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "github-savemypublisherfiles-cookbook",
+          "source_filename": "Cookbook.pub",
+          "source_path": "Example Folder/Cookbook.pub",
+          "source_repo": "jyor0385/SaveMyPublisherFiles",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/jyor0385/SaveMyPublisherFiles/main/Example%20Folder/Cookbook.pub"
+        },
+        "topology_fingerprint": "80dc11c8f84bf76cd818fb0e5748b20fe5f428674b27b00f82770306333b12ba"
+      },
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 10,
+          "image_count": 0,
+          "normalized_text_sha256": "2bd34ba2a0d770ebdc3c4291711eb585ca2ffbddc37d1706e2d8f46fab10d2bc",
+          "page_count": 12,
+          "scene_node_count": 10,
+          "scene_surface_count": 12,
+          "status": "success",
+          "story_count": 9,
+          "text_chars": 1416,
+          "text_words": 259,
+          "token_multiset_sha256": null
+        },
+        "libmspub": {
+          "normalized_text_sha256": "e424f7fe61c728f8ffafa950fcd7a81fe17dc9452a6a171441f4c263e812ad8d",
+          "page_count": 4,
+          "status": "success",
+          "text_chars": 1398,
+          "text_words": 262,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 20701
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "4cce25e08d6fd967ed286f058fa4c16a463d7a3e8918b3d026566174c76677d1",
+          "page_count": 4,
+          "status": "success",
+          "text_chars": 1391,
+          "text_words": 255,
+          "token_multiset_sha256": null
+        }
+      },
+      "raw_pairwise_disagreements": [
         {
           "field": "page_count",
           "kind": "page_count_mismatch",
@@ -317,40 +498,71 @@
           "right_value": "4cce25e08d6fd967ed286f058fa4c16a463d7a3e8918b3d026566174c76677d1"
         }
       ],
-      "engines": {
-        "chaptera": {
-          "diagnostic_count": 10,
-          "image_count": 0,
-          "normalized_text_sha256": "2bd34ba2a0d770ebdc3c4291711eb585ca2ffbddc37d1706e2d8f46fab10d2bc",
-          "page_count": 12,
-          "scene_node_count": 10,
-          "scene_surface_count": 12,
-          "status": "success",
-          "story_count": 9,
-          "text_chars": 1416,
-          "text_words": 259
+      "sha256": "4029d4a1bf5be89d745c079b9c06ab33e5bdceb997a4761c5e11238110d879c9",
+      "triage": [
+        {
+          "chaptera_page_count": 12,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 4,
+          "libreoffice_downstream_page_count": 4,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 8,
+          "priority": "high"
         },
-        "libmspub": {
-          "normalized_text_sha256": "e424f7fe61c728f8ffafa950fcd7a81fe17dc9452a6a171441f4c263e812ad8d",
-          "page_count": 4,
-          "status": "success",
-          "text_chars": 1398,
-          "text_words": 262,
-          "xhtml_bytes": 20701
-        },
-        "libreoffice": {
-          "normalized_text_sha256": "4cce25e08d6fd967ed286f058fa4c16a463d7a3e8918b3d026566174c76677d1",
-          "page_count": 4,
-          "status": "success",
-          "text_chars": 1391,
-          "text_words": 255
+        {
+          "kind": "chaptera_text_order_or_punctuation_divergence",
+          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "priority": "low"
         }
-      },
-      "sha256": "4029d4a1bf5be89d745c079b9c06ab33e5bdceb997a4761c5e11238110d879c9"
+      ]
     },
     {
       "byte_len": 545792,
-      "disagreements": [
+      "corpus_context": {
+        "coarse_structure_fingerprint": "39b4e737c4d7eb55030fe7137f1446245f2bbea7c3d15a0e245b6035c84db31a",
+        "provenance_document_hint": "poster",
+        "source": {
+          "candidate_id": "belgium-interreg-fwvl-priority-1",
+          "source_filename": "Template_Affiche A3 FWVL_priorité 1_FR-NL.pub",
+          "source_type": "institutional-web",
+          "source_url": "https://web.archive.org/web/20240808070952/https://www.interreg-fwvl.eu/sites/default/files/uploads/fr/Template_Affiche%20A3%20FWVL_priorit%C3%A9%201_FR-NL.pub"
+        },
+        "topology_fingerprint": "81ecb926f824fb624b515aa43026e26cef24bdacb2e7c72475c0a5cfdc8e21a5"
+      },
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 5,
+          "image_count": 3,
+          "normalized_text_sha256": "2b339be3002177cff9b759a65af054b0b3324071d832c65a1e71200768633c06",
+          "page_count": 7,
+          "scene_node_count": 62,
+          "scene_surface_count": 7,
+          "status": "success",
+          "story_count": 20,
+          "text_chars": 1507,
+          "text_words": 244,
+          "token_multiset_sha256": null
+        },
+        "libmspub": {
+          "normalized_text_sha256": "eeac61a1aea63d99dfee382319b251432d0a0b91e4d2410e793a5abe3ced04ac",
+          "page_count": 2,
+          "status": "success",
+          "text_chars": 1507,
+          "text_words": 244,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 4757387
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "0788d450adbffd0e6ea2022e7fe156a3434c464560d147fb3d7b30958114eb75",
+          "page_count": 2,
+          "status": "success",
+          "text_chars": 1507,
+          "text_words": 244,
+          "token_multiset_sha256": null
+        }
+      },
+      "raw_pairwise_disagreements": [
         {
           "field": "page_count",
           "kind": "page_count_mismatch",
@@ -392,40 +604,73 @@
           "right_value": "0788d450adbffd0e6ea2022e7fe156a3434c464560d147fb3d7b30958114eb75"
         }
       ],
-      "engines": {
-        "chaptera": {
-          "diagnostic_count": 5,
-          "image_count": 3,
-          "normalized_text_sha256": "2b339be3002177cff9b759a65af054b0b3324071d832c65a1e71200768633c06",
-          "page_count": 7,
-          "scene_node_count": 62,
-          "scene_surface_count": 7,
-          "status": "success",
-          "story_count": 20,
-          "text_chars": 1507,
-          "text_words": 244
+      "sha256": "4758095aa58927b1aefa23c384bb16cd598e6732ef2af5af68471118dc25c567",
+      "triage": [
+        {
+          "chaptera_page_count": 7,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 2,
+          "libreoffice_downstream_page_count": 2,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 5,
+          "priority": "high"
         },
-        "libmspub": {
-          "normalized_text_sha256": "eeac61a1aea63d99dfee382319b251432d0a0b91e4d2410e793a5abe3ced04ac",
-          "page_count": 2,
-          "status": "success",
-          "text_chars": 1507,
-          "text_words": 244,
-          "xhtml_bytes": 4757387
-        },
-        "libreoffice": {
-          "normalized_text_sha256": "0788d450adbffd0e6ea2022e7fe156a3434c464560d147fb3d7b30958114eb75",
-          "page_count": 2,
-          "status": "success",
-          "text_chars": 1507,
-          "text_words": 244
+        {
+          "kind": "chaptera_text_order_or_punctuation_divergence",
+          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "priority": "low"
         }
-      },
-      "sha256": "4758095aa58927b1aefa23c384bb16cd598e6732ef2af5af68471118dc25c567"
+      ]
     },
     {
       "byte_len": 9351168,
-      "disagreements": [
+      "corpus_context": {
+        "coarse_structure_fingerprint": "83219be7e145733457d376cca0bdf4051e1056d1593ac5b7fd604e6aee718870",
+        "provenance_document_hint": "advertisement",
+        "source": {
+          "candidate_id": "github-dawoodshahzad-art-auction-ad",
+          "source_filename": "Art Auction Ad.pub",
+          "source_path": "Art Auction Ad.pub",
+          "source_repo": "dawoodshahzad07/Excel-Publisher-Project-Files",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/dawoodshahzad07/Excel-Publisher-Project-Files/main/Art%20Auction%20Ad.pub"
+        },
+        "topology_fingerprint": "a0f39b2ca966653d7b5ffc042c0ce1afd0df81aa04f2b331e3045ae4587697ad"
+      },
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 6,
+          "image_count": 5,
+          "normalized_text_sha256": "2b07c68186ac6ab9c7060a58925d21dd7573ce888f461b6528849c96e780e828",
+          "page_count": 6,
+          "scene_node_count": 57,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 8,
+          "text_chars": 495,
+          "text_words": 82,
+          "token_multiset_sha256": null
+        },
+        "libmspub": {
+          "normalized_text_sha256": "6f5c8b43dbb496c14ce9c08ea3043a6dc7fb71d27d2c1e79179fa0145c07416f",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 496,
+          "text_words": 83,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 12219724
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "9fcbc63582ff9dbebde0672eb6be07076e9f87a8ff8961172813eb8152c31c36",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 495,
+          "text_words": 82,
+          "token_multiset_sha256": null
+        }
+      },
+      "raw_pairwise_disagreements": [
         {
           "field": "page_count",
           "kind": "page_count_mismatch",
@@ -467,57 +712,40 @@
           "right_value": "9fcbc63582ff9dbebde0672eb6be07076e9f87a8ff8961172813eb8152c31c36"
         }
       ],
-      "engines": {
-        "chaptera": {
-          "diagnostic_count": 6,
-          "image_count": 5,
-          "normalized_text_sha256": "2b07c68186ac6ab9c7060a58925d21dd7573ce888f461b6528849c96e780e828",
-          "page_count": 6,
-          "scene_node_count": 57,
-          "scene_surface_count": 6,
-          "status": "success",
-          "story_count": 8,
-          "text_chars": 495,
-          "text_words": 82
+      "sha256": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa",
+      "triage": [
+        {
+          "chaptera_page_count": 6,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 1,
+          "libreoffice_downstream_page_count": 1,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 5,
+          "priority": "high"
         },
-        "libmspub": {
-          "normalized_text_sha256": "6f5c8b43dbb496c14ce9c08ea3043a6dc7fb71d27d2c1e79179fa0145c07416f",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 496,
-          "text_words": 83,
-          "xhtml_bytes": 12219724
-        },
-        "libreoffice": {
-          "normalized_text_sha256": "9fcbc63582ff9dbebde0672eb6be07076e9f87a8ff8961172813eb8152c31c36",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 495,
-          "text_words": 82
+        {
+          "kind": "chaptera_text_order_or_punctuation_divergence",
+          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "priority": "low"
         }
-      },
-      "sha256": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa"
+      ]
     },
     {
       "byte_len": 97280,
-      "disagreements": [
-        {
-          "field": "page_count",
-          "kind": "page_count_mismatch",
-          "left": "chaptera",
-          "left_value": 6,
-          "right": "libmspub",
-          "right_value": 1
+      "corpus_context": {
+        "coarse_structure_fingerprint": "dcb53503360b645b7d61607184d93e687ffa32dd428996b7feede09879d5f4f0",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "github-petalcat-pub2pdf-sample",
+          "source_filename": "sample.pub",
+          "source_path": "tests/fixtures/sample.pub",
+          "source_repo": "PetalCat/pub2pdf",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/PetalCat/pub2pdf/main/tests/fixtures/sample.pub"
         },
-        {
-          "field": "page_count",
-          "kind": "page_count_mismatch",
-          "left": "chaptera",
-          "left_value": 6,
-          "right": "libreoffice",
-          "right_value": 1
-        }
-      ],
+        "topology_fingerprint": "3430bcf2da51ba24be16c077aa8672bd9dda1bedac4a662ecb220efc4dc9cbc0"
+      },
       "engines": {
         "chaptera": {
           "diagnostic_count": 3,
@@ -529,7 +757,8 @@
           "status": "success",
           "story_count": 1,
           "text_chars": 29,
-          "text_words": 4
+          "text_words": 4,
+          "token_multiset_sha256": null
         },
         "libmspub": {
           "normalized_text_sha256": "1075ec0dcee17a27d19fc8c614c1a31237eabea65a4701daa76661e98c120eea",
@@ -537,6 +766,7 @@
           "status": "success",
           "text_chars": 29,
           "text_words": 4,
+          "token_multiset_sha256": null,
           "xhtml_bytes": 952
         },
         "libreoffice": {
@@ -544,29 +774,63 @@
           "page_count": 1,
           "status": "success",
           "text_chars": 29,
-          "text_words": 4
+          "text_words": 4,
+          "token_multiset_sha256": null
         }
       },
-      "sha256": "712e1db9cefd0af613b12fb776720ac5d67ebe772468f2e47cb26a1f2e6ce28a"
+      "raw_pairwise_disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libmspub",
+          "right_value": 1
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libreoffice",
+          "right_value": 1
+        }
+      ],
+      "sha256": "712e1db9cefd0af613b12fb776720ac5d67ebe772468f2e47cb26a1f2e6ce28a",
+      "triage": [
+        {
+          "chaptera_page_count": 6,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 1,
+          "libreoffice_downstream_page_count": 1,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 5,
+          "priority": "high"
+        }
+      ]
     },
     {
       "byte_len": 97792,
-      "disagreements": [
-        {
-          "kind": "engine_acceptance_mismatch",
-          "left": "chaptera",
-          "left_status": "rejected",
-          "right": "libmspub",
-          "right_status": "success"
+      "corpus_context": {
+        "coarse_structure_fingerprint": "2b8295f382b8f697f9f67695fa86ad1104bbee2d2dc9e1e3984e07881cd878ac",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "github-altpublisher-shape-test",
+          "sibling_oracle": {
+            "expected_git_blob_sha1": "4dbc5a133977bf97d7b31007a4b259e2e5431dac",
+            "expected_size": 42951,
+            "type": "image",
+            "url": "https://raw.githubusercontent.com/jhopkins44/AltPublisher/main/ShapeTest.png"
+          },
+          "source_filename": "ShapeTest.pub",
+          "source_path": "ShapeTest.pub",
+          "source_repo": "jhopkins44/AltPublisher",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/jhopkins44/AltPublisher/main/ShapeTest.pub"
         },
-        {
-          "kind": "engine_acceptance_mismatch",
-          "left": "chaptera",
-          "left_status": "rejected",
-          "right": "libreoffice",
-          "right_status": "success"
-        }
-      ],
+        "topology_fingerprint": "f94c7261b1a7f988d7d5d48236d86a62b6bbb53eb4caae011665a5f2be9a5695"
+      },
       "engines": {
         "chaptera": {
           "error": "Error: open mature-0x2c Viewer geometry\n\nCaused by:\n    0: build mature-0x2C PUB source graph for Viewer\n    1: parse mature Story catalog 0x65\n    2: MissingDeclaredCount",
@@ -579,6 +843,7 @@
           "status": "success",
           "text_chars": 0,
           "text_words": 0,
+          "token_multiset_sha256": null,
           "xhtml_bytes": 2829
         },
         "libreoffice": {
@@ -586,14 +851,85 @@
           "page_count": 1,
           "status": "success",
           "text_chars": 0,
-          "text_words": 0
+          "text_words": 0,
+          "token_multiset_sha256": null
         }
       },
-      "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb"
+      "raw_pairwise_disagreements": [
+        {
+          "kind": "engine_acceptance_mismatch",
+          "left": "chaptera",
+          "left_status": "rejected",
+          "right": "libmspub",
+          "right_status": "success"
+        },
+        {
+          "kind": "engine_acceptance_mismatch",
+          "left": "chaptera",
+          "left_status": "rejected",
+          "right": "libreoffice",
+          "right_status": "success"
+        }
+      ],
+      "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb",
+      "triage": [
+        {
+          "chaptera_status": "rejected",
+          "external_parser_lineage": "libmspub",
+          "external_status": "success",
+          "kind": "chaptera_acceptance_gap",
+          "libreoffice_downstream_status": "success",
+          "note": "LibreOffice shares the libmspub parser lineage and is not a second independent parser vote.",
+          "priority": "high"
+        }
+      ]
     },
     {
       "byte_len": 217088,
-      "disagreements": [
+      "corpus_context": {
+        "coarse_structure_fingerprint": "e5e7c3eb4c27afb501a4f1a97addd526e9684a70323f83793f5f654f97d3937b",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "belgium-uhasselt-kuleuven-a1-nl-fixed",
+          "source_filename": "A1-NL-fixed.pub",
+          "source_type": "institutional-web",
+          "source_url": "https://drive.usercontent.google.com/download?id=1OwcJ_VpPyrZiEpDqJ1NQ1Tz2FmfPAit-&export=download&confirm=t"
+        },
+        "topology_fingerprint": "588ac9ca1a310e4135c43e707d3273245f7439cfd5406528824de162bb16fe88"
+      },
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 6,
+          "image_count": 3,
+          "normalized_text_sha256": "d015168a5da859a9b968d755635e89941163dad38c1c90529e21c9e42b7b0386",
+          "page_count": 6,
+          "scene_node_count": 13,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 9,
+          "text_chars": 538,
+          "text_words": 71,
+          "token_multiset_sha256": null
+        },
+        "libmspub": {
+          "normalized_text_sha256": "23a3f134b686261c9bf924bcc49281a7a8bb3ee4ad8dc302ed324fe05648a562",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 602,
+          "text_words": 135,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 114661
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "cc585b769770daed279f476066348256819e6ec6eae1a0b55f56531f492b8265",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 538,
+          "text_words": 71,
+          "token_multiset_sha256": null
+        }
+      },
+      "raw_pairwise_disagreements": [
         {
           "field": "page_count",
           "kind": "page_count_mismatch",
@@ -635,40 +971,79 @@
           "right_value": "cc585b769770daed279f476066348256819e6ec6eae1a0b55f56531f492b8265"
         }
       ],
-      "engines": {
-        "chaptera": {
-          "diagnostic_count": 6,
-          "image_count": 3,
-          "normalized_text_sha256": "d015168a5da859a9b968d755635e89941163dad38c1c90529e21c9e42b7b0386",
-          "page_count": 6,
-          "scene_node_count": 13,
-          "scene_surface_count": 6,
-          "status": "success",
-          "story_count": 9,
-          "text_chars": 538,
-          "text_words": 71
+      "sha256": "800d2648854fb3fe1f9314a1ea7b7969d79cd9cb9b12cc454a71dde8177b2450",
+      "triage": [
+        {
+          "chaptera_page_count": 6,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 1,
+          "libreoffice_downstream_page_count": 1,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 5,
+          "priority": "high"
         },
-        "libmspub": {
-          "normalized_text_sha256": "23a3f134b686261c9bf924bcc49281a7a8bb3ee4ad8dc302ed324fe05648a562",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 602,
-          "text_words": 135,
-          "xhtml_bytes": 114661
-        },
-        "libreoffice": {
-          "normalized_text_sha256": "cc585b769770daed279f476066348256819e6ec6eae1a0b55f56531f492b8265",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 538,
-          "text_words": 71
+        {
+          "kind": "chaptera_text_order_or_punctuation_divergence",
+          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "priority": "low"
         }
-      },
-      "sha256": "800d2648854fb3fe1f9314a1ea7b7969d79cd9cb9b12cc454a71dde8177b2450"
+      ]
     },
     {
       "byte_len": 6412288,
-      "disagreements": [
+      "corpus_context": {
+        "coarse_structure_fingerprint": "47efd1847ccc23a7734e2277371af1182059055985078fbf94cb5fe5df9ac7b0",
+        "provenance_document_hint": "manual",
+        "source": {
+          "candidate_id": "github-emhodges-kroy-manual",
+          "sibling_oracle": {
+            "expected_git_blob_sha1": "ec95bc942e23c1f052105a8282b2942822f006d9",
+            "expected_size": 864858,
+            "type": "pdf",
+            "url": "https://raw.githubusercontent.com/EMHodges/SEPR-game/master/docs/manuals/KroyManual-1.0.pdf"
+          },
+          "source_filename": "KroyManualEditable-1.0.pub",
+          "source_path": "docs/manuals/KroyManualEditable-1.0.pub",
+          "source_repo": "EMHodges/SEPR-game",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/EMHodges/SEPR-game/master/docs/manuals/KroyManualEditable-1.0.pub"
+        },
+        "topology_fingerprint": "0a6785074a35e812abc6b677a517172f4d163e29eb3ca407916979eed1fcd8b7"
+      },
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 4,
+          "image_count": 11,
+          "normalized_text_sha256": "1e599a024dcc6f467a8414fce49af58121a524f9f7463b46476c023770f24654",
+          "page_count": 10,
+          "scene_node_count": 17,
+          "scene_surface_count": 10,
+          "status": "success",
+          "story_count": 4,
+          "text_chars": 2085,
+          "text_words": 384,
+          "token_multiset_sha256": null
+        },
+        "libmspub": {
+          "normalized_text_sha256": "1e599a024dcc6f467a8414fce49af58121a524f9f7463b46476c023770f24654",
+          "page_count": 5,
+          "status": "success",
+          "text_chars": 2085,
+          "text_words": 384,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 8343501
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "a24b483c7598afc3c5d1b7d05af0b5e44bd92aec5fc744a61f59b919b81a426a",
+          "page_count": 5,
+          "status": "success",
+          "text_chars": 2085,
+          "text_words": 384,
+          "token_multiset_sha256": null
+        }
+      },
+      "raw_pairwise_disagreements": [
         {
           "field": "page_count",
           "kind": "page_count_mismatch",
@@ -702,40 +1077,68 @@
           "right_value": "a24b483c7598afc3c5d1b7d05af0b5e44bd92aec5fc744a61f59b919b81a426a"
         }
       ],
-      "engines": {
-        "chaptera": {
-          "diagnostic_count": 4,
-          "image_count": 11,
-          "normalized_text_sha256": "1e599a024dcc6f467a8414fce49af58121a524f9f7463b46476c023770f24654",
-          "page_count": 10,
-          "scene_node_count": 17,
-          "scene_surface_count": 10,
-          "status": "success",
-          "story_count": 4,
-          "text_chars": 2085,
-          "text_words": 384
-        },
-        "libmspub": {
-          "normalized_text_sha256": "1e599a024dcc6f467a8414fce49af58121a524f9f7463b46476c023770f24654",
-          "page_count": 5,
-          "status": "success",
-          "text_chars": 2085,
-          "text_words": 384,
-          "xhtml_bytes": 8343501
-        },
-        "libreoffice": {
-          "normalized_text_sha256": "a24b483c7598afc3c5d1b7d05af0b5e44bd92aec5fc744a61f59b919b81a426a",
-          "page_count": 5,
-          "status": "success",
-          "text_chars": 2085,
-          "text_words": 384
+      "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70",
+      "triage": [
+        {
+          "chaptera_page_count": 10,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 5,
+          "libreoffice_downstream_page_count": 5,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 5,
+          "priority": "high"
         }
-      },
-      "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70"
+      ]
     },
     {
       "byte_len": 199680,
-      "disagreements": [
+      "corpus_context": {
+        "coarse_structure_fingerprint": "42a8a5f5aa62f5993f0342956879ac345b793c277bfadf872ec52b449626ed35",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "github-legonois-publishertopdf-file-01",
+          "source_filename": "file-01.pub",
+          "source_path": "test/file-01.pub",
+          "source_repo": "Legonois/PublisherToPDF",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/Legonois/PublisherToPDF/main/test/file-01.pub"
+        },
+        "topology_fingerprint": "9e09f523530ce8d8c0c5adbc569c2e3c6905a18741f0e2172cd03c465255694d"
+      },
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 4,
+          "image_count": 0,
+          "normalized_text_sha256": "dfbb7532f05aa563cb25312dce081ba2d204dcddabcd083ff1145e280ca01d9a",
+          "page_count": 6,
+          "scene_node_count": 9,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 5,
+          "text_chars": 1990,
+          "text_words": 285,
+          "token_multiset_sha256": null
+        },
+        "libmspub": {
+          "normalized_text_sha256": "b5d09ece12e96ce4b5dd27b3081ca5682b0b3470c205481cadcf409942e03194",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 2006,
+          "text_words": 301,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 25497
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "101d3cddbe4e7e5eb866b20c4f7d1b7355424392f32e978b9e46475937c917b1",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 2015,
+          "text_words": 310,
+          "token_multiset_sha256": null
+        }
+      },
+      "raw_pairwise_disagreements": [
         {
           "field": "page_count",
           "kind": "page_count_mismatch",
@@ -777,40 +1180,73 @@
           "right_value": "101d3cddbe4e7e5eb866b20c4f7d1b7355424392f32e978b9e46475937c917b1"
         }
       ],
-      "engines": {
-        "chaptera": {
-          "diagnostic_count": 4,
-          "image_count": 0,
-          "normalized_text_sha256": "dfbb7532f05aa563cb25312dce081ba2d204dcddabcd083ff1145e280ca01d9a",
-          "page_count": 6,
-          "scene_node_count": 9,
-          "scene_surface_count": 6,
-          "status": "success",
-          "story_count": 5,
-          "text_chars": 1990,
-          "text_words": 285
+      "sha256": "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6",
+      "triage": [
+        {
+          "chaptera_page_count": 6,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 1,
+          "libreoffice_downstream_page_count": 1,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 5,
+          "priority": "high"
         },
-        "libmspub": {
-          "normalized_text_sha256": "b5d09ece12e96ce4b5dd27b3081ca5682b0b3470c205481cadcf409942e03194",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 2006,
-          "text_words": 301,
-          "xhtml_bytes": 25497
-        },
-        "libreoffice": {
-          "normalized_text_sha256": "101d3cddbe4e7e5eb866b20c4f7d1b7355424392f32e978b9e46475937c917b1",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 2015,
-          "text_words": 310
+        {
+          "kind": "chaptera_text_order_or_punctuation_divergence",
+          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "priority": "low"
         }
-      },
-      "sha256": "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6"
+      ]
     },
     {
       "byte_len": 114688,
-      "disagreements": [
+      "corpus_context": {
+        "coarse_structure_fingerprint": "b3562999d143b17534af8334d928c316c7ffb71b96e804d7a0ff26bab39973e1",
+        "provenance_document_hint": "poster",
+        "source": {
+          "anchor_text": "CTR-Branded Poster Template for MS Publisher (.pub, 72 x 36 banner size)",
+          "candidate_id": "utexas-ctr-poster2014",
+          "locator_snapshot": "https://cloud.wikis.utexas.edu/wiki/spaces/ctrsupport/pages/62489949",
+          "source_filename": "Poster2014.pub",
+          "source_type": "institutional-web",
+          "source_url": "https://library.ctr.utexas.edu/ctr-publications/Poster2014.pub"
+        },
+        "topology_fingerprint": "9638183d8c76f31651117bb2a91670a82a76a31f804c3c6a013af57cad986a34"
+      },
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 6,
+          "image_count": 2,
+          "normalized_text_sha256": "e99bac0def6658cf6b6328e9f15b65aa9968716716847b55e1a473cc67d1075f",
+          "page_count": 6,
+          "scene_node_count": 11,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 7,
+          "text_chars": 375,
+          "text_words": 64,
+          "token_multiset_sha256": null
+        },
+        "libmspub": {
+          "normalized_text_sha256": "69b2ad3bfee35c36a4105fa8e7756258ed8abb231a1ccd52d14fb6b4c83e1eb2",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 375,
+          "text_words": 64,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 48033
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "a35d2bc9039c74badba421657f9c9c55814d70cceec6a74c38d710626013bba7",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 366,
+          "text_words": 63,
+          "token_multiset_sha256": null
+        }
+      },
+      "raw_pairwise_disagreements": [
         {
           "field": "page_count",
           "kind": "page_count_mismatch",
@@ -852,40 +1288,79 @@
           "right_value": "a35d2bc9039c74badba421657f9c9c55814d70cceec6a74c38d710626013bba7"
         }
       ],
-      "engines": {
-        "chaptera": {
-          "diagnostic_count": 6,
-          "image_count": 2,
-          "normalized_text_sha256": "e99bac0def6658cf6b6328e9f15b65aa9968716716847b55e1a473cc67d1075f",
-          "page_count": 6,
-          "scene_node_count": 11,
-          "scene_surface_count": 6,
-          "status": "success",
-          "story_count": 7,
-          "text_chars": 375,
-          "text_words": 64
+      "sha256": "9923f422543b1ed43c090042c9e4256072df6fd961c06975e2b64335e09e9a15",
+      "triage": [
+        {
+          "chaptera_page_count": 6,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 1,
+          "libreoffice_downstream_page_count": 1,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 5,
+          "priority": "high"
         },
-        "libmspub": {
-          "normalized_text_sha256": "69b2ad3bfee35c36a4105fa8e7756258ed8abb231a1ccd52d14fb6b4c83e1eb2",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 375,
-          "text_words": 64,
-          "xhtml_bytes": 48033
-        },
-        "libreoffice": {
-          "normalized_text_sha256": "a35d2bc9039c74badba421657f9c9c55814d70cceec6a74c38d710626013bba7",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 366,
-          "text_words": 63
+        {
+          "kind": "chaptera_text_order_or_punctuation_divergence",
+          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "priority": "low"
         }
-      },
-      "sha256": "9923f422543b1ed43c090042c9e4256072df6fd961c06975e2b64335e09e9a15"
+      ]
     },
     {
       "byte_len": 2465280,
-      "disagreements": [
+      "corpus_context": {
+        "coarse_structure_fingerprint": "9b42d0f75b74ea774098faa7c455e5f46f01119263e3a63705e89028e0ba88ad",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "github-altpublisher-legend-loot",
+          "sibling_oracle": {
+            "expected_git_blob_sha1": "02caed6162b01d7f33e0f32d7c8ede8c1529d7a2",
+            "expected_size": 622703,
+            "type": "image",
+            "url": "https://raw.githubusercontent.com/jhopkins44/AltPublisher/main/LEGEND_LOOT.png"
+          },
+          "source_filename": "LEGEND_LOOT.pub",
+          "source_path": "LEGEND_LOOT.pub",
+          "source_repo": "jhopkins44/AltPublisher",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/jhopkins44/AltPublisher/main/LEGEND_LOOT.pub"
+        },
+        "topology_fingerprint": "35ad5e6e6843a171a6751b24b9bfc0de49ae8dac25d5abd34b494334cf6aa03c"
+      },
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 5,
+          "image_count": 1,
+          "normalized_text_sha256": "40f0b00c3d22f70ed9b2ea48a08cf97903fc92f38b09eecd3892f8b046e5e92e",
+          "page_count": 6,
+          "scene_node_count": 227,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 96,
+          "text_chars": 491,
+          "text_words": 108,
+          "token_multiset_sha256": null
+        },
+        "libmspub": {
+          "normalized_text_sha256": "73460db82fba5d219ffa761539d7141755ce6330b9f7be799460bfb1d298abf1",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 491,
+          "text_words": 108,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 35210490
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "eb14402a2e15f05a88b03d9076dd25b333170258acae2b2d109d174eddf4ecf2",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 491,
+          "text_words": 108,
+          "token_multiset_sha256": null
+        }
+      },
+      "raw_pairwise_disagreements": [
         {
           "field": "page_count",
           "kind": "page_count_mismatch",
@@ -927,73 +1402,40 @@
           "right_value": "eb14402a2e15f05a88b03d9076dd25b333170258acae2b2d109d174eddf4ecf2"
         }
       ],
-      "engines": {
-        "chaptera": {
-          "diagnostic_count": 5,
-          "image_count": 1,
-          "normalized_text_sha256": "40f0b00c3d22f70ed9b2ea48a08cf97903fc92f38b09eecd3892f8b046e5e92e",
-          "page_count": 6,
-          "scene_node_count": 227,
-          "scene_surface_count": 6,
-          "status": "success",
-          "story_count": 96,
-          "text_chars": 491,
-          "text_words": 108
+      "sha256": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf",
+      "triage": [
+        {
+          "chaptera_page_count": 6,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 1,
+          "libreoffice_downstream_page_count": 1,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 5,
+          "priority": "high"
         },
-        "libmspub": {
-          "normalized_text_sha256": "73460db82fba5d219ffa761539d7141755ce6330b9f7be799460bfb1d298abf1",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 491,
-          "text_words": 108,
-          "xhtml_bytes": 35210490
-        },
-        "libreoffice": {
-          "normalized_text_sha256": "eb14402a2e15f05a88b03d9076dd25b333170258acae2b2d109d174eddf4ecf2",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 491,
-          "text_words": 108
+        {
+          "kind": "chaptera_text_order_or_punctuation_divergence",
+          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "priority": "low"
         }
-      },
-      "sha256": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf"
+      ]
     },
     {
       "byte_len": 176128,
-      "disagreements": [
-        {
-          "field": "page_count",
-          "kind": "page_count_mismatch",
-          "left": "chaptera",
-          "left_value": 6,
-          "right": "libmspub",
-          "right_value": 1
+      "corpus_context": {
+        "coarse_structure_fingerprint": "5b0b23ff0006ad4b9310bfb240cfe56ee3da4e92a5c8277f716362d82f901ba8",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "aspose-c-1",
+          "source_filename": "1.pub",
+          "source_path": "Examples/Data/1.pub",
+          "source_repo": "aspose-pub/Aspose.PUB-for-C",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/aspose-pub/Aspose.PUB-for-C/master/Examples/Data/1.pub"
         },
-        {
-          "field": "normalized_text_sha256",
-          "kind": "normalized_text_mismatch",
-          "left": "chaptera",
-          "left_value": "616a82516e575b7f79b07b224cc166f165949be941882668ef477274f9d674d4",
-          "right": "libmspub",
-          "right_value": "135e52ec8005256123b342ff062d45fedcd0cb8d69128c09f077ceb67882313f"
-        },
-        {
-          "field": "page_count",
-          "kind": "page_count_mismatch",
-          "left": "chaptera",
-          "left_value": 6,
-          "right": "libreoffice",
-          "right_value": 1
-        },
-        {
-          "field": "normalized_text_sha256",
-          "kind": "normalized_text_mismatch",
-          "left": "chaptera",
-          "left_value": "616a82516e575b7f79b07b224cc166f165949be941882668ef477274f9d674d4",
-          "right": "libreoffice",
-          "right_value": "135e52ec8005256123b342ff062d45fedcd0cb8d69128c09f077ceb67882313f"
-        }
-      ],
+        "topology_fingerprint": "574fd7579cf00c4cf50e777d198e9de6235efc85db7f06237cbac18f9478650b"
+      },
       "engines": {
         "chaptera": {
           "diagnostic_count": 5,
@@ -1005,7 +1447,8 @@
           "status": "success",
           "story_count": 4,
           "text_chars": 475,
-          "text_words": 81
+          "text_words": 81,
+          "token_multiset_sha256": null
         },
         "libmspub": {
           "normalized_text_sha256": "135e52ec8005256123b342ff062d45fedcd0cb8d69128c09f077ceb67882313f",
@@ -1013,6 +1456,7 @@
           "status": "success",
           "text_chars": 475,
           "text_words": 81,
+          "token_multiset_sha256": null,
           "xhtml_bytes": 104078
         },
         "libreoffice": {
@@ -1020,14 +1464,109 @@
           "page_count": 1,
           "status": "success",
           "text_chars": 475,
-          "text_words": 81
+          "text_words": 81,
+          "token_multiset_sha256": null
         }
       },
-      "sha256": "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621"
+      "raw_pairwise_disagreements": [
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libmspub",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "616a82516e575b7f79b07b224cc166f165949be941882668ef477274f9d674d4",
+          "right": "libmspub",
+          "right_value": "135e52ec8005256123b342ff062d45fedcd0cb8d69128c09f077ceb67882313f"
+        },
+        {
+          "field": "page_count",
+          "kind": "page_count_mismatch",
+          "left": "chaptera",
+          "left_value": 6,
+          "right": "libreoffice",
+          "right_value": 1
+        },
+        {
+          "field": "normalized_text_sha256",
+          "kind": "normalized_text_mismatch",
+          "left": "chaptera",
+          "left_value": "616a82516e575b7f79b07b224cc166f165949be941882668ef477274f9d674d4",
+          "right": "libreoffice",
+          "right_value": "135e52ec8005256123b342ff062d45fedcd0cb8d69128c09f077ceb67882313f"
+        }
+      ],
+      "sha256": "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621",
+      "triage": [
+        {
+          "chaptera_page_count": 6,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 1,
+          "libreoffice_downstream_page_count": 1,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 5,
+          "priority": "high"
+        },
+        {
+          "kind": "chaptera_text_order_or_punctuation_divergence",
+          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "priority": "low"
+        }
+      ]
     },
     {
       "byte_len": 183296,
-      "disagreements": [
+      "corpus_context": {
+        "coarse_structure_fingerprint": "58493cf601a1d4c4cb9e53e02a52374357f2cf97202999d2f2b20a597cf7dcb4",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "belgium-sclera-bladwijzer-3",
+          "source_filename": "bladwijzer-3.pub",
+          "source_type": "institutional-web",
+          "source_url": "https://sclera.be/resources/img/iris/1000woorden/sjablonen/bladwijzer-3.pub"
+        },
+        "topology_fingerprint": "c4207b0498c2a71072a3ee9a3322ac71568d7c4956bcfd57898ea0ab9dbcfebd"
+      },
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 4,
+          "image_count": 4,
+          "normalized_text_sha256": "6e577a148a7181273b6c65d0b0e2d6f59107d9363ff61846ec2ea16db233fd52",
+          "page_count": 6,
+          "scene_node_count": 19,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 5,
+          "text_chars": 293,
+          "text_words": 50,
+          "token_multiset_sha256": null
+        },
+        "libmspub": {
+          "normalized_text_sha256": "90b918497ea8a907fcaaf50a968291047a42a6340698ee21e68a078e3092b3e3",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 17,
+          "text_words": 3,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 75074
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "90b918497ea8a907fcaaf50a968291047a42a6340698ee21e68a078e3092b3e3",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 17,
+          "text_words": 3,
+          "token_multiset_sha256": null
+        }
+      },
+      "raw_pairwise_disagreements": [
         {
           "field": "page_count",
           "kind": "page_count_mismatch",
@@ -1061,40 +1600,73 @@
           "right_value": "90b918497ea8a907fcaaf50a968291047a42a6340698ee21e68a078e3092b3e3"
         }
       ],
-      "engines": {
-        "chaptera": {
-          "diagnostic_count": 4,
-          "image_count": 4,
-          "normalized_text_sha256": "6e577a148a7181273b6c65d0b0e2d6f59107d9363ff61846ec2ea16db233fd52",
-          "page_count": 6,
-          "scene_node_count": 19,
-          "scene_surface_count": 6,
-          "status": "success",
-          "story_count": 5,
-          "text_chars": 293,
-          "text_words": 50
+      "sha256": "b61be87eda0fbf77249a51993da5fe744446bc8ff0d25d4a922e4e29f8f29cd1",
+      "triage": [
+        {
+          "chaptera_page_count": 6,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 1,
+          "libreoffice_downstream_page_count": 1,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 5,
+          "priority": "high"
         },
-        "libmspub": {
-          "normalized_text_sha256": "90b918497ea8a907fcaaf50a968291047a42a6340698ee21e68a078e3092b3e3",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 17,
-          "text_words": 3,
-          "xhtml_bytes": 75074
-        },
-        "libreoffice": {
-          "normalized_text_sha256": "90b918497ea8a907fcaaf50a968291047a42a6340698ee21e68a078e3092b3e3",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 17,
-          "text_words": 3
+        {
+          "kind": "chaptera_text_order_or_punctuation_divergence",
+          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "priority": "low"
         }
-      },
-      "sha256": "b61be87eda0fbf77249a51993da5fe744446bc8ff0d25d4a922e4e29f8f29cd1"
+      ]
     },
     {
       "byte_len": 293376,
-      "disagreements": [
+      "corpus_context": {
+        "coarse_structure_fingerprint": "a53709bdc1156151c98948e48f349599be25decc0bd3636156d6d75fc414bcc4",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "anchor_text": "Federal Financial Aid IRS Retrieval Tool Update",
+          "candidate_id": "heritage-bible-college-bre-bs-cc",
+          "locator_snapshot": "https://github.com/nickdenardis/edu-inventory/blob/d94b2f746ea7a335d23fde4f7f94f32cf1d755d2/snapshots/html/heritagebiblecollege.edu.html",
+          "source_filename": "BRE BS CC.pub",
+          "source_type": "historical-web",
+          "source_url": "https://web.archive.org/web/20120627003448id_/http://www.heritagebiblecollege.edu:80/Portals/0/Documents/BRE%20BS%20CC.pub"
+        },
+        "topology_fingerprint": "26d752329313b09b78a482f1170763a8f62612b4bcc6bf715ecb9960ac01f734"
+      },
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 6,
+          "image_count": 2,
+          "normalized_text_sha256": "40372b8d361350b210bd34d5fa88555baae1b42ee21cbf09e5c133546a3615ad",
+          "page_count": 6,
+          "scene_node_count": 18,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 15,
+          "text_chars": 4261,
+          "text_words": 612,
+          "token_multiset_sha256": null
+        },
+        "libmspub": {
+          "normalized_text_sha256": "e9ed5993e14b6ed13a2e326e17a7917496c8d93ae2301cbf348d1a3369242a94",
+          "page_count": 2,
+          "status": "success",
+          "text_chars": 4261,
+          "text_words": 612,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 175653
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "47c874c5929b00c59621d942706c2c3e5657e5ad13e31edb12026d07bef91359",
+          "page_count": 2,
+          "status": "success",
+          "text_chars": 2826,
+          "text_words": 380,
+          "token_multiset_sha256": null
+        }
+      },
+      "raw_pairwise_disagreements": [
         {
           "field": "page_count",
           "kind": "page_count_mismatch",
@@ -1136,40 +1708,73 @@
           "right_value": "47c874c5929b00c59621d942706c2c3e5657e5ad13e31edb12026d07bef91359"
         }
       ],
-      "engines": {
-        "chaptera": {
-          "diagnostic_count": 6,
-          "image_count": 2,
-          "normalized_text_sha256": "40372b8d361350b210bd34d5fa88555baae1b42ee21cbf09e5c133546a3615ad",
-          "page_count": 6,
-          "scene_node_count": 18,
-          "scene_surface_count": 6,
-          "status": "success",
-          "story_count": 15,
-          "text_chars": 4261,
-          "text_words": 612
+      "sha256": "bbaefcbdcdd2dbe51a636ed554c14d6f5353c98e795b5f88d26f79542e5d93ba",
+      "triage": [
+        {
+          "chaptera_page_count": 6,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 2,
+          "libreoffice_downstream_page_count": 2,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 4,
+          "priority": "high"
         },
-        "libmspub": {
-          "normalized_text_sha256": "e9ed5993e14b6ed13a2e326e17a7917496c8d93ae2301cbf348d1a3369242a94",
-          "page_count": 2,
-          "status": "success",
-          "text_chars": 4261,
-          "text_words": 612,
-          "xhtml_bytes": 175653
-        },
-        "libreoffice": {
-          "normalized_text_sha256": "47c874c5929b00c59621d942706c2c3e5657e5ad13e31edb12026d07bef91359",
-          "page_count": 2,
-          "status": "success",
-          "text_chars": 2826,
-          "text_words": 380
+        {
+          "kind": "chaptera_text_order_or_punctuation_divergence",
+          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "priority": "low"
         }
-      },
-      "sha256": "bbaefcbdcdd2dbe51a636ed554c14d6f5353c98e795b5f88d26f79542e5d93ba"
+      ]
     },
     {
       "byte_len": 699904,
-      "disagreements": [
+      "corpus_context": {
+        "coarse_structure_fingerprint": "9ee08377bebe3c38787d79676e9757ebdc54af297ae3e11cd2cfdf34b8b7bbd6",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "aspose-c-christmas-bottom",
+          "source_filename": "christmasBottom.pub",
+          "source_path": "Examples/Data/christmasBottom.pub",
+          "source_repo": "aspose-pub/Aspose.PUB-for-C",
+          "source_type": "github",
+          "source_url": "https://raw.githubusercontent.com/aspose-pub/Aspose.PUB-for-C/master/Examples/Data/christmasBottom.pub"
+        },
+        "topology_fingerprint": "d3a3a8d167fc98606f90e6612d7a42690ffd43c85d18db118e73874f099600b9"
+      },
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 6,
+          "image_count": 5,
+          "normalized_text_sha256": "09ed37ec98f532bf9aa6052cc3863c942dfc0296d810b07cf2308fcd4e404e33",
+          "page_count": 6,
+          "scene_node_count": 79,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 22,
+          "text_chars": 255,
+          "text_words": 46,
+          "token_multiset_sha256": null
+        },
+        "libmspub": {
+          "normalized_text_sha256": "8aa57ef4ce26846fe541c4a26a5b5bb2d2e11fcd40d0af4aa1ded5fc21669f33",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 256,
+          "text_words": 47,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 4302293
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "05caa293e80996e37f659b60174fd7c860999f65e0b3b8226a790186b4a3a69f",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 255,
+          "text_words": 46,
+          "token_multiset_sha256": null
+        }
+      },
+      "raw_pairwise_disagreements": [
         {
           "field": "page_count",
           "kind": "page_count_mismatch",
@@ -1211,40 +1816,71 @@
           "right_value": "05caa293e80996e37f659b60174fd7c860999f65e0b3b8226a790186b4a3a69f"
         }
       ],
-      "engines": {
-        "chaptera": {
-          "diagnostic_count": 6,
-          "image_count": 5,
-          "normalized_text_sha256": "09ed37ec98f532bf9aa6052cc3863c942dfc0296d810b07cf2308fcd4e404e33",
-          "page_count": 6,
-          "scene_node_count": 79,
-          "scene_surface_count": 6,
-          "status": "success",
-          "story_count": 22,
-          "text_chars": 255,
-          "text_words": 46
+      "sha256": "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190",
+      "triage": [
+        {
+          "chaptera_page_count": 6,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 1,
+          "libreoffice_downstream_page_count": 1,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 5,
+          "priority": "high"
         },
-        "libmspub": {
-          "normalized_text_sha256": "8aa57ef4ce26846fe541c4a26a5b5bb2d2e11fcd40d0af4aa1ded5fc21669f33",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 256,
-          "text_words": 47,
-          "xhtml_bytes": 4302293
-        },
-        "libreoffice": {
-          "normalized_text_sha256": "05caa293e80996e37f659b60174fd7c860999f65e0b3b8226a790186b4a3a69f",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 255,
-          "text_words": 46
+        {
+          "kind": "chaptera_text_order_or_punctuation_divergence",
+          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "priority": "low"
         }
-      },
-      "sha256": "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190"
+      ]
     },
     {
       "byte_len": 215040,
-      "disagreements": [
+      "corpus_context": {
+        "coarse_structure_fingerprint": "d1582f4c2f8781f1189ac89d510bb76cac20c9d4e14cb200a5d4886c47044893",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "belgium-sclera-rood-30",
+          "source_filename": "rood-30.pub",
+          "source_type": "institutional-web",
+          "source_url": "https://sclera.be/resources/img/iris/1000woorden/sjablonen/rood-30.pub"
+        },
+        "topology_fingerprint": "131b01ce24ab883ae7a3ed1cd7eb00131c93e55a83a6be881cc4fce7329683e9"
+      },
+      "engines": {
+        "chaptera": {
+          "diagnostic_count": 4,
+          "image_count": 3,
+          "normalized_text_sha256": "a97ab25b5c4ee02a47de57fc893d3084e955c7e321c37af03885ad783d61518f",
+          "page_count": 6,
+          "scene_node_count": 82,
+          "scene_surface_count": 6,
+          "status": "success",
+          "story_count": 37,
+          "text_chars": 544,
+          "text_words": 94,
+          "token_multiset_sha256": null
+        },
+        "libmspub": {
+          "normalized_text_sha256": "7e40531d8d78a9f14c9f17ede830161c50c6a395650c55be18f1f93030a1c487",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 205,
+          "text_words": 33,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 676607
+        },
+        "libreoffice": {
+          "normalized_text_sha256": "2eae00bb01f6fdde3330eaf65b934240e182aa88b4805320f21b23fb5a5f40d4",
+          "page_count": 1,
+          "status": "success",
+          "text_chars": 205,
+          "text_words": 33,
+          "token_multiset_sha256": null
+        }
+      },
+      "raw_pairwise_disagreements": [
         {
           "field": "page_count",
           "kind": "page_count_mismatch",
@@ -1286,40 +1922,71 @@
           "right_value": "2eae00bb01f6fdde3330eaf65b934240e182aa88b4805320f21b23fb5a5f40d4"
         }
       ],
+      "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a",
+      "triage": [
+        {
+          "chaptera_page_count": 6,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 1,
+          "libreoffice_downstream_page_count": 1,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 5,
+          "priority": "high"
+        },
+        {
+          "kind": "chaptera_text_order_or_punctuation_divergence",
+          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "priority": "low"
+        }
+      ]
+    },
+    {
+      "byte_len": 204800,
+      "corpus_context": {
+        "coarse_structure_fingerprint": "d1582f4c2f8781f1189ac89d510bb76cac20c9d4e14cb200a5d4886c47044893",
+        "provenance_document_hint": "other-or-unknown",
+        "source": {
+          "candidate_id": "belgium-sclera-groen-20",
+          "source_filename": "groen-20.pub",
+          "source_type": "institutional-web",
+          "source_url": "https://sclera.be/resources/img/iris/1000woorden/sjablonen/groen-20.pub"
+        },
+        "topology_fingerprint": "c2f10a86bfde8a1698543e5e13812ce11f9849fce2f0c699d2ea40ec97e84e5e"
+      },
       "engines": {
         "chaptera": {
           "diagnostic_count": 4,
           "image_count": 3,
-          "normalized_text_sha256": "a97ab25b5c4ee02a47de57fc893d3084e955c7e321c37af03885ad783d61518f",
+          "normalized_text_sha256": "536c9ee5f84990b60019432510d9cf035253f145691c81d053b0084e345c3147",
           "page_count": 6,
-          "scene_node_count": 82,
+          "scene_node_count": 62,
           "scene_surface_count": 6,
           "status": "success",
-          "story_count": 37,
-          "text_chars": 544,
-          "text_words": 94
+          "story_count": 27,
+          "text_chars": 484,
+          "text_words": 84,
+          "token_multiset_sha256": null
         },
         "libmspub": {
-          "normalized_text_sha256": "7e40531d8d78a9f14c9f17ede830161c50c6a395650c55be18f1f93030a1c487",
+          "normalized_text_sha256": "15b0acf0068b94cb824e425a4f4f39d063e0352ae3bbd6250cf7eee26ed855c8",
           "page_count": 1,
           "status": "success",
-          "text_chars": 205,
-          "text_words": 33,
-          "xhtml_bytes": 676607
+          "text_chars": 145,
+          "text_words": 23,
+          "token_multiset_sha256": null,
+          "xhtml_bytes": 452085
         },
         "libreoffice": {
-          "normalized_text_sha256": "2eae00bb01f6fdde3330eaf65b934240e182aa88b4805320f21b23fb5a5f40d4",
+          "normalized_text_sha256": "6456c01a0485a690326b0d846eec9a0d854873d04aa21ba985c3597419d1234e",
           "page_count": 1,
           "status": "success",
-          "text_chars": 205,
-          "text_words": 33
+          "text_chars": 145,
+          "text_words": 23,
+          "token_multiset_sha256": null
         }
       },
-      "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a"
-    },
-    {
-      "byte_len": 204800,
-      "disagreements": [
+      "raw_pairwise_disagreements": [
         {
           "field": "page_count",
           "kind": "page_count_mismatch",
@@ -1361,44 +2028,37 @@
           "right_value": "6456c01a0485a690326b0d846eec9a0d854873d04aa21ba985c3597419d1234e"
         }
       ],
-      "engines": {
-        "chaptera": {
-          "diagnostic_count": 4,
-          "image_count": 3,
-          "normalized_text_sha256": "536c9ee5f84990b60019432510d9cf035253f145691c81d053b0084e345c3147",
-          "page_count": 6,
-          "scene_node_count": 62,
-          "scene_surface_count": 6,
-          "status": "success",
-          "story_count": 27,
-          "text_chars": 484,
-          "text_words": 84
+      "sha256": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78",
+      "triage": [
+        {
+          "chaptera_page_count": 6,
+          "downstream_matches_libmspub": true,
+          "kind": "chaptera_page_projection_gap",
+          "libmspub_page_count": 1,
+          "libreoffice_downstream_page_count": 1,
+          "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
+          "page_delta": 5,
+          "priority": "high"
         },
-        "libmspub": {
-          "normalized_text_sha256": "15b0acf0068b94cb824e425a4f4f39d063e0352ae3bbd6250cf7eee26ed855c8",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 145,
-          "text_words": 23,
-          "xhtml_bytes": 452085
-        },
-        "libreoffice": {
-          "normalized_text_sha256": "6456c01a0485a690326b0d846eec9a0d854873d04aa21ba985c3597419d1234e",
-          "page_count": 1,
-          "status": "success",
-          "text_chars": 145,
-          "text_words": 23
+        {
+          "kind": "chaptera_text_order_or_punctuation_divergence",
+          "note": "Order-insensitive token inventory matches; exact normalized serialization differs.",
+          "priority": "low"
         }
-      },
-      "sha256": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78"
+      ]
     }
   ],
-  "schema": "lalamu.pub-oracle-differential.v1",
+  "schema": "lalamu.pub-oracle-differential.v2",
   "selected_file_count": 20,
   "selection_policy": "one-per-coarse-structure-and-source-type-then-sha-fill",
   "tool_versions": {
-    "chaptera": "4d61540b50c800b2b24efbf1fda4926ea10c95b8",
+    "chaptera": "69f1e6628a8c81e9986db8329c00a391f4c0f777",
     "libmspub": "pub2raw 0.1.4",
     "libreoffice": "LibreOffice 24.2.7.2 420(Build:2)"
+  },
+  "triage_counts": {
+    "chaptera_acceptance_gap": 2,
+    "chaptera_page_projection_gap": 18,
+    "chaptera_text_order_or_punctuation_divergence": 16
   }
 }
