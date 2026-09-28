@@ -144,5 +144,33 @@
       "https://raw.githubusercontent.com/aspose-pub/Aspose.PUB-for-.NET/master/Examples/Data/halloween-flyer.pub"
     ],
     "notes": "Public Aspose.PUB example fixture."
+  },
+  {
+    "id": "aspose-c-1",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "aspose-pub/Aspose.PUB-for-C",
+    "source_path": "Examples/Data/1.pub",
+    "source_filename": "1.pub",
+    "expected_git_blob_sha1": "fdb6e7a69fef4cb0edef8c072db103de3b568d7e",
+    "expected_size": 176128,
+    "urls": [
+      "https://raw.githubusercontent.com/aspose-pub/Aspose.PUB-for-C/master/Examples/Data/1.pub"
+    ],
+    "notes": "Public Aspose.PUB C++ example fixture."
+  },
+  {
+    "id": "aspose-c-christmas-bottom",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "aspose-pub/Aspose.PUB-for-C",
+    "source_path": "Examples/Data/christmasBottom.pub",
+    "source_filename": "christmasBottom.pub",
+    "expected_git_blob_sha1": "d71554e0ecd75c4e709a9374972cd17d2896999c",
+    "expected_size": 699904,
+    "urls": [
+      "https://raw.githubusercontent.com/aspose-pub/Aspose.PUB-for-C/master/Examples/Data/christmasBottom.pub"
+    ],
+    "notes": "Public Aspose.PUB C++ example fixture."
   }
 ]
