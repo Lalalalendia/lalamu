@@ -1,0 +1,45 @@
+name: copy-ledger-proof
+
+on:
+  push:
+    branches:
+      - engine-copy-ledger-instrument-01-clean-v1
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo fmt --check
+      - run: cargo test --all-targets
+      - run: cargo clippy --all-targets -- -D warnings
+      - name: Emit machine-readable copy ledger receipt set
+        run: |
+          cargo run --quiet --bin copy_ledger_receipt > /tmp/copy-ledger-receipts.json
+          python - <<'PY'
+          import json
+          r = json.load(open("/tmp/copy-ledger-receipts.json", encoding="utf-8"))
+          assert r["schema_version"] == "chaptera.copy-ledger.proof-set.v1"
+          assert r["architecture_decision_allowed"] is False
+          assert len(r["receipts"]) == 5
+          by_scenario = {row["scenario"]: row for row in r["receipts"]}
+          assert set(by_scenario) == {
+              "OpenParse", "MoveNode", "SmallStoryEdit",
+              "GeometryOnlyReflow", "ReplaceImageExport"
+          }
+          replace = by_scenario["ReplaceImageExport"]["events"]
+          classes = {event["site"]: event["class"] for event in replace}
+          assert classes["ReplaceImageAssetClone"] == "InternalCopy"
+          assert classes["FinalSerialization"] == "RequiredFinalSerialization"
+          move = by_scenario["MoveNode"]["events"]
+          move_classes = {event["site"]: event["class"] for event in move}
+          assert move_classes["RevisionExecutorDetach"] == "InternalCopy"
+          assert move_classes["RevisionHistorySnapshot"] == "HistoryRetention"
+          print(json.dumps(r, sort_keys=True))
+          PY
