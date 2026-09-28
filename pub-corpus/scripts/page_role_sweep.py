@@ -84,6 +84,20 @@ def page_bool(page: dict[str, Any], name: str, pgt_value: int | None = None) -> 
         return int(page.get("group_child_count") or 0) > 0
     if name == "shape_or_group_child>0":
         return int(page.get("shape_child_count") or 0) > 0 or int(page.get("group_child_count") or 0) > 0
+    if name == "content_oid_or_table":
+        child_counts = page.get("child_raw_type_counts") or {}
+        has_shape_or_group = (
+            int(page.get("shape_child_count") or 0) > 0
+            or int(page.get("group_child_count") or 0) > 0
+        )
+        oid_nonzero = (
+            int(page.get("oid_dword0") or 0) != 0
+            or int(page.get("oid_dword1") or 0) != 0
+        )
+        # Raw Contents type 0x10 is TABLE in libmspub's mature chunk registry.
+        # This is a discovery predicate only, not a production page-role law.
+        has_table_child = int(child_counts.get("16") or 0) > 0
+        return (has_shape_or_group and oid_nonzero) or has_table_child
     if name == "applied_master_present":
         return page.get("applied_master_seq_num") is not None
     if name == "applied_master_absent":
@@ -106,6 +120,11 @@ def predicate_specs(pgt_values: list[int]) -> list[tuple[str, str, int | None]]:
         ("shape_child_count>0", "shape_child_count>0", None),
         ("group_child_count>0", "group_child_count>0", None),
         ("shape_or_group_child>0", "shape_or_group_child>0", None),
+        (
+            "(shape_or_group_child>0 AND oid_nonzero) OR TABLE_child",
+            "content_oid_or_table",
+            None,
+        ),
         ("applied_master_present", "applied_master_present", None),
         ("applied_master_absent", "applied_master_absent", None),
         ("oid_pair_complete", "oid_pair_complete", None),
@@ -223,7 +242,9 @@ def main() -> int:
         "heuristic_warning": (
             "Predicate scores are discovery aids only. The comparison count comes from the "
             "libmspub parser lineage; LibreOffice is not an independent Publisher parser vote. "
-            "A candidate predicate requires separate source-semantic validation before use."
+            "A candidate predicate requires separate source-semantic validation before use. "
+            "In particular, do not copy libmspub's historical hard-coded DUMMY_PAGE seqNums "
+            "into Chaptera; those constants are oracle-mechanism evidence, not native semantics."
         ),
         "candidate_predicate_scoreboard": scoreboard[:30],
         "records": records,
