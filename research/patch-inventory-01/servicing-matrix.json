@@ -8,7 +8,8 @@
     "missing_kb_is_recorded_as_gap_not_guessed": true,
     "release_date_requires_source": true,
     "click_to_run_rows_use_build_servicing_not_service_pack_fiction": true,
-    "update_package_execution_performed": false
+    "update_package_execution_performed": false,
+    "manifest_subset_must_be_labeled": true
   },
   "target_generations": [
     "Publisher 97",
@@ -240,6 +241,40 @@
         "remote_code_execution_parser_fix",
         "legacy_pubconv_causal_surface",
         "publisher_2010_x86_x64_package_names"
+      ]
+    },
+    "publisher_2013_kb5002213": {
+      "authority": "microsoft_support",
+      "url": "https://support.microsoft.com/en-us/topic/description-of-the-security-update-for-publisher-2013-april-11-2023-kb5002213-16536d3e-c059-483e-92d5-d84e5ab35d6b",
+      "supports": [
+        "publisher_2013_sp1_security_endpoint",
+        "package_sha256",
+        "replaces_kb4484347",
+        "publisher_file_manifest",
+        "msi_only"
+      ]
+    },
+    "publisher_2016_kb5002566": {
+      "authority": "microsoft_support",
+      "url": "https://support.microsoft.com/en-US/servicing/Office/hotfix/publisher/description-of-the-security-update-for-publisher-2016-september-10-2024-kb5002566",
+      "supports": [
+        "publisher_2016_security_package",
+        "package_sha256",
+        "replaces_kb5002492",
+        "publisher_file_manifest",
+        "msi_only"
+      ]
+    },
+    "publisher_2016_kb5002644": {
+      "authority": "microsoft_support",
+      "url": "https://support.microsoft.com/en-us/servicing/office/hotfix/publisher/5002644",
+      "supports": [
+        "publisher_2016_latest_observed_security_package",
+        "package_sha256",
+        "replaces_kb5002566",
+        "rce",
+        "msi_only",
+        "external_file_list_links"
       ]
     }
   },
@@ -1328,6 +1363,241 @@
         "publisher_2010_sp2_security"
       ],
       "notes": "This is the strongest Publisher-specific binary-impact anchor in the second tranche: Microsoft publishes package SHA-256, supersedence, and exact x86/x64 file manifests."
+    },
+    {
+      "id": "pub2013-kb5002213",
+      "generation": "Publisher 2013",
+      "epoch_kind": "publisher_update",
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package_specific",
+      "cumulative": false,
+      "publisher_scope": "publisher_specific_security_update",
+      "evidence_strength": "primary_source_publisher_specific_update",
+      "epoch_label": "Publisher 2013 SP1 security endpoint / KB5002213",
+      "release_date": "2023-04-11",
+      "kb_ids": [
+        "5002213"
+      ],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "supersedes": [
+        "pub2013-sp1"
+      ],
+      "replaces_kb_ids": [
+        "4484347"
+      ],
+      "package_names": [
+        "publisher2013-kb5002213-fullfile-x86-glb.exe",
+        "publisher2013-kb5002213-fullfile-x64-glb.exe"
+      ],
+      "package_sha256": {
+        "x86": "D27F70BA78B7A8B3BFE97D1BB644D480DB56EC6277A8DE88CB1C8C303B6E721F",
+        "x64": "513A10C7E3B6F55444AB6057B185B51C86F595328A0AAFE4E6F9E78A52333062"
+      },
+      "security_impact": "Remote Code Execution",
+      "cves": [
+        "CVE-2023-28287",
+        "CVE-2023-28295"
+      ],
+      "prerequisite": "Office 2013 SP1",
+      "publisher_module_impact": "publisher_package_hash_and_core_file_manifest_proven",
+      "file_manifest_scope": "normalized core x86 subset; Microsoft source contains a much larger multilingual x86/x64 manifest",
+      "file_manifest_core": {
+        "x86": [
+          {
+            "file": "morph9.dll",
+            "version": "15.0.5337.1000",
+            "size": 482216
+          },
+          {
+            "file": "mspub.exe",
+            "version": "15.0.5545.1000",
+            "size": 10763736
+          },
+          {
+            "file": "mspub.exe.manifest",
+            "version": null,
+            "size": 1239
+          },
+          {
+            "file": "prtf9.dll",
+            "version": "15.0.5337.1000",
+            "size": 144800
+          },
+          {
+            "file": "ptxt9.dll",
+            "version": "15.0.5545.1000",
+            "size": 725416
+          },
+          {
+            "file": "pubconv.dll",
+            "version": "15.0.5545.1000",
+            "size": 634824
+          },
+          {
+            "file": "pubtrap.dll",
+            "version": "15.0.5399.1000",
+            "size": 52104
+          }
+        ]
+      },
+      "source_refs": [
+        "publisher_2013_kb5002213"
+      ],
+      "notes": "Useful near-end-of-support binary anchor. The full Microsoft manifest is very large because it includes localized Publisher resources; only a clearly labeled core x86 subset is normalized here."
+    },
+    {
+      "id": "pub2016-kb5002566",
+      "generation": "Publisher 2016",
+      "epoch_kind": "publisher_update",
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package_specific",
+      "cumulative": false,
+      "publisher_scope": "publisher_specific_security_update",
+      "evidence_strength": "primary_source_publisher_specific_update",
+      "epoch_label": "Publisher 2016 MSI security update / KB5002566",
+      "release_date": "2024-09-10",
+      "kb_ids": [
+        "5002566"
+      ],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "supersedes": [
+        "pub2016-msi-servicing"
+      ],
+      "replaces_kb_ids": [
+        "5002492"
+      ],
+      "package_names": [
+        "publisher2016-kb5002566-fullfile-x86-glb.exe",
+        "publisher2016-kb5002566-fullfile-x64-glb.exe"
+      ],
+      "package_sha256": {
+        "x86": "98D3616C39DDC89FAD7883FE28535841F32EB2BD932877C21632517AA8547807",
+        "x64": "CA5CA37A7B149DE8978EF85FC0951E989722CA6F7594C21CA8FB9A3DE53E0AEA"
+      },
+      "security_impact": "Security Feature Bypass",
+      "cves": [
+        "CVE-2024-38226"
+      ],
+      "prerequisite": "release version of Publisher 2016",
+      "publisher_module_impact": "publisher_package_hash_and_core_x86_x64_manifest_proven",
+      "file_manifest_scope": "normalized core x86/x64 subset from Microsoft file table; localized resource tail omitted",
+      "file_manifest_core": {
+        "x86": [
+          {
+            "file": "morph9.dll",
+            "version": "16.0.5413.1000",
+            "size": 485888
+          },
+          {
+            "file": "mspub.exe",
+            "version": "16.0.5460.1000",
+            "size": 10660256
+          },
+          {
+            "file": "prtf9.dll",
+            "version": "16.0.5413.1000",
+            "size": 159200
+          },
+          {
+            "file": "ptxt9.dll",
+            "version": "16.0.5465.1001",
+            "size": 734680
+          }
+        ],
+        "x64": [
+          {
+            "file": "morph9.dll",
+            "version": "16.0.5404.1000",
+            "size": 639392
+          },
+          {
+            "file": "mspub.exe",
+            "version": "16.0.5460.1000",
+            "size": 13657024
+          },
+          {
+            "file": "prtf9.dll",
+            "version": "16.0.5095.1000",
+            "size": 185192
+          },
+          {
+            "file": "ptxt9.dll",
+            "version": "16.0.5465.1001",
+            "size": 960688
+          },
+          {
+            "file": "pubconv.dll",
+            "version": "16.0.5391.1000",
+            "size": 864744
+          },
+          {
+            "file": "pubtrap.dll",
+            "version": "16.0.5149.1000",
+            "size": 72576
+          }
+        ]
+      },
+      "source_refs": [
+        "publisher_2016_kb5002566"
+      ],
+      "notes": "Microsoft explicitly states the Download Center package is for MSI-based Office 2016 and not Click-to-Run."
+    },
+    {
+      "id": "pub2016-kb5002644",
+      "generation": "Publisher 2016",
+      "epoch_kind": "publisher_update",
+      "channel": [
+        "MSI"
+      ],
+      "language_scope": "package_specific",
+      "cumulative": false,
+      "publisher_scope": "publisher_specific_security_update",
+      "evidence_strength": "primary_source_publisher_specific_update",
+      "epoch_label": "Publisher 2016 MSI security update / KB5002644",
+      "release_date": "2026-09-08",
+      "kb_ids": [
+        "5002644"
+      ],
+      "architecture": [
+        "x86",
+        "x64"
+      ],
+      "supersedes": [
+        "pub2016-kb5002566"
+      ],
+      "replaces_kb_ids": [
+        "5002566"
+      ],
+      "package_names": [
+        "publisher2016-kb5002644-fullfile-x86-glb.exe",
+        "publisher2016-kb5002644-fullfile-x64-glb.exe"
+      ],
+      "package_sha256": {
+        "x86": "BBD16AA927F5CF4663A9157C88519BD11349B6D9C42C840212FD97FBB2B5AED3",
+        "x64": "2A4A16F88B3EDBC14A86B3F6D42455AFB18D3A5F00ACEE23ABBFB16AC9593333"
+      },
+      "security_impact": "Remote Code Execution",
+      "cves": [
+        "CVE-2026-81385",
+        "CVE-2026-69742"
+      ],
+      "prerequisite": "release version of Publisher 2016",
+      "publisher_module_impact": "publisher_package_hash_proven_file_lists_linked_but_not_normalized",
+      "file_manifest_scope": "Microsoft links architecture-specific file lists; this tranche does not normalize those external list files",
+      "source_refs": [
+        "publisher_2016_kb5002644"
+      ],
+      "notes": "Latest Publisher 2016 MSI security package observed in this pass as of 2026-09-28. Microsoft explicitly excludes Office 2016 Click-to-Run from this package."
     }
   ],
   "gaps": [
@@ -1432,6 +1702,17 @@
         }
       ],
       "remaining_priority": "Add Publisher-specific 2013/2016 updates and exact file manifests; resolve legacy 97/98/2000 chronology separately."
+    },
+    "third_tranche": {
+      "endpoint_rows_added": [
+        "pub2013-kb5002213",
+        "pub2016-kb5002566",
+        "pub2016-kb5002644"
+      ],
+      "publisher_2013_endpoint": "KB5002213 on 2023-04-11 with package hashes and core binary manifest",
+      "publisher_2016_security_chain": "KB5002566 -> KB5002644",
+      "current_observation_date": "2026-09-28",
+      "manifest_scope_rule": "partial normalized manifests are explicitly labeled and are not presented as complete payloads"
     }
   },
   "negative_applicability": [
