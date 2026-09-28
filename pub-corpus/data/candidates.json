@@ -46,5 +46,33 @@
     "locator_snapshot": "https://github.com/nickdenardis/edu-inventory/blob/d94b2f746ea7a335d23fde4f7f94f32cf1d755d2/snapshots/html/heritagebiblecollege.edu.html",
     "anchor_text": "Federal Financial Aid IRS Retrieval Tool Update",
     "notes": "Historical exact native locator. Promote only after byte recovery and full validation."
+  },
+  {
+    "id": "github-petalcat-pub2pdf-sample",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "PetalCat/pub2pdf",
+    "source_path": "tests/fixtures/sample.pub",
+    "source_filename": "sample.pub",
+    "expected_git_blob_sha1": "06750e43b328c58295c849053082e4604073742e",
+    "expected_size": 97280,
+    "urls": [
+      "https://raw.githubusercontent.com/PetalCat/pub2pdf/main/tests/fixtures/sample.pub"
+    ],
+    "notes": "Public test fixture from a Publisher-to-PDF project."
+  },
+  {
+    "id": "github-legonois-publishertopdf-file-01",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "Legonois/PublisherToPDF",
+    "source_path": "test/file-01.pub",
+    "source_filename": "file-01.pub",
+    "expected_git_blob_sha1": "db233865aee881821a4dbc7525975f45419ac7cb",
+    "expected_size": 199680,
+    "urls": [
+      "https://raw.githubusercontent.com/Legonois/PublisherToPDF/main/test/file-01.pub"
+    ],
+    "notes": "Public converter test fixture."
   }
 ]
