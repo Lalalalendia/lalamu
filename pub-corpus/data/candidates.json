@@ -172,5 +172,19 @@
       "https://raw.githubusercontent.com/aspose-pub/Aspose.PUB-for-C/master/Examples/Data/christmasBottom.pub"
     ],
     "notes": "Public Aspose.PUB C++ example fixture."
+  },
+  {
+    "id": "github-tatawebsite-clubbooklet2008",
+    "kind": "direct",
+    "source_type": "github",
+    "source_repo": "RhydianJenkins/tatawebsite",
+    "source_path": "Documents/2008/Clubbooklet2008.pub",
+    "source_filename": "Clubbooklet2008.pub",
+    "expected_git_blob_sha1": "7e66556d0a2d2390eb8697dc3e869ffe8998c043",
+    "expected_size": 342016,
+    "urls": [
+      "https://raw.githubusercontent.com/RhydianJenkins/tatawebsite/master/Documents/2008/Clubbooklet2008.pub"
+    ],
+    "notes": "Historic public website source. Actual CFB payload adjacent to a FrontPage _vti_cnf sidecar."
   }
 ]
