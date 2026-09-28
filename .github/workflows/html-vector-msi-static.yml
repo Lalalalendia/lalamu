@@ -23,6 +23,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Validate retained bounded-negative summary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("research/html-vector-01/msi-static-summary.json").read_text())
+          assert r["schema_version"] == "chaptera.html-vector.summary.v1"
+          assert r["media"]["sha256"] == "23c495d63e2d4f4486dd28cbeebf423518d7af77f28f9abdae8484da2de13036"
+          assert r["publisher_msi"]["sha256"] == "a1af606676a1911004788def2e5d5124693550aec6ba77501197658a3695e982"
+          assert r["setup_surface"]["msi_count_on_exact_media"] == 1
+          assert r["setup_surface"]["direct_registry_rows"] == 0
+          assert r["setup_surface"]["indirect_custom_action_rows"] == 0
+          assert r["setup_surface"]["version_vector_static_hits"] == 0
+          assert r["conclusion"]["hosted_static_verdict"] == "bounded_exact_media_negative_native_registry_diff_still_required"
+          assert r["conclusion"]["native_registry_or_ie_behavior_required"] is True
+          assert r["conclusion"]["notion_task_should_close"] is False
+          assert r["conclusion"]["pub_wire_format_claim_authorized"] is False
+          print(json.dumps(r["conclusion"], sort_keys=True))
+          PY
+
       - name: Prepare static tools
         run: |
           set -euxo pipefail
@@ -65,7 +85,6 @@ jobs:
           python - <<'PY'
           import hashlib
           import json
-          import os
           from pathlib import Path
           import subprocess
 
@@ -186,17 +205,31 @@ jobs:
           from pathlib import Path
 
           r = json.loads(Path("/tmp/html-vector/html-vector-receipt.json").read_text())
+          retained = json.loads(Path("research/html-vector-01/msi-static-summary.json").read_text())
           c = r["conclusion"]
-          assert r["media"]["sha256"] == "23c495d63e2d4f4486dd28cbeebf423518d7af77f28f9abdae8484da2de13036"
-          assert r["media"]["volume_id"] == "OFFICE11"
+
+          assert r["media"]["sha256"] == retained["media"]["sha256"]
+          assert r["media"]["volume_id"] == retained["media"]["volume_id"]
           assert r["coverage"]["all_msis_on_exact_media_scanned"] is True
           assert r["scope"]["publisher_or_office_installed"] is False
           assert r["scope"]["publisher_executed"] is False
-          assert c["verdict"] in {
-              "direct_setup_write_proven",
-              "indirect_setup_write_candidate_requires_bounded_followup",
-              "bounded_exact_media_negative_native_registry_diff_still_required",
-          }
+
+          assert c["verdict"] == retained["conclusion"]["hosted_static_verdict"]
+          assert c["direct_registry_row_count"] == retained["setup_surface"]["direct_registry_rows"]
+          assert c["indirect_custom_action_row_count"] == retained["setup_surface"]["indirect_custom_action_rows"]
+          assert r["coverage"]["msi_count"] == retained["setup_surface"]["msi_count_on_exact_media"]
+
+          msi = r["msis"][0]
+          assert msi["path"] == retained["publisher_msi"]["path"]
+          assert msi["sha256"] == retained["publisher_msi"]["sha256"]
+          assert msi["table_count"] == retained["publisher_msi"]["table_count"]
+          assert msi["exported_table_count"] == retained["publisher_msi"]["exported_text_safe_table_count"]
+          assert msi["exported_row_count"] == retained["publisher_msi"]["exported_row_count"]
+
+          files = r["evidence"]["static_disc_scan"]["files_with_signal"]
+          assert len(files) == retained["setup_surface"]["static_files_with_pub11_or_ie_signal"]
+          assert all("version[ \\]+vector" not in row["patterns"] for row in files)
+
           print(json.dumps(c, sort_keys=True))
           PY
 
