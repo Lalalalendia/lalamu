@@ -1,0 +1,58 @@
+{
+  "schema_version": "chaptera.html-vector.summary.v1",
+  "task": "HTML-VECTOR-01",
+  "authority": "PUB-T-233",
+  "execution": {
+    "repository": "Lalalalendia/lalamu",
+    "issue": 19,
+    "pull_request": 20,
+    "evidence_run": 36426424200,
+    "artifact_id": 10970624614,
+    "artifact_digest": "sha256:10e7e811dd63962a5dff6aece1dd99c1ca36eed6c498a7678cb28d25c48437d1"
+  },
+  "media": {
+    "identifier": "X10-14992",
+    "byte_len": 191750144,
+    "sha256": "23c495d63e2d4f4486dd28cbeebf423518d7af77f28f9abdae8484da2de13036",
+    "sha1": "a108158fe57f7bf0ff5b45c34fe4593acf320454",
+    "md5": "c3d3ee8e2257f5d01a53019238346a0a",
+    "volume_id": "OFFICE11"
+  },
+  "publisher_msi": {
+    "path": "PUB11N.MSI",
+    "sha256": "a1af606676a1911004788def2e5d5124693550aec6ba77501197658a3695e982",
+    "byte_len": 2285568,
+    "product_code": "{91190409-6000-11D3-8CFE-0150048383C9}",
+    "product_name": "Microsoft Office Publisher 2003",
+    "product_version": "11.0.5614.0",
+    "product_language": "1033",
+    "table_count": 76,
+    "exported_text_safe_table_count": 74,
+    "exported_row_count": 19367
+  },
+  "setup_surface": {
+    "msi_count_on_exact_media": 1,
+    "setup_ini_points_to": "PUB11N.MSI",
+    "direct_registry_rows": 0,
+    "indirect_custom_action_rows": 0,
+    "property_signal_rows": 0,
+    "sequence_signal_rows": 0,
+    "all_table_signal_rows": 1,
+    "only_table_signal": {
+      "table": "Shortcut",
+      "name": "Pub11|Microsoft Office Publisher 2003",
+      "meaning": "product shortcut naming only"
+    },
+    "static_files_with_pub11_or_ie_signal": 7,
+    "version_vector_static_hits": 0
+  },
+  "conclusion": {
+    "hosted_static_verdict": "bounded_exact_media_negative_native_registry_diff_still_required",
+    "publisher_setup_write_proven": false,
+    "publisher_setup_write_falsified_universally": false,
+    "native_registry_or_ie_behavior_required": true,
+    "notion_task_should_close": false,
+    "model_change_authorized": false,
+    "pub_wire_format_claim_authorized": false
+  }
+}
