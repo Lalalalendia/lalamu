@@ -19,3 +19,19 @@ jobs:
       - run: cargo fmt --check
       - run: cargo test --all-targets
       - run: cargo clippy --all-targets -- -D warnings
+      - name: Emit machine-readable scheduler receipt
+        run: |
+          cargo run --quiet --bin frame_scheduler_receipt > /tmp/frame-scheduler-receipt.json
+          python - <<'PY'
+          import json
+          r = json.load(open("/tmp/frame-scheduler-receipt.json", encoding="utf-8"))
+          assert r["schema_version"] == "chaptera.frame-scheduler.proof.v1"
+          assert r["architecture_decision_allowed"] is False
+          assert r["storm"]["requests"] == 100
+          assert r["storm"]["builds_started"] == 1
+          assert r["storm"]["latest_visible_view"] == 100
+          assert r["stale_submit"]["old_generation_presented"] is False
+          assert r["scene_skip"]["latest_visible_scene"] == 3
+          assert r["device_loss"]["pending_or_in_flight_after_reset"] == 0
+          print(json.dumps(r, sort_keys=True))
+          PY
