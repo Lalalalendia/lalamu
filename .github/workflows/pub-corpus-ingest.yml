@@ -2,6 +2,13 @@ name: PUB corpus ingest
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "pub-corpus/data/candidates.json"
+      - "pub-corpus/scripts/ingest_candidates.py"
+      - ".github/workflows/pub-corpus-ingest.yml"
   schedule:
     - cron: "17 3 * * 2,5"
 
