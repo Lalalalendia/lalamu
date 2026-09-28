@@ -19,7 +19,7 @@ import pefile
 from capstone import Cs, CS_ARCH_X86, CS_GRP_JUMP, CS_MODE_32
 from capstone.x86 import X86_OP_IMM, X86_OP_MEM, X86_REG_EBP, X86_REG_ESP
 
-SCHEMA_VERSION = "chaptera.pubconv-abi-static.v1"
+SCHEMA_VERSION = "chaptera.pubconv-abi-static.v2"
 TARGET_EXPORTS = (
     "HrGetInboundConverter",
     "HrGetOutboundConverter",
@@ -155,10 +155,15 @@ def analyze_export(
     decoded: set[int] = set()
     block_summaries: list[dict[str, Any]] = []
     ret_cleanups: list[int] = []
+    ret_sites: list[dict[str, Any]] = []
     ebp_offsets: Counter[int] = Counter()
     esp_offsets: Counter[int] = Counter()
+    ebp_sites: list[dict[str, Any]] = []
+    esp_sites: list[dict[str, Any]] = []
     direct_calls: Counter[int] = Counter()
+    direct_call_sites: list[dict[str, Any]] = []
     import_calls: Counter[str] = Counter()
+    import_call_sites: list[dict[str, Any]] = []
     unresolved_indirect_calls = 0
     bounds_hit = False
 
@@ -203,15 +208,36 @@ def analyze_export(
                     continue
                 mem = op.mem
                 if mem.base == X86_REG_EBP and mem.disp > 0:
-                    ebp_offsets[int(mem.disp)] += 1
+                    offset = int(mem.disp)
+                    ebp_offsets[offset] += 1
+                    ebp_sites.append({
+                        "rva": insn_rva,
+                        "offset": offset,
+                        "mnemonic": insn.mnemonic,
+                        "op_str": insn.op_str,
+                    })
                 if mem.base == X86_REG_ESP and mem.disp > 0:
-                    esp_offsets[int(mem.disp)] += 1
+                    offset = int(mem.disp)
+                    esp_offsets[offset] += 1
+                    esp_sites.append({
+                        "rva": insn_rva,
+                        "offset": offset,
+                        "mnemonic": insn.mnemonic,
+                        "op_str": insn.op_str,
+                    })
 
             if insn.mnemonic.startswith("ret"):
                 cleanup = 0
                 if insn.operands and insn.operands[0].type == X86_OP_IMM:
                     cleanup = int(insn.operands[0].imm)
                 ret_cleanups.append(cleanup)
+                ret_sites.append({
+                    "rva": insn_rva,
+                    "cleanup": cleanup,
+                    "bytes": insn.bytes.hex(),
+                    "mnemonic": insn.mnemonic,
+                    "op_str": insn.op_str,
+                })
                 termination = "return"
                 break
 
@@ -221,12 +247,22 @@ def analyze_export(
                     target = normalize_va_to_rva(int(op.imm), image_base, image_size)
                     if target is not None:
                         direct_calls[target] += 1
+                        direct_call_sites.append({
+                            "rva": insn_rva,
+                            "target_rva": target,
+                            "bytes": insn.bytes.hex(),
+                        })
                 elif op.type == X86_OP_MEM:
                     mem = op.mem
                     if mem.base == 0 and mem.index == 0:
                         imported = imports.get(int(mem.disp))
                         if imported:
                             import_calls[imported] += 1
+                            import_call_sites.append({
+                                "rva": insn_rva,
+                                "target": imported,
+                                "bytes": insn.bytes.hex(),
+                            })
                         else:
                             unresolved_indirect_calls += 1
                     else:
@@ -267,6 +303,19 @@ def analyze_export(
         )
 
     entry_bytes = rva_slice(pe, entry_rva, ENTRY_PREVIEW_BYTES)
+    entry_preview = preview_instructions(pe, md, entry_rva, image_base)
+    entry_direct_jump_target_rva = None
+    first = next(iter(md.disasm(entry_bytes, image_base + entry_rva)), None)
+    if (
+        first is not None
+        and first.mnemonic == "jmp"
+        and first.operands
+        and first.operands[0].type == X86_OP_IMM
+    ):
+        candidate = normalize_va_to_rva(int(first.operands[0].imm), image_base, image_size)
+        if candidate is not None and is_exec_rva(candidate, exec_ranges):
+            entry_direct_jump_target_rva = candidate
+
     normalized = {
         "name": name,
         "ordinal": ordinal,
@@ -285,7 +334,8 @@ def analyze_export(
         "entry_section": section_for_rva(entry_rva, exec_ranges),
         "entry_preview_bytes": entry_bytes.hex(),
         "entry_preview_sha256": sha256_bytes(entry_bytes),
-        "entry_instructions": preview_instructions(pe, md, entry_rva, image_base),
+        "entry_direct_jump_target_rva": entry_direct_jump_target_rva,
+        "entry_instructions": entry_preview,
         "reachable_cfg": {
             "blocks_decoded": len(seen_blocks),
             "instructions_decoded": len(decoded),
@@ -298,6 +348,7 @@ def analyze_export(
             "cleanup_counts": {
                 str(k): v for k, v in sorted(Counter(ret_cleanups).items())
             },
+            "sites": sorted(ret_sites, key=lambda row: row["rva"]),
         },
         "stack_references": {
             "positive_ebp_offsets": [
@@ -306,6 +357,8 @@ def analyze_export(
             "positive_esp_offsets": [
                 {"offset": k, "references": v} for k, v in sorted(esp_offsets.items())
             ],
+            "positive_ebp_sites": sorted(ebp_sites, key=lambda row: (row["rva"], row["offset"])),
+            "positive_esp_sites": sorted(esp_sites, key=lambda row: (row["rva"], row["offset"])),
         },
         "calls": {
             "direct_internal_targets": [
@@ -319,6 +372,8 @@ def analyze_export(
             "import_targets": [
                 {"name": k, "calls": v} for k, v in sorted(import_calls.items())
             ],
+            "direct_call_sites": sorted(direct_call_sites, key=lambda row: row["rva"]),
+            "import_call_sites": sorted(import_call_sites, key=lambda row: row["rva"]),
             "unresolved_indirect_call_count": unresolved_indirect_calls,
         },
         "normalized_abi_fingerprint_sha256": sha256_bytes(
