@@ -1,0 +1,276 @@
+name: pbb-known-trail-acquisition
+
+on:
+  push:
+    branches:
+      - pbb-01-clean-v1
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  acquire:
+    runs-on: ubuntu-24.04
+    env:
+      TARGET_HTTPS: https://helfer.gemeindebriefdruckerei.de/wp-content/uploads/2016/12/v_2016_01_pub.zip
+      TARGET_HTTP: http://helfer.gemeindebriefdruckerei.de/wp-content/uploads/2016/12/v_2016_01_pub.zip
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare bounded acquisition tools
+        run: |
+          set -euxo pipefail
+          sudo apt-get update
+          sudo apt-get install -y curl jq unzip file
+          python -m pip install --disable-pip-version-check olefile==0.47
+          python -m py_compile tools/pbb_probe.py
+          rm -rf /tmp/pbb
+          mkdir -p /tmp/pbb/{attempts,candidates,extracted,evidence}
+
+      - name: Try exact live targets
+        run: |
+          set -euxo pipefail
+          python - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+
+          out = Path("/tmp/pbb")
+          attempts = []
+          for index, url in enumerate((os.environ["TARGET_HTTPS"], os.environ["TARGET_HTTP"]), start=1):
+              body = out / "candidates" / f"live-{index}.bin"
+              headers = out / "attempts" / f"live-{index}.headers"
+              cmd = [
+                  "curl","-L","--fail","--retry","2","--retry-delay","2",
+                  "--connect-timeout","15","--max-time","120",
+                  "-A","Mozilla/5.0 PBB-01 bounded research",
+                  "-D",str(headers),"-o",str(body),url
+              ]
+              proc = subprocess.run(cmd, text=True, capture_output=True)
+              row = {
+                  "kind":"live",
+                  "url":url,
+                  "curl_exit":proc.returncode,
+                  "stderr_excerpt":proc.stderr[-1500:],
+                  "body_exists":body.exists(),
+                  "body_len":body.stat().st_size if body.exists() else 0,
+              }
+              attempts.append(row)
+          (out/"attempts"/"live.json").write_text(json.dumps(attempts, indent=2, sort_keys=True)+"\n")
+          print(json.dumps(attempts, sort_keys=True))
+          PY
+
+      - name: Query exact Wayback CDX targets
+        run: |
+          set -euxo pipefail
+          python - <<'PY'
+          import json, os, subprocess, urllib.parse
+          from pathlib import Path
+
+          out = Path("/tmp/pbb")
+          result = []
+          for index, url in enumerate((os.environ["TARGET_HTTPS"], os.environ["TARGET_HTTP"]), start=1):
+              q = urllib.parse.urlencode({
+                  "url": url,
+                  "output": "json",
+                  "fl": "timestamp,original,statuscode,mimetype,digest,length",
+                  "filter": "statuscode:200",
+                  "collapse": "digest",
+                  "limit": "50",
+              })
+              endpoint = "https://web.archive.org/cdx/search/cdx?" + q
+              path = out/"attempts"/f"cdx-{index}.json"
+              proc = subprocess.run(
+                  ["curl","-L","--fail","--retry","2","--retry-delay","2",
+                   "--connect-timeout","15","--max-time","120",
+                   "-A","Mozilla/5.0 PBB-01 bounded research",
+                   "-o",str(path),endpoint],
+                  text=True, capture_output=True
+              )
+              result.append({
+                  "url":url,
+                  "endpoint":endpoint,
+                  "curl_exit":proc.returncode,
+                  "stderr_excerpt":proc.stderr[-1500:],
+                  "body_len":path.stat().st_size if path.exists() else 0,
+              })
+          (out/"attempts"/"cdx.json").write_text(json.dumps(result, indent=2, sort_keys=True)+"\n")
+          print(json.dumps(result, sort_keys=True))
+          PY
+
+      - name: Replay exact Wayback captures
+        run: |
+          set -euxo pipefail
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+
+          root = Path("/tmp/pbb")
+          attempts = []
+          ordinal = 0
+          for cdx_path in sorted((root/"attempts").glob("cdx-*.json")):
+              try:
+                  rows = json.loads(cdx_path.read_text())
+              except Exception as exc:
+                  attempts.append({"cdx":str(cdx_path.name),"parse_error":str(exc)})
+                  continue
+              if not isinstance(rows, list) or len(rows) < 2:
+                  attempts.append({"cdx":str(cdx_path.name),"capture_count":0})
+                  continue
+              header = rows[0]
+              records = [dict(zip(header, row)) for row in rows[1:] if isinstance(row, list)]
+              # Bound the replay surface: earliest 10 + latest 10 unique captures.
+              chosen = records[:10] + records[-10:]
+              seen = set()
+              for record in chosen:
+                  key = (record.get("timestamp"), record.get("original"))
+                  if key in seen:
+                      continue
+                  seen.add(key)
+                  ordinal += 1
+                  timestamp, original = key
+                  replay = f"https://web.archive.org/web/{timestamp}id_/{original}"
+                  body = root/"candidates"/f"wayback-{ordinal:02d}.bin"
+                  headers = root/"attempts"/f"wayback-{ordinal:02d}.headers"
+                  proc = subprocess.run(
+                      ["curl","-L","--fail","--retry","1","--connect-timeout","15","--max-time","120",
+                       "-A","Mozilla/5.0 PBB-01 bounded research",
+                       "-D",str(headers),"-o",str(body),replay],
+                      text=True, capture_output=True
+                  )
+                  attempts.append({
+                      "kind":"wayback",
+                      "timestamp":timestamp,
+                      "original":original,
+                      "mimetype":record.get("mimetype"),
+                      "digest":record.get("digest"),
+                      "reported_length":record.get("length"),
+                      "replay":replay,
+                      "curl_exit":proc.returncode,
+                      "stderr_excerpt":proc.stderr[-1000:],
+                      "body_len":body.stat().st_size if body.exists() else 0,
+                      "candidate":body.name,
+                  })
+          (root/"attempts"/"wayback.json").write_text(json.dumps(attempts, indent=2, sort_keys=True)+"\n")
+          print(json.dumps({"wayback_attempts":len(attempts)}, sort_keys=True))
+          PY
+
+      - name: Validate candidate ZIPs and select first real payload
+        run: |
+          set -euxo pipefail
+          python - <<'PY'
+          import hashlib, json, zipfile
+          from pathlib import Path
+
+          root = Path("/tmp/pbb")
+          rows = []
+          selected = None
+          for path in sorted((root/"candidates").glob("*.bin")):
+              data = path.read_bytes()
+              row = {
+                  "candidate":path.name,
+                  "byte_len":len(data),
+                  "sha256":hashlib.sha256(data).hexdigest(),
+                  "magic_hex16":data[:16].hex(),
+                  "zip_magic":data.startswith(b"PK\x03\x04"),
+              }
+              if row["zip_magic"]:
+                  try:
+                      with zipfile.ZipFile(path) as zf:
+                          bad = zf.testzip()
+                          names = zf.namelist()
+                      row["zip_valid"] = bad is None
+                      row["entry_count"] = len(names)
+                      row["pbb_entry_count"] = sum(name.lower().endswith(".pbb") for name in names)
+                  except Exception as exc:
+                      row["zip_valid"] = False
+                      row["zip_error"] = str(exc)
+              else:
+                  row["zip_valid"] = False
+              rows.append(row)
+              if selected is None and row.get("zip_valid") and row.get("pbb_entry_count",0) > 0:
+                  selected = path
+
+          result = {"candidates":rows,"selected_candidate":selected.name if selected else None}
+          (root/"evidence"/"candidate-validation.json").write_text(json.dumps(result, indent=2, sort_keys=True)+"\n")
+          if selected:
+              (root/"evidence"/"selected.txt").write_text(selected.name+"\n")
+          print(json.dumps(result, sort_keys=True))
+          PY
+
+      - name: Extract and inventory real PBB payload when recovered
+        run: |
+          set -euxo pipefail
+          if [ ! -f /tmp/pbb/evidence/selected.txt ]; then
+            echo '{"status":"acquisition_negative"}' > /tmp/pbb/evidence/inventory-status.json
+            exit 0
+          fi
+
+          SELECTED="$(cat /tmp/pbb/evidence/selected.txt)"
+          unzip -q "/tmp/pbb/candidates/$SELECTED" -d /tmp/pbb/extracted
+          python tools/pbb_probe.py /tmp/pbb/extracted --out /tmp/pbb/evidence/pbb-inventory.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("/tmp/pbb/evidence/pbb-inventory.json")
+          r = json.loads(p.read_text())
+          if r["pbb_count"] < 1:
+              raise SystemExit("selected ZIP had no extracted .pbb files")
+          Path("/tmp/pbb/evidence/inventory-status.json").write_text(
+              json.dumps({"status":"recovered","pbb_count":r["pbb_count"],"container_counts":r["container_counts"]},indent=2,sort_keys=True)+"\n"
+          )
+          PY
+
+      - name: Build bounded acquisition receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("/tmp/pbb")
+          def load(name, default):
+              path = root/"attempts"/name
+              if not path.exists():
+                  return default
+              try:
+                  return json.loads(path.read_text())
+              except Exception as exc:
+                  return {"parse_error":str(exc),"byte_len":path.stat().st_size}
+
+          validation = json.loads((root/"evidence"/"candidate-validation.json").read_text())
+          status = json.loads((root/"evidence"/"inventory-status.json").read_text())
+          receipt = {
+              "schema_version":"chaptera.pbb.acquisition.v1",
+              "task":"PBB-01",
+              "known_target":"https://helfer.gemeindebriefdruckerei.de/wp-content/uploads/2016/12/v_2016_01_pub.zip",
+              "live_attempts":load("live.json", []),
+              "cdx_attempts":load("cdx.json", []),
+              "wayback_attempts":load("wayback.json", []),
+              "candidate_validation":validation,
+              "outcome":status,
+              "authority_fence":{
+                  "generic_web_search_performed":False,
+                  "publisher_runtime_used":False,
+                  "raw_payload_uploaded_as_artifact":False,
+                  "add_building_block_semantics_proven":False,
+              },
+          }
+          (root/"evidence"/"acquisition-receipt.json").write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n")
+          print(json.dumps({"outcome":status,"selected":validation["selected_candidate"]},sort_keys=True))
+          PY
+
+      - name: Upload source-safe evidence only
+        uses: actions/upload-artifact@v4
+        with:
+          name: pbb-known-trail-evidence
+          path: |
+            /tmp/pbb/evidence/acquisition-receipt.json
+            /tmp/pbb/evidence/candidate-validation.json
+            /tmp/pbb/evidence/inventory-status.json
+            /tmp/pbb/evidence/pbb-inventory.json
+            /tmp/pbb/attempts/live.json
+            /tmp/pbb/attempts/cdx.json
+            /tmp/pbb/attempts/wayback.json
+          if-no-files-found: error
+          retention-days: 14
