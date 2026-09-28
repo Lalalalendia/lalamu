@@ -22,6 +22,32 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Validate retained RTM ABI summary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("research/pubconv-abi-static-01/abi-summary.json").read_text())
+          assert r["schema_version"] == "chaptera.pubconv-abi-static.summary.v1"
+          assert r["source"]["dll_sha256"] == "124f5b115979f4e4c0aab882851c399228174482bb124b8309860567a5980dbc"
+          assert [x["ordinal"] for x in r["exports"]] == [1, 2, 3, 4]
+          assert [x["reachable_ret_cleanup"] for x in r["exports"]] == [4, 4, 4, 0]
+          assert [x["entry_rva"] for x in r["exports"]] == ["0x2042B", "0x20494", "0x1FC15", "0x1FB48"]
+          assert r["exports"][3]["entry_direct_jump_target_rva"] == "0x6D19F"
+          assert all(x["cfg_bounds_hit"] is False for x in r["exports"])
+          assert r["shared_static_lifecycle_gate"]["absolute_va"] == "0x3456A674"
+          assert r["bounded_interpretation"]["prototype_inference_authorized"] is False
+          assert r["bounded_interpretation"]["runtime_activation_observed"] is False
+          assert r["bounded_interpretation"]["reader_writer_role_inference_authorized"] is False
+          assert r["bounded_interpretation"]["pub_wire_format_claim_authorized"] is False
+          assert r["bounded_interpretation"]["parent_pub_t_64_closed"] is False
+          print(json.dumps({
+              "ret_cleanup": [x["reachable_ret_cleanup"] for x in r["exports"]],
+              "shared_gate": r["shared_static_lifecycle_gate"]["absolute_va"],
+              "terminate_thunk": r["exports"][3]["entry_direct_jump_target_rva"],
+          }, sort_keys=True))
+          PY
+
       - name: Install bounded static-analysis dependencies
         run: |
           set -euxo pipefail
