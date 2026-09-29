@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Census embedded font evidence in admitted PUB corpus via libmspub pub2raw.
+"""Direct binary census of Embedded OpenType (EOT) fonts inside PUB CFB streams.
 
-This is intentionally an evidence probe, not a Chaptera parser implementation.
-It asks a known external parser whether a PUB exposes defineEmbeddedFont /
-application/vnd.ms-fontobject records and preserves bounded raw snippets for
-manual follow-up. libmspub is correlated evidence, not an independent oracle.
+The probe follows the public W3C EOT structure rather than depending on
+libmspub textual generator output. It records metadata and hashes only.
+Font program bytes are never written to disk by this tool.
 """
 
 from __future__ import annotations
@@ -12,25 +11,36 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import re
-import subprocess
+import struct
 from pathlib import Path
 from typing import Any
+
+import olefile
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CORPUS = ROOT / "corpus" / "native" / "unclassified"
 DEFAULT_OUTPUT = ROOT / "data" / "embedded-font-census" / "latest.json"
-DEFAULT_RAW_DIR = ROOT / "data" / "embedded-font-census" / "raw"
 
-SCHEMA = "lalamu.pub-embedded-font-census.v1"
-MARKERS = (
-    "defineEmbeddedFont",
-    "application/vnd.ms-fontobject",
-)
-NAME_PATTERNS = (
-    re.compile(r'librevenge:name[^\n\r]*?["\']([^"\']{1,200})["\']', re.I),
-    re.compile(r'librevenge:name\s*[:=]\s*([^,}\n\r]{1,200})', re.I),
-)
+SCHEMA = "lalamu.pub-embedded-font-census.v2"
+EOT_MAGIC = 0x504C
+EOT_MAGIC_LE = b"\x4c\x50"
+EOT_FIXED_HEADER = 82
+EOT_VERSIONS = {0x00010000, 0x00020001, 0x00020002}
+TTEMBED_SUBSET = 0x00000001
+TTEMBED_TTCOMPRESSED = 0x00000004
+TTEMBED_EMBEDEUDC = 0x00000020
+TTEMBED_XORENCRYPTDATA = 0x10000000
+SFNT_SIGNATURES = {
+    b"\x00\x01\x00\x00": "TrueType",
+    b"OTTO": "OpenType-CFF",
+    b"ttcf": "TrueType-collection",
+    b"true": "Apple-TrueType",
+    b"typ1": "Type1-sfnt",
+}
+
+
+def sha256_bytes(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
 
 
 def sha256_file(path: Path) -> str:
@@ -41,143 +51,201 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
-def tool_version(tool: str) -> str:
-    proc = subprocess.run(
-        [tool, "--version"],
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        timeout=10,
-        check=False,
-    )
-    return proc.stdout.strip()
+def u16(data: bytes, off: int) -> int:
+    return struct.unpack_from("<H", data, off)[0]
 
 
-def extract_names(raw: str) -> list[str]:
-    names: set[str] = set()
-    for pattern in NAME_PATTERNS:
-        for match in pattern.finditer(raw):
-            value = match.group(1).strip().strip('"\'')
-            if value and "binary" not in value.lower():
-                names.add(value)
-    return sorted(names)
+def u32(data: bytes, off: int) -> int:
+    return struct.unpack_from("<I", data, off)[0]
 
 
-def marker_snippets(raw: str, radius: int = 1200) -> list[str]:
-    out: list[str] = []
-    lower = raw.lower()
-    seen: set[tuple[int, int]] = set()
-    for marker in MARKERS:
-        needle = marker.lower()
-        start = 0
-        while True:
-            idx = lower.find(needle, start)
-            if idx < 0:
-                break
-            a = max(0, idx - radius)
-            b = min(len(raw), idx + len(marker) + radius)
-            key = (a, b)
-            if key not in seen:
-                out.append(raw[a:b])
-                seen.add(key)
-            start = idx + len(needle)
-    return out
+def decode_utf16le(raw: bytes) -> str:
+    return raw.decode("utf-16le", errors="replace").rstrip("\x00")
 
 
-def inspect(path: Path, pub2raw: str, raw_dir: Path, timeout: int) -> dict[str, Any]:
-    sha = sha256_file(path)
+def parse_name_fields(payload: bytes, start: int, font_data_start: int) -> dict[str, Any]:
+    cursor = start + EOT_FIXED_HEADER
+    names: dict[str, str] = {}
+    paddings: dict[str, int] = {}
+
+    for idx, key in enumerate(("family_name", "style_name", "version_name", "full_name"), start=2):
+        if cursor + 2 > font_data_start:
+            raise ValueError(f"{key}: missing size")
+        size = u16(payload, cursor)
+        cursor += 2
+        if size % 2:
+            raise ValueError(f"{key}: odd UTF-16 byte length {size}")
+        if cursor + size > font_data_start:
+            raise ValueError(f"{key}: out of bounds")
+        names[key] = decode_utf16le(payload[cursor : cursor + size])
+        cursor += size
+        if key != "full_name":
+            if cursor + 2 > font_data_start:
+                raise ValueError(f"padding{idx}: missing")
+            paddings[f"padding{idx}"] = u16(payload, cursor)
+            cursor += 2
+
+    return {
+        **names,
+        "name_fields_end": cursor,
+        "name_padding_values": paddings,
+    }
+
+
+def validate_candidate(payload: bytes, start: int) -> dict[str, Any] | None:
+    if start < 0 or start + EOT_FIXED_HEADER > len(payload):
+        return None
+
+    eot_size = u32(payload, start + 0)
+    font_data_size = u32(payload, start + 4)
+    version = u32(payload, start + 8)
+    flags = u32(payload, start + 12)
+    charset = payload[start + 26]
+    italic = payload[start + 27]
+    weight = u32(payload, start + 28)
+    fs_type = u16(payload, start + 32)
+    magic = u16(payload, start + 34)
+    reserved = [u32(payload, start + off) for off in (64, 68, 72, 76)]
+    padding1 = u16(payload, start + 80)
+
+    if magic != EOT_MAGIC or version not in EOT_VERSIONS:
+        return None
+    if eot_size < EOT_FIXED_HEADER or start + eot_size > len(payload):
+        return None
+    if font_data_size <= 0 or font_data_size >= eot_size:
+        return None
+    if reserved != [0, 0, 0, 0] or padding1 != 0:
+        return None
+
+    font_data_start = start + eot_size - font_data_size
+    if font_data_start < start + EOT_FIXED_HEADER:
+        return None
+
     try:
-        proc = subprocess.run(
-            [pub2raw, str(path)],
-            text=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            timeout=timeout,
-            check=False,
-            errors="replace",
-        )
-        stdout = proc.stdout
-        stderr = proc.stderr
-        combined = stdout + "\n" + stderr
-        hits = {
-            marker: combined.lower().count(marker.lower())
-            for marker in MARKERS
-        }
-        detected = any(hits.values())
-        names = extract_names(combined) if detected else []
-        snippets = marker_snippets(combined) if detected else []
+        name_info = parse_name_fields(payload, start, font_data_start)
+    except ValueError:
+        return None
 
-        raw_rel = None
-        if detected:
-            raw_dir.mkdir(parents=True, exist_ok=True)
-            raw_path = raw_dir / f"{sha}.txt"
-            raw_path.write_text(combined, encoding="utf-8")
-            raw_rel = str(raw_path.relative_to(ROOT))
+    eot_bytes = payload[start : start + eot_size]
+    font_data = payload[font_data_start : start + eot_size]
 
-        return {
-            "sha256": sha,
-            "file_name": path.name,
-            "byte_len": path.stat().st_size,
-            "pub2raw_exit": proc.returncode,
-            "supported_by_libmspub": proc.returncode == 0,
-            "embedded_font_detected": detected,
-            "marker_counts": hits,
-            "font_names": names,
-            "raw_output_path": raw_rel,
-            "snippets": snippets,
-            "stdout_len": len(stdout),
-            "stderr_len": len(stderr),
-            "stderr_tail": stderr[-2000:] if stderr else "",
-        }
-    except subprocess.TimeoutExpired as exc:
-        return {
-            "sha256": sha,
-            "file_name": path.name,
-            "byte_len": path.stat().st_size,
-            "pub2raw_exit": None,
-            "supported_by_libmspub": False,
-            "embedded_font_detected": False,
-            "marker_counts": {marker: 0 for marker in MARKERS},
-            "font_names": [],
-            "raw_output_path": None,
-            "snippets": [],
-            "timeout": True,
-            "stderr_tail": str(exc),
-        }
+    processed = font_data
+    xor_applied = bool(flags & TTEMBED_XORENCRYPTDATA)
+    compressed = bool(flags & TTEMBED_TTCOMPRESSED)
+    if xor_applied:
+        processed = bytes(b ^ 0x50 for b in processed)
+
+    processed_signature = processed[:4].hex()
+    sfnt_type = SFNT_SIGNATURES.get(processed[:4])
+    usable_without_microtype = (not compressed) and sfnt_type is not None
+
+    return {
+        "stream_offset": start,
+        "eot_size": eot_size,
+        "font_data_size": font_data_size,
+        "font_data_offset": font_data_start,
+        "version": f"0x{version:08x}",
+        "flags": f"0x{flags:08x}",
+        "subset": bool(flags & TTEMBED_SUBSET),
+        "microtype_compressed": compressed,
+        "embedded_eudc": bool(flags & TTEMBED_EMBEDEUDC),
+        "xor_encrypted": xor_applied,
+        "charset": charset,
+        "italic": italic,
+        "weight": weight,
+        "fs_type": f"0x{fs_type:04x}",
+        "magic_number": "0x504c",
+        "eot_sha256": sha256_bytes(eot_bytes),
+        "font_data_sha256": sha256_bytes(font_data),
+        "processed_font_data_sha256": sha256_bytes(processed),
+        "processed_font_signature_hex": processed_signature,
+        "processed_sfnt_type": sfnt_type,
+        "usable_without_microtype_decompression": usable_without_microtype,
+        **name_info,
+    }
+
+
+def scan_stream(payload: bytes) -> list[dict[str, Any]]:
+    hits: list[dict[str, Any]] = []
+    seen_starts: set[int] = set()
+    pos = 0
+    while True:
+        magic_pos = payload.find(EOT_MAGIC_LE, pos)
+        if magic_pos < 0:
+            break
+        start = magic_pos - 34
+        if start not in seen_starts:
+            candidate = validate_candidate(payload, start)
+            if candidate is not None:
+                hits.append(candidate)
+                seen_starts.add(start)
+        pos = magic_pos + 2
+    return hits
+
+
+def inspect_pub(path: Path) -> dict[str, Any]:
+    sha = sha256_file(path)
+    fonts: list[dict[str, Any]] = []
+    streams_scanned = 0
+    stream_bytes_scanned = 0
+    parse_error: str | None = None
+
+    try:
+        ole = olefile.OleFileIO(str(path))
+        try:
+            for parts in sorted(ole.listdir(streams=True, storages=False)):
+                stream_path = "/".join(parts)
+                payload = ole.openstream(parts).read()
+                streams_scanned += 1
+                stream_bytes_scanned += len(payload)
+                for hit in scan_stream(payload):
+                    hit["stream_path"] = stream_path
+                    fonts.append(hit)
+        finally:
+            ole.close()
+    except Exception as exc:
+        parse_error = f"{type(exc).__name__}: {exc}"
+
+    fonts.sort(key=lambda x: (x["stream_path"], x["stream_offset"]))
+    return {
+        "sha256": sha,
+        "file_name": path.name,
+        "byte_len": path.stat().st_size,
+        "cfb_parse_error": parse_error,
+        "streams_scanned": streams_scanned,
+        "stream_bytes_scanned": stream_bytes_scanned,
+        "embedded_font_count": len(fonts),
+        "embedded_fonts": fonts,
+    }
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--corpus", type=Path, default=DEFAULT_CORPUS)
     ap.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
-    ap.add_argument("--raw-dir", type=Path, default=DEFAULT_RAW_DIR)
-    ap.add_argument("--pub2raw", default="pub2raw")
-    ap.add_argument("--timeout", type=int, default=45)
     args = ap.parse_args()
 
     paths = sorted(args.corpus.rglob("*.pub"))
-    records = [
-        inspect(path, args.pub2raw, args.raw_dir, args.timeout)
-        for path in paths
-    ]
-
-    hits = [r for r in records if r["embedded_font_detected"]]
-    unsupported = [r for r in records if not r["supported_by_libmspub"]]
+    records = [inspect_pub(path) for path in paths]
+    hits = [r for r in records if r["embedded_font_count"] > 0]
+    errors = [r for r in records if r["cfb_parse_error"]]
 
     receipt = {
         "schema": SCHEMA,
-        "method": "libmspub pub2raw RVNGRawDrawingGenerator marker census",
+        "method": "direct W3C EOT header scan across all CFB streams",
         "evidence_boundary": (
-            "libmspub is correlated implementation evidence; detection proves "
-            "that libmspub surfaced an embedded-font record, not Publisher parity"
+            "A hit is accepted only when EOT magic/version/bounds/reserved fields "
+            "and variable name fields validate. Font bytes remain transient; only "
+            "metadata and hashes are recorded."
         ),
-        "pub2raw_version": tool_version(args.pub2raw),
         "corpus_file_count": len(records),
-        "libmspub_supported_count": len(records) - len(unsupported),
-        "libmspub_unsupported_or_error_count": len(unsupported),
+        "cfb_parse_error_count": len(errors),
         "embedded_font_file_count": len(hits),
-        "embedded_font_record_marker_count": sum(
-            r["marker_counts"].get("defineEmbeddedFont", 0) for r in hits
+        "embedded_font_count": sum(r["embedded_font_count"] for r in records),
+        "usable_without_microtype_file_count": sum(
+            1
+            for r in records
+            if any(f["usable_without_microtype_decompression"] for f in r["embedded_fonts"])
         ),
         "hit_sha256": [r["sha256"] for r in hits],
         "records": records,
@@ -188,16 +256,16 @@ def main() -> int:
         json.dumps(receipt, ensure_ascii=False, sort_keys=True, indent=2) + "\n",
         encoding="utf-8",
     )
-
     print(json.dumps({
-        "schema": SCHEMA,
+        "schema": receipt["schema"],
         "corpus_file_count": receipt["corpus_file_count"],
-        "libmspub_supported_count": receipt["libmspub_supported_count"],
+        "cfb_parse_error_count": receipt["cfb_parse_error_count"],
         "embedded_font_file_count": receipt["embedded_font_file_count"],
+        "embedded_font_count": receipt["embedded_font_count"],
+        "usable_without_microtype_file_count": receipt["usable_without_microtype_file_count"],
         "hit_sha256": receipt["hit_sha256"],
-        "pub2raw_version": receipt["pub2raw_version"],
     }, sort_keys=True))
-    return 0
+    return 1 if errors else 0
 
 
 if __name__ == "__main__":
