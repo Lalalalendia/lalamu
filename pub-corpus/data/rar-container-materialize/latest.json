@@ -1,0 +1,26 @@
+{
+  "schema": "lalamu.rar-container-delta-materialize.v1",
+  "existing_strict_unique_before": 399,
+  "new_strict_unique": 226,
+  "strict_unique_after": 625,
+  "target_minimum": 625,
+  "target_met": true,
+  "selection_policy": "exact Rar 407-SHA authority; root-diverse order; strict Publisher CFB; smallest unseen members first within each root",
+  "root_order": [
+    1,
+    2,
+    3,
+    0,
+    4
+  ],
+  "added_by_root_index": {
+    "0": 128,
+    "1": 20,
+    "2": 13,
+    "3": 4,
+    "4": 61
+  },
+  "added_total_bytes": 10877952,
+  "rejected_count": 0,
+  "rar_target_authority_count": 407
+}
