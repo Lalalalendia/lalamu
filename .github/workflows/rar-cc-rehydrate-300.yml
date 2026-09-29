@@ -1,0 +1,327 @@
+name: RAR exact Common Crawl rehydrate 300+
+
+on:
+  push:
+    branches:
+      - research/rar-corpus-expansion-300-20260929
+    paths:
+      - ".github/workflows/rar-cc-rehydrate-300.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rar-cc-rehydrate-300-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  RAR_REF: b9c5eb03db41f57aed3fe56380982bb028faa031
+  SOURCE_ARTIFACT_ID: "10801347100"
+  SOURCE_ARTIFACT_SHA256: de7d1fbcf15547abf1e581b64c1d503aa85b184930811324ba7f17f4305e7add
+  SOURCE_ARTIFACT_URL: "https://sdmntprcentralus.oaiusercontent.com/files/00000000-0c58-81f5-ba10-433746a3df4d/raw?se=2026-09-29T09%3A05%3A42Z&sp=r&sv=2026-02-06&sr=b&scid=d2e3e880-6214-5428-8bbf-902429edac36&skoid=a1be202a-6464-476c-a496-723317c4a4db&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-29T03%3A56%3A40Z&ske=2026-09-30T03%3A56%3A40Z&sks=b&skv=2026-02-06&sig=5LiZ13YC%2BSutS8m4o8bbGDO3ua7a6u6rr0/lmhv8xH8%3D"
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Recover immutable RAR Common Crawl receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 --retry-delay 1 \
+            -o /tmp/rar-cc-receipt.zip "$SOURCE_ARTIFACT_URL"
+          echo "$SOURCE_ARTIFACT_SHA256  /tmp/rar-cc-receipt.zip" | sha256sum -c -
+          mkdir -p receipt seed
+          unzip -q /tmp/rar-cc-receipt.zip -d receipt
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+
+          rows = json.loads(Path("receipt/manifest.json").read_text(encoding="utf-8"))
+          positives = [
+              dict(r)
+              for r in rows
+              if r.get("classification") == "cfb_publisher_hint"
+              and r.get("bucket") == "natural_wild"
+              and not r.get("cc_warc_truncated")
+          ]
+          shas = [r["sha256"] for r in positives]
+          assert len(positives) == 370, len(positives)
+          assert len(set(shas)) == 370, len(set(shas))
+
+          fields = []
+          seen = set()
+          for row in positives:
+              row["expected_sha256"] = row["sha256"]
+              row["source_channel"] = "rar_common_crawl_exact_rehydrate"
+              for key in row:
+                  if key not in seen:
+                      seen.add(key); fields.append(key)
+
+          with Path("seed/cc_complete_370.csv").open(
+              "w", encoding="utf-8", newline=""
+          ) as fh:
+              w = csv.DictWriter(fh, fieldnames=fields)
+              w.writeheader()
+              w.writerows(positives)
+
+          by_crawl = {}
+          for row in positives:
+              c = row.get("cc_crawl") or "unknown"
+              by_crawl[c] = by_crawl.get(c, 0) + 1
+
+          summary = {
+              "schema": "rar-cc-exact-rehydrate-seed-v1",
+              "source_artifact_id": 10801347100,
+              "source_artifact_sha256": "de7d1fbcf15547abf1e581b64c1d503aa85b184930811324ba7f17f4305e7add",
+              "exact_complete_pub_rows": len(positives),
+              "unique_expected_sha256": len(set(shas)),
+              "by_crawl": dict(sorted(by_crawl.items())),
+          }
+          Path("seed/summary.json").write_text(
+              json.dumps(summary, indent=2, sort_keys=True),
+              encoding="utf-8",
+          )
+          print(json.dumps(summary, indent=2, sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rar-cc-370-seed-${{ github.run_id }}
+          path: seed/**
+          retention-days: 7
+
+  rehydrate:
+    needs: prepare
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11]
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout pinned RAR acquisition implementation
+        uses: actions/checkout@v4
+        with:
+          repository: HeisLuka/rar
+          ref: ${{ env.RAR_REF }}
+          path: rar-src
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          name: rar-cc-370-seed-${{ github.run_id }}
+          path: seed
+      - name: Rehydrate exact WARC/ARC bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python rar-src/tools/corpus/harvest_pub.py \
+            --seed seed/cc_complete_370.csv \
+            --out out/harvest \
+            --max-files -1 \
+            --timeout 25 \
+            --max-bytes 10485760 \
+            --per-host-delay 0 \
+            --shard-index "${{ matrix.shard }}" \
+            --shard-count 12
+      - name: Enforce exact immutable identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, shutil
+          from pathlib import Path
+
+          root = Path("out/harvest")
+          rows = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
+          out = Path("exact")
+          files = out / "files"
+          files.mkdir(parents=True, exist_ok=True)
+          accepted = []
+          mismatches = []
+
+          for row in rows:
+              expected = (row.get("expected_sha256") or "").strip().lower()
+              actual = (row.get("sha256") or "").strip().lower()
+              stored = row.get("stored_path") or ""
+              ok = (
+                  row.get("fetch_status") == "ok"
+                  and row.get("classification") == "cfb_publisher_hint"
+                  and row.get("bucket") == "natural_wild"
+                  and len(expected) == 64
+                  and actual == expected
+                  and stored
+              )
+              if not ok:
+                  mismatches.append({
+                      "candidate_filename": row.get("candidate_filename",""),
+                      "expected_sha256": expected,
+                      "actual_sha256": actual,
+                      "fetch_status": row.get("fetch_status",""),
+                      "classification": row.get("classification",""),
+                      "error": row.get("error",""),
+                  })
+                  continue
+
+              src = root / stored
+              data = src.read_bytes()
+              if not data.startswith(bytes.fromhex("D0CF11E0A1B11AE1")):
+                  mismatches.append({"expected_sha256": expected, "error": "bad_cfb_magic"})
+                  continue
+              if hashlib.sha256(data).hexdigest() != expected:
+                  mismatches.append({"expected_sha256": expected, "error": "postread_sha_mismatch"})
+                  continue
+              shutil.copyfile(src, files / f"{expected}.pub")
+              accepted.append({
+                  "sha256": expected,
+                  "size_bytes": len(data),
+                  "candidate_filename": row.get("candidate_filename",""),
+                  "source_page": row.get("source_page",""),
+                  "direct_url": row.get("direct_url",""),
+                  "cc_crawl": row.get("cc_crawl",""),
+                  "cc_timestamp": row.get("cc_timestamp",""),
+                  "cc_source_host": row.get("cc_source_host",""),
+                  "cc_warc_filename": row.get("cc_warc_filename",""),
+                  "cc_warc_offset": row.get("cc_warc_offset",""),
+                  "cc_warc_length": row.get("cc_warc_length",""),
+              })
+
+          (out / "manifest.json").write_text(
+              json.dumps(accepted, indent=2, ensure_ascii=False),
+              encoding="utf-8",
+          )
+          (out / "mismatches.json").write_text(
+              json.dumps(mismatches, indent=2, ensure_ascii=False),
+              encoding="utf-8",
+          )
+          (out / "summary.json").write_text(
+              json.dumps({
+                  "schema": "rar-cc-exact-rehydrate-shard-v1",
+                  "shard": ${{ matrix.shard }},
+                  "input_rows": len(rows),
+                  "accepted_exact": len(accepted),
+                  "mismatches": len(mismatches),
+              }, indent=2, sort_keys=True),
+              encoding="utf-8",
+          )
+          print(f"accepted={len(accepted)} mismatches={len(mismatches)}")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rar-cc-rehydrated-${{ github.run_id }}-${{ matrix.shard }}
+          path: exact/**
+          compression-level: 0
+          retention-days: 7
+
+  materialize:
+    if: always()
+    needs: rehydrate
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout corpus branch
+        uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: rar-cc-rehydrated-${{ github.run_id }}-*
+          path: shards
+      - name: Materialize exact PUB corpus into repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, shutil
+          from collections import Counter
+          from pathlib import Path
+
+          dst = Path("pub-corpus/corpus/native/unclassified")
+          dst.mkdir(parents=True, exist_ok=True)
+
+          before = {}
+          for p in sorted(dst.glob("*.pub")):
+              data = p.read_bytes()
+              if data.startswith(bytes.fromhex("D0CF11E0A1B11AE1")):
+                  before[hashlib.sha256(data).hexdigest()] = p
+
+          rows = {}
+          mismatches = []
+          for manifest in Path("shards").rglob("manifest.json"):
+              for row in json.loads(manifest.read_text(encoding="utf-8")):
+                  sha = row["sha256"]
+                  src = manifest.parent / "files" / f"{sha}.pub"
+                  if not src.exists():
+                      mismatches.append({"sha256": sha, "error": "artifact_file_missing"})
+                      continue
+                  data = src.read_bytes()
+                  if not data.startswith(bytes.fromhex("D0CF11E0A1B11AE1")):
+                      mismatches.append({"sha256": sha, "error": "bad_cfb_magic"})
+                      continue
+                  if hashlib.sha256(data).hexdigest() != sha:
+                      mismatches.append({"sha256": sha, "error": "artifact_sha_mismatch"})
+                      continue
+                  rows.setdefault(sha, row)
+
+          accepted = sorted(rows)
+          new = [sha for sha in accepted if sha not in before]
+          for sha in new:
+              src = next(Path("shards").rglob(f"{sha}.pub"))
+              shutil.copyfile(src, dst / f"{sha}.pub")
+
+          after = {}
+          for p in sorted(dst.glob("*.pub")):
+              data = p.read_bytes()
+              if not data.startswith(bytes.fromhex("D0CF11E0A1B11AE1")):
+                  continue
+              after[hashlib.sha256(data).hexdigest()] = p
+
+          by_crawl = Counter(rows[sha].get("cc_crawl","") for sha in accepted)
+          receipt = {
+              "schema": "rar-cc-exact-rehydrate-materialize-v1",
+              "source_rar_ref": "b9c5eb03db41f57aed3fe56380982bb028faa031",
+              "source_artifact_id": 10801347100,
+              "source_artifact_sha256": "de7d1fbcf15547abf1e581b64c1d503aa85b184930811324ba7f17f4305e7add",
+              "expected_complete_pub": 370,
+              "rehydrated_exact_unique": len(accepted),
+              "rehydrate_mismatch_count": len(mismatches),
+              "existing_valid_unique_before": len(before),
+              "new_unique_materialized": len(new),
+              "valid_unique_after": len(after),
+              "target_minimum": 300,
+              "target_met": len(after) >= 300,
+              "rehydrated_by_crawl": dict(sorted(by_crawl.items())),
+              "new_sha256": new,
+          }
+
+          evidence = Path("pub-corpus/data/rar-cc-rehydrate")
+          evidence.mkdir(parents=True, exist_ok=True)
+          (evidence / "latest.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True),
+              encoding="utf-8",
+          )
+          (evidence / "rehydrated-manifest.json").write_text(
+              json.dumps([rows[s] for s in accepted], indent=2, ensure_ascii=False),
+              encoding="utf-8",
+          )
+          (evidence / "mismatches.json").write_text(
+              json.dumps(mismatches, indent=2, ensure_ascii=False),
+              encoding="utf-8",
+          )
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          if not receipt["target_met"]:
+              raise SystemExit(
+                  f"target not met: {len(after)} unique valid PUB after materialization"
+              )
+          PY
+
+      - name: Commit durable corpus bytes and receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "lalamu-lab-bot"
+          git config user.email "lalamu-lab-bot@users.noreply.github.com"
+          git add -- pub-corpus/corpus/native/unclassified pub-corpus/data/rar-cc-rehydrate
+          git commit -m "corpus: materialize 300+ exact RAR Common Crawl PUBs"
+          git push origin HEAD:"${GITHUB_REF_NAME}"
