@@ -37,6 +37,37 @@ jobs:
           pub2raw --version
           dpkg-query -W -f='libmspub-tools ${Version}\n' libmspub-tools
 
+      - name: Validate probe on known EOT-positive public control
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/eot-control
+          curl -L --fail --retry 3 \
+            -o /tmp/eot-control/fonts.pub \
+            https://raw.githubusercontent.com/fosnola/libmspub-test/master/testset/12.0/fonts.pub
+          echo "8d50872a7d8ee6130b889efbe99275ee333747bc7777f3c5256a05f2c6d32048  /tmp/eot-control/fonts.pub" | sha256sum -c -
+          mkdir -p pub-corpus/data/embedded-font-census
+          pub2raw /tmp/eot-control/fonts.pub > pub-corpus/data/embedded-font-census/control-pub2raw.txt
+          grep -inE 'defineEmbeddedFont|ms-fontobject|office:binary-data|librevenge:name' \
+            pub-corpus/data/embedded-font-census/control-pub2raw.txt \
+            > pub-corpus/data/embedded-font-census/control-marker-lines.txt || true
+          python pub-corpus/scripts/embedded_font_census.py \
+            --corpus /tmp/eot-control \
+            --output pub-corpus/data/embedded-font-census/control.json \
+            --raw-dir pub-corpus/data/embedded-font-census/control-raw
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("pub-corpus/data/embedded-font-census/control.json")
+          d = json.loads(p.read_text(encoding="utf-8"))
+          print(json.dumps({
+              "control_embedded_font_file_count": d["embedded_font_file_count"],
+              "control_records": d["records"],
+          }, indent=2, sort_keys=True))
+          if d["embedded_font_file_count"] != 1:
+              raise SystemExit("Known EOT-positive control was not detected; probe marker grammar needs correction")
+          PY
+
       - name: Run embedded-font census
         shell: bash
         run: |
@@ -71,6 +102,7 @@ jobs:
           cat "$HOME/summary.md" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: pub-embedded-font-census
@@ -80,6 +112,7 @@ jobs:
 
 
       - name: Publish census receipt on research branch
+        if: always()
         shell: bash
         run: |
           set -euo pipefail
