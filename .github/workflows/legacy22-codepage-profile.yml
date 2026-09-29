@@ -1,0 +1,58 @@
+name: Legacy22 codepage profile
+
+on:
+  push:
+    branches:
+      - research/legacy22-codepage-profile-20260929
+    paths:
+      - "pub-corpus/scripts/legacy22_codepage_profile.py"
+      - ".github/workflows/legacy22-codepage-profile.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: legacy22-codepage-profile-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  profile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check olefile==0.47
+      - name: Profile 625 strict corpus
+        run: |
+          set -euo pipefail
+          rm -rf pub-corpus/data/legacy22-codepage-profile
+          python pub-corpus/scripts/legacy22_codepage_profile.py \
+            --corpus pub-corpus/corpus/native/unclassified \
+            --out pub-corpus/data/legacy22-codepage-profile
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path("pub-corpus/data/legacy22-codepage-profile/summary.json").read_text())
+          assert s["legacy22_noquill_file_count"] >= 200, s
+          assert s["non_ascii_text_file_count"] >= 50, s
+          assert s["profile_error_count"] == 0, s
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: legacy22-codepage-profile-${{ github.run_id }}
+          path: pub-corpus/data/legacy22-codepage-profile/**
+          if-no-files-found: error
+          retention-days: 30
+      - name: Publish metadata receipt
+        run: |
+          set -euo pipefail
+          git config user.name "lalamu-lab-bot"
+          git config user.email "lalamu-lab-bot@users.noreply.github.com"
+          git add pub-corpus/data/legacy22-codepage-profile
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "lab: publish legacy22 codepage profile"
+          git push origin HEAD:"${GITHUB_REF_NAME}"
