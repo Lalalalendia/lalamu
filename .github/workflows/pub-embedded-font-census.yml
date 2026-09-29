@@ -1,0 +1,79 @@
+name: PUB embedded-font census
+
+on:
+  push:
+    branches:
+      - research/pub-embedded-font-census-20260929
+    paths:
+      - "pub-corpus/scripts/embedded_font_census.py"
+      - ".github/workflows/pub-embedded-font-census.yml"
+      - "pub-corpus/corpus/**/*.pub"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install libmspub tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libmspub-tools
+          command -v pub2raw
+          pub2raw --version
+          dpkg-query -W -f='libmspub-tools ${Version}\n' libmspub-tools
+
+      - name: Run embedded-font census
+        shell: bash
+        run: |
+          set -euo pipefail
+          python pub-corpus/scripts/embedded_font_census.py
+          python -m py_compile pub-corpus/scripts/embedded_font_census.py
+
+      - name: Show result
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("pub-corpus/data/embedded-font-census/latest.json")
+          d = json.loads(p.read_text(encoding="utf-8"))
+          summary = {
+              "corpus_file_count": d["corpus_file_count"],
+              "libmspub_supported_count": d["libmspub_supported_count"],
+              "libmspub_unsupported_or_error_count": d["libmspub_unsupported_or_error_count"],
+              "embedded_font_file_count": d["embedded_font_file_count"],
+              "embedded_font_record_marker_count": d["embedded_font_record_marker_count"],
+              "hit_sha256": d["hit_sha256"],
+              "pub2raw_version": d["pub2raw_version"],
+          }
+          print(json.dumps(summary, indent=2, sort_keys=True))
+          with open(Path.home() / "summary.md", "w", encoding="utf-8") as f:
+              f.write("# PUB embedded-font census\n\n")
+              for k, v in summary.items():
+                  f.write(f"- **{k}:** `{v}`\n")
+          PY
+          cat "$HOME/summary.md" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: pub-embedded-font-census
+          path: pub-corpus/data/embedded-font-census/
+          if-no-files-found: error
+          retention-days: 14
