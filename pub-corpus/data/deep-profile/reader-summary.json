@@ -31,6 +31,236 @@
     "0x2c": 17
   },
   "failed_count": 20,
+  "failure_signature_count": 12,
+  "failure_signature_groups": [
+    {
+      "count": 8,
+      "families": {
+        "0x2c": 8
+      },
+      "representatives": [
+        {
+          "name": "whatIsThisCard_2.pub",
+          "sha256": "190e1c440eb4170758af00dac385af0f1c0c2d5ce198aacd2a7cd57474a57151"
+        },
+        {
+          "name": "trophy_traditional.pub",
+          "sha256": "32b857475ae5ca8207942a40dc708d63153c9140bb06ee740d7e235944c0a027"
+        },
+        {
+          "name": "Jo-Els_Website_Menu.pub",
+          "sha256": "636c94b0c9d6759fc71369cd292aeade61d55f23e8a0959b3982e03bbfc2142d"
+        },
+        {
+          "name": "ShapeTest.pub",
+          "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb"
+        },
+        {
+          "name": "trophy_contemp.pub",
+          "sha256": "7a5393159155ad6b7e1e47fa2769e05ffdb7124298470bae15faa556b3c06cd6"
+        },
+        {
+          "name": "Futures-mrkt-Participants-signs.pub",
+          "sha256": "8f514838dd553dc011942afbb385ce8f3e539795984a8fc97cfcb6a880023bc2"
+        },
+        {
+          "name": "LandscapeShapeTest.pub",
+          "sha256": "990cf478aed51a6e7fdd63556bf7402699d6a3eb1fdabaf8b18a621353878a46"
+        },
+        {
+          "name": "whatIsThisCard_1.pub",
+          "sha256": "be415f413886ede01e6018c8a89538deb88719418c535baf50dd041f15393698"
+        }
+      ],
+      "revisions": {
+        "0x2c:19": 5,
+        "0x2c:24": 1,
+        "0x2c:26": 2
+      },
+      "signature": "c659f02436c82542dcd0b64fcd196c146b1ed2046c3f65c4924bee7529679753"
+    },
+    {
+      "count": 2,
+      "families": {
+        "0x22": 2
+      },
+      "representatives": [
+        {
+          "name": "Clubbooklet2008.pub",
+          "sha256": "2b1a2c5183d2fa83fdf9b0e0bf386bc0861b034e08f00fb3fc4171857c097576"
+        },
+        {
+          "name": "CopyofConsultantIPAchartrevised.pub",
+          "sha256": "e937b30923b86a7a4eebf7a4fa6870a737cee513bbeadb7b04f0f9b757bcddcd"
+        }
+      ],
+      "revisions": {
+        "0x22:616": 1,
+        "0x22:717": 1
+      },
+      "signature": "cda5d1d986a0cf216d6c4d29a212189c4f849f9a7cbfb11a3698a61f21658131"
+    },
+    {
+      "count": 1,
+      "families": {
+        "0x2c": 1
+      },
+      "representatives": [
+        {
+          "name": "POD planning activities.pub",
+          "sha256": "c96df4b2d4ce3d5bb238b2b31d8021501495b9bd15ff44eb9d918495c342430b"
+        }
+      ],
+      "revisions": {
+        "0x2c:14": 1
+      },
+      "signature": "082f7864c2d141c1fabc1153b9eabd4ddc3a0d9414ee3cb930a57c34a4644c79"
+    },
+    {
+      "count": 1,
+      "families": {
+        "0x2c": 1
+      },
+      "representatives": [
+        {
+          "name": "colourplenary.pub",
+          "sha256": "b29ed1e9227e67256a58d23cbea58b9bcfb38943dd9ed07a4110f4cf8959dbe4"
+        }
+      ],
+      "revisions": {
+        "0x2c:19": 1
+      },
+      "signature": "08c4c106bf03ac39ff5b54431d3f9e8f78aaa5263b4b607da8ca9ba226442e52"
+    },
+    {
+      "count": 1,
+      "families": {
+        "0x2c": 1
+      },
+      "representatives": [
+        {
+          "name": "Pod design ideas.pub",
+          "sha256": "ccfcbadc8951acece4d10cc27d71f28f318685845b94ae07fd46331c3571f3ff"
+        }
+      ],
+      "revisions": {
+        "0x2c:14": 1
+      },
+      "signature": "0a3f807b11d00ba4d6803e3bbf0b33724ba2845934ccf043b4f9dcebca232251"
+    },
+    {
+      "count": 1,
+      "families": {
+        "0x22": 1
+      },
+      "representatives": [
+        {
+          "name": "PETA2.pub",
+          "sha256": "1b3d00a67c370d9938f67c198ba1ba90f0e962d95c7db9557e9a3e2cdf134886"
+        }
+      ],
+      "revisions": {
+        "0x22:717": 1
+      },
+      "signature": "436c2578710b44c62e6abaf7d82cb4ab308651befc919295a2170184013ad7e6"
+    },
+    {
+      "count": 1,
+      "families": {
+        "0x2c": 1
+      },
+      "representatives": [
+        {
+          "name": "vacformws1.pub",
+          "sha256": "9d6a7f3638c49e043795416545e7f2305498dcfecd064cfa9ada03e27167e966"
+        }
+      ],
+      "revisions": {
+        "0x2c:14": 1
+      },
+      "signature": "472f8189cc7c3a2f34b4f2012d9b344351353fc423b4619885b0b901f1c59d75"
+    },
+    {
+      "count": 1,
+      "families": {
+        "0x2c": 1
+      },
+      "representatives": [
+        {
+          "name": "Product Analysis Worksheet.pub",
+          "sha256": "b171668d889a4e30cc8c7838a88f406017d67c722bf059965b1dfcfb9876d055"
+        }
+      ],
+      "revisions": {
+        "0x2c:14": 1
+      },
+      "signature": "9249b2cc9d027ae784a3155ab1cbef86aa6a7e615de281804533d97b255079da"
+    },
+    {
+      "count": 1,
+      "families": {
+        "0x2c": 1
+      },
+      "representatives": [
+        {
+          "name": "threading starter.pub",
+          "sha256": "bc28f3ced90b0c9452bda1bd5bdaf2d841feb1d44bd7e84749a13ff2072e20f2"
+        }
+      ],
+      "revisions": {
+        "0x2c:19": 1
+      },
+      "signature": "aea8eaa73859cc4b8d84c8a858c89d3401084baeba1e17c5aad7dd859f1bdcb5"
+    },
+    {
+      "count": 1,
+      "families": {
+        "0x2c": 1
+      },
+      "representatives": [
+        {
+          "name": "packag_advDis.pub",
+          "sha256": "6b5d5b269be7ca74b03d47423aec985676c45be7033e007792fcc3eb35ad929a"
+        }
+      ],
+      "revisions": {
+        "0x2c:19": 1
+      },
+      "signature": "b40f75891fd9e34e70dd69ec445db8d4b54d438051d9e26d657da90961268add"
+    },
+    {
+      "count": 1,
+      "families": {
+        "0x2c": 1
+      },
+      "representatives": [
+        {
+          "name": "(1) One Point Perspective.pub",
+          "sha256": "9c03c6e897be6abb4538bbb12cee3041fe4eab3af9109ce1df5d64b46e4c0569"
+        }
+      ],
+      "revisions": {
+        "0x2c:19": 1
+      },
+      "signature": "b6f0e9160674ee100c0ad73e90b7f783e5c349126040949f8aa182f82732acfb"
+    },
+    {
+      "count": 1,
+      "families": {
+        "0x2c": 1
+      },
+      "representatives": [
+        {
+          "name": "textSpec_word.pub",
+          "sha256": "211c2c6b4bf432fcc85fafa41b6219d328541f1a6e1fa2aaa8cb2134949e3157"
+        }
+      ],
+      "revisions": {
+        "0x2c:19": 1
+      },
+      "signature": "e02d49a09f190cf26b2bb5ca92c94d5b39c36cea83e420befbc666556fed1689"
+    }
+  ],
   "fidelity_status_counts": {
     "partial": 379
   },
