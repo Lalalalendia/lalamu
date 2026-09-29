@@ -3,12 +3,22 @@ name: PUB embedded-font census
 on:
   push:
     branches:
+      - main
       - research/pub-embedded-font-census-20260929
     paths:
       - "pub-corpus/scripts/embedded_font_census.py"
       - ".github/workflows/pub-embedded-font-census.yml"
       - "pub-corpus/corpus/**/*.pub"
+  pull_request:
+    paths:
+      - "pub-corpus/scripts/embedded_font_census.py"
+      - ".github/workflows/pub-embedded-font-census.yml"
+      - "pub-corpus/corpus/**/*.pub"
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -116,8 +126,8 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
-      - name: Publish metadata receipt on research branch
-        if: always()
+      - name: Publish deterministic metadata receipt
+        if: always() && github.event_name == 'push'
         shell: bash
         run: |
           set -euo pipefail
@@ -129,4 +139,4 @@ jobs:
             exit 0
           fi
           git commit -m "lab: publish direct PUB EOT census receipt"
-          git push origin HEAD:research/pub-embedded-font-census-20260929
+          git push origin HEAD:"${GITHUB_REF_NAME}"
