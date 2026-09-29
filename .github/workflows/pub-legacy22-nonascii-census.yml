@@ -1,0 +1,116 @@
+name: PUB legacy22 non-ASCII byte census
+
+on:
+  push:
+    branches:
+      - research/legacy22-noquill-corpus-probe-20260929
+    paths:
+      - ".github/workflows/pub-legacy22-nonascii-census.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pub-legacy22-nonascii-census-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned CFB parser
+        run: python -m pip install --disable-pip-version-check olefile==0.47
+      - name: Scan only the 58 deliberate codepage-stop files
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf pub-corpus/data/legacy22-nonascii-census
+          mkdir -p pub-corpus/data/legacy22-nonascii-census
+          python - <<'PY'
+          import json,struct
+          from collections import Counter,defaultdict
+          from pathlib import Path
+          import olefile
+
+          residual=json.loads(Path("pub-corpus/data/legacy22-residual-probe/latest.json").read_text())
+          targets=[r for r in residual["records"] if r["category"]=="non_ascii_codepage"]
+          assert len(targets)==58, len(targets)
+          meta={r["sha256"]:r for r in targets}
+
+          prov={}
+          mp=Path("pub-corpus/data/rar-container-materialize/materialized-manifest.json")
+          if mp.exists():
+              for r in json.loads(mp.read_text()):
+                  prov[r["sha256"]]=r
+
+          corpus=Path("pub-corpus/corpus/native/unclassified")
+          byte_count=Counter(); byte_files=Counter(); revision_files=Counter()
+          root_files=Counter(); records=[]
+          cp1252_undefined={0x81,0x8d,0x8f,0x90,0x9d}
+          all_high_total=0
+          all_text_total=0
+
+          for target in targets:
+              sha=target["sha256"]
+              path=corpus/f"{sha}.pub"
+              with olefile.OleFileIO(str(path)) as ole:
+                  contents=ole.openstream("Contents").read()
+              hp=struct.unpack_from("<I",contents,0x12)[0]
+              desc=hp+14
+              text_start,text_end=struct.unpack_from("<II",contents,desc)
+              assert 0 <= text_start <= text_end <= len(contents), (sha,text_start,text_end,len(contents))
+              text=contents[text_start:text_end]
+              hist=Counter(b for b in text if b>=0x80)
+              assert hist, sha
+              all_text_total += len(text)
+              all_high_total += sum(hist.values())
+              byte_count.update(hist)
+              for b in hist: byte_files[b]+=1
+              rev=str(target["revision"]); revision_files[rev]+=1
+              p=prov.get(sha,{})
+              root=p.get("root_label","unknown")
+              root_files[root]+=1
+              records.append({
+                  "sha256":sha,
+                  "revision":target["revision"],
+                  "root_label":root,
+                  "text_len":len(text),
+                  "high_byte_count":sum(hist.values()),
+                  "high_byte_distinct":len(hist),
+                  "high_bytes":[f"0x{b:02x}" for b in sorted(hist)],
+                  "contains_cp1252_undefined":bool(set(hist)&cp1252_undefined),
+              })
+
+          result={
+              "schema":"lalamu.legacy22-nonascii-byte-census.v1",
+              "file_count":len(records),
+              "text_bytes_total":all_text_total,
+              "high_byte_total":all_high_total,
+              "high_byte_fraction":all_high_total/all_text_total if all_text_total else 0,
+              "files_by_revision":dict(sorted(revision_files.items())),
+              "files_by_distribution_root":dict(root_files.most_common()),
+              "high_byte_counts":{f"0x{k:02x}":v for k,v in byte_count.most_common()},
+              "high_byte_file_counts":{f"0x{k:02x}":v for k,v in sorted(byte_files.items(),key=lambda kv:(-kv[1],kv[0]))},
+              "cp1252_undefined_bytes_observed":[f"0x{x:02x}" for x in sorted(set(byte_count)&cp1252_undefined)],
+              "files_with_cp1252_undefined_bytes":sum(1 for r in records if r["contains_cp1252_undefined"]),
+              "records":records,
+              "evidence_boundary":"Raw text bytes are not retained. Byte frequencies do not establish a codepage; this census only tests whether failures are sparse high-byte text vs gross text-range corruption."
+          }
+          Path("pub-corpus/data/legacy22-nonascii-census/latest.json").write_text(json.dumps(result,indent=2)+"\n")
+          print(json.dumps({k:v for k,v in result.items() if k!="records"},indent=2))
+          PY
+      - name: Publish source-safe result
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "lalamu-lab-bot"
+          git config user.email "lalamu-lab-bot@users.noreply.github.com"
+          git add -- pub-corpus/data/legacy22-nonascii-census/latest.json
+          git commit -m "lab: census non-ASCII legacy22 text bytes"
+          git push origin HEAD:"${GITHUB_REF_NAME}"
