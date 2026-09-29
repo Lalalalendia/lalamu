@@ -14,7 +14,7 @@ permissions:
 
 concurrency:
   group: pub-corpus-expand-625-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 env:
   RAR_REF: 8751688f1509397f4d2c591e6f7b12d6a9fed4a5
