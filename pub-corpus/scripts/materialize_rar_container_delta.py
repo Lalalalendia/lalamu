@@ -46,24 +46,6 @@ def validate_existing(corpus: Path) -> set[str]:
     return out
 
 
-def strict_publisher_cfb(data: bytes, harvest_pub) -> tuple[bool, str]:
-    if data[:8] != CFB:
-        return False, "not_cfb"
-    try:
-        with olefile.OleFileIO(io.BytesIO(data)) as ole:
-            paths = {"/" + "/".join(parts) for parts in ole.listdir(streams=True, storages=False)}
-            if "/Contents" not in paths:
-                return False, "contents_missing"
-            # Force directory + key streams to parse, not just header admission.
-            ole.openstream(["Contents"]).read(64)
-    except Exception as exc:
-        return False, f"ole_parse:{type(exc).__name__}"
-    classification, _ = harvest_pub.classify(data)
-    if classification != "cfb_publisher_hint":
-        return False, f"classification:{classification}"
-    return True, "ok"
-
-
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--corpus-root", type=Path, required=True)
@@ -78,7 +60,6 @@ def main() -> int:
     args = ap.parse_args()
 
     sys.path.insert(0, str(args.rar_tools))
-    import harvest_pub  # type: ignore
     import structural_novelty_container_delta as delta  # type: ignore
 
     corpus = args.corpus_root / "corpus" / "native" / "unclassified"
@@ -125,13 +106,19 @@ def main() -> int:
                 member_sha = sha256(data)
                 if member_sha not in target or member_sha in existing or member_sha in added:
                     continue
-                ok, reason = strict_publisher_cfb(data, harvest_pub)
-                if not ok:
+                try:
+                    first = delta.novelty.cfb_probe(data)
+                    second = delta.novelty.cfb_probe(data)
+                    if first != second:
+                        raise RuntimeError("probe_nondeterministic")
+                    if first.get("source_sha256") != member_sha:
+                        raise RuntimeError("probe_source_sha_mismatch")
+                except Exception as exc:
                     rejected.append({
                         "sha256": member_sha,
                         "root_index": root_index,
                         "archive_member": member,
-                        "reason": reason,
+                        "reason": f"{type(exc).__name__}:{exc}",
                     })
                     continue
                 matches.append((len(data), member_sha, member, data))
@@ -176,7 +163,7 @@ def main() -> int:
         "strict_unique_after": after,
         "target_minimum": args.target_minimum,
         "target_met": after >= args.target_minimum,
-        "selection_policy": "exact Rar 407-SHA authority; root-diverse order; strict Publisher CFB; smallest unseen members first within each root",
+        "selection_policy": "exact Rar 407-SHA authority; root-diverse order; deterministic Rar cfb_probe replay; smallest unseen members first within each root",
         "root_order": order,
         "added_by_root_index": dict(sorted(by_root.items(), key=lambda item: int(item[0]))),
         "added_total_bytes": total_added_bytes,
