@@ -16,7 +16,7 @@ permissions:
 jobs:
   census:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
@@ -27,48 +27,52 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install libmspub tools
+      - name: Install bounded CFB dependency
         shell: bash
         run: |
           set -euo pipefail
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends libmspub-tools
-          command -v pub2raw
-          pub2raw --version
-          dpkg-query -W -f='libmspub-tools ${Version}\n' libmspub-tools
+          python -m pip install --disable-pip-version-check olefile==0.47
 
-      - name: Validate probe on known EOT-positive public control
+      - name: Remove superseded raw-generator evidence
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p /tmp/eot-control
-          curl -L --fail --retry 3 \
-            -o /tmp/eot-control/fonts.pub \
-            https://raw.githubusercontent.com/fosnola/libmspub-test/master/testset/12.0/fonts.pub
+          rm -rf             pub-corpus/data/embedded-font-census/control-pub2raw.txt             pub-corpus/data/embedded-font-census/control-marker-lines.txt             pub-corpus/data/embedded-font-census/control-raw             pub-corpus/data/embedded-font-census/raw
+
+      - name: Validate direct scanner on known EOT-positive public control
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/eot-control pub-corpus/data/embedded-font-census
+          curl -L --fail --retry 3             -o /tmp/eot-control/fonts.pub             https://raw.githubusercontent.com/fosnola/libmspub-test/master/testset/12.0/fonts.pub
           echo "8d50872a7d8ee6130b889efbe99275ee333747bc7777f3c5256a05f2c6d32048  /tmp/eot-control/fonts.pub" | sha256sum -c -
-          mkdir -p pub-corpus/data/embedded-font-census
-          pub2raw /tmp/eot-control/fonts.pub > pub-corpus/data/embedded-font-census/control-pub2raw.txt
-          grep -inE 'defineEmbeddedFont|ms-fontobject|office:binary-data|librevenge:name' \
-            pub-corpus/data/embedded-font-census/control-pub2raw.txt \
-            > pub-corpus/data/embedded-font-census/control-marker-lines.txt || true
-          python pub-corpus/scripts/embedded_font_census.py \
-            --corpus /tmp/eot-control \
-            --output pub-corpus/data/embedded-font-census/control.json \
-            --raw-dir pub-corpus/data/embedded-font-census/control-raw
+
+          python pub-corpus/scripts/embedded_font_census.py             --corpus /tmp/eot-control             --output pub-corpus/data/embedded-font-census/control.json
+
           python - <<'PY'
           import json
           from pathlib import Path
-          p = Path("pub-corpus/data/embedded-font-census/control.json")
-          d = json.loads(p.read_text(encoding="utf-8"))
-          print(json.dumps({
-              "control_embedded_font_file_count": d["embedded_font_file_count"],
-              "control_records": d["records"],
-          }, indent=2, sort_keys=True))
-          if d["embedded_font_file_count"] != 1:
-              raise SystemExit("Known EOT-positive control was not detected; probe marker grammar needs correction")
+
+          d = json.loads(Path("pub-corpus/data/embedded-font-census/control.json").read_text(encoding="utf-8"))
+          if d["embedded_font_file_count"] != 1 or d["embedded_font_count"] != 1:
+              raise SystemExit(f"expected exactly one embedded EOT font, got {d['embedded_font_count']}")
+          f = d["records"][0]["embedded_fonts"][0]
+          expected = {
+              "version": "0x00020002",
+              "flags": "0x10000020",
+              "fs_type": "0x0008",
+              "family_name": "Times New Roman",
+              "full_name": "Times New Roman",
+              "eot_sha256": "9581bade789c578a9f5e89356a6c05fc0b890cb1533a9d7169c0a7188323104f",
+              "font_data_sha256": "29599223df32f3cb6888ff9494f140d43211f6763955ebef319c0882ec4327c4",
+          }
+          mismatches = {k: {"expected": v, "actual": f.get(k)} for k, v in expected.items() if f.get(k) != v}
+          print(json.dumps({"control_font": f, "mismatches": mismatches}, indent=2, sort_keys=True))
+          if mismatches:
+              raise SystemExit("known EOT-positive control did not reproduce canonical metadata/hashes")
           PY
 
-      - name: Run embedded-font census
+      - name: Run corpus embedded-font census
         shell: bash
         run: |
           set -euo pipefail
@@ -82,16 +86,16 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-          p = Path("pub-corpus/data/embedded-font-census/latest.json")
-          d = json.loads(p.read_text(encoding="utf-8"))
+
+          d = json.loads(Path("pub-corpus/data/embedded-font-census/latest.json").read_text(encoding="utf-8"))
           summary = {
+              "schema": d["schema"],
               "corpus_file_count": d["corpus_file_count"],
-              "libmspub_supported_count": d["libmspub_supported_count"],
-              "libmspub_unsupported_or_error_count": d["libmspub_unsupported_or_error_count"],
+              "cfb_parse_error_count": d["cfb_parse_error_count"],
               "embedded_font_file_count": d["embedded_font_file_count"],
-              "embedded_font_record_marker_count": d["embedded_font_record_marker_count"],
+              "embedded_font_count": d["embedded_font_count"],
+              "usable_without_microtype_file_count": d["usable_without_microtype_file_count"],
               "hit_sha256": d["hit_sha256"],
-              "pub2raw_version": d["pub2raw_version"],
           }
           print(json.dumps(summary, indent=2, sort_keys=True))
           with open(Path.home() / "summary.md", "w", encoding="utf-8") as f:
@@ -101,27 +105,28 @@ jobs:
           PY
           cat "$HOME/summary.md" >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Upload evidence
+      - name: Upload metadata-only evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: pub-embedded-font-census
-          path: pub-corpus/data/embedded-font-census/
-          if-no-files-found: error
+          path: |
+            pub-corpus/data/embedded-font-census/control.json
+            pub-corpus/data/embedded-font-census/latest.json
+          if-no-files-found: warn
           retention-days: 14
 
-
-      - name: Publish census receipt on research branch
+      - name: Publish metadata receipt on research branch
         if: always()
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "lalamu-lab-bot"
           git config user.email "lalamu-lab-bot@users.noreply.github.com"
-          git add -- pub-corpus/data/embedded-font-census
+          git add -A -- pub-corpus/data/embedded-font-census
           if git diff --cached --quiet; then
             echo "No census changes."
             exit 0
           fi
-          git commit -m "lab: publish PUB embedded-font census receipt"
+          git commit -m "lab: publish direct PUB EOT census receipt"
           git push origin HEAD:research/pub-embedded-font-census-20260929
