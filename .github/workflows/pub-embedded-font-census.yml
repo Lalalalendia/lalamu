@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   census:
@@ -77,3 +77,18 @@ jobs:
           path: pub-corpus/data/embedded-font-census/
           if-no-files-found: error
           retention-days: 14
+
+
+      - name: Publish census receipt on research branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "lalamu-lab-bot"
+          git config user.email "lalamu-lab-bot@users.noreply.github.com"
+          git add -- pub-corpus/data/embedded-font-census
+          if git diff --cached --quiet; then
+            echo "No census changes."
+            exit 0
+          fi
+          git commit -m "lab: publish PUB embedded-font census receipt"
+          git push origin HEAD:research/pub-embedded-font-census-20260929
