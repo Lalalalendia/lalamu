@@ -122,7 +122,7 @@ jobs:
 
           c = json.loads(Path("/tmp/pubconv-f/out/oledata-candidate-context.json").read_text())
           assert c["schema_version"] == "chaptera.pubconv-oledata-candidate-context.v1"
-          assert c["candidate_count"] == 3
+          assert c["candidate_count"] == 6
           assert c["exact_anchor_instructions"]["0x69866"] == {
               "mnemonic": "test",
               "op_str": "word ptr [eax + 6], 0x8000",
