@@ -1,0 +1,208 @@
+name: PUB legacy22 residual error probe
+
+on:
+  push:
+    branches:
+      - research/legacy22-noquill-corpus-probe-20260929
+    paths:
+      - ".github/workflows/pub-legacy22-residual-debug.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pub-legacy22-residual-debug-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  RAR_REF: aa2df26384fe6fe29e88dcd0ee9fdda908d4c82a
+  CARGO_TARGET_DIR: ${{ github.workspace }}/rar-target
+
+jobs:
+  residual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: HeisLuka/rar
+          ref: ${{ env.RAR_REF }}
+          path: rar-src
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.94.1"
+      - name: Add transient source-safe error receipt binary
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > rar-src/vendor/producer-a/crates/pub-viewer/src/bin/legacy22-error-receipt.rs <<'RS'
+          use anyhow::{Context, Result};
+          use pub_viewer::{open_pub_geometry, viewer_geometry_environment_v0_1};
+          use serde_json::json;
+          use sha2::{Digest, Sha256};
+          use std::{env, fs, path::PathBuf};
+
+          fn sha256_hex(bytes: &[u8]) -> String {
+              Sha256::digest(bytes).iter().map(|b| format!("{b:02x}")).collect()
+          }
+
+          fn main() -> Result<()> {
+              let mut args = env::args_os().skip(1);
+              let source = PathBuf::from(args.next().context("SOURCE.pub required")?);
+              let output = PathBuf::from(args.next().context("OUTPUT.json required")?);
+              let bytes = fs::read(&source).with_context(|| format!("read {}", source.display()))?;
+              let source_sha256 = sha256_hex(&bytes);
+              let value = match open_pub_geometry(&bytes, viewer_geometry_environment_v0_1()) {
+                  Ok(v) => json!({
+                      "source_sha256": source_sha256,
+                      "opened": true,
+                      "format_version": v.document.source.format_version,
+                      "viewer_page_count": v.document.pages.len(),
+                      "scene_node_count": v.scene.nodes.len(),
+                      "story_count": v.document.stories.len(),
+                      "story_frame_count": v.story_frames.len(),
+                      "text_fragment_count": v.text_fragments.len()
+                  }),
+                  Err(error) => json!({
+                      "source_sha256": source_sha256,
+                      "opened": false,
+                      "error": format!("{error:#}")
+                  })
+              };
+              fs::write(output, serde_json::to_vec_pretty(&value)?)?;
+              Ok(())
+          }
+          RS
+          cargo build             --manifest-path rar-src/vendor/producer-a/Cargo.toml             -p pub-viewer             --release             --bin legacy22-error-receipt
+
+      - name: Replay only 63 candidate legacy failures
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/legacy22-errors pub-corpus/data/legacy22-residual-probe
+          mkdir -p /tmp/legacy22-errors pub-corpus/data/legacy22-residual-probe
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+
+          rows=json.loads(Path("pub-corpus/data/legacy22-candidate-profile/reader-records.json").read_text())
+          failed=[r for r in rows if r.get("contents_family")=="0x22" and r.get("opened") is False]
+          assert len(failed)==63, len(failed)
+          exe=Path("rar-target/release/legacy22-error-receipt")
+          corpus=Path("pub-corpus/corpus/native/unclassified")
+          out=Path("/tmp/legacy22-errors")
+          for row in failed:
+              sha=row["source_sha256"]
+              src=corpus/f"{sha}.pub"
+              dst=out/f"{sha}.json"
+              subprocess.run([str(exe),str(src),str(dst)],check=True)
+          print(f"replayed={len(failed)}")
+          PY
+
+      - name: Normalize and classify actual causes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,re
+          from collections import Counter,defaultdict
+          from pathlib import Path
+
+          baseline=json.loads(Path("pub-corpus/data/legacy22-candidate-profile/reader-records.json").read_text())
+          meta={r["source_sha256"]:r for r in baseline if r.get("contents_family")=="0x22"}
+          rows=[json.loads(p.read_text()) for p in sorted(Path("/tmp/legacy22-errors").glob("*.json"))]
+          assert len(rows)==63, len(rows)
+
+          def clean(s):
+              s=s.replace("\\","/")
+              s=re.sub(r"/home/runner/[^ :]+","<path>",s)
+              s=re.sub(r"0x[0-9a-fA-F]+","0x#",s)
+              s=re.sub(r"\b\d+\b","#",s)
+              return " ".join(s.split())
+
+          def category(s):
+              t=s.lower()
+              checks=[
+                ("non_ascii_codepage","non-ascii"),
+                ("missing_document","missing legacy document"),
+                ("multiple_document","multiple legacy document"),
+                ("page_list_empty","document pagelist is empty"),
+                ("page_list_missing_object","pagelist references missing object"),
+                ("page_list_wrong_type","expected page"),
+                ("text_descriptor","text descriptor"),
+                ("text_owner_map","text owner map"),
+                ("directory","directory"),
+                ("trailer","trailer"),
+                ("chunk_span","chunk span"),
+                ("page_child_list","page child list"),
+                ("layout_projection","layout projection"),
+                ("source_graph_resolve","resolve legacy"),
+              ]
+              for k,needle in checks:
+                  if needle in t: return k
+              return "other"
+
+          grouped=defaultdict(list)
+          categories=Counter()
+          detail=[]
+          for r in rows:
+              sha=r["source_sha256"]
+              err=r.get("error","")
+              norm=clean(err)
+              cat=category(err)
+              categories[cat]+=1
+              m=meta[sha]
+              item={
+                "sha256":sha,
+                "revision":m.get("contents_serialization_revision"),
+                "byte_len":m.get("byte_len"),
+                "structural_fingerprint":m.get("structural_fingerprint"),
+                "category":cat,
+                "normalized_error":norm,
+                "raw_error":err,
+              }
+              grouped[(cat,norm)].append(item)
+              detail.append(item)
+
+          clusters=[]
+          for (cat,norm),items in sorted(grouped.items(), key=lambda kv:(-len(kv[1]),kv[0][0],kv[0][1])):
+              revs=Counter(str(x["revision"]) for x in items)
+              clusters.append({
+                "count":len(items),
+                "category":cat,
+                "normalized_error":norm,
+                "revisions":dict(sorted(revs.items())),
+                "representatives":[{"sha256":x["sha256"],"byte_len":x["byte_len"]} for x in items[:8]],
+              })
+
+          result={
+            "schema":"lalamu.legacy22-noquill-residual-errors.v1",
+            "candidate_rar_ref":"aa2df26384fe6fe29e88dcd0ee9fdda908d4c82a",
+            "failed_legacy_count":len(rows),
+            "category_counts":dict(categories.most_common()),
+            "normalized_cluster_count":len(clusters),
+            "clusters":clusters,
+            "records":detail,
+            "evidence_boundary":"Errors only; no recovered document text or embedded resource bytes retained."
+          }
+          p=Path("pub-corpus/data/legacy22-residual-probe/latest.json")
+          p.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n")
+          print(json.dumps({k:v for k,v in result.items() if k!="records"},indent=2,ensure_ascii=False))
+          PY
+
+      - name: Guard and publish source-safe result
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s pub-corpus/data/legacy22-residual-probe/latest.json
+          if find pub-corpus/data/legacy22-residual-probe -type f -iname '*.pub' | grep -q .; then
+            echo "raw PUB leaked" >&2
+            exit 1
+          fi
+          git config user.name "lalamu-lab-bot"
+          git config user.email "lalamu-lab-bot@users.noreply.github.com"
+          git add -- pub-corpus/data/legacy22-residual-probe/latest.json
+          git commit -m "lab: classify legacy22 no-Quill residual Reader failures"
+          git push origin HEAD:"${GITHUB_REF_NAME}"
