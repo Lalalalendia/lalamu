@@ -1,0 +1,60 @@
+{
+  "cfb_parse_error_count": 0,
+  "corpus_file_count": 1,
+  "embedded_font_count": 1,
+  "embedded_font_file_count": 1,
+  "evidence_boundary": "A hit is accepted only when EOT magic/version/bounds/reserved fields and variable name fields validate. Font bytes remain transient; only metadata and hashes are recorded.",
+  "hit_sha256": [
+    "8d50872a7d8ee6130b889efbe99275ee333747bc7777f3c5256a05f2c6d32048"
+  ],
+  "method": "direct W3C EOT header scan across all CFB streams",
+  "records": [
+    {
+      "byte_len": 1051136,
+      "cfb_parse_error": null,
+      "embedded_font_count": 1,
+      "embedded_fonts": [
+        {
+          "charset": 238,
+          "embedded_eudc": true,
+          "eot_sha256": "9581bade789c578a9f5e89356a6c05fc0b890cb1533a9d7169c0a7188323104f",
+          "eot_size": 978060,
+          "family_name": "Times New Roman",
+          "flags": "0x10000020",
+          "font_data_offset": 8364,
+          "font_data_sha256": "29599223df32f3cb6888ff9494f140d43211f6763955ebef319c0882ec4327c4",
+          "font_data_size": 977836,
+          "fs_type": "0x0008",
+          "full_name": "Times New Roman",
+          "italic": 0,
+          "magic_number": "0x504c",
+          "microtype_compressed": false,
+          "name_fields_end": 8340,
+          "name_padding_values": {
+            "padding2": 0,
+            "padding3": 0,
+            "padding4": 0
+          },
+          "processed_font_data_sha256": "24938f3f71cdf9cd1c60d13fc8a1707c58a5c3559cf0617ab3e06ee5768ddc28",
+          "processed_font_signature_hex": "00010000",
+          "processed_sfnt_type": "TrueType",
+          "stream_offset": 8140,
+          "stream_path": "Contents",
+          "style_name": "obyčejné",
+          "subset": false,
+          "usable_without_microtype_decompression": true,
+          "version": "0x00020002",
+          "version_name": "Version 6.87",
+          "weight": 400,
+          "xor_encrypted": true
+        }
+      ],
+      "file_name": "fonts.pub",
+      "sha256": "8d50872a7d8ee6130b889efbe99275ee333747bc7777f3c5256a05f2c6d32048",
+      "stream_bytes_scanned": 1038192,
+      "streams_scanned": 10
+    }
+  ],
+  "schema": "lalamu.pub-embedded-font-census.v2",
+  "usable_without_microtype_file_count": 1
+}
