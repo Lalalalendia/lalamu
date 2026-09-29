@@ -1,0 +1,149 @@
+name: PUB legacy22 simple-shape admission probe
+
+on:
+  push:
+    branches:
+      - research/legacy22-noquill-corpus-probe-20260929
+    paths:
+      - ".github/workflows/pub-legacy22-simple-shape-probe.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pub-legacy22-simple-shape-probe-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  RAR_REF: aa2df26384fe6fe29e88dcd0ee9fdda908d4c82a
+  CARGO_TARGET_DIR: ${{ github.workspace }}/rar-target
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: HeisLuka/rar
+          ref: ${{ env.RAR_REF }}
+          path: rar-src
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.94.1"
+      - name: Install pinned generic CFB parser
+        run: python -m pip install --disable-pip-version-check olefile==0.47
+
+      - name: Apply bounded no-Quill marker variant
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p=Path("rar-src/vendor/producer-a/crates/pub-reader/src/legacy22_noquill_graph.rs")
+          s=p.read_text()
+
+          old="const LEGACY_TEXT_SHAPE_TYPE: u16 = 0x0008;"
+          assert s.count(old)==1
+          s=s.replace(old,"const LEGACY_TEXT_SHAPE_TYPE: u16 = 0x0000;")
+
+          old_block='''            if child_entry.chunk_type != LEGACY_TEXT_SHAPE_TYPE {
+                diagnostics.push(PubBridgeDiagnostic::LegacyObjectNotMaterialized {
+                    object_id: u32::from(child_object_id),
+                    raw_type: Some(child_entry.chunk_type),
+                    reason: "legacy_noquill_object_type_not_admitted_v1".into(),
+                });
+                continue;
+            }
+'''
+          new_block='''            let admitted_simple_shape = matches!(
+                child_entry.chunk_type,
+                LEGACY_TEXT_SHAPE_TYPE | 0x0004 | 0x0005 | 0x0006 | 0x0007
+            );
+            if !admitted_simple_shape {
+                diagnostics.push(PubBridgeDiagnostic::LegacyObjectNotMaterialized {
+                    object_id: u32::from(child_object_id),
+                    raw_type: Some(child_entry.chunk_type),
+                    reason: "legacy_noquill_object_type_not_admitted_v1".into(),
+                });
+                continue;
+            }
+'''
+          assert s.count(old_block)==1
+          s=s.replace(old_block,new_block)
+
+          old_story='''            let story_id = story_by_owner.get(&child_object_id).copied();'''
+          new_story='''            let story_id = (child_entry.chunk_type == LEGACY_TEXT_SHAPE_TYPE)
+                .then(|| story_by_owner.get(&child_object_id).copied())
+                .flatten();'''
+          assert s.count(old_story)==1
+          s=s.replace(old_story,new_story)
+          p.write_text(s)
+          PY
+          git -C rar-src diff --check
+
+      - name: Build bounded variant
+        run: |
+          set -euo pipefail
+          cargo build             --manifest-path rar-src/vendor/producer-a/Cargo.toml             -p pub-viewer             --release             --bin corpus-reader-receipt
+
+      - name: Replay all 625
+        run: |
+          set -euo pipefail
+          rm -rf pub-corpus/data/legacy22-simple-shape-profile
+          python pub-corpus/scripts/deep_profile.py             --corpus-root pub-corpus             --rar-tools rar-src/tools/corpus             --reader-receipt-exe "${CARGO_TARGET_DIR}/release/corpus-reader-receipt"             --rar-ref "${RAR_REF}+p97-text0+simple-shapes"             --out pub-corpus/data/legacy22-simple-shape-profile             --workers 4
+
+      - name: Compare against text-marker-only variant
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          before=json.loads(Path("pub-corpus/data/legacy22-p97-text-marker-profile/reader-records.json").read_text())
+          after=json.loads(Path("pub-corpus/data/legacy22-simple-shape-profile/reader-records.json").read_text())
+          b={r["source_sha256"]:r for r in before}
+          a={r["source_sha256"]:r for r in after}
+          assert set(a)==set(b) and len(a)==625
+
+          def subset(rows,fam):
+              return [r for r in rows if r.get("contents_family")==fam and r.get("opened") is True]
+          bl=subset(before,"0x22"); al=subset(after,"0x22")
+          result={
+            "schema":"lalamu.legacy22-simple-shape-admission-probe.v1",
+            "single_delta_after_text_marker":"admit 0x0004/0x0005/0x0006/0x0007 as geometry-only simple shapes; keep stories only on 0x0000",
+            "old_open_before":len(bl),
+            "old_open_after":len(al),
+            "files_with_scene_nodes_before":sum(1 for r in bl if (r.get("scene_node_count") or 0)>0),
+            "files_with_scene_nodes_after":sum(1 for r in al if (r.get("scene_node_count") or 0)>0),
+            "files_with_story_frames_before":sum(1 for r in bl if (r.get("story_frame_count") or 0)>0),
+            "files_with_story_frames_after":sum(1 for r in al if (r.get("story_frame_count") or 0)>0),
+            "scene_node_total_before":sum(r.get("scene_node_count") or 0 for r in bl),
+            "scene_node_total_after":sum(r.get("scene_node_count") or 0 for r in al),
+            "story_frame_total_before":sum(r.get("story_frame_count") or 0 for r in bl),
+            "story_frame_total_after":sum(r.get("story_frame_count") or 0 for r in al),
+            "text_fragment_total_before":sum(r.get("text_fragment_count") or 0 for r in bl),
+            "text_fragment_total_after":sum(r.get("text_fragment_count") or 0 for r in al),
+            "mature_open_before":sum(1 for r in before if r.get("contents_family")=="0x2c" and r.get("opened") is True),
+            "mature_open_after":sum(1 for r in after if r.get("contents_family")=="0x2c" and r.get("opened") is True),
+            "changed_open_state_count":sum(1 for sha in a if bool(a[sha].get("opened")) != bool(b[sha].get("opened"))),
+          }
+          Path("pub-corpus/data/legacy22-simple-shape-profile/delta.json").write_text(json.dumps(result,indent=2)+"\n")
+          print(json.dumps(result,indent=2))
+          PY
+
+      - name: Publish source-safe result
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "lalamu-lab-bot"
+          git config user.email "lalamu-lab-bot@users.noreply.github.com"
+          git add -- pub-corpus/data/legacy22-simple-shape-profile
+          git commit -m "lab: probe simple legacy22 shape admission"
+          git push origin HEAD:"${GITHUB_REF_NAME}"
