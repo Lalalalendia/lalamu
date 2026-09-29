@@ -16,10 +16,10 @@
   "interpretation": "Pairwise observations are not votes. LibreOffice Publisher import uses the libmspub parser lineage, so LibreOffice may confirm downstream behavior but is not an independent parser lineage.",
   "raw_pairwise_issue_counts": {
     "engine_acceptance_mismatch": 4,
-    "normalized_text_mismatch": 48,
+    "normalized_text_mismatch": 47,
     "page_count_mismatch": 36
   },
-  "receipt_sha256": "c8373c33738fe58760bfa63e4a06409cff631217fbe62ec9de9332c2dfbafed1",
+  "receipt_sha256": "e59de6418bfb2301d078c256186d7d0c64edc3995b8faa611d476f083ed49869",
   "records": [
     {
       "byte_len": 204800,
@@ -1921,48 +1921,38 @@
       ]
     },
     {
-      "byte_len": 215040,
-      "corpus_context": {
-        "coarse_structure_fingerprint": "d1582f4c2f8781f1189ac89d510bb76cac20c9d4e14cb200a5d4886c47044893",
-        "provenance_document_hint": "other-or-unknown",
-        "source": {
-          "candidate_id": "belgium-sclera-rood-30",
-          "source_filename": "rood-30.pub",
-          "source_type": "institutional-web",
-          "source_url": "https://sclera.be/resources/img/iris/1000woorden/sjablonen/rood-30.pub"
-        },
-        "topology_fingerprint": "131b01ce24ab883ae7a3ed1cd7eb00131c93e55a83a6be881cc4fce7329683e9"
-      },
+      "byte_len": 603136,
+      "corpus_context": {},
       "engines": {
         "chaptera": {
-          "diagnostic_count": 4,
-          "image_count": 3,
-          "normalized_text_sha256": "a97ab25b5c4ee02a47de57fc893d3084e955c7e321c37af03885ad783d61518f",
+          "diagnostic_count": 6,
+          "image_count": 7,
+          "normalized_text_sha256": "d53fb91dd4af8d784b143f24e6bd31608ff7028f6674c296ac891df3e29f7ee9",
           "page_count": 6,
-          "scene_node_count": 82,
+          "scene_node_count": 10,
           "scene_surface_count": 6,
           "status": "success",
-          "story_count": 37,
-          "text_chars": 544,
-          "text_words": 94,
-          "token_multiset_sha256": "bce51826105944c965f96104e83cc0c482b640490e7d4ad36145e17d37a59329"
+          "story_count": 2,
+          "text_chars": 50,
+          "text_words": 7,
+          "token_multiset_sha256": "16e9662ea09a27bc73692cd14478aeacc5382bd7d38be4abb7b8295ce77d070f"
         },
         "libmspub": {
-          "normalized_text_sha256": "7e40531d8d78a9f14c9f17ede830161c50c6a395650c55be18f1f93030a1c487",
-          "page_count": 1,
+          "normalized_text_sha256": "d53fb91dd4af8d784b143f24e6bd31608ff7028f6674c296ac891df3e29f7ee9",
+          "page_count": 2,
           "status": "success",
-          "text_chars": 205,
-          "text_words": 33,
-          "token_multiset_sha256": "f5b52c061badad8428e49d7706d5f2d0fe4e2f5de80e0fbcdd0c42ecf613d78c",
-          "xhtml_bytes": 676607
+          "text_chars": 50,
+          "text_words": 7,
+          "token_multiset_sha256": "16e9662ea09a27bc73692cd14478aeacc5382bd7d38be4abb7b8295ce77d070f",
+          "xhtml_bytes": 744750
         },
         "libreoffice": {
-          "normalized_text_sha256": "2eae00bb01f6fdde3330eaf65b934240e182aa88b4805320f21b23fb5a5f40d4",
-          "page_count": 1,
+          "normalized_text_sha256": "6082dc5e9eb0e4449835ea67e2d735b675e3bd1f5b3b36f63673d87279c248d5",
+          "page_count": 2,
           "status": "success",
-          "text_chars": 205,
-          "text_words": 33,
-          "token_multiset_sha256": "f5b52c061badad8428e49d7706d5f2d0fe4e2f5de80e0fbcdd0c42ecf613d78c"
+          "text_chars": 50,
+          "text_words": 7,
+          "token_multiset_sha256": "16e9662ea09a27bc73692cd14478aeacc5382bd7d38be4abb7b8295ce77d070f"
         }
       },
       "raw_pairwise_disagreements": [
@@ -1972,15 +1962,7 @@
           "left": "chaptera",
           "left_value": 6,
           "right": "libmspub",
-          "right_value": 1
-        },
-        {
-          "field": "normalized_text_sha256",
-          "kind": "normalized_text_mismatch",
-          "left": "chaptera",
-          "left_value": "a97ab25b5c4ee02a47de57fc893d3084e955c7e321c37af03885ad783d61518f",
-          "right": "libmspub",
-          "right_value": "7e40531d8d78a9f14c9f17ede830161c50c6a395650c55be18f1f93030a1c487"
+          "right_value": 2
         },
         {
           "field": "page_count",
@@ -1988,92 +1970,72 @@
           "left": "chaptera",
           "left_value": 6,
           "right": "libreoffice",
-          "right_value": 1
+          "right_value": 2
         },
         {
           "field": "normalized_text_sha256",
           "kind": "normalized_text_mismatch",
           "left": "chaptera",
-          "left_value": "a97ab25b5c4ee02a47de57fc893d3084e955c7e321c37af03885ad783d61518f",
+          "left_value": "d53fb91dd4af8d784b143f24e6bd31608ff7028f6674c296ac891df3e29f7ee9",
           "right": "libreoffice",
-          "right_value": "2eae00bb01f6fdde3330eaf65b934240e182aa88b4805320f21b23fb5a5f40d4"
+          "right_value": "6082dc5e9eb0e4449835ea67e2d735b675e3bd1f5b3b36f63673d87279c248d5"
         },
         {
           "field": "normalized_text_sha256",
           "kind": "normalized_text_mismatch",
           "left": "libmspub",
-          "left_value": "7e40531d8d78a9f14c9f17ede830161c50c6a395650c55be18f1f93030a1c487",
+          "left_value": "d53fb91dd4af8d784b143f24e6bd31608ff7028f6674c296ac891df3e29f7ee9",
           "right": "libreoffice",
-          "right_value": "2eae00bb01f6fdde3330eaf65b934240e182aa88b4805320f21b23fb5a5f40d4"
+          "right_value": "6082dc5e9eb0e4449835ea67e2d735b675e3bd1f5b3b36f63673d87279c248d5"
         }
       ],
-      "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a",
+      "sha256": "00092479c94bf5ac1bb107173d60fb788b91e2c148453468456f98d0bb300597",
       "triage": [
         {
           "chaptera_page_count": 6,
           "downstream_matches_libmspub": true,
           "kind": "chaptera_page_projection_gap",
-          "libmspub_page_count": 1,
-          "libreoffice_downstream_page_count": 1,
+          "libmspub_page_count": 2,
+          "libreoffice_downstream_page_count": 2,
           "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
-          "page_delta": 5,
+          "page_delta": 4,
           "priority": "high"
-        },
-        {
-          "chaptera_text_chars": 544,
-          "chaptera_text_words": 94,
-          "kind": "chaptera_text_inventory_gap",
-          "libmspub_text_chars": 205,
-          "libmspub_text_words": 33,
-          "priority": "high",
-          "relative_text_char_gap": 1.6536585365853658,
-          "text_char_delta": 339
         }
       ]
     },
     {
-      "byte_len": 204800,
-      "corpus_context": {
-        "coarse_structure_fingerprint": "d1582f4c2f8781f1189ac89d510bb76cac20c9d4e14cb200a5d4886c47044893",
-        "provenance_document_hint": "other-or-unknown",
-        "source": {
-          "candidate_id": "belgium-sclera-groen-20",
-          "source_filename": "groen-20.pub",
-          "source_type": "institutional-web",
-          "source_url": "https://sclera.be/resources/img/iris/1000woorden/sjablonen/groen-20.pub"
-        },
-        "topology_fingerprint": "c2f10a86bfde8a1698543e5e13812ce11f9849fce2f0c699d2ea40ec97e84e5e"
-      },
+      "byte_len": 118272,
+      "corpus_context": {},
       "engines": {
         "chaptera": {
-          "diagnostic_count": 4,
-          "image_count": 3,
-          "normalized_text_sha256": "536c9ee5f84990b60019432510d9cf035253f145691c81d053b0084e345c3147",
+          "diagnostic_count": 6,
+          "image_count": 0,
+          "normalized_text_sha256": "f9d6d254b383d30f0b0cdfbfed217836f1e08596156e1e8f1eee3b47076374d6",
           "page_count": 6,
-          "scene_node_count": 62,
+          "scene_node_count": 8,
           "scene_surface_count": 6,
           "status": "success",
-          "story_count": 27,
-          "text_chars": 484,
-          "text_words": 84,
-          "token_multiset_sha256": "0f8802e3dd486b1a57cb5a8d0a0dd77ab7aad1003acbd4e16b75397b8ee806d6"
+          "story_count": 7,
+          "text_chars": 5322,
+          "text_words": 656,
+          "token_multiset_sha256": "fde7693a28ecc3de263fb5639ddfdea75eaa7ee667a72750f5f23a456dd91849"
         },
         "libmspub": {
-          "normalized_text_sha256": "15b0acf0068b94cb824e425a4f4f39d063e0352ae3bbd6250cf7eee26ed855c8",
-          "page_count": 1,
+          "normalized_text_sha256": "fe960dfb354c5ce2239c2ddf617137ce28e7215543d8194cc588aa895f8719de",
+          "page_count": 2,
           "status": "success",
-          "text_chars": 145,
-          "text_words": 23,
-          "token_multiset_sha256": "d5adfbf67d6627344bf84f243a0ce268e1fbf9fe21c366267714aa78d0d95e1d",
-          "xhtml_bytes": 452085
+          "text_chars": 10320,
+          "text_words": 1275,
+          "token_multiset_sha256": "8ca33baa5e35972fa263543623ff35e9947b0d501e943b14b5eea081616e8a34",
+          "xhtml_bytes": 38078
         },
         "libreoffice": {
-          "normalized_text_sha256": "6456c01a0485a690326b0d846eec9a0d854873d04aa21ba985c3597419d1234e",
-          "page_count": 1,
+          "normalized_text_sha256": "c02dacd89b267a1b1ff1d8395411c94d4579dd9f6000e6ebae5a3e588cafef50",
+          "page_count": 2,
           "status": "success",
-          "text_chars": 145,
-          "text_words": 23,
-          "token_multiset_sha256": "d5adfbf67d6627344bf84f243a0ce268e1fbf9fe21c366267714aa78d0d95e1d"
+          "text_chars": 3301,
+          "text_words": 402,
+          "token_multiset_sha256": "ad07989e76af6c624768ce79f0d6f95749098606a33a414bc9edcc02f37b7246"
         }
       },
       "raw_pairwise_disagreements": [
@@ -2083,15 +2045,15 @@
           "left": "chaptera",
           "left_value": 6,
           "right": "libmspub",
-          "right_value": 1
+          "right_value": 2
         },
         {
           "field": "normalized_text_sha256",
           "kind": "normalized_text_mismatch",
           "left": "chaptera",
-          "left_value": "536c9ee5f84990b60019432510d9cf035253f145691c81d053b0084e345c3147",
+          "left_value": "f9d6d254b383d30f0b0cdfbfed217836f1e08596156e1e8f1eee3b47076374d6",
           "right": "libmspub",
-          "right_value": "15b0acf0068b94cb824e425a4f4f39d063e0352ae3bbd6250cf7eee26ed855c8"
+          "right_value": "fe960dfb354c5ce2239c2ddf617137ce28e7215543d8194cc588aa895f8719de"
         },
         {
           "field": "page_count",
@@ -2099,46 +2061,51 @@
           "left": "chaptera",
           "left_value": 6,
           "right": "libreoffice",
-          "right_value": 1
+          "right_value": 2
         },
         {
           "field": "normalized_text_sha256",
           "kind": "normalized_text_mismatch",
           "left": "chaptera",
-          "left_value": "536c9ee5f84990b60019432510d9cf035253f145691c81d053b0084e345c3147",
+          "left_value": "f9d6d254b383d30f0b0cdfbfed217836f1e08596156e1e8f1eee3b47076374d6",
           "right": "libreoffice",
-          "right_value": "6456c01a0485a690326b0d846eec9a0d854873d04aa21ba985c3597419d1234e"
+          "right_value": "c02dacd89b267a1b1ff1d8395411c94d4579dd9f6000e6ebae5a3e588cafef50"
         },
         {
           "field": "normalized_text_sha256",
           "kind": "normalized_text_mismatch",
           "left": "libmspub",
-          "left_value": "15b0acf0068b94cb824e425a4f4f39d063e0352ae3bbd6250cf7eee26ed855c8",
+          "left_value": "fe960dfb354c5ce2239c2ddf617137ce28e7215543d8194cc588aa895f8719de",
           "right": "libreoffice",
-          "right_value": "6456c01a0485a690326b0d846eec9a0d854873d04aa21ba985c3597419d1234e"
+          "right_value": "c02dacd89b267a1b1ff1d8395411c94d4579dd9f6000e6ebae5a3e588cafef50"
         }
       ],
-      "sha256": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78",
+      "sha256": "00ce910d7c5e1a42ccd31e2800d1616824d64ea1640af790229f108161565dee",
       "triage": [
         {
           "chaptera_page_count": 6,
           "downstream_matches_libmspub": true,
           "kind": "chaptera_page_projection_gap",
-          "libmspub_page_count": 1,
-          "libreoffice_downstream_page_count": 1,
+          "libmspub_page_count": 2,
+          "libreoffice_downstream_page_count": 2,
           "note": "Treat as a page-role/projection research target, not proof that either lineage is semantically correct.",
-          "page_delta": 5,
+          "page_delta": 4,
           "priority": "high"
         },
         {
-          "chaptera_text_chars": 484,
-          "chaptera_text_words": 84,
+          "chaptera_text_chars": 5322,
+          "chaptera_text_words": 656,
           "kind": "chaptera_text_inventory_gap",
-          "libmspub_text_chars": 145,
-          "libmspub_text_words": 23,
+          "libmspub_text_chars": 10320,
+          "libmspub_text_words": 1275,
           "priority": "high",
-          "relative_text_char_gap": 2.3379310344827586,
-          "text_char_delta": 339
+          "relative_text_char_gap": 0.48430232558139535,
+          "text_char_delta": -4998
+        },
+        {
+          "kind": "shared_lineage_downstream_text_divergence",
+          "note": "libmspub and LibreOffice share the PUB parser lineage; this difference is downstream extraction/render serialization, not an independent parser disagreement.",
+          "priority": "low"
         }
       ]
     }
@@ -2147,7 +2114,7 @@
   "selected_file_count": 20,
   "selection_policy": "one-per-coarse-structure-and-source-type-then-sha-fill",
   "tool_versions": {
-    "chaptera": "4636645e89522d0359113562870253bba0d8637e",
+    "chaptera": "b9c5eb03db41f57aed3fe56380982bb028faa031",
     "libmspub": "pub2raw 0.1.4",
     "libreoffice": "LibreOffice 24.2.7.2 420(Build:2)"
   },
@@ -2155,8 +2122,8 @@
     "chaptera_acceptance_gap": 2,
     "chaptera_page_projection_gap": 18,
     "chaptera_text_content_gap": 6,
-    "chaptera_text_inventory_gap": 5,
+    "chaptera_text_inventory_gap": 4,
     "chaptera_text_order_or_punctuation_divergence": 5,
-    "shared_lineage_downstream_text_divergence": 8
+    "shared_lineage_downstream_text_divergence": 9
   }
 }
