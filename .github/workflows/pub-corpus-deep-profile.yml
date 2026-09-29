@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-      - research/pub-corpus-deep-profile-399-20260929
+      - "research/**"
     paths:
       - "pub-corpus/corpus/**/*.pub"
       - "pub-corpus/data/manifest.jsonl"
