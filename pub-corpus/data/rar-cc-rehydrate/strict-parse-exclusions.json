@@ -1,0 +1,37 @@
+{
+  "schema": "rar-cc-strict-parse-exclusions-v1",
+  "excluded_count": 6,
+  "reason": "Independent olefile structural parse failed with incomplete OLE sector; historical RAR cfb_publisher_hint classification alone is insufficient for strict working-corpus admission.",
+  "rows": [
+    {
+      "sha256": "125f2cecd91a32d8cde563ba3e246eb744b977920d85755425b1e149b9e6c9bf",
+      "size_bytes": 1048576,
+      "error": "OleFileError: incomplete OLE sector"
+    },
+    {
+      "sha256": "26d4045b5b5f526606926172d208cf423c8c2eadcde92f997ce081d932625b4f",
+      "size_bytes": 1048576,
+      "error": "OleFileError: incomplete OLE sector"
+    },
+    {
+      "sha256": "5755086ed9ec16224e1a1ff011c552d0bdc2ad486d8f34fa4f4433231159c5eb",
+      "size_bytes": 1048576,
+      "error": "OleFileError: incomplete OLE sector"
+    },
+    {
+      "sha256": "9bf55f95f341000f9113528be24e13f5a389b49e920489954d12f9e598e42158",
+      "size_bytes": 1048576,
+      "error": "OleFileError: incomplete OLE sector"
+    },
+    {
+      "sha256": "b446c67187bf074b98789f66d00af4d8ebb81061ee8bda44704c898df9c388cb",
+      "size_bytes": 1048576,
+      "error": "OleFileError: incomplete OLE sector"
+    },
+    {
+      "sha256": "d077894684a63c8d04d3523f69ab638c17111b0334640ca918e8df839384e47f",
+      "size_bytes": 1048576,
+      "error": "OleFileError: incomplete OLE sector"
+    }
+  ]
+}
