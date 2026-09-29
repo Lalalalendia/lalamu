@@ -1,0 +1,176 @@
+name: pubconv-oledata-f-static
+
+on:
+  push:
+    branches:
+      - pubconv-oledata-f-static-01
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    env:
+      PACKAGE_URL: https://web.archive.org/web/20111006143949id_/http://msft-dnl.digitalrivercontent.net/msoffice/pub/X12-30247/X12-30247.exe
+      PACKAGE_SHA256: 6caa1d57b0b91485beb7cfbd38a44ab723043651a117223ef7ac735bf920c6dd
+      PACKAGE_SIZE: "233139240"
+      DLL_SHA256: 124f5b115979f4e4c0aab882851c399228174482bb124b8309860567a5980dbc
+      DLL_SIZE: "590144"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify stacked ABI authority
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("research/pubconv-abi-static-01/abi-summary.json")
+          r = json.loads(p.read_text())
+          assert r["source"]["dll_sha256"] == "124f5b115979f4e4c0aab882851c399228174482bb124b8309860567a5980dbc"
+          assert r["bounded_interpretation"]["pub_wire_format_claim_authorized"] is False
+          PY
+
+      - name: Install bounded static-analysis dependencies
+        run: |
+          set -euxo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends p7zip-full msitools cabextract
+          python -m pip install --disable-pip-version-check pefile==2024.8.26 capstone==5.0.6
+          python -m py_compile tools/pubconv_oledata_f_static.py tools/pubconv_oledata_candidate_context.py
+          mkdir -p /tmp/pubconv-f/{download,extracted,msi-scan,msi-extracted,out}
+
+      - name: Acquire exact archived Microsoft package
+        run: |
+          set -euxo pipefail
+          curl -fL --retry 4 --retry-delay 5 --max-time 1800 "$PACKAGE_URL" \
+            -o /tmp/pubconv-f/download/X12-30247.exe
+          test "$(stat -c %s /tmp/pubconv-f/download/X12-30247.exe)" = "$PACKAGE_SIZE"
+          echo "$PACKAGE_SHA256  /tmp/pubconv-f/download/X12-30247.exe" | sha256sum -c -
+
+      - name: Extract exact PUBCONV DLL
+        run: |
+          set -euxo pipefail
+          7z x -y /tmp/pubconv-f/download/X12-30247.exe \
+            -o/tmp/pubconv-f/extracted >/tmp/pubconv-f/out/7z.log 2>&1
+
+          : > /tmp/pubconv-f/out/pubconv-msi-hits.txt
+          while IFS= read -r msi; do
+            safe="$(printf '%s' "$msi" | tr '/ ' '__')"
+            msiinfo export "$msi" File > "/tmp/pubconv-f/msi-scan/$safe.File.txt" 2>/dev/null || continue
+            if grep -i 'PUBCONV' "/tmp/pubconv-f/msi-scan/$safe.File.txt" >> /tmp/pubconv-f/out/pubconv-msi-hits.txt; then
+              printf 'MSI=%s\n' "$msi" >> /tmp/pubconv-f/out/pubconv-msi-hits.txt
+            fi
+          done < <(find /tmp/pubconv-f/extracted -type f -iname '*.msi' | sort)
+
+          owner_msi="$(grep '^MSI=' /tmp/pubconv-f/out/pubconv-msi-hits.txt | head -n1 | cut -d= -f2- || true)"
+          if [ -n "$owner_msi" ]; then
+            (
+              cd "$(dirname "$owner_msi")"
+              msiextract -C /tmp/pubconv-f/msi-extracted "$(basename "$owner_msi")"
+            ) >/tmp/pubconv-f/out/msiextract.log 2>&1 || true
+          fi
+
+          dll="$(find /tmp/pubconv-f/msi-extracted /tmp/pubconv-f/extracted -type f -iname 'PUBCONV.DLL' | head -n1 || true)"
+          if [ -z "$dll" ]; then
+            while IFS= read -r cab; do
+              d="/tmp/pubconv-f/cab-$(basename "$cab" .cab)"
+              mkdir -p "$d"
+              7z x -y "$cab" -o"$d" >/dev/null 2>&1 || true
+            done < <(find /tmp/pubconv-f/extracted -type f \( -iname 'EnterWW.cab' -o -iname '*WW.cab' \) | sort)
+            dll="$(find /tmp/pubconv-f -type f -iname 'PUBCONV.DLL' | head -n1 || true)"
+          fi
+
+          test -n "$dll"
+          cp "$dll" /tmp/pubconv-f/out/PUBCONV.DLL
+          test "$(stat -c %s /tmp/pubconv-f/out/PUBCONV.DLL)" = "$DLL_SIZE"
+          echo "$DLL_SHA256  /tmp/pubconv-f/out/PUBCONV.DLL" | sha256sum -c -
+
+      - name: Run bounded OleData static census
+        run: |
+          set -euxo pipefail
+          python tools/pubconv_oledata_f_static.py \
+            /tmp/pubconv-f/out/PUBCONV.DLL \
+            --out /tmp/pubconv-f/out/oledata-f-static.json \
+            | tee /tmp/pubconv-f/out/summary.json
+
+      - name: Capture bounded candidate instruction contexts
+        run: |
+          set -euxo pipefail
+          python tools/pubconv_oledata_candidate_context.py \
+            /tmp/pubconv-f/out/PUBCONV.DLL \
+            --out /tmp/pubconv-f/out/oledata-candidate-context.json \
+            | tee /tmp/pubconv-f/out/candidate-context-summary.json
+
+      - name: Validate evidence fence
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          r = json.loads(Path("/tmp/pubconv-f/out/oledata-f-static.json").read_text())
+          assert r["schema_version"] == "chaptera.pubconv-oledata-f-static.v1"
+          assert r["source"]["sha256"] == os.environ["DLL_SHA256"]
+          assert r["source"]["byte_len"] == int(os.environ["DLL_SIZE"])
+          fence = r["bounded_interpretation"]
+          assert fence["oledata_f_semantics_assigned"] is False
+          assert fence["candidate_routine_claim_authorized"] is False
+          assert fence["runtime_activation_observed"] is False
+          assert fence["publisher2000_writer_behavior_claimed"] is False
+          assert fence["raw_microsoft_bytes_retained"] is False
+
+          c = json.loads(Path("/tmp/pubconv-f/out/oledata-candidate-context.json").read_text())
+          assert c["schema_version"] == "chaptera.pubconv-oledata-candidate-context.v1"
+          assert c["candidate_count"] == 6
+          assert c["exact_anchor_instructions"]["0x69866"] == {
+              "mnemonic": "test",
+              "op_str": "word ptr [eax + 6], 0x8000",
+          }
+          assert c["exact_anchor_instructions"]["0x69878"] == {
+              "mnemonic": "cmp",
+              "op_str": "esi, 0x22",
+          }
+          assert c["exact_anchor_instructions"]["0x1d5cb"] == {
+              "mnemonic": "cmp",
+              "op_str": "eax, 0x22",
+          }
+          assert c["exact_anchor_instructions"]["0x772db"] == {
+              "mnemonic": "cmp",
+              "op_str": "word ptr [edi], 0x4f4d",
+          }
+          cf = c["bounded_interpretation"]
+          assert cf["function_boundaries_claimed"] is False
+          assert cf["field_semantics_assigned"] is False
+          assert cf["candidate_is_confirmed_oledata_consumer"] is False
+          assert cf["publisher2000_behavior_claimed"] is False
+
+          receipt = {
+              "schema_version": "chaptera.pubconv-oledata-f-static.acquisition.v1",
+              "package_sha256": os.environ["PACKAGE_SHA256"],
+              "dll_sha256": os.environ["DLL_SHA256"],
+              "raw_package_or_dll_retained_in_artifact": False,
+          }
+          Path("/tmp/pubconv-f/out/acquisition-receipt.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n"
+          )
+          PY
+
+      - name: Remove Microsoft bytes before artifact upload
+        run: |
+          rm -f /tmp/pubconv-f/out/PUBCONV.DLL
+          rm -rf /tmp/pubconv-f/download /tmp/pubconv-f/extracted /tmp/pubconv-f/msi-extracted /tmp/pubconv-f/cab-*
+
+      - name: Upload source-free static receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: pubconv-oledata-f-static
+          path: |
+            /tmp/pubconv-f/out/oledata-f-static.json
+            /tmp/pubconv-f/out/acquisition-receipt.json
+            /tmp/pubconv-f/out/summary.json
+            /tmp/pubconv-f/out/oledata-candidate-context.json
+            /tmp/pubconv-f/out/candidate-context-summary.json
+            /tmp/pubconv-f/out/pubconv-msi-hits.txt
+          if-no-files-found: error
+          retention-days: 14
