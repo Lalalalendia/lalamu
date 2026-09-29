@@ -50,7 +50,7 @@ def strict_publisher_cfb(data: bytes, harvest_pub) -> tuple[bool, str]:
     if data[:8] != CFB:
         return False, "not_cfb"
     try:
-        with olefile.OleFileIO(data) as ole:
+        with olefile.OleFileIO(io.BytesIO(data)) as ole:
             paths = {"/" + "/".join(parts) for parts in ole.listdir(streams=True, storages=False)}
             if "/Contents" not in paths:
                 return False, "contents_missing"
