@@ -79,19 +79,35 @@ def carrier_pattern(flags: dict[str, bool]) -> str:
 
 
 def storage_feature_projection(probe: dict[str, Any]) -> dict[str, Any]:
-    storages = [str(x) for x in probe.get("storages") or []]
+    # Rar's bounded CFB probe deliberately retains stream descriptors rather
+    # than the directory-storage list. Recover only bounded storage-like
+    # features that are directly evidenced by retained stream paths.
     streams = [x for x in probe.get("streams") or [] if isinstance(x, dict)]
     stream_paths = [str(x.get("path") or "") for x in streams]
 
-    object_storages = [
-        s for s in storages if re.match(r"^/Objects/Object(?:\s|$)", s, flags=re.I)
-    ]
+    object_roots: set[str] = set()
+    for path in stream_paths:
+        parts = [part for part in path.strip("/").split("/") if part]
+        if (
+            len(parts) >= 2
+            and parts[0].casefold() == "objects"
+            and re.fullmatch(r"object\s+\d+", parts[1], flags=re.I)
+        ):
+            object_roots.add("/".join(parts[:2]).casefold())
+
     ole_pres = [p for p in stream_paths if "olepres" in p.casefold()]
     return {
-        "embedded_object_storage_count": len(object_storages),
+        "embedded_object_storage_count": len(object_roots),
         "ole_presentation_stream_count": len(ole_pres),
-        "vba_storage_present": any(s.casefold() == "/vba" or s.casefold().startswith("/vba/") for s in storages),
-        "objects_storage_present": any(s.casefold() == "/objects" for s in storages),
+        "objects_storage_present": any(
+            p.casefold().startswith("/objects/") for p in stream_paths
+        ),
+        "embedded_word_document_present": any(
+            p.casefold().endswith("/worddocument") for p in stream_paths
+        ),
+        "msodatastore_present": any(
+            "msodatastore" in p.casefold() for p in stream_paths
+        ),
     }
 
 
@@ -271,12 +287,47 @@ def main() -> int:
         code for r in opened for code in (r.get("diagnostic_codes") or [])
     )
 
+    failure_groups: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in failed:
+        signature = str(row.get("open_error_signature_sha256") or row.get("runner_error") or "unknown")
+        failure_groups[signature].append(row)
+    failure_signature_groups = []
+    for signature, members in sorted(
+        failure_groups.items(), key=lambda item: (-len(item[1]), item[0])
+    ):
+        failure_signature_groups.append(
+            {
+                "signature": signature,
+                "count": len(members),
+                "families": dict(
+                    sorted(Counter(str(x.get("contents_family") or "unknown") for x in members).items())
+                ),
+                "revisions": dict(
+                    sorted(
+                        Counter(
+                            f"{x.get('contents_family')}:{x.get('contents_serialization_revision')}"
+                            for x in members
+                        ).items()
+                    )
+                ),
+                "representatives": [
+                    {
+                        "sha256": x.get("source_sha256"),
+                        "name": x.get("display_name"),
+                    }
+                    for x in members[:8]
+                ],
+            }
+        )
+
     reader_summary = {
         "input_file_count": len(paths),
         "opened_count": len(opened),
         "failed_count": len(failed),
         "opened_by_family": dict(sorted(opened_by_family.items())),
         "failed_by_family": dict(sorted(failed_by_family.items())),
+        "failure_signature_count": len(failure_signature_groups),
+        "failure_signature_groups": failure_signature_groups,
         "fidelity_status_counts": dict(sorted(fidelity.items())),
         "diagnostic_code_counts": dict(diagnostic_codes.most_common()),
         "maxima": {
@@ -351,6 +402,12 @@ def main() -> int:
         if row.get("ole_presentation_stream_count"):
             score += 2
             reasons.append("ole_presentation_streams")
+        if row.get("embedded_word_document_present"):
+            score += 3
+            reasons.append("embedded_word_document")
+        if row.get("msodatastore_present"):
+            score += 1
+            reasons.append("msodatastore")
 
         if rr.get("opened") is not True:
             score += 7
@@ -424,6 +481,8 @@ def main() -> int:
         "files_with_embedded_object_storage": sum(int(r.get("embedded_object_storage_count") or 0) > 0 for r in fingerprints),
         "max_embedded_object_storage_count": max(int(r.get("embedded_object_storage_count") or 0) for r in fingerprints),
         "files_with_ole_presentation_streams": sum(int(r.get("ole_presentation_stream_count") or 0) > 0 for r in fingerprints),
+        "files_with_embedded_word_document": sum(bool(r.get("embedded_word_document_present")) for r in fingerprints),
+        "files_with_msodatastore": sum(bool(r.get("msodatastore_present")) for r in fingerprints),
         "reader": reader_summary,
         "shortlist_count": min(60, len(shortlist)),
         "evidence_boundary": (
