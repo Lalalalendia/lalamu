@@ -985,10 +985,10 @@
       "total_absolute_count_error": 97
     }
   ],
-  "chaptera_upstream_commit": "6dea731432f01a29ffa104a60ed873c0bef206ec",
+  "chaptera_upstream_commit": "c32ffa1a9251e7f294d30340847063b6695f0a9f",
   "heuristic_warning": "Predicate scores are discovery aids only. The comparison count comes from the libmspub parser lineage; LibreOffice is not an independent Publisher parser vote. A candidate predicate requires separate source-semantic validation before use. In particular, do not copy libmspub's historical hard-coded DUMMY_PAGE seqNums into Chaptera; those constants are oracle-mechanism evidence, not native semantics.",
   "observed_pgt_types": [],
-  "receipt_sha256": "f660ba46cec7177e0a013391fc471b7fb28e5b9932c9ba93984275b4806b8e5e",
+  "receipt_sha256": "45704f5824527464c9e719e07eb100adc6f57914fbc38678183c562006e24151",
   "records": [
     {
       "byte_len": 204800,
@@ -1537,6 +1537,273 @@
         "status": "unavailable"
       },
       "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a"
+    },
+    {
+      "byte_len": 396800,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {},
+      "libmspub_lineage_page_count": null,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 5,
+          "controlling": [
+            {
+              "contents_seq_num": 290,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 28,
+                  "id": 1
+                },
+                {
+                  "block_type": 144,
+                  "declared_length": 20,
+                  "id": 6,
+                  "observed_container_hex": "00880e00000001280100000000000000",
+                  "pgids": [
+                    [
+                      1,
+                      0
+                    ]
+                  ]
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 289
+            },
+            {
+              "contents_seq_num": 291,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 28,
+                  "id": 1
+                },
+                {
+                  "block_type": 144,
+                  "declared_length": 20,
+                  "id": 6,
+                  "observed_container_hex": "00880e00000001280100000000000000",
+                  "pgids": [
+                    [
+                      1,
+                      0
+                    ]
+                  ]
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 266
+            },
+            {
+              "contents_seq_num": 299,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 22,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 294
+            },
+            {
+              "contents_seq_num": 306,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 28,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 302
+            },
+            {
+              "contents_seq_num": 319,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 10,
+                  "id": 1
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 313
+            },
+            {
+              "contents_seq_num": 347,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 10,
+                  "id": 1
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 321
+            }
+          ],
+          "document_page_list_entry_count": 6,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 12,
+                "119": 1,
+                "48": 2,
+                "49": 2,
+                "77": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 2,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 12
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 2,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "48": 2,
+                "96": 1
+              },
+              "contents_seq_num": 273,
+              "document_ordinal": 4,
+              "group_child_count": 2,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 277,
+              "document_ordinal": 5,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 1
+        },
+        "status": "success"
+      },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 2,
+        "controlling_page_lists": [
+          {
+            "controlling_seq_num": 290,
+            "parent_seq_num": 289,
+            "pgids": [
+              [
+                1,
+                0
+              ]
+            ]
+          },
+          {
+            "controlling_seq_num": 291,
+            "parent_seq_num": 266,
+            "pgids": [
+              [
+                1,
+                0
+              ]
+            ]
+          }
+        ],
+        "document_order_projected_seq_nums": [
+          266
+        ],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "pgid_order_resolved_seq_nums": [
+          266
+        ],
+        "pgids": [
+          [
+            1,
+            0
+          ]
+        ],
+        "reason": null,
+        "status": "resolved"
+      },
+      "sha256": "1e7f38b3ce1d0d956815992b15d361c405fc4bbdced5cdabb3c4581327cc183e"
     },
     {
       "byte_len": 342016,
@@ -2977,6 +3244,438 @@
         "status": "unavailable"
       },
       "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70"
+    },
+    {
+      "byte_len": 114176,
+      "chaptera_viewer_page_count": null,
+      "corpus_context": {},
+      "libmspub_lineage_page_count": null,
+      "probe": {
+        "receipt": {
+          "confirmed_page_count": 6,
+          "controlling": [
+            {
+              "contents_seq_num": 315,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 10,
+                  "id": 1
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 308
+            },
+            {
+              "contents_seq_num": 331,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 28,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 327
+            },
+            {
+              "contents_seq_num": 351,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 22,
+                  "id": 1
+                },
+                {
+                  "block_type": 144,
+                  "declared_length": 20,
+                  "id": 6,
+                  "observed_container_hex": "00880e00000001280100000000000000",
+                  "pgids": [
+                    [
+                      1,
+                      0
+                    ]
+                  ]
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 266
+            },
+            {
+              "contents_seq_num": 352,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 22,
+                  "id": 1
+                },
+                {
+                  "block_type": 144,
+                  "declared_length": 36,
+                  "id": 6,
+                  "observed_container_hex": "00880e0000000128010000000000000000880e00000001280100000001000000",
+                  "pgids": [
+                    [
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      1
+                    ]
+                  ]
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 289
+            },
+            {
+              "contents_seq_num": 370,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 10,
+                  "id": 1
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 363
+            },
+            {
+              "contents_seq_num": 380,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 22,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 374
+            },
+            {
+              "contents_seq_num": 388,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 28,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 384
+            },
+            {
+              "contents_seq_num": 445,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 22,
+                  "id": 1
+                },
+                {
+                  "block_type": 144,
+                  "declared_length": 36,
+                  "id": 6,
+                  "observed_container_hex": "00880e0000000128010000000000000000880e00000001280100000001000000",
+                  "pgids": [
+                    [
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      1
+                    ]
+                  ]
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 358
+            },
+            {
+              "contents_seq_num": 484,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 22,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 491
+            },
+            {
+              "contents_seq_num": 522,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 16,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 527
+            },
+            {
+              "contents_seq_num": 529,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 22,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 489
+            },
+            {
+              "contents_seq_num": 548,
+              "fields": [
+                {
+                  "block_type": 32,
+                  "id": 0
+                },
+                {
+                  "block_type": 136,
+                  "declared_length": 22,
+                  "id": 1
+                },
+                {
+                  "block_type": 32,
+                  "id": 9
+                }
+              ],
+              "fully_decoded": true,
+              "parent_seq_num": 541
+            }
+          ],
+          "document_page_list_entry_count": 7,
+          "pages": [
+            {
+              "child_raw_type_counts": {
+                "119": 1,
+                "76": 1,
+                "96": 1
+              },
+              "contents_seq_num": 263,
+              "document_ordinal": 0,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 2,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 8,
+                "119": 1,
+                "32": 2,
+                "48": 1,
+                "49": 2,
+                "77": 1,
+                "96": 1
+              },
+              "contents_seq_num": 266,
+              "document_ordinal": 1,
+              "group_child_count": 1,
+              "oid_dword0": 1,
+              "oid_dword1": 0,
+              "shape_child_count": 8
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "1": 6,
+                "119": 1,
+                "32": 2,
+                "48": 1,
+                "49": 1,
+                "77": 1,
+                "96": 1
+              },
+              "contents_seq_num": 358,
+              "document_ordinal": 2,
+              "group_child_count": 1,
+              "oid_dword0": 1,
+              "oid_dword1": 1,
+              "shape_child_count": 6
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 269,
+              "document_ordinal": 3,
+              "group_child_count": 0,
+              "oid_dword0": 2,
+              "oid_dword1": 1,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "48": 2,
+                "96": 1
+              },
+              "contents_seq_num": 273,
+              "document_ordinal": 5,
+              "group_child_count": 2,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            },
+            {
+              "applied_master_seq_num": 263,
+              "child_raw_type_counts": {
+                "119": 1,
+                "96": 1
+              },
+              "contents_seq_num": 277,
+              "document_ordinal": 6,
+              "group_child_count": 0,
+              "oid_dword0": 0,
+              "oid_dword1": 0,
+              "shape_child_count": 0
+            }
+          ],
+          "schema": "chaptera.pub-page-role-observation.v1",
+          "special_entry_count": 1
+        },
+        "status": "success"
+      },
+      "scenario_projection": {
+        "applicability": "bounded-source-observation-only; not generic visible-page authority",
+        "controlling_page_list_count": 3,
+        "controlling_page_lists": [
+          {
+            "controlling_seq_num": 351,
+            "parent_seq_num": 266,
+            "pgids": [
+              [
+                1,
+                0
+              ]
+            ]
+          },
+          {
+            "controlling_seq_num": 352,
+            "parent_seq_num": 289,
+            "pgids": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          },
+          {
+            "controlling_seq_num": 445,
+            "parent_seq_num": 358,
+            "pgids": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          }
+        ],
+        "evidence_basis": "unanimous-controlling-pgid-to-page-oid-membership-document-order-v1",
+        "reason": "controlling_page_lists_disagree",
+        "status": "unavailable"
+      },
+      "sha256": "96e54c5e7a4ff57042fb6ec2f91526713b98fe6f34a66bff2e10839492a2a424"
     },
     {
       "byte_len": 199680,
@@ -5064,12 +5763,13 @@
     "interpretation": "Count comparison is observational only. Resolved scenario projection is derived from unanimous OplControlling PageList Pgid -> PAGE Oid membership and then ordered by the DOCUMENT PageList; it is not promoted as universal Viewer authority."
   },
   "scenario_projection_status_counts": {
-    "unavailable": 32
+    "resolved": 1,
+    "unavailable": 33
   },
   "schema": "lalamu.pub-page-role-sweep.v2",
   "scored_file_count": 19,
   "status_counts": {
     "rejected": 1,
-    "success": 32
+    "success": 34
   }
 }
