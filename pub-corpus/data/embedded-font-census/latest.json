@@ -1,0 +1,644 @@
+{
+  "corpus_file_count": 35,
+  "embedded_font_file_count": 0,
+  "embedded_font_record_marker_count": 0,
+  "evidence_boundary": "libmspub is correlated implementation evidence; detection proves that libmspub surfaced an embedded-font record, not Publisher parity",
+  "hit_sha256": [],
+  "libmspub_supported_count": 35,
+  "libmspub_unsupported_or_error_count": 0,
+  "method": "libmspub pub2raw RVNGRawDrawingGenerator marker census",
+  "pub2raw_version": "pub2raw 0.1.4",
+  "records": [
+    {
+      "byte_len": 204800,
+      "embedded_font_detected": false,
+      "file_name": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 1342538,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 3505664,
+      "embedded_font_detected": false,
+      "file_name": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "155f8fd8c191851e4380ab1557638aeabb34b2257fa12a7748ab00b09edb74ba",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 7393849,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 188928,
+      "embedded_font_detected": false,
+      "file_name": "16ea75ba3cba286af382619a9edc2d7940d3e4f74a83577520b470c9fbc2852d.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "16ea75ba3cba286af382619a9edc2d7940d3e4f74a83577520b470c9fbc2852d",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 542367,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 215040,
+      "embedded_font_detected": false,
+      "file_name": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 2010144,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 396800,
+      "embedded_font_detected": false,
+      "file_name": "1e7f38b3ce1d0d956815992b15d361c405fc4bbdced5cdabb3c4581327cc183e.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "1e7f38b3ce1d0d956815992b15d361c405fc4bbdced5cdabb3c4581327cc183e",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 504554,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 342016,
+      "embedded_font_detected": false,
+      "file_name": "2b1a2c5183d2fa83fdf9b0e0bf386bc0861b034e08f00fb3fc4171857c097576.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "2b1a2c5183d2fa83fdf9b0e0bf386bc0861b034e08f00fb3fc4171857c097576",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 1036270,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 202240,
+      "embedded_font_detected": false,
+      "file_name": "4029d4a1bf5be89d745c079b9c06ab33e5bdceb997a4761c5e11238110d879c9.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "4029d4a1bf5be89d745c079b9c06ab33e5bdceb997a4761c5e11238110d879c9",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 55004,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 545792,
+      "embedded_font_detected": false,
+      "file_name": "4758095aa58927b1aefa23c384bb16cd598e6732ef2af5af68471118dc25c567.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "4758095aa58927b1aefa23c384bb16cd598e6732ef2af5af68471118dc25c567",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 4919068,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 204800,
+      "embedded_font_detected": false,
+      "file_name": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "53388a22c9513488895785d21628b8bbc9dad4c7617ab7f639bd346c42d68f78",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 1342538,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 9351168,
+      "embedded_font_detected": false,
+      "file_name": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "6c6af8064f91ad5321f76c97c00b1a6564794d92614373334de23e2759294aaa",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 38111620,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 97280,
+      "embedded_font_detected": false,
+      "file_name": "712e1db9cefd0af613b12fb776720ac5d67ebe772468f2e47cb26a1f2e6ce28a.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "712e1db9cefd0af613b12fb776720ac5d67ebe772468f2e47cb26a1f2e6ce28a",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 974,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 542208,
+      "embedded_font_detected": false,
+      "file_name": "770daf58c214d6f848af676b6a53c04934f7c1499e5674837a18a2f63875dc90.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "770daf58c214d6f848af676b6a53c04934f7c1499e5674837a18a2f63875dc90",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 4914737,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 97792,
+      "embedded_font_detected": false,
+      "file_name": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 5499,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 217088,
+      "embedded_font_detected": false,
+      "file_name": "800d2648854fb3fe1f9314a1ea7b7969d79cd9cb9b12cc454a71dde8177b2450.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "800d2648854fb3fe1f9314a1ea7b7969d79cd9cb9b12cc454a71dde8177b2450",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 129394,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 215040,
+      "embedded_font_detected": false,
+      "file_name": "9271c1e5e57fa885d953a9d4cee5a4ccb5e10ac9a93c0a5aa7027683b6cece77.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "9271c1e5e57fa885d953a9d4cee5a4ccb5e10ac9a93c0a5aa7027683b6cece77",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 2010144,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 6412288,
+      "embedded_font_detected": false,
+      "file_name": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "942759e9d092e60f5ec4af574219590de729b2091abec94fd79c3563eccaaa70",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 8359568,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 114176,
+      "embedded_font_detected": false,
+      "file_name": "96e54c5e7a4ff57042fb6ec2f91526713b98fe6f34a66bff2e10839492a2a424.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "96e54c5e7a4ff57042fb6ec2f91526713b98fe6f34a66bff2e10839492a2a424",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 32033,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 199680,
+      "embedded_font_detected": false,
+      "file_name": "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "9765b8737b57c90ce7503454edc6ad7c2c1559b0d24fa9ac1309db4b37cdc3f6",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 57520,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 95744,
+      "embedded_font_detected": false,
+      "file_name": "990cf478aed51a6e7fdd63556bf7402699d6a3eb1fdabaf8b18a621353878a46.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "990cf478aed51a6e7fdd63556bf7402699d6a3eb1fdabaf8b18a621353878a46",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 9658,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 114688,
+      "embedded_font_detected": false,
+      "file_name": "9923f422543b1ed43c090042c9e4256072df6fd961c06975e2b64335e09e9a15.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "9923f422543b1ed43c090042c9e4256072df6fd961c06975e2b64335e09e9a15",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 52952,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 204800,
+      "embedded_font_detected": false,
+      "file_name": "9d6580b5a1c21543803410d44dd6e0a76aaa4b45ef6652e52afb9fbe4087bd06.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "9d6580b5a1c21543803410d44dd6e0a76aaa4b45ef6652e52afb9fbe4087bd06",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 1342538,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 2465280,
+      "embedded_font_detected": false,
+      "file_name": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "a7679f3ae2a14760d17e1c50f13912266369aecac52f953983923766fe100ebf",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 35326141,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 226816,
+      "embedded_font_detected": false,
+      "file_name": "a8f7c5abc07397d32d1a208f5e9dbaec9b906e83fee1565f468759b357553f60.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "a8f7c5abc07397d32d1a208f5e9dbaec9b906e83fee1565f468759b357553f60",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 140267,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 176128,
+      "embedded_font_detected": false,
+      "file_name": "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "b1faaba988e88b4134dc8a495cb68c6f7496f3fbaedcba65fa6e02f39b29b621",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 119470,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 183296,
+      "embedded_font_detected": false,
+      "file_name": "b61be87eda0fbf77249a51993da5fe744446bc8ff0d25d4a922e4e29f8f29cd1.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "b61be87eda0fbf77249a51993da5fe744446bc8ff0d25d4a922e4e29f8f29cd1",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 207982,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 293376,
+      "embedded_font_detected": false,
+      "file_name": "bbaefcbdcdd2dbe51a636ed554c14d6f5353c98e795b5f88d26f79542e5d93ba.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "bbaefcbdcdd2dbe51a636ed554c14d6f5353c98e795b5f88d26f79542e5d93ba",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 215692,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 210944,
+      "embedded_font_detected": false,
+      "file_name": "bd51e69bdf8ad0de0e190a0d013782ceebc85acdda22948de0b84be1c7aa28f1.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "bd51e69bdf8ad0de0e190a0d013782ceebc85acdda22948de0b84be1c7aa28f1",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 125586,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 215040,
+      "embedded_font_detected": false,
+      "file_name": "c13eb49efa38041a767d326cd231160457c4c13c3bf252c6dc167cd57f07b4bb.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "c13eb49efa38041a767d326cd231160457c4c13c3bf252c6dc167cd57f07b4bb",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 2010144,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 204800,
+      "embedded_font_detected": false,
+      "file_name": "c19fb45f346d671fa9746a1ac6e5fa083a72b184adfa617a565d8e14b4151ebd.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "c19fb45f346d671fa9746a1ac6e5fa083a72b184adfa617a565d8e14b4151ebd",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 1342538,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 204800,
+      "embedded_font_detected": false,
+      "file_name": "d2239f6c60f2a7520c02f01e37ad5899873366e4481fc6a1952d58f074d508b1.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "d2239f6c60f2a7520c02f01e37ad5899873366e4481fc6a1952d58f074d508b1",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 1342538,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 227840,
+      "embedded_font_detected": false,
+      "file_name": "de57184e48477cd9af2a1a4f0aee85cb3ea988558ef92be2ad54bbc6f547fa53.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "de57184e48477cd9af2a1a4f0aee85cb3ea988558ef92be2ad54bbc6f547fa53",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 140462,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 699904,
+      "embedded_font_detected": false,
+      "file_name": "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "e2eb919082535195ec24651305aec687d9e891ef7658b379deb94ec7c3b17190",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 4392725,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 215040,
+      "embedded_font_detected": false,
+      "file_name": "f2990235617259921c959ddff24dc30ca438ed44dc0126b57e6943fa4b6e7dcc.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "f2990235617259921c959ddff24dc30ca438ed44dc0126b57e6943fa4b6e7dcc",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 2010144,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 546304,
+      "embedded_font_detected": false,
+      "file_name": "f4f23d04d29f20407b9e5c1f57f8df84e71084d9e8cd4f0c1cc0064737053de7.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "f4f23d04d29f20407b9e5c1f57f8df84e71084d9e8cd4f0c1cc0064737053de7",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 4925910,
+      "supported_by_libmspub": true
+    },
+    {
+      "byte_len": 215040,
+      "embedded_font_detected": false,
+      "file_name": "fa901f49124264ab5cca37ec98deb07ef83b13ffc91666af719cce0c0f73f186.pub",
+      "font_names": [],
+      "marker_counts": {
+        "application/vnd.ms-fontobject": 0,
+        "defineEmbeddedFont": 0
+      },
+      "pub2raw_exit": 0,
+      "raw_output_path": null,
+      "sha256": "fa901f49124264ab5cca37ec98deb07ef83b13ffc91666af719cce0c0f73f186",
+      "snippets": [],
+      "stderr_len": 0,
+      "stderr_tail": "",
+      "stdout_len": 2010144,
+      "supported_by_libmspub": true
+    }
+  ],
+  "schema": "lalamu.pub-embedded-font-census.v1"
+}
