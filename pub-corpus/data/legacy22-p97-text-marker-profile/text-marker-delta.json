@@ -1,0 +1,21 @@
+{
+  "schema": "lalamu.legacy22-p97-text-marker-probe.v1",
+  "base_candidate_rar_ref": "aa2df26384fe6fe29e88dcd0ee9fdda908d4c82a",
+  "single_change": "LEGACY_TEXT_SHAPE_TYPE 0x0008 -> 0x0000",
+  "old_open_before": 165,
+  "old_open_after": 165,
+  "old_open_delta": 0,
+  "old_opened_with_scene_nodes_before": 0,
+  "old_opened_with_scene_nodes_after": 136,
+  "old_opened_with_story_frames_before": 0,
+  "old_opened_with_story_frames_after": 136,
+  "old_opened_with_text_fragments_before": 0,
+  "old_opened_with_text_fragments_after": 135,
+  "old_scene_node_total_after": 509,
+  "old_story_frame_total_after": 509,
+  "old_text_fragment_total_after": 498,
+  "old_story_total_after": 770,
+  "mature_open_before": 379,
+  "mature_open_after": 379,
+  "changed_open_state_count": 0
+}

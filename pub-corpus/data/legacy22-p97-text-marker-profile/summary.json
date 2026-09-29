@@ -1,0 +1,1140 @@
+{
+  "carrier_pattern_counts": {
+    "contents": 226,
+    "contents|escher|escher_delay|quill": 398,
+    "contents|quill": 1
+  },
+  "contents_family_logical_counts": {
+    "0x22": 228,
+    "0x2c": 396,
+    "unknown": 1
+  },
+  "contents_family_physical_counts": {
+    "0x22": 228,
+    "0x2c": 396,
+    "unknown": 1
+  },
+  "contents_family_revision_logical_counts": {
+    "0x22:125": 128,
+    "0x22:136": 77,
+    "0x22:616": 1,
+    "0x22:704": 20,
+    "0x22:717": 2,
+    "0x2c:14": 14,
+    "0x2c:19": 66,
+    "0x2c:21": 52,
+    "0x2c:24": 55,
+    "0x2c:26": 209,
+    "unknown:unknown": 1
+  },
+  "corpus_file_count": 625,
+  "duplicate_logical_group_count": 0,
+  "evidence_boundary": "structural family/revision is not an exact Publisher marketing-version label; Reader receipts are structural/product-open evidence, not Publisher-equivalent visual fidelity",
+  "files_with_embedded_object_storage": 128,
+  "files_with_embedded_word_document": 6,
+  "files_with_msodatastore": 25,
+  "files_with_ole_presentation_streams": 128,
+  "largest_structural_cluster_size": 30,
+  "logical_identity_count": 625,
+  "max_embedded_object_storage_count": 53,
+  "path_cluster_count": 124,
+  "path_singleton_count": 103,
+  "rar_ref": "aa2df26384fe6fe29e88dcd0ee9fdda908d4c82a+text-marker-0000",
+  "reader": {
+    "diagnostic_code_counts": {
+      "viewer.geometry.grouped_story_projected": 65,
+      "viewer.geometry.grouped_story_projection_unavailable": 10,
+      "viewer.geometry.grouped_table_projected": 12,
+      "viewer.geometry.grouped_table_projection_unavailable": 1,
+      "viewer.geometry.incomplete": 16,
+      "viewer.geometry.invalid": 2,
+      "viewer.image.asset_not_exact": 93,
+      "viewer.layout.scene_partial": 146,
+      "viewer.legacy.object_not_materialized": 138,
+      "viewer.object.opaque_data": 12,
+      "viewer.page_extent.equivalent_source_records": 77,
+      "viewer.page_list.special_entry": 115,
+      "viewer.page_projection.roles_unresolved": 379,
+      "viewer.page_projection.scenario_order_observed": 10,
+      "viewer.page_projection.scenario_order_unavailable": 12,
+      "viewer.table.layout_metrics_unavailable": 73,
+      "viewer.table.mcld_layout_metrics_unavailable": 150,
+      "viewer.table.text_map_missing": 10,
+      "viewer.text.fallback_flow_metrics": 502,
+      "viewer.text.fallback_overset": 70,
+      "viewer.text.flow_not_explicit": 41,
+      "viewer.text.frame_capacity_partial": 22,
+      "viewer.text.source_typography_partial": 257,
+      "viewer.text.typography_projection_unavailable": 24,
+      "viewer.text.typography_unknown_block_type": 17,
+      "viewer.visual.geometry_only": 515
+    },
+    "failed_by_family": {
+      "0x22": 63,
+      "0x2c": 17,
+      "unknown": 1
+    },
+    "failed_count": 81,
+    "failure_signature_count": 55,
+    "failure_signature_groups": [
+      {
+        "count": 8,
+        "families": {
+          "0x2c": 8
+        },
+        "representatives": [
+          {
+            "name": "whatIsThisCard_2.pub",
+            "sha256": "190e1c440eb4170758af00dac385af0f1c0c2d5ce198aacd2a7cd57474a57151"
+          },
+          {
+            "name": "trophy_traditional.pub",
+            "sha256": "32b857475ae5ca8207942a40dc708d63153c9140bb06ee740d7e235944c0a027"
+          },
+          {
+            "name": "Jo-Els_Website_Menu.pub",
+            "sha256": "636c94b0c9d6759fc71369cd292aeade61d55f23e8a0959b3982e03bbfc2142d"
+          },
+          {
+            "name": "ShapeTest.pub",
+            "sha256": "78ef44d22b5b1aa2cc031d03a039ab6ff7c472b8dad2869c32dd1aee7d7667bb"
+          },
+          {
+            "name": "trophy_contemp.pub",
+            "sha256": "7a5393159155ad6b7e1e47fa2769e05ffdb7124298470bae15faa556b3c06cd6"
+          },
+          {
+            "name": "Futures-mrkt-Participants-signs.pub",
+            "sha256": "8f514838dd553dc011942afbb385ce8f3e539795984a8fc97cfcb6a880023bc2"
+          },
+          {
+            "name": "LandscapeShapeTest.pub",
+            "sha256": "990cf478aed51a6e7fdd63556bf7402699d6a3eb1fdabaf8b18a621353878a46"
+          },
+          {
+            "name": "whatIsThisCard_1.pub",
+            "sha256": "be415f413886ede01e6018c8a89538deb88719418c535baf50dd041f15393698"
+          }
+        ],
+        "revisions": {
+          "0x2c:19": 5,
+          "0x2c:24": 1,
+          "0x2c:26": 2
+        },
+        "signature": "c659f02436c82542dcd0b64fcd196c146b1ed2046c3f65c4924bee7529679753"
+      },
+      {
+        "count": 4,
+        "families": {
+          "0x22": 4
+        },
+        "representatives": [
+          {
+            "name": "02a2b240864c53159b7ddfa7aaebf9e943777bc0d3b64b819ad72c57796f66d7.pub",
+            "sha256": "02a2b240864c53159b7ddfa7aaebf9e943777bc0d3b64b819ad72c57796f66d7"
+          },
+          {
+            "name": "08af039a39b05d544ba20f04fec35b73436b241f364bcd7c694b70b52899c70c.pub",
+            "sha256": "08af039a39b05d544ba20f04fec35b73436b241f364bcd7c694b70b52899c70c"
+          },
+          {
+            "name": "5861117efd81d7165f5f4fc7e69f93894324c9511b7e3753692d9f576f0546e9.pub",
+            "sha256": "5861117efd81d7165f5f4fc7e69f93894324c9511b7e3753692d9f576f0546e9"
+          },
+          {
+            "name": "daa5ff11fc5d81b7f516cfa20c1a4f734a30ef902c84c71fd061a3a4492b8a01.pub",
+            "sha256": "daa5ff11fc5d81b7f516cfa20c1a4f734a30ef902c84c71fd061a3a4492b8a01"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 1,
+          "0x22:136": 3
+        },
+        "signature": "01625b23405abf36161ee6e5f12a285aafc5edf391e1745c14557dfe634a099b"
+      },
+      {
+        "count": 3,
+        "families": {
+          "0x22": 3
+        },
+        "representatives": [
+          {
+            "name": "379997ec5cbd2efdbdcc1b7cbb8c9764a4e313aa6f3c008f3850a1e1cb725ba5.pub",
+            "sha256": "379997ec5cbd2efdbdcc1b7cbb8c9764a4e313aa6f3c008f3850a1e1cb725ba5"
+          },
+          {
+            "name": "d640dddd8e23aac9d7cc3189c2d681b8b85f78fbbff4152b1e49995c314ecc9d.pub",
+            "sha256": "d640dddd8e23aac9d7cc3189c2d681b8b85f78fbbff4152b1e49995c314ecc9d"
+          },
+          {
+            "name": "e26a770a0353cafb535e85b0424f0d5c1fbd93c7af48ffa7c0ca29125edfe4a1.pub",
+            "sha256": "e26a770a0353cafb535e85b0424f0d5c1fbd93c7af48ffa7c0ca29125edfe4a1"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 2,
+          "0x22:136": 1
+        },
+        "signature": "47c697a0a1245c425c2efd7820fa601601887d418bcefb890ccf88c5bf91e61e"
+      },
+      {
+        "count": 3,
+        "families": {
+          "0x22": 3
+        },
+        "representatives": [
+          {
+            "name": "54c59e90239e8abe399e534521183adb1b7df8915a480d120ade67cd891d4a04.pub",
+            "sha256": "54c59e90239e8abe399e534521183adb1b7df8915a480d120ade67cd891d4a04"
+          },
+          {
+            "name": "a9527c1fa08b9d83b96abc3cc6732529bae5d28b65e435b9a2bc62be4a0dad70.pub",
+            "sha256": "a9527c1fa08b9d83b96abc3cc6732529bae5d28b65e435b9a2bc62be4a0dad70"
+          },
+          {
+            "name": "fb975158ee8c9acb487e1fb5b83f4e63c620c085e31a45c543e4777b38552a82.pub",
+            "sha256": "fb975158ee8c9acb487e1fb5b83f4e63c620c085e31a45c543e4777b38552a82"
+          }
+        ],
+        "revisions": {
+          "0x22:136": 3
+        },
+        "signature": "8786a32e60896e57ab97d675db7d8c6d18fcf9b9ef3bbaf99dcd11abd20747a2"
+      },
+      {
+        "count": 3,
+        "families": {
+          "0x22": 3
+        },
+        "representatives": [
+          {
+            "name": "36b3c7d4575e7d1806e83cd1c196e8b5c3b03b1be08dd94d0fb4dbd28c4dcba7.pub",
+            "sha256": "36b3c7d4575e7d1806e83cd1c196e8b5c3b03b1be08dd94d0fb4dbd28c4dcba7"
+          },
+          {
+            "name": "bea6c618c52cb4cdd8eb48b4ae2bff7290b79161abe6326b49329b5e6434f32a.pub",
+            "sha256": "bea6c618c52cb4cdd8eb48b4ae2bff7290b79161abe6326b49329b5e6434f32a"
+          },
+          {
+            "name": "c8d5caae2d2339a2ccfba3d98983c1e706e15348639c332fa57ee744b70405bd.pub",
+            "sha256": "c8d5caae2d2339a2ccfba3d98983c1e706e15348639c332fa57ee744b70405bd"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 1,
+          "0x22:136": 2
+        },
+        "signature": "c8474e477dc61c36a7f4370ca1befc0435b934a08363ddf1f0b5ffd00179d5f8"
+      },
+      {
+        "count": 3,
+        "families": {
+          "0x22": 3
+        },
+        "representatives": [
+          {
+            "name": "548f923111c491581a05206d216ee81fe0e619661990377dbcc027bd9d4748eb.pub",
+            "sha256": "548f923111c491581a05206d216ee81fe0e619661990377dbcc027bd9d4748eb"
+          },
+          {
+            "name": "9d899a909a2daa80bb28717bcbbe025db1ad4d61129e2085b0fff593ff531238.pub",
+            "sha256": "9d899a909a2daa80bb28717bcbbe025db1ad4d61129e2085b0fff593ff531238"
+          },
+          {
+            "name": "9e55bf04ac75807b2afd76350ec1f94314cf5b6cf4255202223135e4ae4d3199.pub",
+            "sha256": "9e55bf04ac75807b2afd76350ec1f94314cf5b6cf4255202223135e4ae4d3199"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 2,
+          "0x22:136": 1
+        },
+        "signature": "ea9f6dc7d3fe289b0b66cca965589bd6a1c58f0748d774644cdf4e73f9661104"
+      },
+      {
+        "count": 2,
+        "families": {
+          "0x22": 2
+        },
+        "representatives": [
+          {
+            "name": "PETA2.pub",
+            "sha256": "1b3d00a67c370d9938f67c198ba1ba90f0e962d95c7db9557e9a3e2cdf134886"
+          },
+          {
+            "name": "Clubbooklet2008.pub",
+            "sha256": "2b1a2c5183d2fa83fdf9b0e0bf386bc0861b034e08f00fb3fc4171857c097576"
+          }
+        ],
+        "revisions": {
+          "0x22:717": 2
+        },
+        "signature": "0a278ebfcb44243c35b938d36f90e973b9a75ab9140cf2fbd2ceea3e214dbe0d"
+      },
+      {
+        "count": 2,
+        "families": {
+          "0x22": 2
+        },
+        "representatives": [
+          {
+            "name": "cf35a6a02911320cde1843c68d8532d04fe9f681fa6615aa919cee32e59ef2d9.pub",
+            "sha256": "cf35a6a02911320cde1843c68d8532d04fe9f681fa6615aa919cee32e59ef2d9"
+          },
+          {
+            "name": "f9ed98910b4258c68312c4059dfd112fd499fa85000634f30b6d5042ec4ba4e7.pub",
+            "sha256": "f9ed98910b4258c68312c4059dfd112fd499fa85000634f30b6d5042ec4ba4e7"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 2
+        },
+        "signature": "74e1525787d6eeb6d0c581aa90d1992c56df89e356ba5a5bd5e3cc15cd551458"
+      },
+      {
+        "count": 2,
+        "families": {
+          "0x22": 2
+        },
+        "representatives": [
+          {
+            "name": "3114f1328f49066cf3168a76758ffb279e1a838b54e618cc2c050ae163398f35.pub",
+            "sha256": "3114f1328f49066cf3168a76758ffb279e1a838b54e618cc2c050ae163398f35"
+          },
+          {
+            "name": "f824bc7932c80c411a903957131a00fdd83f88208417083644933f209f79b741.pub",
+            "sha256": "f824bc7932c80c411a903957131a00fdd83f88208417083644933f209f79b741"
+          }
+        ],
+        "revisions": {
+          "0x22:136": 1,
+          "0x22:704": 1
+        },
+        "signature": "8b5fb4abd2c7e214baa9407314f386ac14b52a5a0b28ede81b6eec5e214d89a8"
+      },
+      {
+        "count": 2,
+        "families": {
+          "0x22": 2
+        },
+        "representatives": [
+          {
+            "name": "1b88bc290bf3b53f5c7dac055b4d50bf0c2a8ab6da99e99459902fa475807387.pub",
+            "sha256": "1b88bc290bf3b53f5c7dac055b4d50bf0c2a8ab6da99e99459902fa475807387"
+          },
+          {
+            "name": "2f94e4880bd8eddd814f84768a9fac05659f8146cccd26790bdfcee6c9792b61.pub",
+            "sha256": "2f94e4880bd8eddd814f84768a9fac05659f8146cccd26790bdfcee6c9792b61"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 1,
+          "0x22:136": 1
+        },
+        "signature": "a24cf1afe9ada0c8bf1e2b9103f4bcc1fee67a4fbe80bcd8fd9ece3625a136cf"
+      },
+      {
+        "count": 2,
+        "families": {
+          "0x22": 2
+        },
+        "representatives": [
+          {
+            "name": "4960e5bb0cf62b2d9387a0c454973a1aaa02031252f180a364112b41bac87c5b.pub",
+            "sha256": "4960e5bb0cf62b2d9387a0c454973a1aaa02031252f180a364112b41bac87c5b"
+          },
+          {
+            "name": "d59d7c14627becbab2d42542f5f47d7c2ecb1f67101419f67b5fa8aba782d7c5.pub",
+            "sha256": "d59d7c14627becbab2d42542f5f47d7c2ecb1f67101419f67b5fa8aba782d7c5"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 1,
+          "0x22:136": 1
+        },
+        "signature": "af991e2422af60c64bcd3abf41954039cb50328517054aeecbe4ae3364a3579b"
+      },
+      {
+        "count": 2,
+        "families": {
+          "0x22": 2
+        },
+        "representatives": [
+          {
+            "name": "2b9c28f42633507773dabdb1efe5b4f88343f10fccd52f36babaf1c3bb7bd8ed.pub",
+            "sha256": "2b9c28f42633507773dabdb1efe5b4f88343f10fccd52f36babaf1c3bb7bd8ed"
+          },
+          {
+            "name": "aaeb4120e72a564aab60f5275c1dea8ed5830ec4de368d3bc22d410f7c5342c4.pub",
+            "sha256": "aaeb4120e72a564aab60f5275c1dea8ed5830ec4de368d3bc22d410f7c5342c4"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 2
+        },
+        "signature": "b9d6aad25c1e33e0fa465593f6ea7e6990b27299d6fa1a1b629cc45db5df3843"
+      },
+      {
+        "count": 2,
+        "families": {
+          "0x22": 2
+        },
+        "representatives": [
+          {
+            "name": "877800395b639164d23b4f9102e4d451a047418f5c952ff58f65da31ebb07f27.pub",
+            "sha256": "877800395b639164d23b4f9102e4d451a047418f5c952ff58f65da31ebb07f27"
+          },
+          {
+            "name": "9fd4894622c1bae4550147a7163bdfcad891aa72b270b3516fc1a00c6443eaf8.pub",
+            "sha256": "9fd4894622c1bae4550147a7163bdfcad891aa72b270b3516fc1a00c6443eaf8"
+          }
+        ],
+        "revisions": {
+          "0x22:136": 2
+        },
+        "signature": "ce35d311a77706e647c7de1b0b7c01a99ddf132f40c24e83dcf430805e11eaad"
+      },
+      {
+        "count": 2,
+        "families": {
+          "0x22": 1,
+          "unknown": 1
+        },
+        "representatives": [
+          {
+            "name": "6cb88d4e02f823876a23d7f7414c7d370ca30996c30f145ec92b62f519b22170.pub",
+            "sha256": "6cb88d4e02f823876a23d7f7414c7d370ca30996c30f145ec92b62f519b22170"
+          },
+          {
+            "name": "d72a4c79a378f93299be53220d7809a433235f74103adcffc714748068007e6f.pub",
+            "sha256": "d72a4c79a378f93299be53220d7809a433235f74103adcffc714748068007e6f"
+          }
+        ],
+        "revisions": {
+          "0x22:136": 1,
+          "unknown:None": 1
+        },
+        "signature": "dd1e8b98039c1754185681f27d39a13d74a3d82803ed57a817f495b4ffcbe9f4"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "ceb00ff566915c7c3d913013663116e595c356e4f5f9ae6fca0c88d48a7b9932.pub",
+            "sha256": "ceb00ff566915c7c3d913013663116e595c356e4f5f9ae6fca0c88d48a7b9932"
+          }
+        ],
+        "revisions": {
+          "0x22:136": 1
+        },
+        "signature": "0367fb91b3dc666a0895e56392a67f4f1f27f54114772f8590f5fa7ef448550e"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x2c": 1
+        },
+        "representatives": [
+          {
+            "name": "POD planning activities.pub",
+            "sha256": "c96df4b2d4ce3d5bb238b2b31d8021501495b9bd15ff44eb9d918495c342430b"
+          }
+        ],
+        "revisions": {
+          "0x2c:14": 1
+        },
+        "signature": "082f7864c2d141c1fabc1153b9eabd4ddc3a0d9414ee3cb930a57c34a4644c79"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x2c": 1
+        },
+        "representatives": [
+          {
+            "name": "colourplenary.pub",
+            "sha256": "b29ed1e9227e67256a58d23cbea58b9bcfb38943dd9ed07a4110f4cf8959dbe4"
+          }
+        ],
+        "revisions": {
+          "0x2c:19": 1
+        },
+        "signature": "08c4c106bf03ac39ff5b54431d3f9e8f78aaa5263b4b607da8ca9ba226442e52"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x2c": 1
+        },
+        "representatives": [
+          {
+            "name": "Pod design ideas.pub",
+            "sha256": "ccfcbadc8951acece4d10cc27d71f28f318685845b94ae07fd46331c3571f3ff"
+          }
+        ],
+        "revisions": {
+          "0x2c:14": 1
+        },
+        "signature": "0a3f807b11d00ba4d6803e3bbf0b33724ba2845934ccf043b4f9dcebca232251"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "3041c3250cf2ae0527745b642cda8223445cc52f4b570282c81294163c1b091c.pub",
+            "sha256": "3041c3250cf2ae0527745b642cda8223445cc52f4b570282c81294163c1b091c"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 1
+        },
+        "signature": "1020f071ab91e68c41651c7b7b9e48f68491bc0ed57519f7a8c931648d3f21f3"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "90b5237149f75af4c26a40e76d51f1bce23a73bc7c4c9204db1020a10dc4b2cd.pub",
+            "sha256": "90b5237149f75af4c26a40e76d51f1bce23a73bc7c4c9204db1020a10dc4b2cd"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 1
+        },
+        "signature": "1ac6e7a890cbed2789ea6a39fccdf7e928cd5bfa1c71d92a3343e740740400fa"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "2aae164a43338136efab15262c044ef30e6c38a278e90aac7c991a992d915bcc.pub",
+            "sha256": "2aae164a43338136efab15262c044ef30e6c38a278e90aac7c991a992d915bcc"
+          }
+        ],
+        "revisions": {
+          "0x22:136": 1
+        },
+        "signature": "1d07d6778ab57fbec386ff14313ac3d8f8bd76dd25ea0c42ce07fc43d5131e94"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "ba33ccaf2f41d85a44743279dc0295389576fb1b6851cee0d1a85677bf499738.pub",
+            "sha256": "ba33ccaf2f41d85a44743279dc0295389576fb1b6851cee0d1a85677bf499738"
+          }
+        ],
+        "revisions": {
+          "0x22:136": 1
+        },
+        "signature": "2893cea47cede1f86c916896189b31a1f56a5800eae84a35b1524d71a42e57ea"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "b688caa757e52b34e84ed6f69207ceb55fe067e16f5f5122ac09ab606a6ca778.pub",
+            "sha256": "b688caa757e52b34e84ed6f69207ceb55fe067e16f5f5122ac09ab606a6ca778"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 1
+        },
+        "signature": "350d9edc75907e7b6ba3cf44dcb1179e1b788e3f4987680493de5b26d077e168"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "d97980d6fecd7fe3064d1b745fe57991eea828399c091d3083e5e7bca9876871.pub",
+            "sha256": "d97980d6fecd7fe3064d1b745fe57991eea828399c091d3083e5e7bca9876871"
+          }
+        ],
+        "revisions": {
+          "0x22:136": 1
+        },
+        "signature": "37dec901a929b0689017bd8d1b53103d968406443d30f07c3d85462cf4eb415c"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "1da75cd9ba65b91c4bf4f17c015e0d9dd8740952f90295b54aa4f8d48ae378f3.pub",
+            "sha256": "1da75cd9ba65b91c4bf4f17c015e0d9dd8740952f90295b54aa4f8d48ae378f3"
+          }
+        ],
+        "revisions": {
+          "0x22:704": 1
+        },
+        "signature": "44a4314d682c29ea6d27e8c42aa4fcf1b696b5f93895ea055e505daee33f077c"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x2c": 1
+        },
+        "representatives": [
+          {
+            "name": "vacformws1.pub",
+            "sha256": "9d6a7f3638c49e043795416545e7f2305498dcfecd064cfa9ada03e27167e966"
+          }
+        ],
+        "revisions": {
+          "0x2c:14": 1
+        },
+        "signature": "472f8189cc7c3a2f34b4f2012d9b344351353fc423b4619885b0b901f1c59d75"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "a4f7a754b9c2c94a6708867e873d0c9f7246dbdc676a2fbc890e79a684c9178b.pub",
+            "sha256": "a4f7a754b9c2c94a6708867e873d0c9f7246dbdc676a2fbc890e79a684c9178b"
+          }
+        ],
+        "revisions": {
+          "0x22:704": 1
+        },
+        "signature": "4a5974e27e6eca0ebdf4335639ec05dfd1841c40ccdc24d201b43a0798cfa3d9"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "c055e3d2020c42b60fec0b828352682c99ad48991f4c3de34808e425751e4159.pub",
+            "sha256": "c055e3d2020c42b60fec0b828352682c99ad48991f4c3de34808e425751e4159"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 1
+        },
+        "signature": "4ec4bdc03067b3d484d3e0dc42b48f891d9e42e495eabebf995a7214f5687d4a"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "53ca33b1076388d528295f2f6df4a0071a54120cf780f9c4fba31e2b2bbf8e15.pub",
+            "sha256": "53ca33b1076388d528295f2f6df4a0071a54120cf780f9c4fba31e2b2bbf8e15"
+          }
+        ],
+        "revisions": {
+          "0x22:136": 1
+        },
+        "signature": "517e63ae74f452008cd9f5359c50e972ad42af5295ecf265e8cbdb890b441b61"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "9c2f6506ad631738513d9e23a4967e554a55701d08900553cab04f0321358266.pub",
+            "sha256": "9c2f6506ad631738513d9e23a4967e554a55701d08900553cab04f0321358266"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 1
+        },
+        "signature": "5d9653475fd9c0bdba12757462576e3bf7d13c2c1276b61d9831c13d92134ece"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "999e310a383cb492f8dc383d94b296c9eb789acf8ef29316a1d4004ef5e50780.pub",
+            "sha256": "999e310a383cb492f8dc383d94b296c9eb789acf8ef29316a1d4004ef5e50780"
+          }
+        ],
+        "revisions": {
+          "0x22:704": 1
+        },
+        "signature": "5dcf9f97c4dab900d28bac7b651f06ccf2bec267ce45b372baaff6b64ee4ae61"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "ba4aa77d85958bff01d33ae0686fbf75cca1654cb4039ba2c24c2ceb687df650.pub",
+            "sha256": "ba4aa77d85958bff01d33ae0686fbf75cca1654cb4039ba2c24c2ceb687df650"
+          }
+        ],
+        "revisions": {
+          "0x22:704": 1
+        },
+        "signature": "74e6c1c01d51f3f3cef95a86a74dee1ff3b1d9b5e7d885620411dc6f5acd504f"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "0efda9896207c32d164bc69d2866c53698c7f3d37196474dada93811cf164b7d.pub",
+            "sha256": "0efda9896207c32d164bc69d2866c53698c7f3d37196474dada93811cf164b7d"
+          }
+        ],
+        "revisions": {
+          "0x22:136": 1
+        },
+        "signature": "7e28f98529763e88e33a48b5b41a31afcd93cd16f54b472fd1cd65b9eb5df8d8"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "1efdf4fb7c2d2955e79519d6bd43e22ba23a7d6cf106fb9a738ca49705eb2d86.pub",
+            "sha256": "1efdf4fb7c2d2955e79519d6bd43e22ba23a7d6cf106fb9a738ca49705eb2d86"
+          }
+        ],
+        "revisions": {
+          "0x22:704": 1
+        },
+        "signature": "8108df3a3f700f3a211f5d24b74fbe930aa02fac3347a6bc4ee938fc5a5ecb96"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "02e1adc9d6e815b409cec9bb35f246123d4c7a3ae01623ca8565b2904b016218.pub",
+            "sha256": "02e1adc9d6e815b409cec9bb35f246123d4c7a3ae01623ca8565b2904b016218"
+          }
+        ],
+        "revisions": {
+          "0x22:704": 1
+        },
+        "signature": "84997ab33b6d38f8c735f3fbe39cbf2946ddd79820a6c06b8c093d1c50e64316"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x2c": 1
+        },
+        "representatives": [
+          {
+            "name": "Product Analysis Worksheet.pub",
+            "sha256": "b171668d889a4e30cc8c7838a88f406017d67c722bf059965b1dfcfb9876d055"
+          }
+        ],
+        "revisions": {
+          "0x2c:14": 1
+        },
+        "signature": "9249b2cc9d027ae784a3155ab1cbef86aa6a7e615de281804533d97b255079da"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "2d93e7712544183524eb159605b6e5099584505ebdee78774efb0697e568c5ba.pub",
+            "sha256": "2d93e7712544183524eb159605b6e5099584505ebdee78774efb0697e568c5ba"
+          }
+        ],
+        "revisions": {
+          "0x22:704": 1
+        },
+        "signature": "9c7c02174894c91cf7871a9157184abf60cd6bd60ef435667560a7845bc8376d"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "f3fe04c42e8226f97f682080dcff5dfdd001397c5a01c7cac27e878027ea98fd.pub",
+            "sha256": "f3fe04c42e8226f97f682080dcff5dfdd001397c5a01c7cac27e878027ea98fd"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 1
+        },
+        "signature": "a00e4092e7ede1cf71aec80ab7c85c7df2f951f7d5e0ca9a00d8495f56f9fac3"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "14ed19f822ff3a5ae49c57a4c00b0dca2bf652a95694bf12c9c425a0c8c46f3b.pub",
+            "sha256": "14ed19f822ff3a5ae49c57a4c00b0dca2bf652a95694bf12c9c425a0c8c46f3b"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 1
+        },
+        "signature": "a89e40cc454df8dc1e5c5d521bede50a2c43439cb2cb0d0fc7b6b3b80a162204"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "7860acc670667c456fb29048a4cfa1840e4a7d5b57b7b2a2975c8d76929063dc.pub",
+            "sha256": "7860acc670667c456fb29048a4cfa1840e4a7d5b57b7b2a2975c8d76929063dc"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 1
+        },
+        "signature": "ae614fcd3651f983eee513c010dab4be3485e4f128153799380362d1e00d07ba"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x2c": 1
+        },
+        "representatives": [
+          {
+            "name": "threading starter.pub",
+            "sha256": "bc28f3ced90b0c9452bda1bd5bdaf2d841feb1d44bd7e84749a13ff2072e20f2"
+          }
+        ],
+        "revisions": {
+          "0x2c:19": 1
+        },
+        "signature": "aea8eaa73859cc4b8d84c8a858c89d3401084baeba1e17c5aad7dd859f1bdcb5"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x2c": 1
+        },
+        "representatives": [
+          {
+            "name": "packag_advDis.pub",
+            "sha256": "6b5d5b269be7ca74b03d47423aec985676c45be7033e007792fcc3eb35ad929a"
+          }
+        ],
+        "revisions": {
+          "0x2c:19": 1
+        },
+        "signature": "b40f75891fd9e34e70dd69ec445db8d4b54d438051d9e26d657da90961268add"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x2c": 1
+        },
+        "representatives": [
+          {
+            "name": "(1) One Point Perspective.pub",
+            "sha256": "9c03c6e897be6abb4538bbb12cee3041fe4eab3af9109ce1df5d64b46e4c0569"
+          }
+        ],
+        "revisions": {
+          "0x2c:19": 1
+        },
+        "signature": "b6f0e9160674ee100c0ad73e90b7f783e5c349126040949f8aa182f82732acfb"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "698502865ad2f50a01b7052bf834edee831abe3a5c4a25a5b0a0a3d7d3c2b21d.pub",
+            "sha256": "698502865ad2f50a01b7052bf834edee831abe3a5c4a25a5b0a0a3d7d3c2b21d"
+          }
+        ],
+        "revisions": {
+          "0x22:136": 1
+        },
+        "signature": "c66ce012a9624932ebec5f800cc1e39a0e09fe435f0c52afa4bf767849e2dc47"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "f3de87906ce7248a2a540bff4f4d08ee8906ee4dca4291835d05156b6b7bf6a9.pub",
+            "sha256": "f3de87906ce7248a2a540bff4f4d08ee8906ee4dca4291835d05156b6b7bf6a9"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 1
+        },
+        "signature": "ce8cd93190d8fb48e942af6c5789bb70e49a0fac3758314b709ad5fa365dd76f"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "98c6375a52e11f2c1022e2959d7f462cb529bc3c63223eec16325e0acc2d7133.pub",
+            "sha256": "98c6375a52e11f2c1022e2959d7f462cb529bc3c63223eec16325e0acc2d7133"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 1
+        },
+        "signature": "cee52450cbe2fa179db95b73cd0e34da4f3496adf9be1a76db6f3695e1c47fdc"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "3e0ffa579d9b17fa199dca21ea427d23ee1a9d76501f40e58831b8c674102c96.pub",
+            "sha256": "3e0ffa579d9b17fa199dca21ea427d23ee1a9d76501f40e58831b8c674102c96"
+          }
+        ],
+        "revisions": {
+          "0x22:704": 1
+        },
+        "signature": "d54d96f9e60d05c1c992fb5da65e7ac2763e8ab3465e2dbb187b6edb4087f343"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "aa9ae88c17b9da3b945241e1e5730584e17b633026f587373a9420aed6e86559.pub",
+            "sha256": "aa9ae88c17b9da3b945241e1e5730584e17b633026f587373a9420aed6e86559"
+          }
+        ],
+        "revisions": {
+          "0x22:704": 1
+        },
+        "signature": "d990a3643fdb5c8fcb629cb7d9840eee027e71bc96614e24ef40d30484cfcd28"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "d149d547050332421474c957528842562ffad6816b2ce3d6326674302063d2eb.pub",
+            "sha256": "d149d547050332421474c957528842562ffad6816b2ce3d6326674302063d2eb"
+          }
+        ],
+        "revisions": {
+          "0x22:125": 1
+        },
+        "signature": "dcc151714e2f738f3c7d86058023d69d1e12ffe9edcd4ef5f9e63c26a26cf2b6"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x2c": 1
+        },
+        "representatives": [
+          {
+            "name": "textSpec_word.pub",
+            "sha256": "211c2c6b4bf432fcc85fafa41b6219d328541f1a6e1fa2aaa8cb2134949e3157"
+          }
+        ],
+        "revisions": {
+          "0x2c:19": 1
+        },
+        "signature": "e02d49a09f190cf26b2bb5ca92c94d5b39c36cea83e420befbc666556fed1689"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "39d71dcc2fb70b5e43b78a2d3ab1081eaff77d4b7cfd2a38ef917c46c0d51194.pub",
+            "sha256": "39d71dcc2fb70b5e43b78a2d3ab1081eaff77d4b7cfd2a38ef917c46c0d51194"
+          }
+        ],
+        "revisions": {
+          "0x22:136": 1
+        },
+        "signature": "e494e984da3c8bfb2f3cdf20d1fc08bbe237c77a63e8dc5905055f143c05d263"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "CopyofConsultantIPAchartrevised.pub",
+            "sha256": "e937b30923b86a7a4eebf7a4fa6870a737cee513bbeadb7b04f0f9b757bcddcd"
+          }
+        ],
+        "revisions": {
+          "0x22:616": 1
+        },
+        "signature": "e5d5dbc572ed8dacd308093eda27ed7477f9000c7f7811a6e77ebe3d8acd37ec"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "227961e2fba4a6fb814aa2da47e79b19d55ff04e87e49d9c5ceef8d07ce36d0e.pub",
+            "sha256": "227961e2fba4a6fb814aa2da47e79b19d55ff04e87e49d9c5ceef8d07ce36d0e"
+          }
+        ],
+        "revisions": {
+          "0x22:136": 1
+        },
+        "signature": "ec09c4146c306dddf143edfd5d4d812f8c730f57a3bf1450beb4ce8982b9af74"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "af9a3624085c10472bacc31aa1984e0777a24957371a4f53271a3fd1ecbafe76.pub",
+            "sha256": "af9a3624085c10472bacc31aa1984e0777a24957371a4f53271a3fd1ecbafe76"
+          }
+        ],
+        "revisions": {
+          "0x22:704": 1
+        },
+        "signature": "f7f79a87da2e9b57aac9f3ba7a8c6c1fee7541132b0827141bf62949a2ac71ec"
+      },
+      {
+        "count": 1,
+        "families": {
+          "0x22": 1
+        },
+        "representatives": [
+          {
+            "name": "2205e8ce7d963b370bea42c097f66f179f673d15a35ac1d7c90aeae399e8e297.pub",
+            "sha256": "2205e8ce7d963b370bea42c097f66f179f673d15a35ac1d7c90aeae399e8e297"
+          }
+        ],
+        "revisions": {
+          "0x22:704": 1
+        },
+        "signature": "f867665fac6c36d2fc8ee2daf2608b3df9a99122d7a42ac05585710eba88f39c"
+      }
+    ],
+    "fidelity_status_counts": {
+      "partial": 542,
+      "supported": 2
+    },
+    "input_file_count": 625,
+    "maxima": {
+      "image_placement_count": {
+        "image_placement_count": 220,
+        "sha256": "b829e89e381f364264b3c2cb26214ce56ee512abacca493a200db10fb960e595"
+      },
+      "image_resource_count": {
+        "image_resource_count": 33,
+        "sha256": "059dde4bcb408374f14273275febd8158dc8d02960966488dd4324cfd4dcc238"
+      },
+      "paint_node_count": {
+        "paint_node_count": 0,
+        "sha256": "ffe49f7b0a8ebced082bb30319ac6b12c154565727c17081ecc4c7ff830e1fdb"
+      },
+      "scene_node_count": {
+        "scene_node_count": 431,
+        "sha256": "082319ac283c99f1b2e5d05fe428bccfd4123ef498267b35b492bba991a3b6e0"
+      },
+      "solid_fill_count": {
+        "sha256": "ffe49f7b0a8ebced082bb30319ac6b12c154565727c17081ecc4c7ff830e1fdb",
+        "solid_fill_count": 0
+      },
+      "solid_line_count": {
+        "sha256": "ffe49f7b0a8ebced082bb30319ac6b12c154565727c17081ecc4c7ff830e1fdb",
+        "solid_line_count": 0
+      },
+      "story_count": {
+        "sha256": "5e7d865b1b99e18719eaeef65a836170e9184f181a023d4756767a388585563e",
+        "story_count": 135
+      },
+      "story_frame_count": {
+        "sha256": "5e7d865b1b99e18719eaeef65a836170e9184f181a023d4756767a388585563e",
+        "story_frame_count": 135
+      },
+      "text_fragment_count": {
+        "sha256": "5e7d865b1b99e18719eaeef65a836170e9184f181a023d4756767a388585563e",
+        "text_fragment_count": 135
+      },
+      "typography_run_count": {
+        "sha256": "904714dee51c41b76224ab126824a498558cbc35c3a68fee168e35edcf6e8829",
+        "typography_run_count": 1937
+      },
+      "viewer_page_count": {
+        "sha256": "082319ac283c99f1b2e5d05fe428bccfd4123ef498267b35b492bba991a3b6e0",
+        "viewer_page_count": 32
+      }
+    },
+    "opened_by_family": {
+      "0x22": 165,
+      "0x2c": 379
+    },
+    "opened_count": 544
+  },
+  "schema": "chaptera.materialized-corpus-deep-profile.v1",
+  "shortlist_count": 60,
+  "structural_cluster_count": 386,
+  "structural_probe_error_count": 0,
+  "structural_repeated_cluster_count": 77,
+  "structural_singleton_count": 309,
+  "surplus_physical_sha_count": 0
+}
