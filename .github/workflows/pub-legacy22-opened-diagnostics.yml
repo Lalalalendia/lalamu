@@ -1,0 +1,177 @@
+name: PUB legacy22 opened sourcegraph diagnostics
+
+on:
+  push:
+    branches:
+      - research/legacy22-noquill-corpus-probe-20260929
+    paths:
+      - ".github/workflows/pub-legacy22-opened-diagnostics.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pub-legacy22-opened-diag-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  RAR_REF: aa2df26384fe6fe29e88dcd0ee9fdda908d4c82a
+  CARGO_TARGET_DIR: ${{ github.workspace }}/rar-target
+
+jobs:
+  opened-diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: HeisLuka/rar
+          ref: ${{ env.RAR_REF }}
+          path: rar-src
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.94.1"
+
+      - name: Build transient no-Quill sourcegraph diagnostic receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > rar-src/vendor/producer-a/crates/pub-viewer/src/bin/legacy22-sourcegraph-diag.rs <<'RS'
+          use anyhow::{Context, Result};
+          use pub_model::Sha256Digest;
+          use pub_reader::build_legacy_0x22_noquill_source_graph;
+          use serde_json::json;
+          use sha2::{Digest, Sha256};
+          use std::{env, fs, io::Cursor, path::PathBuf};
+
+          fn main() -> Result<()> {
+              let mut args = env::args_os().skip(1);
+              let source = PathBuf::from(args.next().context("SOURCE.pub required")?);
+              let output = PathBuf::from(args.next().context("OUTPUT.json required")?);
+              let bytes = fs::read(&source)?;
+              let digest = Sha256::digest(&bytes);
+              let mut raw = [0u8; 32];
+              raw.copy_from_slice(&digest);
+              let source_hash = Sha256Digest::from_bytes(raw);
+              let build = build_legacy_0x22_noquill_source_graph(Cursor::new(&bytes), source_hash)?;
+              let value = json!({
+                  "source_sha256": source_hash.to_string(),
+                  "page_count": build.graph.pages.len(),
+                  "story_count": build.graph.stories.len(),
+                  "node_count": build.graph.nodes.len(),
+                  "diagnostics": build.diagnostics,
+              });
+              fs::write(output, serde_json::to_vec_pretty(&value)?)?;
+              Ok(())
+          }
+          RS
+          cargo build             --manifest-path rar-src/vendor/producer-a/Cargo.toml             -p pub-viewer             --release             --bin legacy22-sourcegraph-diag
+
+      - name: Inspect 165 candidate-open no-Quill files
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/legacy22-opened-diag pub-corpus/data/legacy22-opened-diagnostics
+          mkdir -p /tmp/legacy22-opened-diag pub-corpus/data/legacy22-opened-diagnostics
+          python - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          rows=json.loads(Path("pub-corpus/data/legacy22-candidate-profile/reader-records.json").read_text())
+          opened=[r for r in rows if r.get("contents_family")=="0x22" and r.get("opened") is True]
+          assert len(opened)==165, len(opened)
+          exe=Path("rar-target/release/legacy22-sourcegraph-diag")
+          corpus=Path("pub-corpus/corpus/native/unclassified")
+          out=Path("/tmp/legacy22-opened-diag")
+          for r in opened:
+              sha=r["source_sha256"]
+              subprocess.run([str(exe),str(corpus/f"{sha}.pub"),str(out/f"{sha}.json")],check=True)
+          print(f"inspected={len(opened)}")
+          PY
+
+      - name: Aggregate admitted-node and omitted-object profile
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from collections import Counter,defaultdict
+          from pathlib import Path
+
+          receipts=[json.loads(p.read_text()) for p in sorted(Path("/tmp/legacy22-opened-diag").glob("*.json"))]
+          assert len(receipts)==165, len(receipts)
+          reason_count=Counter()
+          raw_type_diag_count=Counter()
+          reason_file_count=Counter()
+          raw_type_file_count=Counter()
+          node_counts=Counter()
+          story_counts=Counter()
+          examples=defaultdict(list)
+          files_with_any_omission=0
+
+          for r in receipts:
+              node_counts[str(r["node_count"])]+=1
+              story_counts[str(r["story_count"])]+=1
+              seen_reason=set(); seen_type=set(); omissions=0
+              for d in r["diagnostics"]:
+                  if d.get("code")!="legacy_object_not_materialized":
+                      continue
+                  omissions+=1
+                  reason=d.get("reason","")
+                  raw=d.get("raw_type")
+                  raw_key="none" if raw is None else f"0x{int(raw):04x}"
+                  reason_count[reason]+=1
+                  raw_type_diag_count[raw_key]+=1
+                  seen_reason.add(reason); seen_type.add(raw_key)
+                  key=(reason,raw_key)
+                  if len(examples[key])<8:
+                      examples[key].append(r["source_sha256"])
+              if omissions: files_with_any_omission+=1
+              for x in seen_reason: reason_file_count[x]+=1
+              for x in seen_type: raw_type_file_count[x]+=1
+
+          pairs=[]
+          for (reason,raw),shas in examples.items():
+              pairs.append({
+                  "reason":reason,
+                  "raw_type":raw,
+                  "diagnostic_count":sum(1 for r in receipts for d in r["diagnostics"]
+                      if d.get("code")=="legacy_object_not_materialized"
+                      and d.get("reason","")==reason
+                      and ("none" if d.get("raw_type") is None else f"0x{int(d['raw_type']):04x}")==raw),
+                  "representative_sha256":shas
+              })
+          pairs.sort(key=lambda x:(-x["diagnostic_count"],x["reason"],x["raw_type"]))
+
+          result={
+              "schema":"lalamu.legacy22-noquill-opened-sourcegraph-diagnostics.v1",
+              "candidate_rar_ref":"aa2df26384fe6fe29e88dcd0ee9fdda908d4c82a",
+              "opened_legacy_count":len(receipts),
+              "files_with_any_object_omission":files_with_any_omission,
+              "files_with_source_nodes":sum(1 for r in receipts if r["node_count"]>0),
+              "files_with_stories":sum(1 for r in receipts if r["story_count"]>0),
+              "node_count_distribution":dict(sorted(node_counts.items(),key=lambda kv:int(kv[0]))),
+              "reason_diagnostic_counts":dict(reason_count.most_common()),
+              "reason_file_counts":dict(reason_file_count.most_common()),
+              "raw_type_diagnostic_counts":dict(raw_type_diag_count.most_common()),
+              "raw_type_file_counts":dict(raw_type_file_count.most_common()),
+              "reason_raw_type_pairs":pairs,
+              "evidence_boundary":"Counts and diagnostics only; no recovered document text retained."
+          }
+          Path("pub-corpus/data/legacy22-opened-diagnostics/latest.json").write_text(
+              json.dumps(result,indent=2,ensure_ascii=False)+"\n"
+          )
+          print(json.dumps(result,indent=2,ensure_ascii=False))
+          PY
+
+      - name: Publish source-safe diagnostic aggregate
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s pub-corpus/data/legacy22-opened-diagnostics/latest.json
+          git config user.name "lalamu-lab-bot"
+          git config user.email "lalamu-lab-bot@users.noreply.github.com"
+          git add -- pub-corpus/data/legacy22-opened-diagnostics/latest.json
+          git commit -m "lab: profile omitted legacy22 object types on candidate opens"
+          git push origin HEAD:"${GITHUB_REF_NAME}"
