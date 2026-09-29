@@ -77,7 +77,7 @@ jobs:
               assert sha not in seen, sha
               seen.add(sha)
               assert data[:8] == bytes.fromhex("d0cf11e0a1b11ae1"), path
-              with olefile.OleFileIO(data) as ole:
+              with olefile.OleFileIO(io.BytesIO(data)) as ole:
                   streams={"/"+"/".join(x) for x in ole.listdir(streams=True, storages=False)}
                   assert "/Contents" in streams, path
           s=json.loads(Path("pub-corpus/data/rar-container-materialize/latest.json").read_text())
