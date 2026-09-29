@@ -105,6 +105,10 @@ def scan_code(pe: pefile.PE, data_anchors: dict[str, list[int]]) -> list[dict[st
     rows: list[dict[str, Any]] = []
     for section_start, _, raw in executable_sections(pe):
         for insn in md.disasm(raw, image_base + section_start):
+            # Capstone emits id=0 pseudo-instructions for skipped data bytes;
+            # those intentionally have no operand detail.
+            if insn.id == 0:
+                continue
             rva = int(insn.address - image_base)
             anchors: set[str] = set()
             evidence: list[dict[str, Any]] = []
