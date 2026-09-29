@@ -1,9 +1,0 @@
-{
-  "byte_len": 52224,
-  "open_error_kind": "viewer_open_failed",
-  "open_error_signature_sha256": "b40f75891fd9e34e70dd69ec445db8d4b54d438051d9e26d657da90961268add",
-  "opened": false,
-  "schema": "chaptera.reader-corpus-structural-receipt.v1",
-  "source_sha256": "6b5d5b269be7ca74b03d47423aec985676c45be7033e007792fcc3eb35ad929a",
-  "visual_fidelity_proven": false
-}
