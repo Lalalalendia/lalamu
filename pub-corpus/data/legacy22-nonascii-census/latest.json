@@ -1,0 +1,802 @@
+{
+  "schema": "lalamu.legacy22-nonascii-byte-census.v1",
+  "file_count": 58,
+  "text_bytes_total": 124398,
+  "high_byte_total": 467,
+  "high_byte_fraction": 0.0037540796475827587,
+  "files_by_revision": {
+    "125": 23,
+    "136": 23,
+    "704": 12
+  },
+  "files_by_distribution_root": {
+    "publisher_97_pub40_alt_media": 23,
+    "publisher_3_windows95_media": 23,
+    "publisher_2_media": 12
+  },
+  "high_byte_counts": {
+    "0x95": 130,
+    "0x92": 105,
+    "0x93": 47,
+    "0xe5": 43,
+    "0x94": 42,
+    "0xc5": 21,
+    "0xa9": 19,
+    "0x97": 15,
+    "0xf8": 15,
+    "0xe6": 11,
+    "0xd8": 7,
+    "0xb7": 4,
+    "0xf3": 4,
+    "0x8f": 2,
+    "0x8e": 2
+  },
+  "high_byte_file_counts": {
+    "0x92": 14,
+    "0xe5": 13,
+    "0x95": 12,
+    "0xf8": 12,
+    "0xc5": 10,
+    "0x93": 9,
+    "0x94": 9,
+    "0xe6": 8,
+    "0xd8": 6,
+    "0x97": 5,
+    "0x8e": 2,
+    "0x8f": 2,
+    "0xa9": 2,
+    "0xb7": 1,
+    "0xf3": 1
+  },
+  "cp1252_undefined_bytes_observed": [
+    "0x8f"
+  ],
+  "files_with_cp1252_undefined_bytes": 2,
+  "records": [
+    {
+      "sha256": "02a2b240864c53159b7ddfa7aaebf9e943777bc0d3b64b819ad72c57796f66d7",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 1603,
+      "high_byte_count": 12,
+      "high_byte_distinct": 4,
+      "high_bytes": [
+        "0xc5",
+        "0xd8",
+        "0xe5",
+        "0xe6"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "02e1adc9d6e815b409cec9bb35f246123d4c7a3ae01623ca8565b2904b016218",
+      "revision": 704,
+      "root_label": "publisher_2_media",
+      "text_len": 2885,
+      "high_byte_count": 1,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x95"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "08af039a39b05d544ba20f04fec35b73436b241f364bcd7c694b70b52899c70c",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 1380,
+      "high_byte_count": 9,
+      "high_byte_distinct": 4,
+      "high_bytes": [
+        "0xc5",
+        "0xd8",
+        "0xe5",
+        "0xe6"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "0efda9896207c32d164bc69d2866c53698c7f3d37196474dada93811cf164b7d",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 80,
+      "high_byte_count": 1,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0xc5"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "14ed19f822ff3a5ae49c57a4c00b0dca2bf652a95694bf12c9c425a0c8c46f3b",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 6210,
+      "high_byte_count": 11,
+      "high_byte_distinct": 2,
+      "high_bytes": [
+        "0x93",
+        "0x94"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "1b88bc290bf3b53f5c7dac055b4d50bf0c2a8ab6da99e99459902fa475807387",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 283,
+      "high_byte_count": 2,
+      "high_byte_distinct": 2,
+      "high_bytes": [
+        "0x8e",
+        "0x8f"
+      ],
+      "contains_cp1252_undefined": true
+    },
+    {
+      "sha256": "1da75cd9ba65b91c4bf4f17c015e0d9dd8740952f90295b54aa4f8d48ae378f3",
+      "revision": 704,
+      "root_label": "publisher_2_media",
+      "text_len": 1891,
+      "high_byte_count": 2,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x95"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "1efdf4fb7c2d2955e79519d6bd43e22ba23a7d6cf106fb9a738ca49705eb2d86",
+      "revision": 704,
+      "root_label": "publisher_2_media",
+      "text_len": 7117,
+      "high_byte_count": 10,
+      "high_byte_distinct": 3,
+      "high_bytes": [
+        "0x95",
+        "0x97",
+        "0xb7"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "2205e8ce7d963b370bea42c097f66f179f673d15a35ac1d7c90aeae399e8e297",
+      "revision": 704,
+      "root_label": "publisher_2_media",
+      "text_len": 2601,
+      "high_byte_count": 50,
+      "high_byte_distinct": 2,
+      "high_bytes": [
+        "0x95",
+        "0xa9"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "2aae164a43338136efab15262c044ef30e6c38a278e90aac7c991a992d915bcc",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 59,
+      "high_byte_count": 1,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0xc5"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "2b9c28f42633507773dabdb1efe5b4f88343f10fccd52f36babaf1c3bb7bd8ed",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 1588,
+      "high_byte_count": 3,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x97"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "2d93e7712544183524eb159605b6e5099584505ebdee78774efb0697e568c5ba",
+      "revision": 704,
+      "root_label": "publisher_2_media",
+      "text_len": 2492,
+      "high_byte_count": 9,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x95"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "2f94e4880bd8eddd814f84768a9fac05659f8146cccd26790bdfcee6c9792b61",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 273,
+      "high_byte_count": 3,
+      "high_byte_distinct": 3,
+      "high_bytes": [
+        "0x8e",
+        "0x8f",
+        "0xf8"
+      ],
+      "contains_cp1252_undefined": true
+    },
+    {
+      "sha256": "3041c3250cf2ae0527745b642cda8223445cc52f4b570282c81294163c1b091c",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 1466,
+      "high_byte_count": 9,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x92"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "3114f1328f49066cf3168a76758ffb279e1a838b54e618cc2c050ae163398f35",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 39,
+      "high_byte_count": 1,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0xd8"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "36b3c7d4575e7d1806e83cd1c196e8b5c3b03b1be08dd94d0fb4dbd28c4dcba7",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 1408,
+      "high_byte_count": 3,
+      "high_byte_distinct": 2,
+      "high_bytes": [
+        "0xe5",
+        "0xf8"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "379997ec5cbd2efdbdcc1b7cbb8c9764a4e313aa6f3c008f3850a1e1cb725ba5",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 562,
+      "high_byte_count": 4,
+      "high_byte_distinct": 2,
+      "high_bytes": [
+        "0xe6",
+        "0xf8"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "39d71dcc2fb70b5e43b78a2d3ab1081eaff77d4b7cfd2a38ef917c46c0d51194",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 167,
+      "high_byte_count": 2,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0xe5"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "3e0ffa579d9b17fa199dca21ea427d23ee1a9d76501f40e58831b8c674102c96",
+      "revision": 704,
+      "root_label": "publisher_2_media",
+      "text_len": 2483,
+      "high_byte_count": 4,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x95"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "4960e5bb0cf62b2d9387a0c454973a1aaa02031252f180a364112b41bac87c5b",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 1438,
+      "high_byte_count": 10,
+      "high_byte_distinct": 4,
+      "high_bytes": [
+        "0xc5",
+        "0xe5",
+        "0xe6",
+        "0xf8"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "53ca33b1076388d528295f2f6df4a0071a54120cf780f9c4fba31e2b2bbf8e15",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 27,
+      "high_byte_count": 1,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0xe5"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "548f923111c491581a05206d216ee81fe0e619661990377dbcc027bd9d4748eb",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 198,
+      "high_byte_count": 3,
+      "high_byte_distinct": 2,
+      "high_bytes": [
+        "0xc5",
+        "0xd8"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "54c59e90239e8abe399e534521183adb1b7df8915a480d120ade67cd891d4a04",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 1315,
+      "high_byte_count": 4,
+      "high_byte_distinct": 3,
+      "high_bytes": [
+        "0xe5",
+        "0xe6",
+        "0xf8"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "5861117efd81d7165f5f4fc7e69f93894324c9511b7e3753692d9f576f0546e9",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 1355,
+      "high_byte_count": 6,
+      "high_byte_distinct": 4,
+      "high_bytes": [
+        "0xc5",
+        "0xe5",
+        "0xe6",
+        "0xf8"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "698502865ad2f50a01b7052bf834edee831abe3a5c4a25a5b0a0a3d7d3c2b21d",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 29,
+      "high_byte_count": 1,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0xc5"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "7860acc670667c456fb29048a4cfa1840e4a7d5b57b7b2a2975c8d76929063dc",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 7157,
+      "high_byte_count": 28,
+      "high_byte_distinct": 2,
+      "high_bytes": [
+        "0x93",
+        "0x94"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "877800395b639164d23b4f9102e4d451a047418f5c952ff58f65da31ebb07f27",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 1700,
+      "high_byte_count": 8,
+      "high_byte_distinct": 2,
+      "high_bytes": [
+        "0xe5",
+        "0xf8"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "90b5237149f75af4c26a40e76d51f1bce23a73bc7c4c9204db1020a10dc4b2cd",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 10941,
+      "high_byte_count": 3,
+      "high_byte_distinct": 3,
+      "high_bytes": [
+        "0x92",
+        "0x93",
+        "0x94"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "98c6375a52e11f2c1022e2959d7f462cb529bc3c63223eec16325e0acc2d7133",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 6475,
+      "high_byte_count": 14,
+      "high_byte_distinct": 2,
+      "high_bytes": [
+        "0x93",
+        "0x94"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "999e310a383cb492f8dc383d94b296c9eb789acf8ef29316a1d4004ef5e50780",
+      "revision": 704,
+      "root_label": "publisher_2_media",
+      "text_len": 2527,
+      "high_byte_count": 6,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x95"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "9c2f6506ad631738513d9e23a4967e554a55701d08900553cab04f0321358266",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 1598,
+      "high_byte_count": 4,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x97"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "9d899a909a2daa80bb28717bcbbe025db1ad4d61129e2085b0fff593ff531238",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 65,
+      "high_byte_count": 4,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0xf3"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "9e55bf04ac75807b2afd76350ec1f94314cf5b6cf4255202223135e4ae4d3199",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 1560,
+      "high_byte_count": 17,
+      "high_byte_distinct": 3,
+      "high_bytes": [
+        "0x92",
+        "0x93",
+        "0x94"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "9fd4894622c1bae4550147a7163bdfcad891aa72b270b3516fc1a00c6443eaf8",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 1719,
+      "high_byte_count": 7,
+      "high_byte_distinct": 3,
+      "high_bytes": [
+        "0xc5",
+        "0xe6",
+        "0xf8"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "a4f7a754b9c2c94a6708867e873d0c9f7246dbdc676a2fbc890e79a684c9178b",
+      "revision": 704,
+      "root_label": "publisher_2_media",
+      "text_len": 4019,
+      "high_byte_count": 8,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x95"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "a9527c1fa08b9d83b96abc3cc6732529bae5d28b65e435b9a2bc62be4a0dad70",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 1656,
+      "high_byte_count": 7,
+      "high_byte_distinct": 3,
+      "high_bytes": [
+        "0xe5",
+        "0xe6",
+        "0xf8"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "aa9ae88c17b9da3b945241e1e5730584e17b633026f587373a9420aed6e86559",
+      "revision": 704,
+      "root_label": "publisher_2_media",
+      "text_len": 2160,
+      "high_byte_count": 2,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x95"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "aaeb4120e72a564aab60f5275c1dea8ed5830ec4de368d3bc22d410f7c5342c4",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 1708,
+      "high_byte_count": 2,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x97"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "af9a3624085c10472bacc31aa1984e0777a24957371a4f53271a3fd1ecbafe76",
+      "revision": 704,
+      "root_label": "publisher_2_media",
+      "text_len": 1412,
+      "high_byte_count": 30,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x95"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "b688caa757e52b34e84ed6f69207ceb55fe067e16f5f5122ac09ab606a6ca778",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 1759,
+      "high_byte_count": 19,
+      "high_byte_distinct": 3,
+      "high_bytes": [
+        "0x92",
+        "0x93",
+        "0x94"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "ba33ccaf2f41d85a44743279dc0295389576fb1b6851cee0d1a85677bf499738",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 164,
+      "high_byte_count": 1,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0xf8"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "ba4aa77d85958bff01d33ae0686fbf75cca1654cb4039ba2c24c2ceb687df650",
+      "revision": 704,
+      "root_label": "publisher_2_media",
+      "text_len": 1592,
+      "high_byte_count": 27,
+      "high_byte_distinct": 2,
+      "high_bytes": [
+        "0x95",
+        "0xa9"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "bea6c618c52cb4cdd8eb48b4ae2bff7290b79161abe6326b49329b5e6434f32a",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 1564,
+      "high_byte_count": 9,
+      "high_byte_distinct": 3,
+      "high_bytes": [
+        "0xc5",
+        "0xd8",
+        "0xe5"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "c055e3d2020c42b60fec0b828352682c99ad48991f4c3de34808e425751e4159",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 6315,
+      "high_byte_count": 12,
+      "high_byte_distinct": 2,
+      "high_bytes": [
+        "0x93",
+        "0x94"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "c8d5caae2d2339a2ccfba3d98983c1e706e15348639c332fa57ee744b70405bd",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 1351,
+      "high_byte_count": 9,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x92"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "ceb00ff566915c7c3d913013663116e595c356e4f5f9ae6fca0c88d48a7b9932",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 362,
+      "high_byte_count": 2,
+      "high_byte_distinct": 2,
+      "high_bytes": [
+        "0xe5",
+        "0xf8"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "cf35a6a02911320cde1843c68d8532d04fe9f681fa6615aa919cee32e59ef2d9",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 1503,
+      "high_byte_count": 9,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x92"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "d149d547050332421474c957528842562ffad6816b2ce3d6326674302063d2eb",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 13626,
+      "high_byte_count": 3,
+      "high_byte_distinct": 3,
+      "high_bytes": [
+        "0x92",
+        "0x93",
+        "0x94"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "d59d7c14627becbab2d42542f5f47d7c2ecb1f67101419f67b5fa8aba782d7c5",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 1371,
+      "high_byte_count": 13,
+      "high_byte_distinct": 3,
+      "high_bytes": [
+        "0x92",
+        "0x93",
+        "0x94"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "d640dddd8e23aac9d7cc3189c2d681b8b85f78fbbff4152b1e49995c314ecc9d",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 1517,
+      "high_byte_count": 9,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x92"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "d97980d6fecd7fe3064d1b745fe57991eea828399c091d3083e5e7bca9876871",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 40,
+      "high_byte_count": 1,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0xd8"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "daa5ff11fc5d81b7f516cfa20c1a4f734a30ef902c84c71fd061a3a4492b8a01",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 1311,
+      "high_byte_count": 7,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x92"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "e26a770a0353cafb535e85b0424f0d5c1fbd93c7af48ffa7c0ca29125edfe4a1",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 1454,
+      "high_byte_count": 9,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x92"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "f3de87906ce7248a2a540bff4f4d08ee8906ee4dca4291835d05156b6b7bf6a9",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 1734,
+      "high_byte_count": 15,
+      "high_byte_distinct": 2,
+      "high_bytes": [
+        "0x92",
+        "0x97"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "f3fe04c42e8226f97f682080dcff5dfdd001397c5a01c7cac27e878027ea98fd",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 1499,
+      "high_byte_count": 10,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x92"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "f824bc7932c80c411a903957131a00fdd83f88208417083644933f209f79b741",
+      "revision": 704,
+      "root_label": "publisher_2_media",
+      "text_len": 2136,
+      "high_byte_count": 6,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x95"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "f9ed98910b4258c68312c4059dfd112fd499fa85000634f30b6d5042ec4ba4e7",
+      "revision": 125,
+      "root_label": "publisher_3_windows95_media",
+      "text_len": 14,
+      "high_byte_count": 1,
+      "high_byte_distinct": 1,
+      "high_bytes": [
+        "0x92"
+      ],
+      "contains_cp1252_undefined": false
+    },
+    {
+      "sha256": "fb975158ee8c9acb487e1fb5b83f4e63c620c085e31a45c543e4777b38552a82",
+      "revision": 136,
+      "root_label": "publisher_97_pub40_alt_media",
+      "text_len": 1440,
+      "high_byte_count": 3,
+      "high_byte_distinct": 2,
+      "high_bytes": [
+        "0xe5",
+        "0xf8"
+      ],
+      "contains_cp1252_undefined": false
+    }
+  ],
+  "evidence_boundary": "Raw text bytes are not retained. Byte frequencies do not establish a codepage; this census only tests whether failures are sparse high-byte text vs gross text-range corruption."
+}
