@@ -1,0 +1,29 @@
+{
+  "byte_len": 215040,
+  "diagnostic_codes": [
+    "viewer.page_projection.roles_unresolved",
+    "viewer.text.fallback_flow_metrics",
+    "viewer.text.source_typography_partial",
+    "viewer.visual.geometry_only"
+  ],
+  "fidelity_status": "partial",
+  "format": "pub",
+  "format_version": "0x2c",
+  "image_placement_count": 6,
+  "image_resource_count": 3,
+  "inherited_typography_run_count": 0,
+  "opened": true,
+  "paint_node_count": 0,
+  "scene_node_count": 82,
+  "scene_surface_count": 6,
+  "schema": "chaptera.reader-corpus-structural-receipt.v1",
+  "solid_fill_count": 0,
+  "solid_line_count": 0,
+  "source_sha256": "1a6e4aa289ff277267be9db81763ccc859da4288aed31c6de85ee7f77fdee41a",
+  "story_count": 37,
+  "story_frame_count": 37,
+  "text_fragment_count": 37,
+  "typography_run_count": 98,
+  "viewer_page_count": 6,
+  "visual_fidelity_proven": false
+}
