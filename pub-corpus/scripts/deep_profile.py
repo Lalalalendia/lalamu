@@ -221,16 +221,16 @@ def main() -> int:
         encoding="utf-8",
     )
 
-    reader_dir = args.out / "reader-per-file"
-    reader_dir.mkdir(parents=True, exist_ok=True)
     reader_rows: list[dict[str, Any]] = []
-    with ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
-        futures = {
-            pool.submit(run_reader, args.reader_receipt_exe, path, reader_dir): path.stem.lower()
-            for path in paths
-        }
-        for future in as_completed(futures):
-            reader_rows.append(future.result())
+    with tempfile.TemporaryDirectory(prefix="chaptera-reader-receipts-") as td:
+        reader_dir = Path(td)
+        with ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
+            futures = {
+                pool.submit(run_reader, args.reader_receipt_exe, path, reader_dir): path.stem.lower()
+                for path in paths
+            }
+            for future in as_completed(futures):
+                reader_rows.append(future.result())
     reader_rows.sort(key=lambda r: str(r.get("source_sha256") or ""))
 
     by_sha = {r["sha256"]: r for r in fingerprints}
