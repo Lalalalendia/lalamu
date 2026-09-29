@@ -1,0 +1,17 @@
+{
+  "schema": "chaptera.legacy22-codepage-signal-profile.v1",
+  "legacy22_noquill_file_count": 225,
+  "non_ascii_text_file_count": 58,
+  "ascii_only_text_file_count": 167,
+  "summary_codepage_counts_on_non_ascii": {
+    "missing": 58
+  },
+  "document_summary_codepage_counts_on_non_ascii": {
+    "absent": 58
+  },
+  "codepage_pair_counts_on_non_ascii": {
+    "missing/absent": 58
+  },
+  "profile_error_count": 0,
+  "evidence_boundary": "OLEPS PID_CODEPAGE is a persisted property-set string encoding signal only; no Publisher body-text authority is inferred."
+}
