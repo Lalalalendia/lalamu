@@ -1,0 +1,679 @@
+{
+  "schema": "lalamu.legacy22-noquill-residual-errors.v1",
+  "candidate_rar_ref": "aa2df26384fe6fe29e88dcd0ee9fdda908d4c82a",
+  "failed_legacy_count": 63,
+  "category_counts": {
+    "non_ascii_codepage": 58,
+    "page_list_wrong_type": 3,
+    "directory": 1,
+    "other": 1
+  },
+  "normalized_cluster_count": 4,
+  "clusters": [
+    {
+      "count": 58,
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "revisions": {
+        "125": 23,
+        "136": 23,
+        "704": 12
+      },
+      "representatives": [
+        {
+          "sha256": "02a2b240864c53159b7ddfa7aaebf9e943777bc0d3b64b819ad72c57796f66d7",
+          "byte_len": 16384
+        },
+        {
+          "sha256": "02e1adc9d6e815b409cec9bb35f246123d4c7a3ae01623ca8565b2904b016218",
+          "byte_len": 34304
+        },
+        {
+          "sha256": "08af039a39b05d544ba20f04fec35b73436b241f364bcd7c694b70b52899c70c",
+          "byte_len": 15872
+        },
+        {
+          "sha256": "0efda9896207c32d164bc69d2866c53698c7f3d37196474dada93811cf164b7d",
+          "byte_len": 23040
+        },
+        {
+          "sha256": "14ed19f822ff3a5ae49c57a4c00b0dca2bf652a95694bf12c9c425a0c8c46f3b",
+          "byte_len": 248832
+        },
+        {
+          "sha256": "1b88bc290bf3b53f5c7dac055b4d50bf0c2a8ab6da99e99459902fa475807387",
+          "byte_len": 17920
+        },
+        {
+          "sha256": "1da75cd9ba65b91c4bf4f17c015e0d9dd8740952f90295b54aa4f8d48ae378f3",
+          "byte_len": 59904
+        },
+        {
+          "sha256": "1efdf4fb7c2d2955e79519d6bd43e22ba23a7d6cf106fb9a738ca49705eb2d86",
+          "byte_len": 79872
+        }
+      ]
+    },
+    {
+      "count": 3,
+      "category": "page_list_wrong_type",
+      "normalized_error": "build legacy-0x#+Quill PUB source graph for Viewer: legacy DOCUMENT PageList object # has type 0x#, expected PAGE 0x#",
+      "revisions": {
+        "616": 1,
+        "717": 2
+      },
+      "representatives": [
+        {
+          "sha256": "1b3d00a67c370d9938f67c198ba1ba90f0e962d95c7db9557e9a3e2cdf134886",
+          "byte_len": 355840
+        },
+        {
+          "sha256": "2b1a2c5183d2fa83fdf9b0e0bf386bc0861b034e08f00fb3fc4171857c097576",
+          "byte_len": 342016
+        },
+        {
+          "sha256": "e937b30923b86a7a4eebf7a4fa6870a737cee513bbeadb7b04f0f9b757bcddcd",
+          "byte_len": 210432
+        }
+      ]
+    },
+    {
+      "count": 1,
+      "category": "directory",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: parse legacy no-Quill 0x# Contents directory: legacy 0x# directory entry # object # points to 0x# outside Contents length #",
+      "revisions": {
+        "136": 1
+      },
+      "representatives": [
+        {
+          "sha256": "227961e2fba4a6fb814aa2da47e79b19d55ff04e87e49d9c5ceef8d07ce36d0e",
+          "byte_len": 11264
+        }
+      ]
+    },
+    {
+      "count": 1,
+      "category": "other",
+      "normalized_error": "unsupported PUB family/profile: family=None, profile=not_structured_publisher, route=unsupported",
+      "revisions": {
+        "136": 1
+      },
+      "representatives": [
+        {
+          "sha256": "d72a4c79a378f93299be53220d7809a433235f74103adcffc714748068007e6f",
+          "byte_len": 226816
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "sha256": "02a2b240864c53159b7ddfa7aaebf9e943777bc0d3b64b819ad72c57796f66d7",
+      "revision": 136,
+      "byte_len": 16384,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 303 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "02e1adc9d6e815b409cec9bb35f246123d4c7a3ae01623ca8565b2904b016218",
+      "revision": 704,
+      "byte_len": 34304,
+      "structural_fingerprint": "43b7687d186bb49722d8840510ca99229c63f170948c956fcdc7072c6fd02763",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 405 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "08af039a39b05d544ba20f04fec35b73436b241f364bcd7c694b70b52899c70c",
+      "revision": 136,
+      "byte_len": 15872,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 303 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "0efda9896207c32d164bc69d2866c53698c7f3d37196474dada93811cf164b7d",
+      "revision": 136,
+      "byte_len": 23040,
+      "structural_fingerprint": "7cd266ff1615c0355360aca6e970f529f279d8a0bd0046a8fff85b34d1ad56af",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 305 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "14ed19f822ff3a5ae49c57a4c00b0dca2bf652a95694bf12c9c425a0c8c46f3b",
+      "revision": 125,
+      "byte_len": 248832,
+      "structural_fingerprint": "9ed9598ca30d172ddd8bb15cf1102964f3a76aba5d66f83221dc07e458494142",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 311 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "1b3d00a67c370d9938f67c198ba1ba90f0e962d95c7db9557e9a3e2cdf134886",
+      "revision": 717,
+      "byte_len": 355840,
+      "structural_fingerprint": "7b7679c1e42cc7ad2566056110c3dfb2721ac0d082cf87a11d2c7aa02b0ffcf6",
+      "category": "page_list_wrong_type",
+      "normalized_error": "build legacy-0x#+Quill PUB source graph for Viewer: legacy DOCUMENT PageList object # has type 0x#, expected PAGE 0x#",
+      "raw_error": "build legacy-0x22+Quill PUB source graph for Viewer: legacy DOCUMENT PageList object 268 has type 0x0041, expected PAGE 0x0014"
+    },
+    {
+      "sha256": "1b88bc290bf3b53f5c7dac055b4d50bf0c2a8ab6da99e99459902fa475807387",
+      "revision": 125,
+      "byte_len": 17920,
+      "structural_fingerprint": "250ad44aba6c0cde6aa3bba989cd5c11aec13d66e1366c916ac69619595b5f3a",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 345 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "1da75cd9ba65b91c4bf4f17c015e0d9dd8740952f90295b54aa4f8d48ae378f3",
+      "revision": 704,
+      "byte_len": 59904,
+      "structural_fingerprint": "1da2d8ac2e8f365e268752e76745f6fbb6d0c543de530f0c5030cdea6f93542d",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 494 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "1efdf4fb7c2d2955e79519d6bd43e22ba23a7d6cf106fb9a738ca49705eb2d86",
+      "revision": 704,
+      "byte_len": 79872,
+      "structural_fingerprint": "b852614673c7124895f663e53394d42d30da351fab536185ecde715de622d4b7",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 262 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "2205e8ce7d963b370bea42c097f66f179f673d15a35ac1d7c90aeae399e8e297",
+      "revision": 704,
+      "byte_len": 24064,
+      "structural_fingerprint": "f1cb2f87dc0f448e44741b970680c87ec6c715275391259a2056f12a5cfd1df7",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 497 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "227961e2fba4a6fb814aa2da47e79b19d55ff04e87e49d9c5ceef8d07ce36d0e",
+      "revision": 136,
+      "byte_len": 11264,
+      "structural_fingerprint": "6cc4375bb0158c4171016972765c137ba2cab2386b976b6baee180b8cb25fe52",
+      "category": "directory",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: parse legacy no-Quill 0x# Contents directory: legacy 0x# directory entry # object # points to 0x# outside Contents length #",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: parse legacy no-Quill 0x22 Contents directory: legacy 0x22 directory entry 4 object 0 points to 0x2dc0000 outside Contents length 5749"
+    },
+    {
+      "sha256": "2aae164a43338136efab15262c044ef30e6c38a278e90aac7c991a992d915bcc",
+      "revision": 136,
+      "byte_len": 14848,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 265 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "2b1a2c5183d2fa83fdf9b0e0bf386bc0861b034e08f00fb3fc4171857c097576",
+      "revision": 717,
+      "byte_len": 342016,
+      "structural_fingerprint": "b2f92d4fb104ff93b89693d4cca470111eea5f0f0f87ef9cf807a60be7754aab",
+      "category": "page_list_wrong_type",
+      "normalized_error": "build legacy-0x#+Quill PUB source graph for Viewer: legacy DOCUMENT PageList object # has type 0x#, expected PAGE 0x#",
+      "raw_error": "build legacy-0x22+Quill PUB source graph for Viewer: legacy DOCUMENT PageList object 268 has type 0x0041, expected PAGE 0x0014"
+    },
+    {
+      "sha256": "2b9c28f42633507773dabdb1efe5b4f88343f10fccd52f36babaf1c3bb7bd8ed",
+      "revision": 125,
+      "byte_len": 25600,
+      "structural_fingerprint": "3df8cc62520975d5a31e5e55c164f082191803e1665a3e2f705890d848edb82e",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 304 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "2d93e7712544183524eb159605b6e5099584505ebdee78774efb0697e568c5ba",
+      "revision": 704,
+      "byte_len": 133632,
+      "structural_fingerprint": "b852614673c7124895f663e53394d42d30da351fab536185ecde715de622d4b7",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 322 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "2f94e4880bd8eddd814f84768a9fac05659f8146cccd26790bdfcee6c9792b61",
+      "revision": 136,
+      "byte_len": 17408,
+      "structural_fingerprint": "250ad44aba6c0cde6aa3bba989cd5c11aec13d66e1366c916ac69619595b5f3a",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 345 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "3041c3250cf2ae0527745b642cda8223445cc52f4b570282c81294163c1b091c",
+      "revision": 125,
+      "byte_len": 18944,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 352 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "3114f1328f49066cf3168a76758ffb279e1a838b54e618cc2c050ae163398f35",
+      "revision": 136,
+      "byte_len": 18944,
+      "structural_fingerprint": "eca1583996ae5a716c5269c64c08cfe1391afa6142e16b4336d341bd1481bf0c",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 269 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "36b3c7d4575e7d1806e83cd1c196e8b5c3b03b1be08dd94d0fb4dbd28c4dcba7",
+      "revision": 136,
+      "byte_len": 14336,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 297 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "379997ec5cbd2efdbdcc1b7cbb8c9764a4e313aa6f3c008f3850a1e1cb725ba5",
+      "revision": 136,
+      "byte_len": 21504,
+      "structural_fingerprint": "398252e9bfb5e41341f0b4e7a758ffea830067d9b55c1757c636c265cfd3f67a",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 366 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "39d71dcc2fb70b5e43b78a2d3ab1081eaff77d4b7cfd2a38ef917c46c0d51194",
+      "revision": 136,
+      "byte_len": 14336,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 324 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "3e0ffa579d9b17fa199dca21ea427d23ee1a9d76501f40e58831b8c674102c96",
+      "revision": 704,
+      "byte_len": 32256,
+      "structural_fingerprint": "43b7687d186bb49722d8840510ca99229c63f170948c956fcdc7072c6fd02763",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 501 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "4960e5bb0cf62b2d9387a0c454973a1aaa02031252f180a364112b41bac87c5b",
+      "revision": 136,
+      "byte_len": 14336,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 302 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "53ca33b1076388d528295f2f6df4a0071a54120cf780f9c4fba31e2b2bbf8e15",
+      "revision": 136,
+      "byte_len": 11264,
+      "structural_fingerprint": "ae2838d22b5c235a3047f9db0a7dbe8ee3764e0edabfa439e7846fdbc262c83d",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 270 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "548f923111c491581a05206d216ee81fe0e619661990377dbcc027bd9d4748eb",
+      "revision": 136,
+      "byte_len": 16896,
+      "structural_fingerprint": "3640d8a6239cb0f6637afcdc3719aaeb989e1bdc66461323d99a70c1f1113bf8",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 341 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "54c59e90239e8abe399e534521183adb1b7df8915a480d120ade67cd891d4a04",
+      "revision": 136,
+      "byte_len": 18432,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 293 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "5861117efd81d7165f5f4fc7e69f93894324c9511b7e3753692d9f576f0546e9",
+      "revision": 136,
+      "byte_len": 13824,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 303 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "698502865ad2f50a01b7052bf834edee831abe3a5c4a25a5b0a0a3d7d3c2b21d",
+      "revision": 136,
+      "byte_len": 11264,
+      "structural_fingerprint": "6cc4375bb0158c4171016972765c137ba2cab2386b976b6baee180b8cb25fe52",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 267 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "7860acc670667c456fb29048a4cfa1840e4a7d5b57b7b2a2975c8d76929063dc",
+      "revision": 125,
+      "byte_len": 314880,
+      "structural_fingerprint": "398418413e9d5b201454038b93fd732691026403ac853266311669175649e262",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 468 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "877800395b639164d23b4f9102e4d451a047418f5c952ff58f65da31ebb07f27",
+      "revision": 136,
+      "byte_len": 14848,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 339 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "90b5237149f75af4c26a40e76d51f1bce23a73bc7c4c9204db1020a10dc4b2cd",
+      "revision": 125,
+      "byte_len": 119296,
+      "structural_fingerprint": "c6efd43e7890afcf46eae5069cfdebd63595c924e540ae83c737181344057d9c",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 459 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "98c6375a52e11f2c1022e2959d7f462cb529bc3c63223eec16325e0acc2d7133",
+      "revision": 125,
+      "byte_len": 395776,
+      "structural_fingerprint": "8fccbad729fc99a20022a614678f2c5ec8a33af9537e0bc51eef4f63fb2ad603",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 1842 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "999e310a383cb492f8dc383d94b296c9eb789acf8ef29316a1d4004ef5e50780",
+      "revision": 704,
+      "byte_len": 48640,
+      "structural_fingerprint": "1da2d8ac2e8f365e268752e76745f6fbb6d0c543de530f0c5030cdea6f93542d",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 503 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "9c2f6506ad631738513d9e23a4967e554a55701d08900553cab04f0321358266",
+      "revision": 125,
+      "byte_len": 14336,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 455 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "9d899a909a2daa80bb28717bcbbe025db1ad4d61129e2085b0fff593ff531238",
+      "revision": 125,
+      "byte_len": 59904,
+      "structural_fingerprint": "c4179a555f3ae49c89ed35e2c0d3cff1a72ab612130ed5f5f33ba5eeb6c20426",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 341 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "9e55bf04ac75807b2afd76350ec1f94314cf5b6cf4255202223135e4ae4d3199",
+      "revision": 125,
+      "byte_len": 16896,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 341 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "9fd4894622c1bae4550147a7163bdfcad891aa72b270b3516fc1a00c6443eaf8",
+      "revision": 136,
+      "byte_len": 14336,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 339 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "a4f7a754b9c2c94a6708867e873d0c9f7246dbdc676a2fbc890e79a684c9178b",
+      "revision": 704,
+      "byte_len": 29696,
+      "structural_fingerprint": "43b7687d186bb49722d8840510ca99229c63f170948c956fcdc7072c6fd02763",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 387 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "a9527c1fa08b9d83b96abc3cc6732529bae5d28b65e435b9a2bc62be4a0dad70",
+      "revision": 136,
+      "byte_len": 19968,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 293 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "aa9ae88c17b9da3b945241e1e5730584e17b633026f587373a9420aed6e86559",
+      "revision": 704,
+      "byte_len": 19968,
+      "structural_fingerprint": "f1cb2f87dc0f448e44741b970680c87ec6c715275391259a2056f12a5cfd1df7",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 507 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "aaeb4120e72a564aab60f5275c1dea8ed5830ec4de368d3bc22d410f7c5342c4",
+      "revision": 125,
+      "byte_len": 25600,
+      "structural_fingerprint": "f69ef281853ca33736e66077848983e497242f88715d126430bfe6615c8ad148",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 304 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "af9a3624085c10472bacc31aa1984e0777a24957371a4f53271a3fd1ecbafe76",
+      "revision": 704,
+      "byte_len": 26112,
+      "structural_fingerprint": "f1cb2f87dc0f448e44741b970680c87ec6c715275391259a2056f12a5cfd1df7",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 369 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "b688caa757e52b34e84ed6f69207ceb55fe067e16f5f5122ac09ab606a6ca778",
+      "revision": 125,
+      "byte_len": 19968,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 388 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "ba33ccaf2f41d85a44743279dc0295389576fb1b6851cee0d1a85677bf499738",
+      "revision": 136,
+      "byte_len": 12288,
+      "structural_fingerprint": "1176466130dba883007901e21e1b0b1023fca6dc8c837c9ea8203e1c254c5d27",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 296 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "ba4aa77d85958bff01d33ae0686fbf75cca1654cb4039ba2c24c2ceb687df650",
+      "revision": 704,
+      "byte_len": 22528,
+      "structural_fingerprint": "f1cb2f87dc0f448e44741b970680c87ec6c715275391259a2056f12a5cfd1df7",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 563 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "bea6c618c52cb4cdd8eb48b4ae2bff7290b79161abe6326b49329b5e6434f32a",
+      "revision": 136,
+      "byte_len": 16384,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 297 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "c055e3d2020c42b60fec0b828352682c99ad48991f4c3de34808e425751e4159",
+      "revision": 125,
+      "byte_len": 449024,
+      "structural_fingerprint": "0dffd0748f6b82e972275a7e7a8e823de416ba0860eb0a2f084fe91c3016449f",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 456 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "c8d5caae2d2339a2ccfba3d98983c1e706e15348639c332fa57ee744b70405bd",
+      "revision": 125,
+      "byte_len": 13312,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 297 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "ceb00ff566915c7c3d913013663116e595c356e4f5f9ae6fca0c88d48a7b9932",
+      "revision": 136,
+      "byte_len": 14848,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 465 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "cf35a6a02911320cde1843c68d8532d04fe9f681fa6615aa919cee32e59ef2d9",
+      "revision": 125,
+      "byte_len": 16384,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 330 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "d149d547050332421474c957528842562ffad6816b2ce3d6326674302063d2eb",
+      "revision": 125,
+      "byte_len": 192000,
+      "structural_fingerprint": "9a44402bb8aad7ad079ce80a412bb1e91df1958c1ec97fc00d1a8e72354ce1c5",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 409 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "d59d7c14627becbab2d42542f5f47d7c2ecb1f67101419f67b5fa8aba782d7c5",
+      "revision": 125,
+      "byte_len": 13312,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 302 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "d640dddd8e23aac9d7cc3189c2d681b8b85f78fbbff4152b1e49995c314ecc9d",
+      "revision": 125,
+      "byte_len": 112128,
+      "structural_fingerprint": "ae7dbad55a4a41a8a9268254cb56d854ea25e7a0fe9e776d8ba6d2e33fe85b01",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 366 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "d72a4c79a378f93299be53220d7809a433235f74103adcffc714748068007e6f",
+      "revision": 136,
+      "byte_len": 226816,
+      "structural_fingerprint": "78def3878e8b5b82f70d2b67fa639d27b901aa1369f728cf86e0dcab083454d1",
+      "category": "other",
+      "normalized_error": "unsupported PUB family/profile: family=None, profile=not_structured_publisher, route=unsupported",
+      "raw_error": "unsupported PUB family/profile: family=None, profile=not_structured_publisher, route=unsupported"
+    },
+    {
+      "sha256": "d97980d6fecd7fe3064d1b745fe57991eea828399c091d3083e5e7bca9876871",
+      "revision": 136,
+      "byte_len": 10752,
+      "structural_fingerprint": "ae2838d22b5c235a3047f9db0a7dbe8ee3764e0edabfa439e7846fdbc262c83d",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 278 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "daa5ff11fc5d81b7f516cfa20c1a4f734a30ef902c84c71fd061a3a4492b8a01",
+      "revision": 125,
+      "byte_len": 13312,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 303 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "e26a770a0353cafb535e85b0424f0d5c1fbd93c7af48ffa7c0ca29125edfe4a1",
+      "revision": 125,
+      "byte_len": 112128,
+      "structural_fingerprint": "2e59a2ce17226cb68b1f9b53cff9af55972c03f10b98c2605e8e4a4391b772b8",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 366 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "e937b30923b86a7a4eebf7a4fa6870a737cee513bbeadb7b04f0f9b757bcddcd",
+      "revision": 616,
+      "byte_len": 210432,
+      "structural_fingerprint": "eaf2116622108878d63efd23f142e0914e053baf05d480364c5b950b287b696a",
+      "category": "page_list_wrong_type",
+      "normalized_error": "build legacy-0x#+Quill PUB source graph for Viewer: legacy DOCUMENT PageList object # has type 0x#, expected PAGE 0x#",
+      "raw_error": "build legacy-0x22+Quill PUB source graph for Viewer: legacy DOCUMENT PageList object 272 has type 0x0041, expected PAGE 0x0014"
+    },
+    {
+      "sha256": "f3de87906ce7248a2a540bff4f4d08ee8906ee4dca4291835d05156b6b7bf6a9",
+      "revision": 125,
+      "byte_len": 16896,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 428 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "f3fe04c42e8226f97f682080dcff5dfdd001397c5a01c7cac27e878027ea98fd",
+      "revision": 125,
+      "byte_len": 18432,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 337 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "f824bc7932c80c411a903957131a00fdd83f88208417083644933f209f79b741",
+      "revision": 704,
+      "byte_len": 18944,
+      "structural_fingerprint": "f1cb2f87dc0f448e44741b970680c87ec6c715275391259a2056f12a5cfd1df7",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 269 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "f9ed98910b4258c68312c4059dfd112fd499fa85000634f30b6d5042ec4ba4e7",
+      "revision": 125,
+      "byte_len": 20992,
+      "structural_fingerprint": "37fcfea1c6e51dc08f4df3b792217a24b0904e6615c5ec26f9d6de26e6ef775c",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 330 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    },
+    {
+      "sha256": "fb975158ee8c9acb487e1fb5b83f4e63c620c085e31a45c543e4777b38552a82",
+      "revision": 136,
+      "byte_len": 18944,
+      "structural_fingerprint": "265103b78929abc9c4d546d8b6c5bd0299a543c64105b688d30b6556c2ef1caf",
+      "category": "non_ascii_codepage",
+      "normalized_error": "build legacy-0x# no-Quill PUB source graph for Viewer: decode no-Quill owner # text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted",
+      "raw_error": "build legacy-0x22 no-Quill PUB source graph for Viewer: decode no-Quill owner 293 text: legacy no-Quill V1 text contains non-ASCII bytes; codepage authority is not admitted"
+    }
+  ],
+  "evidence_boundary": "Errors only; no recovered document text or embedded resource bytes retained."
+}
