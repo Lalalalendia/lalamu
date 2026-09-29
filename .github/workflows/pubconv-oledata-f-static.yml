@@ -39,7 +39,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends p7zip-full msitools cabextract
           python -m pip install --disable-pip-version-check pefile==2024.8.26 capstone==5.0.6
-          python -m py_compile tools/pubconv_oledata_f_static.py
+          python -m py_compile tools/pubconv_oledata_f_static.py tools/pubconv_oledata_candidate_context.py
           mkdir -p /tmp/pubconv-f/{download,extracted,msi-scan,msi-extracted,out}
 
       - name: Acquire exact archived Microsoft package
@@ -96,6 +96,14 @@ jobs:
             --out /tmp/pubconv-f/out/oledata-f-static.json \
             | tee /tmp/pubconv-f/out/summary.json
 
+      - name: Capture bounded candidate instruction contexts
+        run: |
+          set -euxo pipefail
+          python tools/pubconv_oledata_candidate_context.py \
+            /tmp/pubconv-f/out/PUBCONV.DLL \
+            --out /tmp/pubconv-f/out/oledata-candidate-context.json \
+            | tee /tmp/pubconv-f/out/candidate-context-summary.json
+
       - name: Validate evidence fence
         run: |
           python - <<'PY'
@@ -111,6 +119,32 @@ jobs:
           assert fence["runtime_activation_observed"] is False
           assert fence["publisher2000_writer_behavior_claimed"] is False
           assert fence["raw_microsoft_bytes_retained"] is False
+
+          c = json.loads(Path("/tmp/pubconv-f/out/oledata-candidate-context.json").read_text())
+          assert c["schema_version"] == "chaptera.pubconv-oledata-candidate-context.v1"
+          assert c["candidate_count"] == 3
+          assert c["exact_anchor_instructions"]["0x69866"] == {
+              "mnemonic": "test",
+              "op_str": "word ptr [eax + 6], 0x8000",
+          }
+          assert c["exact_anchor_instructions"]["0x69878"] == {
+              "mnemonic": "cmp",
+              "op_str": "esi, 0x22",
+          }
+          assert c["exact_anchor_instructions"]["0x1d5cb"] == {
+              "mnemonic": "cmp",
+              "op_str": "eax, 0x22",
+          }
+          assert c["exact_anchor_instructions"]["0x772db"] == {
+              "mnemonic": "cmp",
+              "op_str": "word ptr [edi], 0x4f4d",
+          }
+          cf = c["bounded_interpretation"]
+          assert cf["function_boundaries_claimed"] is False
+          assert cf["field_semantics_assigned"] is False
+          assert cf["candidate_is_confirmed_oledata_consumer"] is False
+          assert cf["publisher2000_behavior_claimed"] is False
+
           receipt = {
               "schema_version": "chaptera.pubconv-oledata-f-static.acquisition.v1",
               "package_sha256": os.environ["PACKAGE_SHA256"],
@@ -135,6 +169,8 @@ jobs:
             /tmp/pubconv-f/out/oledata-f-static.json
             /tmp/pubconv-f/out/acquisition-receipt.json
             /tmp/pubconv-f/out/summary.json
+            /tmp/pubconv-f/out/oledata-candidate-context.json
+            /tmp/pubconv-f/out/candidate-context-summary.json
             /tmp/pubconv-f/out/pubconv-msi-hits.txt
           if-no-files-found: error
           retention-days: 14
