@@ -21,6 +21,10 @@ CANDIDATES = {
     "type22_flag8000_offset6": 0x69866,
     "type22_flag8000_offset0a": 0x1D5CB,
     "type22_mo_signature": 0x772C8,
+    # Direct callees/helpers from the three exact anchor neighborhoods above.
+    "oledata_mo_body_consumer": 0x72026,
+    "oledata_type_lookup_helper": 0x770BA,
+    "flag_candidate_helper": 0x4CAC6,
 }
 
 
