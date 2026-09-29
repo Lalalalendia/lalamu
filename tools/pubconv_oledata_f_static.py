@@ -93,6 +93,9 @@ def scan_code(pe: pefile.PE, data_anchors: dict[str, list[int]]) -> list[dict[st
     image_base = int(pe.OPTIONAL_HEADER.ImageBase)
     md = Cs(CS_ARCH_X86, CS_MODE_32)
     md.detail = True
+    # Executable PE sections can contain alignment/data islands. Keep scanning
+    # past undecodable bytes rather than silently truncating the section.
+    md.skipdata = True
 
     va_to_names: dict[int, list[str]] = defaultdict(list)
     for name, rvas in data_anchors.items():
