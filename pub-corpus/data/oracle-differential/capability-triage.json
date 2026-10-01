@@ -1,28 +1,81 @@
 {
   "classification_counts": {
-    "correlated-oracle": 54,
-    "semantic-mismatch": 34
+    "comparable": 7,
+    "correlated-oracle": 43,
+    "semantic-mismatch": 22
   },
   "contract_schema": "lalamu.pub-differential-capability-contract.v1",
   "input_locator": "pub-corpus/data/oracle-differential/latest.json",
-  "input_receipt_sha256": "3d69c27d531660159ba76a2755fb3e4b81b8fc86cc463cb8eea1527e93cd0570",
+  "input_receipt_sha256": "b2b2cd18df96cdeb780023f55d4f1962963796c45c28d13d64461e2931b1c60c",
   "input_schema": "lalamu.pub-oracle-differential.v2",
   "interpretation": "Raw observations are preserved. Classifications depend on explicit engine capability, metric semantics and lineage. Numeric disagreement is not a vote and is not a bug candidate unless the compared capability/semantics are aligned.",
   "metric_counts": {
-    "normalized_text_sha256": 47,
-    "page_count": 41
+    "normalized_text_sha256": 32,
+    "open_acceptance": 14,
+    "page_count": 26
   },
   "page_count_classification_counts": {
-    "correlated-oracle": 21,
-    "semantic-mismatch": 20
+    "correlated-oracle": 13,
+    "semantic-mismatch": 13
   },
-  "promotion_candidate_count": 0,
-  "promotion_candidates": [],
+  "promotion_candidate_count": 7,
+  "promotion_candidates": [
+    {
+      "fixture_sha256": "02a2b240864c53159b7ddfa7aaebf9e943777bc0d3b64b819ad72c57796f66d7",
+      "linked_owners": [],
+      "raw_disagreement_index": 0,
+      "reason_code": "chaptera-bounded-acceptance-asymmetry",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/3"
+    },
+    {
+      "fixture_sha256": "02c9a7334cd27280dab5f29f3e91ab9f3475764f8004ae3611776f865f8fc6b8",
+      "linked_owners": [],
+      "raw_disagreement_index": 0,
+      "reason_code": "chaptera-bounded-acceptance-asymmetry",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/4"
+    },
+    {
+      "fixture_sha256": "02e1adc9d6e815b409cec9bb35f246123d4c7a3ae01623ca8565b2904b016218",
+      "linked_owners": [],
+      "raw_disagreement_index": 0,
+      "reason_code": "chaptera-bounded-acceptance-asymmetry",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/5"
+    },
+    {
+      "fixture_sha256": "030b125f6ca9b1b8b2934142159dece3c81e13f4c51c05e22e032aa02dbd2c8a",
+      "linked_owners": [],
+      "raw_disagreement_index": 0,
+      "reason_code": "chaptera-bounded-acceptance-asymmetry",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/6"
+    },
+    {
+      "fixture_sha256": "05a457874fee23165e4d2882ba11909977ac4c6136e9e8162ded757ebc13baa9",
+      "linked_owners": [],
+      "raw_disagreement_index": 0,
+      "reason_code": "chaptera-bounded-acceptance-asymmetry",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/11"
+    },
+    {
+      "fixture_sha256": "09d4e74f0638660241f8d848950a05f3161bea54f5a7c109f88d2df7ead9a877",
+      "linked_owners": [],
+      "raw_disagreement_index": 0,
+      "reason_code": "chaptera-bounded-acceptance-asymmetry",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/16"
+    },
+    {
+      "fixture_sha256": "09fca9b767f3a3f811d14074e681287859f465ac7cebcb74aeb4752c10e9cf71",
+      "linked_owners": [],
+      "raw_disagreement_index": 0,
+      "reason_code": "chaptera-bounded-acceptance-asymmetry",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/17"
+    }
+  ],
   "raw_pairwise_issue_counts": {
-    "normalized_text_mismatch": 47,
-    "page_count_mismatch": 41
+    "engine_acceptance_mismatch": 14,
+    "normalized_text_mismatch": 32,
+    "page_count_mismatch": 26
   },
-  "receipt_sha256": "a888f98d2ad5fa49c986116ad073e1ee0f7b93e10f6b95141d7063740b55c7fa",
+  "receipt_sha256": "c0f23aa71395a022d3caf70908b01ac077e9a8e6a05c06e7116ddda9f70fe2ae",
   "records": [
     {
       "byte_len": 603136,
@@ -547,6 +600,521 @@
       }
     },
     {
+      "byte_len": 16384,
+      "classifications": [
+        {
+          "classification": "comparable",
+          "left": {
+            "capability": "supported",
+            "engine_id": "chaptera",
+            "lineage_group": "chaptera",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "process outcome normalized to success/rejected/timeout/unavailable/invalid-output",
+            "observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+            "role": "canonical-public-consumer-under-test"
+          },
+          "metric_id": "open_acceptance",
+          "promotion_candidate": true,
+          "promotion_reason_code": "chaptera-bounded-acceptance-asymmetry",
+          "raw_disagreement_index": 0,
+          "raw_disagreement_sha256": "6422c5df4e82fc820d497e9017c9d5abef0710e19c01acb753ffb8e69539ff38",
+          "raw_kind": "engine_acceptance_mismatch",
+          "reason_code": "capability-and-metric-semantics-align",
+          "right": {
+            "capability": "supported",
+            "engine_id": "libmspub",
+            "lineage_group": "libmspub",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "pub2xhtml process outcome plus output existence",
+            "observation_sha256": "65cc87aa83fe117ac530b85b85dd290bd2052cbd7ec88e60d97ccf668346bf39",
+            "role": "independent-open-source-parser"
+          }
+        },
+        {
+          "classification": "correlated-oracle",
+          "left": {
+            "capability": "supported",
+            "engine_id": "chaptera",
+            "lineage_group": "chaptera",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "process outcome normalized to success/rejected/timeout/unavailable/invalid-output",
+            "observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+            "role": "canonical-public-consumer-under-test"
+          },
+          "metric_id": "open_acceptance",
+          "promotion_candidate": false,
+          "raw_disagreement_index": 1,
+          "raw_disagreement_sha256": "0f59e4f3634ca60868b7ff188dac599dce7be8682e7bf8a72e5d297ae689f802",
+          "raw_kind": "engine_acceptance_mismatch",
+          "reason_code": "dependent-parser-lineage",
+          "right": {
+            "capability": "partial",
+            "engine_id": "libreoffice",
+            "lineage_group": "libmspub",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "LibreOffice headless PUB import plus PDF output existence",
+            "observation_sha256": "dab1aba93acefe1433db87cc0d874d9ca5623003f9f3872133168677aa100d18",
+            "role": "downstream-consumer-of-libmspub-import-filter"
+          }
+        },
+        {
+          "classification": "correlated-oracle",
+          "left": {
+            "capability": "partial",
+            "engine_id": "libmspub",
+            "lineage_group": "libmspub",
+            "metric_semantics_version": "libmspub-xhtml-text-nfkc-whitespace-v1",
+            "normalization_method": "XHTML text elements, NFKC, collapse whitespace, SHA-256",
+            "observation_sha256": "65cc87aa83fe117ac530b85b85dd290bd2052cbd7ec88e60d97ccf668346bf39",
+            "role": "independent-open-source-parser"
+          },
+          "metric_id": "normalized_text_sha256",
+          "promotion_candidate": false,
+          "raw_disagreement_index": 2,
+          "raw_disagreement_sha256": "00dc1808c7d83c197a973ef1d3c5c73bd165f6b1dc87e4cf6df11c21dc0e08de",
+          "raw_kind": "normalized_text_mismatch",
+          "reason_code": "dependent-parser-lineage",
+          "right": {
+            "capability": "partial",
+            "engine_id": "libreoffice",
+            "lineage_group": "libmspub",
+            "metric_semantics_version": "libreoffice-pdf-text-nfkc-whitespace-v1",
+            "normalization_method": "pdftotext -layout output, NFKC, collapse whitespace, SHA-256",
+            "observation_sha256": "dab1aba93acefe1433db87cc0d874d9ca5623003f9f3872133168677aa100d18",
+            "role": "downstream-consumer-of-libmspub-import-filter"
+          }
+        }
+      ],
+      "engine_observations": {
+        "chaptera": {
+          "engine_id": "chaptera",
+          "exact_version": "15e4fad546569daa5fff62cd1df5671f4637267c",
+          "invocation_mode": "chaptera-producer-a-viewer-json-v1",
+          "lineage_group": "chaptera",
+          "raw_normalized_observation": {
+            "error": "Error: open mature-0x2c Viewer geometry\n\nCaused by:\n    0: build mature-0x2C PUB source graph for Viewer\n    1: read /Quill/QuillSub/CONTENTS\n    2: в CFB отсутствует поток /Quill/QuillSub/CONTENTS\n    3: No such stream: \"/Quill/QuillSub/CONTENTS\"",
+            "returncode": 1,
+            "status": "rejected"
+          },
+          "raw_normalized_observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+          "role": "canonical-public-consumer-under-test"
+        },
+        "libmspub": {
+          "engine_id": "libmspub",
+          "exact_version": "pub2raw 0.1.4",
+          "invocation_mode": "pub2xhtml-xhtml-export-v1",
+          "lineage_group": "libmspub",
+          "raw_normalized_observation": {
+            "normalized_text_sha256": "bbff9fc97434aac30abfee23a32c7ed7e493cdbe91531ed11defa4cc5a387d34",
+            "page_count": 2,
+            "status": "success",
+            "text_chars": 1428,
+            "text_words": 175,
+            "token_multiset_sha256": "13840f93b7b5f2fd8f36139ff6f23b7a277c75918035cd191548990ac7d96688",
+            "xhtml_bytes": 18856
+          },
+          "raw_normalized_observation_sha256": "65cc87aa83fe117ac530b85b85dd290bd2052cbd7ec88e60d97ccf668346bf39",
+          "role": "independent-open-source-parser"
+        },
+        "libreoffice": {
+          "engine_id": "libreoffice",
+          "exact_version": "LibreOffice 24.2.7.2 420(Build:2)",
+          "invocation_mode": "libreoffice-pub-import-pdf-export-v1",
+          "lineage_group": "libmspub",
+          "raw_normalized_observation": {
+            "normalized_text_sha256": "1f9456942f36656f6b6783c21a9f2f74b790d166e2ddbce06d84f8f2fff0bf46",
+            "page_count": 2,
+            "status": "success",
+            "text_chars": 1425,
+            "text_words": 172,
+            "token_multiset_sha256": "13840f93b7b5f2fd8f36139ff6f23b7a277c75918035cd191548990ac7d96688"
+          },
+          "raw_normalized_observation_sha256": "dab1aba93acefe1433db87cc0d874d9ca5623003f9f3872133168677aa100d18",
+          "role": "downstream-consumer-of-libmspub-import-filter"
+        }
+      },
+      "fixture_sha256": "02a2b240864c53159b7ddfa7aaebf9e943777bc0d3b64b819ad72c57796f66d7",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/3",
+      "source_provenance": {
+        "candidate_id": null,
+        "source_filename": null,
+        "source_repo": null,
+        "source_type": null
+      },
+      "structural_context": {
+        "coarse_structure_fingerprint": "d480c07dd7164237e4a7dc48895ff98ac840947453a2cbc8a6761793bcb0f189",
+        "family": "mature-0x2c",
+        "family_authority": "chaptera-mature-pipeline-reached",
+        "topology_fingerprint": "092df19d29041c51af6de78ff43ddf0e09e507f4b9074d6e9f66b487b556ec19"
+      }
+    },
+    {
+      "byte_len": 11776,
+      "classifications": [
+        {
+          "classification": "comparable",
+          "left": {
+            "capability": "supported",
+            "engine_id": "chaptera",
+            "lineage_group": "chaptera",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "process outcome normalized to success/rejected/timeout/unavailable/invalid-output",
+            "observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+            "role": "canonical-public-consumer-under-test"
+          },
+          "metric_id": "open_acceptance",
+          "promotion_candidate": true,
+          "promotion_reason_code": "chaptera-bounded-acceptance-asymmetry",
+          "raw_disagreement_index": 0,
+          "raw_disagreement_sha256": "6422c5df4e82fc820d497e9017c9d5abef0710e19c01acb753ffb8e69539ff38",
+          "raw_kind": "engine_acceptance_mismatch",
+          "reason_code": "capability-and-metric-semantics-align",
+          "right": {
+            "capability": "supported",
+            "engine_id": "libmspub",
+            "lineage_group": "libmspub",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "pub2xhtml process outcome plus output existence",
+            "observation_sha256": "68b030ad0c455ceb381b3ff6ef400d5296a2d735c5fb49aef24ef61aa3b5fc7b",
+            "role": "independent-open-source-parser"
+          }
+        },
+        {
+          "classification": "correlated-oracle",
+          "left": {
+            "capability": "supported",
+            "engine_id": "chaptera",
+            "lineage_group": "chaptera",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "process outcome normalized to success/rejected/timeout/unavailable/invalid-output",
+            "observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+            "role": "canonical-public-consumer-under-test"
+          },
+          "metric_id": "open_acceptance",
+          "promotion_candidate": false,
+          "raw_disagreement_index": 1,
+          "raw_disagreement_sha256": "0f59e4f3634ca60868b7ff188dac599dce7be8682e7bf8a72e5d297ae689f802",
+          "raw_kind": "engine_acceptance_mismatch",
+          "reason_code": "dependent-parser-lineage",
+          "right": {
+            "capability": "partial",
+            "engine_id": "libreoffice",
+            "lineage_group": "libmspub",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "LibreOffice headless PUB import plus PDF output existence",
+            "observation_sha256": "fa338f3c6818a350f732379393a90bee9bfb034dcc23a41c94ba0cfff21dc3c8",
+            "role": "downstream-consumer-of-libmspub-import-filter"
+          }
+        }
+      ],
+      "engine_observations": {
+        "chaptera": {
+          "engine_id": "chaptera",
+          "exact_version": "15e4fad546569daa5fff62cd1df5671f4637267c",
+          "invocation_mode": "chaptera-producer-a-viewer-json-v1",
+          "lineage_group": "chaptera",
+          "raw_normalized_observation": {
+            "error": "Error: open mature-0x2c Viewer geometry\n\nCaused by:\n    0: build mature-0x2C PUB source graph for Viewer\n    1: read /Quill/QuillSub/CONTENTS\n    2: в CFB отсутствует поток /Quill/QuillSub/CONTENTS\n    3: No such stream: \"/Quill/QuillSub/CONTENTS\"",
+            "returncode": 1,
+            "status": "rejected"
+          },
+          "raw_normalized_observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+          "role": "canonical-public-consumer-under-test"
+        },
+        "libmspub": {
+          "engine_id": "libmspub",
+          "exact_version": "pub2raw 0.1.4",
+          "invocation_mode": "pub2xhtml-xhtml-export-v1",
+          "lineage_group": "libmspub",
+          "raw_normalized_observation": {
+            "normalized_text_sha256": "d31edc69847b4f0b6de210777260a90ff7cf1da845eea930f15e95b258fa02f1",
+            "page_count": 2,
+            "status": "success",
+            "text_chars": 64,
+            "text_words": 9,
+            "token_multiset_sha256": "531e4995f49d06175f421ba7ecab09843c2d842bb2a8a72111876e9abac5f204",
+            "xhtml_bytes": 1694
+          },
+          "raw_normalized_observation_sha256": "68b030ad0c455ceb381b3ff6ef400d5296a2d735c5fb49aef24ef61aa3b5fc7b",
+          "role": "independent-open-source-parser"
+        },
+        "libreoffice": {
+          "engine_id": "libreoffice",
+          "exact_version": "LibreOffice 24.2.7.2 420(Build:2)",
+          "invocation_mode": "libreoffice-pub-import-pdf-export-v1",
+          "lineage_group": "libmspub",
+          "raw_normalized_observation": {
+            "normalized_text_sha256": "d31edc69847b4f0b6de210777260a90ff7cf1da845eea930f15e95b258fa02f1",
+            "page_count": 2,
+            "status": "success",
+            "text_chars": 64,
+            "text_words": 9,
+            "token_multiset_sha256": "531e4995f49d06175f421ba7ecab09843c2d842bb2a8a72111876e9abac5f204"
+          },
+          "raw_normalized_observation_sha256": "fa338f3c6818a350f732379393a90bee9bfb034dcc23a41c94ba0cfff21dc3c8",
+          "role": "downstream-consumer-of-libmspub-import-filter"
+        }
+      },
+      "fixture_sha256": "02c9a7334cd27280dab5f29f3e91ab9f3475764f8004ae3611776f865f8fc6b8",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/4",
+      "source_provenance": {
+        "candidate_id": null,
+        "source_filename": null,
+        "source_repo": null,
+        "source_type": null
+      },
+      "structural_context": {
+        "coarse_structure_fingerprint": "df743639c3a666a57282799500898a9dd31463c27591afc190f809a740c34215",
+        "family": "mature-0x2c",
+        "family_authority": "chaptera-mature-pipeline-reached",
+        "topology_fingerprint": "5ff22ffd7a852d5d221151876377d57a9a4d58cad8eaf277926a8875b9518454"
+      }
+    },
+    {
+      "byte_len": 34304,
+      "classifications": [
+        {
+          "classification": "comparable",
+          "left": {
+            "capability": "supported",
+            "engine_id": "chaptera",
+            "lineage_group": "chaptera",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "process outcome normalized to success/rejected/timeout/unavailable/invalid-output",
+            "observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+            "role": "canonical-public-consumer-under-test"
+          },
+          "metric_id": "open_acceptance",
+          "promotion_candidate": true,
+          "promotion_reason_code": "chaptera-bounded-acceptance-asymmetry",
+          "raw_disagreement_index": 0,
+          "raw_disagreement_sha256": "6422c5df4e82fc820d497e9017c9d5abef0710e19c01acb753ffb8e69539ff38",
+          "raw_kind": "engine_acceptance_mismatch",
+          "reason_code": "capability-and-metric-semantics-align",
+          "right": {
+            "capability": "supported",
+            "engine_id": "libmspub",
+            "lineage_group": "libmspub",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "pub2xhtml process outcome plus output existence",
+            "observation_sha256": "a2ea61440e7f351d4b815e77e355c2c9d2fa70a67dd7347a1142a774e8b9a206",
+            "role": "independent-open-source-parser"
+          }
+        },
+        {
+          "classification": "correlated-oracle",
+          "left": {
+            "capability": "supported",
+            "engine_id": "chaptera",
+            "lineage_group": "chaptera",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "process outcome normalized to success/rejected/timeout/unavailable/invalid-output",
+            "observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+            "role": "canonical-public-consumer-under-test"
+          },
+          "metric_id": "open_acceptance",
+          "promotion_candidate": false,
+          "raw_disagreement_index": 1,
+          "raw_disagreement_sha256": "0f59e4f3634ca60868b7ff188dac599dce7be8682e7bf8a72e5d297ae689f802",
+          "raw_kind": "engine_acceptance_mismatch",
+          "reason_code": "dependent-parser-lineage",
+          "right": {
+            "capability": "partial",
+            "engine_id": "libreoffice",
+            "lineage_group": "libmspub",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "LibreOffice headless PUB import plus PDF output existence",
+            "observation_sha256": "000e43568f0d67afcbdecb8694f926ca035373ad743785ec5fa1530444735f2e",
+            "role": "downstream-consumer-of-libmspub-import-filter"
+          }
+        }
+      ],
+      "engine_observations": {
+        "chaptera": {
+          "engine_id": "chaptera",
+          "exact_version": "15e4fad546569daa5fff62cd1df5671f4637267c",
+          "invocation_mode": "chaptera-producer-a-viewer-json-v1",
+          "lineage_group": "chaptera",
+          "raw_normalized_observation": {
+            "error": "Error: open mature-0x2c Viewer geometry\n\nCaused by:\n    0: build mature-0x2C PUB source graph for Viewer\n    1: read /Quill/QuillSub/CONTENTS\n    2: в CFB отсутствует поток /Quill/QuillSub/CONTENTS\n    3: No such stream: \"/Quill/QuillSub/CONTENTS\"",
+            "returncode": 1,
+            "status": "rejected"
+          },
+          "raw_normalized_observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+          "role": "canonical-public-consumer-under-test"
+        },
+        "libmspub": {
+          "engine_id": "libmspub",
+          "exact_version": "pub2raw 0.1.4",
+          "invocation_mode": "pub2xhtml-xhtml-export-v1",
+          "lineage_group": "libmspub",
+          "raw_normalized_observation": {
+            "normalized_text_sha256": "9c5eed9fbfcb12c7dd940ad2c0bc9092b2acbd4f1ac81bc782eb3bd5fddfee50",
+            "page_count": 3,
+            "status": "success",
+            "text_chars": 309,
+            "text_words": 49,
+            "token_multiset_sha256": "368cc26c31ff70d439d7f33f69210565ce872683111929ea72174cb3feab3eca",
+            "xhtml_bytes": 10764
+          },
+          "raw_normalized_observation_sha256": "a2ea61440e7f351d4b815e77e355c2c9d2fa70a67dd7347a1142a774e8b9a206",
+          "role": "independent-open-source-parser"
+        },
+        "libreoffice": {
+          "engine_id": "libreoffice",
+          "exact_version": "LibreOffice 24.2.7.2 420(Build:2)",
+          "invocation_mode": "libreoffice-pub-import-pdf-export-v1",
+          "lineage_group": "libmspub",
+          "raw_normalized_observation": {
+            "normalized_text_sha256": null,
+            "page_count": 3,
+            "status": "success",
+            "text_chars": 0,
+            "text_words": 0,
+            "token_multiset_sha256": null
+          },
+          "raw_normalized_observation_sha256": "000e43568f0d67afcbdecb8694f926ca035373ad743785ec5fa1530444735f2e",
+          "role": "downstream-consumer-of-libmspub-import-filter"
+        }
+      },
+      "fixture_sha256": "02e1adc9d6e815b409cec9bb35f246123d4c7a3ae01623ca8565b2904b016218",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/5",
+      "source_provenance": {
+        "candidate_id": null,
+        "source_filename": null,
+        "source_repo": null,
+        "source_type": null
+      },
+      "structural_context": {
+        "coarse_structure_fingerprint": "ddc4901934dc5a1133c52270c6395f480a47e0f1d76826a7d3661ff7c9a330b1",
+        "family": "mature-0x2c",
+        "family_authority": "chaptera-mature-pipeline-reached",
+        "topology_fingerprint": "ff39330d7d6b912de279010ba12989413a7256a0a15bf28722af62de6a94c36c"
+      }
+    },
+    {
+      "byte_len": 12288,
+      "classifications": [
+        {
+          "classification": "comparable",
+          "left": {
+            "capability": "supported",
+            "engine_id": "chaptera",
+            "lineage_group": "chaptera",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "process outcome normalized to success/rejected/timeout/unavailable/invalid-output",
+            "observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+            "role": "canonical-public-consumer-under-test"
+          },
+          "metric_id": "open_acceptance",
+          "promotion_candidate": true,
+          "promotion_reason_code": "chaptera-bounded-acceptance-asymmetry",
+          "raw_disagreement_index": 0,
+          "raw_disagreement_sha256": "6422c5df4e82fc820d497e9017c9d5abef0710e19c01acb753ffb8e69539ff38",
+          "raw_kind": "engine_acceptance_mismatch",
+          "reason_code": "capability-and-metric-semantics-align",
+          "right": {
+            "capability": "supported",
+            "engine_id": "libmspub",
+            "lineage_group": "libmspub",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "pub2xhtml process outcome plus output existence",
+            "observation_sha256": "f54bcec7e7595da72e3423a3916c2cf2304463b0c9dc12ae723bf307618d5d41",
+            "role": "independent-open-source-parser"
+          }
+        },
+        {
+          "classification": "correlated-oracle",
+          "left": {
+            "capability": "supported",
+            "engine_id": "chaptera",
+            "lineage_group": "chaptera",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "process outcome normalized to success/rejected/timeout/unavailable/invalid-output",
+            "observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+            "role": "canonical-public-consumer-under-test"
+          },
+          "metric_id": "open_acceptance",
+          "promotion_candidate": false,
+          "raw_disagreement_index": 1,
+          "raw_disagreement_sha256": "0f59e4f3634ca60868b7ff188dac599dce7be8682e7bf8a72e5d297ae689f802",
+          "raw_kind": "engine_acceptance_mismatch",
+          "reason_code": "dependent-parser-lineage",
+          "right": {
+            "capability": "partial",
+            "engine_id": "libreoffice",
+            "lineage_group": "libmspub",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "LibreOffice headless PUB import plus PDF output existence",
+            "observation_sha256": "3bacab93fd968e61fe19d5a9e506aacbcae2bf85e2b1960c60130f50572b4083",
+            "role": "downstream-consumer-of-libmspub-import-filter"
+          }
+        }
+      ],
+      "engine_observations": {
+        "chaptera": {
+          "engine_id": "chaptera",
+          "exact_version": "15e4fad546569daa5fff62cd1df5671f4637267c",
+          "invocation_mode": "chaptera-producer-a-viewer-json-v1",
+          "lineage_group": "chaptera",
+          "raw_normalized_observation": {
+            "error": "Error: open mature-0x2c Viewer geometry\n\nCaused by:\n    0: build mature-0x2C PUB source graph for Viewer\n    1: read /Quill/QuillSub/CONTENTS\n    2: в CFB отсутствует поток /Quill/QuillSub/CONTENTS\n    3: No such stream: \"/Quill/QuillSub/CONTENTS\"",
+            "returncode": 1,
+            "status": "rejected"
+          },
+          "raw_normalized_observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+          "role": "canonical-public-consumer-under-test"
+        },
+        "libmspub": {
+          "engine_id": "libmspub",
+          "exact_version": "pub2raw 0.1.4",
+          "invocation_mode": "pub2xhtml-xhtml-export-v1",
+          "lineage_group": "libmspub",
+          "raw_normalized_observation": {
+            "normalized_text_sha256": null,
+            "page_count": 1,
+            "status": "success",
+            "text_chars": 0,
+            "text_words": 0,
+            "token_multiset_sha256": null,
+            "xhtml_bytes": 710
+          },
+          "raw_normalized_observation_sha256": "f54bcec7e7595da72e3423a3916c2cf2304463b0c9dc12ae723bf307618d5d41",
+          "role": "independent-open-source-parser"
+        },
+        "libreoffice": {
+          "engine_id": "libreoffice",
+          "exact_version": "LibreOffice 24.2.7.2 420(Build:2)",
+          "invocation_mode": "libreoffice-pub-import-pdf-export-v1",
+          "lineage_group": "libmspub",
+          "raw_normalized_observation": {
+            "normalized_text_sha256": null,
+            "page_count": 1,
+            "status": "success",
+            "text_chars": 0,
+            "text_words": 0,
+            "token_multiset_sha256": null
+          },
+          "raw_normalized_observation_sha256": "3bacab93fd968e61fe19d5a9e506aacbcae2bf85e2b1960c60130f50572b4083",
+          "role": "downstream-consumer-of-libmspub-import-filter"
+        }
+      },
+      "fixture_sha256": "030b125f6ca9b1b8b2934142159dece3c81e13f4c51c05e22e032aa02dbd2c8a",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/6",
+      "source_provenance": {
+        "candidate_id": null,
+        "source_filename": null,
+        "source_repo": null,
+        "source_type": null
+      },
+      "structural_context": {
+        "coarse_structure_fingerprint": "6d88e3645c216270954c3a893cd6ecae67cc5b1f5bcea0fed39ae0cb0ca79eee",
+        "family": "mature-0x2c",
+        "family_authority": "chaptera-mature-pipeline-reached",
+        "topology_fingerprint": "ca768c883079d1c864544a7fecc6f00b9e01f650c7d78f04b0a4bcfb41c4cb12"
+      }
+    },
+    {
       "byte_len": 204800,
       "classifications": [
         {
@@ -742,7 +1310,7 @@
         }
       },
       "fixture_sha256": "03abbe9703be14805df1bde2fdf30688a5971153134d16b428d1943022a15178",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/3",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/7",
       "source_provenance": {
         "candidate_id": "belgium-sclera-rood-20",
         "source_filename": "rood-20.pub",
@@ -952,7 +1520,7 @@
         }
       },
       "fixture_sha256": "03d5a039896d64587cf0eb4402380ed5ed522518159b9a2537b67a98a90c087a",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/4",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/8",
       "source_provenance": {
         "candidate_id": null,
         "source_filename": null,
@@ -1162,7 +1730,7 @@
         }
       },
       "fixture_sha256": "05369e47043d612556c0458186e8b4d1a2ab19e90ea79284770b6a5b755dec14",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/5",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/9",
       "source_provenance": {
         "candidate_id": null,
         "source_filename": null,
@@ -1372,7 +1940,7 @@
         }
       },
       "fixture_sha256": "059dde4bcb408374f14273275febd8158dc8d02960966488dd4324cfd4dcc238",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/6",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/10",
       "source_provenance": {
         "candidate_id": null,
         "source_filename": null,
@@ -1384,6 +1952,128 @@
         "family": "mature-0x2c",
         "family_authority": "chaptera-mature-viewer-success",
         "topology_fingerprint": "6cfd55a1a59ebad39e002db523c57352cfd651cbdfa17399198de26a5a111d6e"
+      }
+    },
+    {
+      "byte_len": 10752,
+      "classifications": [
+        {
+          "classification": "comparable",
+          "left": {
+            "capability": "supported",
+            "engine_id": "chaptera",
+            "lineage_group": "chaptera",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "process outcome normalized to success/rejected/timeout/unavailable/invalid-output",
+            "observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+            "role": "canonical-public-consumer-under-test"
+          },
+          "metric_id": "open_acceptance",
+          "promotion_candidate": true,
+          "promotion_reason_code": "chaptera-bounded-acceptance-asymmetry",
+          "raw_disagreement_index": 0,
+          "raw_disagreement_sha256": "6422c5df4e82fc820d497e9017c9d5abef0710e19c01acb753ffb8e69539ff38",
+          "raw_kind": "engine_acceptance_mismatch",
+          "reason_code": "capability-and-metric-semantics-align",
+          "right": {
+            "capability": "supported",
+            "engine_id": "libmspub",
+            "lineage_group": "libmspub",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "pub2xhtml process outcome plus output existence",
+            "observation_sha256": "ed29249f8f08a9b849653f174dcdc5f51afa149dbaeb9d5e64b36ec5182ae3e7",
+            "role": "independent-open-source-parser"
+          }
+        },
+        {
+          "classification": "correlated-oracle",
+          "left": {
+            "capability": "supported",
+            "engine_id": "chaptera",
+            "lineage_group": "chaptera",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "process outcome normalized to success/rejected/timeout/unavailable/invalid-output",
+            "observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+            "role": "canonical-public-consumer-under-test"
+          },
+          "metric_id": "open_acceptance",
+          "promotion_candidate": false,
+          "raw_disagreement_index": 1,
+          "raw_disagreement_sha256": "0f59e4f3634ca60868b7ff188dac599dce7be8682e7bf8a72e5d297ae689f802",
+          "raw_kind": "engine_acceptance_mismatch",
+          "reason_code": "dependent-parser-lineage",
+          "right": {
+            "capability": "partial",
+            "engine_id": "libreoffice",
+            "lineage_group": "libmspub",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "LibreOffice headless PUB import plus PDF output existence",
+            "observation_sha256": "1237a1a574ae7fc35a5e723e91863c307f89fb6d64c2212146615a4c90f11221",
+            "role": "downstream-consumer-of-libmspub-import-filter"
+          }
+        }
+      ],
+      "engine_observations": {
+        "chaptera": {
+          "engine_id": "chaptera",
+          "exact_version": "15e4fad546569daa5fff62cd1df5671f4637267c",
+          "invocation_mode": "chaptera-producer-a-viewer-json-v1",
+          "lineage_group": "chaptera",
+          "raw_normalized_observation": {
+            "error": "Error: open mature-0x2c Viewer geometry\n\nCaused by:\n    0: build mature-0x2C PUB source graph for Viewer\n    1: read /Quill/QuillSub/CONTENTS\n    2: в CFB отсутствует поток /Quill/QuillSub/CONTENTS\n    3: No such stream: \"/Quill/QuillSub/CONTENTS\"",
+            "returncode": 1,
+            "status": "rejected"
+          },
+          "raw_normalized_observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+          "role": "canonical-public-consumer-under-test"
+        },
+        "libmspub": {
+          "engine_id": "libmspub",
+          "exact_version": "pub2raw 0.1.4",
+          "invocation_mode": "pub2xhtml-xhtml-export-v1",
+          "lineage_group": "libmspub",
+          "raw_normalized_observation": {
+            "normalized_text_sha256": "2871e2935bcfbee7538d509ea617373f4ff5d2fa56769a9b6058d8c3162595c3",
+            "page_count": 2,
+            "status": "success",
+            "text_chars": 14,
+            "text_words": 2,
+            "token_multiset_sha256": "ce20223234d7c6a7317738823cb285ceb0d00f399075cc98c38a61f93d644faf",
+            "xhtml_bytes": 1539
+          },
+          "raw_normalized_observation_sha256": "ed29249f8f08a9b849653f174dcdc5f51afa149dbaeb9d5e64b36ec5182ae3e7",
+          "role": "independent-open-source-parser"
+        },
+        "libreoffice": {
+          "engine_id": "libreoffice",
+          "exact_version": "LibreOffice 24.2.7.2 420(Build:2)",
+          "invocation_mode": "libreoffice-pub-import-pdf-export-v1",
+          "lineage_group": "libmspub",
+          "raw_normalized_observation": {
+            "normalized_text_sha256": "2871e2935bcfbee7538d509ea617373f4ff5d2fa56769a9b6058d8c3162595c3",
+            "page_count": 2,
+            "status": "success",
+            "text_chars": 14,
+            "text_words": 2,
+            "token_multiset_sha256": "ce20223234d7c6a7317738823cb285ceb0d00f399075cc98c38a61f93d644faf"
+          },
+          "raw_normalized_observation_sha256": "1237a1a574ae7fc35a5e723e91863c307f89fb6d64c2212146615a4c90f11221",
+          "role": "downstream-consumer-of-libmspub-import-filter"
+        }
+      },
+      "fixture_sha256": "05a457874fee23165e4d2882ba11909977ac4c6136e9e8162ded757ebc13baa9",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/11",
+      "source_provenance": {
+        "candidate_id": null,
+        "source_filename": null,
+        "source_repo": null,
+        "source_type": null
+      },
+      "structural_context": {
+        "coarse_structure_fingerprint": "d6bd199489bd5c3da19ec77fc826a3e367c0880cebd2e0bb708b59366485351f",
+        "family": "mature-0x2c",
+        "family_authority": "chaptera-mature-pipeline-reached",
+        "topology_fingerprint": "d44bc5e36cd21570132dfe956caee9780c3fc297c4bad57b4727182f04053d34"
       }
     },
     {
@@ -1555,7 +2245,7 @@
         }
       },
       "fixture_sha256": "06380d800c597c13f46a78b8965e98038c3c9bae6fb9d605117c4c8e9626b5d3",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/7",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/12",
       "source_provenance": {
         "candidate_id": null,
         "source_filename": null,
@@ -1765,7 +2455,7 @@
         }
       },
       "fixture_sha256": "0779751c2c11ad12d230bd452c9304f37d189184e946781a2a979494842dd722",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/8",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/13",
       "source_provenance": {
         "candidate_id": null,
         "source_filename": null,
@@ -1975,7 +2665,7 @@
         }
       },
       "fixture_sha256": "079b3c4df86de86896d20b41a743580e4b4c9abbd7033414785e90bfb41772ca",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/9",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/14",
       "source_provenance": {
         "candidate_id": null,
         "source_filename": null,
@@ -2185,7 +2875,7 @@
         }
       },
       "fixture_sha256": "082319ac283c99f1b2e5d05fe428bccfd4123ef498267b35b492bba991a3b6e0",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/10",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/15",
       "source_provenance": {
         "candidate_id": null,
         "source_filename": null,
@@ -2197,6 +2887,250 @@
         "family": "mature-0x2c",
         "family_authority": "chaptera-mature-viewer-success",
         "topology_fingerprint": "d81d8b59721750ee155c7f05cb816ab956afed2142406430cca7c8036b54fd1c"
+      }
+    },
+    {
+      "byte_len": 11264,
+      "classifications": [
+        {
+          "classification": "comparable",
+          "left": {
+            "capability": "supported",
+            "engine_id": "chaptera",
+            "lineage_group": "chaptera",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "process outcome normalized to success/rejected/timeout/unavailable/invalid-output",
+            "observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+            "role": "canonical-public-consumer-under-test"
+          },
+          "metric_id": "open_acceptance",
+          "promotion_candidate": true,
+          "promotion_reason_code": "chaptera-bounded-acceptance-asymmetry",
+          "raw_disagreement_index": 0,
+          "raw_disagreement_sha256": "6422c5df4e82fc820d497e9017c9d5abef0710e19c01acb753ffb8e69539ff38",
+          "raw_kind": "engine_acceptance_mismatch",
+          "reason_code": "capability-and-metric-semantics-align",
+          "right": {
+            "capability": "supported",
+            "engine_id": "libmspub",
+            "lineage_group": "libmspub",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "pub2xhtml process outcome plus output existence",
+            "observation_sha256": "5507b46d480c4551bd596e423c40e79476caa536926ee60f3064fc94c676ad32",
+            "role": "independent-open-source-parser"
+          }
+        },
+        {
+          "classification": "correlated-oracle",
+          "left": {
+            "capability": "supported",
+            "engine_id": "chaptera",
+            "lineage_group": "chaptera",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "process outcome normalized to success/rejected/timeout/unavailable/invalid-output",
+            "observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+            "role": "canonical-public-consumer-under-test"
+          },
+          "metric_id": "open_acceptance",
+          "promotion_candidate": false,
+          "raw_disagreement_index": 1,
+          "raw_disagreement_sha256": "0f59e4f3634ca60868b7ff188dac599dce7be8682e7bf8a72e5d297ae689f802",
+          "raw_kind": "engine_acceptance_mismatch",
+          "reason_code": "dependent-parser-lineage",
+          "right": {
+            "capability": "partial",
+            "engine_id": "libreoffice",
+            "lineage_group": "libmspub",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "LibreOffice headless PUB import plus PDF output existence",
+            "observation_sha256": "71256bd3e90c5e657f98208fb8db993793d6acf1f3478ec16948d027b5231b4c",
+            "role": "downstream-consumer-of-libmspub-import-filter"
+          }
+        }
+      ],
+      "engine_observations": {
+        "chaptera": {
+          "engine_id": "chaptera",
+          "exact_version": "15e4fad546569daa5fff62cd1df5671f4637267c",
+          "invocation_mode": "chaptera-producer-a-viewer-json-v1",
+          "lineage_group": "chaptera",
+          "raw_normalized_observation": {
+            "error": "Error: open mature-0x2c Viewer geometry\n\nCaused by:\n    0: build mature-0x2C PUB source graph for Viewer\n    1: read /Quill/QuillSub/CONTENTS\n    2: в CFB отсутствует поток /Quill/QuillSub/CONTENTS\n    3: No such stream: \"/Quill/QuillSub/CONTENTS\"",
+            "returncode": 1,
+            "status": "rejected"
+          },
+          "raw_normalized_observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+          "role": "canonical-public-consumer-under-test"
+        },
+        "libmspub": {
+          "engine_id": "libmspub",
+          "exact_version": "pub2raw 0.1.4",
+          "invocation_mode": "pub2xhtml-xhtml-export-v1",
+          "lineage_group": "libmspub",
+          "raw_normalized_observation": {
+            "normalized_text_sha256": "dcd1d5223f73b3a965c07e3ff5dbee3eedcfedb806686a05b9b3868a2c3d6d50",
+            "page_count": 2,
+            "status": "success",
+            "text_chars": 4,
+            "text_words": 1,
+            "token_multiset_sha256": "82a3537ff0dbce7eec35d69edc3a189ee6f17d82f353a553f9aa96cb0be3ce89",
+            "xhtml_bytes": 1877
+          },
+          "raw_normalized_observation_sha256": "5507b46d480c4551bd596e423c40e79476caa536926ee60f3064fc94c676ad32",
+          "role": "independent-open-source-parser"
+        },
+        "libreoffice": {
+          "engine_id": "libreoffice",
+          "exact_version": "LibreOffice 24.2.7.2 420(Build:2)",
+          "invocation_mode": "libreoffice-pub-import-pdf-export-v1",
+          "lineage_group": "libmspub",
+          "raw_normalized_observation": {
+            "normalized_text_sha256": "dcd1d5223f73b3a965c07e3ff5dbee3eedcfedb806686a05b9b3868a2c3d6d50",
+            "page_count": 2,
+            "status": "success",
+            "text_chars": 4,
+            "text_words": 1,
+            "token_multiset_sha256": "82a3537ff0dbce7eec35d69edc3a189ee6f17d82f353a553f9aa96cb0be3ce89"
+          },
+          "raw_normalized_observation_sha256": "71256bd3e90c5e657f98208fb8db993793d6acf1f3478ec16948d027b5231b4c",
+          "role": "downstream-consumer-of-libmspub-import-filter"
+        }
+      },
+      "fixture_sha256": "09d4e74f0638660241f8d848950a05f3161bea54f5a7c109f88d2df7ead9a877",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/16",
+      "source_provenance": {
+        "candidate_id": null,
+        "source_filename": null,
+        "source_repo": null,
+        "source_type": null
+      },
+      "structural_context": {
+        "coarse_structure_fingerprint": "67568238850d44115e4d6e1d2055d089f9761deeedd58a8aa0d27f433c05dd9a",
+        "family": "mature-0x2c",
+        "family_authority": "chaptera-mature-pipeline-reached",
+        "topology_fingerprint": "662fdfa1e549358e8c4a930e94bd7dda84b0d5faa0088257b305274c0cf0885e"
+      }
+    },
+    {
+      "byte_len": 5632,
+      "classifications": [
+        {
+          "classification": "comparable",
+          "left": {
+            "capability": "supported",
+            "engine_id": "chaptera",
+            "lineage_group": "chaptera",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "process outcome normalized to success/rejected/timeout/unavailable/invalid-output",
+            "observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+            "role": "canonical-public-consumer-under-test"
+          },
+          "metric_id": "open_acceptance",
+          "promotion_candidate": true,
+          "promotion_reason_code": "chaptera-bounded-acceptance-asymmetry",
+          "raw_disagreement_index": 0,
+          "raw_disagreement_sha256": "6422c5df4e82fc820d497e9017c9d5abef0710e19c01acb753ffb8e69539ff38",
+          "raw_kind": "engine_acceptance_mismatch",
+          "reason_code": "capability-and-metric-semantics-align",
+          "right": {
+            "capability": "supported",
+            "engine_id": "libmspub",
+            "lineage_group": "libmspub",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "pub2xhtml process outcome plus output existence",
+            "observation_sha256": "f54bcec7e7595da72e3423a3916c2cf2304463b0c9dc12ae723bf307618d5d41",
+            "role": "independent-open-source-parser"
+          }
+        },
+        {
+          "classification": "correlated-oracle",
+          "left": {
+            "capability": "supported",
+            "engine_id": "chaptera",
+            "lineage_group": "chaptera",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "process outcome normalized to success/rejected/timeout/unavailable/invalid-output",
+            "observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+            "role": "canonical-public-consumer-under-test"
+          },
+          "metric_id": "open_acceptance",
+          "promotion_candidate": false,
+          "raw_disagreement_index": 1,
+          "raw_disagreement_sha256": "0f59e4f3634ca60868b7ff188dac599dce7be8682e7bf8a72e5d297ae689f802",
+          "raw_kind": "engine_acceptance_mismatch",
+          "reason_code": "dependent-parser-lineage",
+          "right": {
+            "capability": "partial",
+            "engine_id": "libreoffice",
+            "lineage_group": "libmspub",
+            "metric_semantics_version": "whole-file-open-success-v1",
+            "normalization_method": "LibreOffice headless PUB import plus PDF output existence",
+            "observation_sha256": "3bacab93fd968e61fe19d5a9e506aacbcae2bf85e2b1960c60130f50572b4083",
+            "role": "downstream-consumer-of-libmspub-import-filter"
+          }
+        }
+      ],
+      "engine_observations": {
+        "chaptera": {
+          "engine_id": "chaptera",
+          "exact_version": "15e4fad546569daa5fff62cd1df5671f4637267c",
+          "invocation_mode": "chaptera-producer-a-viewer-json-v1",
+          "lineage_group": "chaptera",
+          "raw_normalized_observation": {
+            "error": "Error: open mature-0x2c Viewer geometry\n\nCaused by:\n    0: build mature-0x2C PUB source graph for Viewer\n    1: read /Quill/QuillSub/CONTENTS\n    2: в CFB отсутствует поток /Quill/QuillSub/CONTENTS\n    3: No such stream: \"/Quill/QuillSub/CONTENTS\"",
+            "returncode": 1,
+            "status": "rejected"
+          },
+          "raw_normalized_observation_sha256": "ae982e73f67c952ba95bccf0e6564b7151ef2811dd17c61c6f6969a89f7768b4",
+          "role": "canonical-public-consumer-under-test"
+        },
+        "libmspub": {
+          "engine_id": "libmspub",
+          "exact_version": "pub2raw 0.1.4",
+          "invocation_mode": "pub2xhtml-xhtml-export-v1",
+          "lineage_group": "libmspub",
+          "raw_normalized_observation": {
+            "normalized_text_sha256": null,
+            "page_count": 1,
+            "status": "success",
+            "text_chars": 0,
+            "text_words": 0,
+            "token_multiset_sha256": null,
+            "xhtml_bytes": 710
+          },
+          "raw_normalized_observation_sha256": "f54bcec7e7595da72e3423a3916c2cf2304463b0c9dc12ae723bf307618d5d41",
+          "role": "independent-open-source-parser"
+        },
+        "libreoffice": {
+          "engine_id": "libreoffice",
+          "exact_version": "LibreOffice 24.2.7.2 420(Build:2)",
+          "invocation_mode": "libreoffice-pub-import-pdf-export-v1",
+          "lineage_group": "libmspub",
+          "raw_normalized_observation": {
+            "normalized_text_sha256": null,
+            "page_count": 1,
+            "status": "success",
+            "text_chars": 0,
+            "text_words": 0,
+            "token_multiset_sha256": null
+          },
+          "raw_normalized_observation_sha256": "3bacab93fd968e61fe19d5a9e506aacbcae2bf85e2b1960c60130f50572b4083",
+          "role": "downstream-consumer-of-libmspub-import-filter"
+        }
+      },
+      "fixture_sha256": "09fca9b767f3a3f811d14074e681287859f465ac7cebcb74aeb4752c10e9cf71",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/17",
+      "source_provenance": {
+        "candidate_id": null,
+        "source_filename": null,
+        "source_repo": null,
+        "source_type": null
+      },
+      "structural_context": {
+        "coarse_structure_fingerprint": "dfe4daf0cbf083c751967146d796f26d8b4e3126348a59f4a1de69f545f312c3",
+        "family": "mature-0x2c",
+        "family_authority": "chaptera-mature-pipeline-reached",
+        "topology_fingerprint": "91c623b89598848ec4ed260cf569f6d7f583dd5fd2c5cc3eec503be47cc95eb0"
       }
     },
     {
@@ -2314,7 +3248,7 @@
         }
       },
       "fixture_sha256": "0bd275742135a4e3f37e5d8cf9a7c03493e9df0d51f592e23eab878f474a413d",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/11",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/18",
       "source_provenance": {
         "candidate_id": null,
         "source_filename": null,
@@ -2524,7 +3458,7 @@
         }
       },
       "fixture_sha256": "0bdebb33d866c0904bce2b9cdc05332fb06566943acc75aba506708119f145ee",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/12",
+      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/19",
       "source_provenance": {
         "candidate_id": null,
         "source_filename": null,
@@ -2536,1368 +3470,6 @@
         "family": "mature-0x2c",
         "family_authority": "chaptera-mature-viewer-success",
         "topology_fingerprint": "7ac792efad88ea40b46bc95c9ad082dc2cb21829020c21d05f763927656c1f21"
-      }
-    },
-    {
-      "byte_len": 151552,
-      "classifications": [
-        {
-          "classification": "semantic-mismatch",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-viewer-document-pages-v1",
-            "normalization_method": "len(document.pages)",
-            "observation_sha256": "f43d683395fe7962c308362a068775e61ac6a1df39d09ac4cec04618326b0ed1",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "page_count",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 0,
-          "raw_disagreement_sha256": "d0845ff259306b3627a8f573c7d90c78e67be34c03c89427f2d616d5d3e25109",
-          "raw_kind": "page_count_mismatch",
-          "reason_code": "metric-semantics-not-proven-equivalent",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-svg-surface-count-v1",
-            "normalization_method": "count XHTML SVG elements",
-            "observation_sha256": "64d685f2a81ee7077606c1e8157fefbe9169016d6dcaf8cf48111b40eb97e0be",
-            "role": "independent-open-source-parser"
-          }
-        },
-        {
-          "classification": "semantic-mismatch",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-story-text-nfkc-whitespace-v1",
-            "normalization_method": "concatenate canonical Story text, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "f43d683395fe7962c308362a068775e61ac6a1df39d09ac4cec04618326b0ed1",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "normalized_text_sha256",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 1,
-          "raw_disagreement_sha256": "e247c8f7a80d1c613b61617e3a0892a7306a54690a309e3c24756db7aaf1e017",
-          "raw_kind": "normalized_text_mismatch",
-          "reason_code": "metric-semantics-not-proven-equivalent",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-text-nfkc-whitespace-v1",
-            "normalization_method": "XHTML text elements, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "64d685f2a81ee7077606c1e8157fefbe9169016d6dcaf8cf48111b40eb97e0be",
-            "role": "independent-open-source-parser"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-viewer-document-pages-v1",
-            "normalization_method": "len(document.pages)",
-            "observation_sha256": "f43d683395fe7962c308362a068775e61ac6a1df39d09ac4cec04618326b0ed1",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "page_count",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 2,
-          "raw_disagreement_sha256": "de6be49b24841bc1e028ce169a8e008618b8500211b4183c36d2f1f95bee641b",
-          "raw_kind": "page_count_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-export-page-count-v1",
-            "normalization_method": "pdfinfo Pages over exported PDF",
-            "observation_sha256": "42dbb4caa6508246d02c7bccb8f0b02664fc86e35eff358437df64ae0667dcc3",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-story-text-nfkc-whitespace-v1",
-            "normalization_method": "concatenate canonical Story text, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "f43d683395fe7962c308362a068775e61ac6a1df39d09ac4cec04618326b0ed1",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "normalized_text_sha256",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 3,
-          "raw_disagreement_sha256": "0b0ba5edfca7395ce31c30617f9392a521f642d1fa35abea59d78b4da08f0352",
-          "raw_kind": "normalized_text_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-text-nfkc-whitespace-v1",
-            "normalization_method": "pdftotext -layout output, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "42dbb4caa6508246d02c7bccb8f0b02664fc86e35eff358437df64ae0667dcc3",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-text-nfkc-whitespace-v1",
-            "normalization_method": "XHTML text elements, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "64d685f2a81ee7077606c1e8157fefbe9169016d6dcaf8cf48111b40eb97e0be",
-            "role": "independent-open-source-parser"
-          },
-          "metric_id": "normalized_text_sha256",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 4,
-          "raw_disagreement_sha256": "40de82e3cc0001f77a7be2b492afabc26964936186f6f0fe19279c82b6fb6f26",
-          "raw_kind": "normalized_text_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-text-nfkc-whitespace-v1",
-            "normalization_method": "pdftotext -layout output, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "42dbb4caa6508246d02c7bccb8f0b02664fc86e35eff358437df64ae0667dcc3",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        }
-      ],
-      "engine_observations": {
-        "chaptera": {
-          "engine_id": "chaptera",
-          "exact_version": "15e4fad546569daa5fff62cd1df5671f4637267c",
-          "invocation_mode": "chaptera-producer-a-viewer-json-v1",
-          "lineage_group": "chaptera",
-          "raw_normalized_observation": {
-            "diagnostic_count": 7,
-            "image_count": 2,
-            "normalized_text_sha256": "e46d911be548694c5daf3342726c791ccc0466bb2c88c9ad7081be4663be9aca",
-            "page_count": 6,
-            "scene_node_count": 8,
-            "scene_surface_count": 6,
-            "status": "success",
-            "story_count": 8,
-            "text_chars": 586,
-            "text_words": 104,
-            "token_multiset_sha256": "fd3c982fc4427effef9149467a475b69c4b3599da8cc95b72bfdbd02b0a82d3c"
-          },
-          "raw_normalized_observation_sha256": "f43d683395fe7962c308362a068775e61ac6a1df39d09ac4cec04618326b0ed1",
-          "role": "canonical-public-consumer-under-test"
-        },
-        "libmspub": {
-          "engine_id": "libmspub",
-          "exact_version": "pub2raw 0.1.4",
-          "invocation_mode": "pub2xhtml-xhtml-export-v1",
-          "lineage_group": "libmspub",
-          "raw_normalized_observation": {
-            "normalized_text_sha256": "41cbae253e5ca1c635f79e93d85abfe25518542556cc15e55245846a688771ef",
-            "page_count": 1,
-            "status": "success",
-            "text_chars": 586,
-            "text_words": 104,
-            "token_multiset_sha256": "fd3c982fc4427effef9149467a475b69c4b3599da8cc95b72bfdbd02b0a82d3c",
-            "xhtml_bytes": 60571
-          },
-          "raw_normalized_observation_sha256": "64d685f2a81ee7077606c1e8157fefbe9169016d6dcaf8cf48111b40eb97e0be",
-          "role": "independent-open-source-parser"
-        },
-        "libreoffice": {
-          "engine_id": "libreoffice",
-          "exact_version": "LibreOffice 24.2.7.2 420(Build:2)",
-          "invocation_mode": "libreoffice-pub-import-pdf-export-v1",
-          "lineage_group": "libmspub",
-          "raw_normalized_observation": {
-            "normalized_text_sha256": "fecf423ba5ed102a13f4c7d263e0f9418db00308d25412ccdeefada5f4ce5373",
-            "page_count": 1,
-            "status": "success",
-            "text_chars": 587,
-            "text_words": 105,
-            "token_multiset_sha256": "4dc16d1494c60b27fad92f499af47f09879d08f1881098795048536186af40a3"
-          },
-          "raw_normalized_observation_sha256": "42dbb4caa6508246d02c7bccb8f0b02664fc86e35eff358437df64ae0667dcc3",
-          "role": "downstream-consumer-of-libmspub-import-filter"
-        }
-      },
-      "fixture_sha256": "0beaeb324c3fb9836f9016280635be075a1d5df64bd41d73868de8153bfbceab",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/13",
-      "source_provenance": {
-        "candidate_id": null,
-        "source_filename": null,
-        "source_repo": null,
-        "source_type": null
-      },
-      "structural_context": {
-        "coarse_structure_fingerprint": "2eca2c8adbf11b2dd54977a40e2e78ac0b6e1c4da363d72e8c1821d36985d0aa",
-        "family": "mature-0x2c",
-        "family_authority": "chaptera-mature-viewer-success",
-        "topology_fingerprint": "673abf4f32b8643ddc122ea8df6dbdf4d356de4a31ce5e093ee77951c108d1a3"
-      }
-    },
-    {
-      "byte_len": 72704,
-      "classifications": [
-        {
-          "classification": "semantic-mismatch",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-viewer-document-pages-v1",
-            "normalization_method": "len(document.pages)",
-            "observation_sha256": "a3290f8a793ccee99ccd1a2ff76bbf71f699f8651edbbd97f1c61f6e86bdd374",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "page_count",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 0,
-          "raw_disagreement_sha256": "47ae7954e0cb9a110d5fa2f331ad4c19b4c94f3bc28c7ea0daab016ba79743c9",
-          "raw_kind": "page_count_mismatch",
-          "reason_code": "metric-semantics-not-proven-equivalent",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-svg-surface-count-v1",
-            "normalization_method": "count XHTML SVG elements",
-            "observation_sha256": "ca7da0535c2c7117b0ad49688984549dd2e3cb43a84f65c5940493fcd1654976",
-            "role": "independent-open-source-parser"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-viewer-document-pages-v1",
-            "normalization_method": "len(document.pages)",
-            "observation_sha256": "a3290f8a793ccee99ccd1a2ff76bbf71f699f8651edbbd97f1c61f6e86bdd374",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "page_count",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 1,
-          "raw_disagreement_sha256": "03534da4e09900c588bb6a67aef772b73ecfee93f9c0e10559469d62e827f395",
-          "raw_kind": "page_count_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-export-page-count-v1",
-            "normalization_method": "pdfinfo Pages over exported PDF",
-            "observation_sha256": "6ff7401d608a994b82a9e2945b2c3e178ebfa7fc464490352cb0e07aebeb7cbd",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        }
-      ],
-      "engine_observations": {
-        "chaptera": {
-          "engine_id": "chaptera",
-          "exact_version": "15e4fad546569daa5fff62cd1df5671f4637267c",
-          "invocation_mode": "chaptera-producer-a-viewer-json-v1",
-          "lineage_group": "chaptera",
-          "raw_normalized_observation": {
-            "diagnostic_count": 6,
-            "image_count": 0,
-            "normalized_text_sha256": "ccfd97de57c1e7c9ff66b858fda591bc2af6ba1fe58f8c67cc1c7b2a087bd4dc",
-            "page_count": 5,
-            "scene_node_count": 5,
-            "scene_surface_count": 5,
-            "status": "success",
-            "story_count": 1,
-            "text_chars": 869,
-            "text_words": 156,
-            "token_multiset_sha256": "aca3aa70c4e1bed9d4bc18a69f8882d82ecf288a022df6c793bba05ed8a3de93"
-          },
-          "raw_normalized_observation_sha256": "a3290f8a793ccee99ccd1a2ff76bbf71f699f8651edbbd97f1c61f6e86bdd374",
-          "role": "canonical-public-consumer-under-test"
-        },
-        "libmspub": {
-          "engine_id": "libmspub",
-          "exact_version": "pub2raw 0.1.4",
-          "invocation_mode": "pub2xhtml-xhtml-export-v1",
-          "lineage_group": "libmspub",
-          "raw_normalized_observation": {
-            "normalized_text_sha256": "ccfd97de57c1e7c9ff66b858fda591bc2af6ba1fe58f8c67cc1c7b2a087bd4dc",
-            "page_count": 1,
-            "status": "success",
-            "text_chars": 869,
-            "text_words": 156,
-            "token_multiset_sha256": "aca3aa70c4e1bed9d4bc18a69f8882d82ecf288a022df6c793bba05ed8a3de93",
-            "xhtml_bytes": 84495
-          },
-          "raw_normalized_observation_sha256": "ca7da0535c2c7117b0ad49688984549dd2e3cb43a84f65c5940493fcd1654976",
-          "role": "independent-open-source-parser"
-        },
-        "libreoffice": {
-          "engine_id": "libreoffice",
-          "exact_version": "LibreOffice 24.2.7.2 420(Build:2)",
-          "invocation_mode": "libreoffice-pub-import-pdf-export-v1",
-          "lineage_group": "libmspub",
-          "raw_normalized_observation": {
-            "normalized_text_sha256": "ccfd97de57c1e7c9ff66b858fda591bc2af6ba1fe58f8c67cc1c7b2a087bd4dc",
-            "page_count": 1,
-            "status": "success",
-            "text_chars": 869,
-            "text_words": 156,
-            "token_multiset_sha256": "aca3aa70c4e1bed9d4bc18a69f8882d82ecf288a022df6c793bba05ed8a3de93"
-          },
-          "raw_normalized_observation_sha256": "6ff7401d608a994b82a9e2945b2c3e178ebfa7fc464490352cb0e07aebeb7cbd",
-          "role": "downstream-consumer-of-libmspub-import-filter"
-        }
-      },
-      "fixture_sha256": "0ca858ed4806e81da2964d75d54d25a2ac0c6126074e9f82ea33b87701de4ade",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/14",
-      "source_provenance": {
-        "candidate_id": null,
-        "source_filename": null,
-        "source_repo": null,
-        "source_type": null
-      },
-      "structural_context": {
-        "coarse_structure_fingerprint": "55743c3ea8f1b2feeed699ced8c8ad0c3eec6001517293ecf31c42c92b3b299b",
-        "family": "mature-0x2c",
-        "family_authority": "chaptera-mature-viewer-success",
-        "topology_fingerprint": "a865d7420b67642241eda629c2020ac644eb33d65e6bd82c54f63764c0250d88"
-      }
-    },
-    {
-      "byte_len": 1019904,
-      "classifications": [
-        {
-          "classification": "semantic-mismatch",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-viewer-document-pages-v1",
-            "normalization_method": "len(document.pages)",
-            "observation_sha256": "e8fc72b3615ab73952ecc7bc699a5c569a05389cbdc1c48f66dd7dc2e2c7cd16",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "page_count",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 0,
-          "raw_disagreement_sha256": "47ae7954e0cb9a110d5fa2f331ad4c19b4c94f3bc28c7ea0daab016ba79743c9",
-          "raw_kind": "page_count_mismatch",
-          "reason_code": "metric-semantics-not-proven-equivalent",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-svg-surface-count-v1",
-            "normalization_method": "count XHTML SVG elements",
-            "observation_sha256": "f40ab18d222102962206f787d6a1f3e7c7fd053089297088a68e9f4dc414103a",
-            "role": "independent-open-source-parser"
-          }
-        },
-        {
-          "classification": "semantic-mismatch",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-story-text-nfkc-whitespace-v1",
-            "normalization_method": "concatenate canonical Story text, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "e8fc72b3615ab73952ecc7bc699a5c569a05389cbdc1c48f66dd7dc2e2c7cd16",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "normalized_text_sha256",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 1,
-          "raw_disagreement_sha256": "5ebef5b23bffb7f2ec38a72191cecc142af3bc4f562968611fe54a3fe901fa97",
-          "raw_kind": "normalized_text_mismatch",
-          "reason_code": "metric-semantics-not-proven-equivalent",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-text-nfkc-whitespace-v1",
-            "normalization_method": "XHTML text elements, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "f40ab18d222102962206f787d6a1f3e7c7fd053089297088a68e9f4dc414103a",
-            "role": "independent-open-source-parser"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-viewer-document-pages-v1",
-            "normalization_method": "len(document.pages)",
-            "observation_sha256": "e8fc72b3615ab73952ecc7bc699a5c569a05389cbdc1c48f66dd7dc2e2c7cd16",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "page_count",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 2,
-          "raw_disagreement_sha256": "03534da4e09900c588bb6a67aef772b73ecfee93f9c0e10559469d62e827f395",
-          "raw_kind": "page_count_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-export-page-count-v1",
-            "normalization_method": "pdfinfo Pages over exported PDF",
-            "observation_sha256": "a7d43d48258634285f80b38ca6938c56a594d68bfe6aeeabcf20531c0eaf9498",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-story-text-nfkc-whitespace-v1",
-            "normalization_method": "concatenate canonical Story text, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "e8fc72b3615ab73952ecc7bc699a5c569a05389cbdc1c48f66dd7dc2e2c7cd16",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "normalized_text_sha256",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 3,
-          "raw_disagreement_sha256": "1874ee95affaa2a95f6cb6721842b9fa0bdd21a964bc8ab7d6f60066742e2904",
-          "raw_kind": "normalized_text_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-text-nfkc-whitespace-v1",
-            "normalization_method": "pdftotext -layout output, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "a7d43d48258634285f80b38ca6938c56a594d68bfe6aeeabcf20531c0eaf9498",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-text-nfkc-whitespace-v1",
-            "normalization_method": "XHTML text elements, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "f40ab18d222102962206f787d6a1f3e7c7fd053089297088a68e9f4dc414103a",
-            "role": "independent-open-source-parser"
-          },
-          "metric_id": "normalized_text_sha256",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 4,
-          "raw_disagreement_sha256": "9f095b55c1ca9364f285f5dee56266fe69382747302a6bcc9155b994bf908afd",
-          "raw_kind": "normalized_text_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-text-nfkc-whitespace-v1",
-            "normalization_method": "pdftotext -layout output, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "a7d43d48258634285f80b38ca6938c56a594d68bfe6aeeabcf20531c0eaf9498",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        }
-      ],
-      "engine_observations": {
-        "chaptera": {
-          "engine_id": "chaptera",
-          "exact_version": "15e4fad546569daa5fff62cd1df5671f4637267c",
-          "invocation_mode": "chaptera-producer-a-viewer-json-v1",
-          "lineage_group": "chaptera",
-          "raw_normalized_observation": {
-            "diagnostic_count": 5,
-            "image_count": 4,
-            "normalized_text_sha256": "6071f1a97934ebd02f7b916a7db4308da2e73eb0fdd1ab65d498627af8713a80",
-            "page_count": 5,
-            "scene_node_count": 14,
-            "scene_surface_count": 5,
-            "status": "success",
-            "story_count": 5,
-            "text_chars": 1880,
-            "text_words": 313,
-            "token_multiset_sha256": "dd8249619f4986cac4e0ac9d9a1b45fd8d91a59372d405ad40d58c3a99a755e6"
-          },
-          "raw_normalized_observation_sha256": "e8fc72b3615ab73952ecc7bc699a5c569a05389cbdc1c48f66dd7dc2e2c7cd16",
-          "role": "canonical-public-consumer-under-test"
-        },
-        "libmspub": {
-          "engine_id": "libmspub",
-          "exact_version": "pub2raw 0.1.4",
-          "invocation_mode": "pub2xhtml-xhtml-export-v1",
-          "lineage_group": "libmspub",
-          "raw_normalized_observation": {
-            "normalized_text_sha256": "ad813c8c8fd610d459d7d76cec8fe165e19719807ada260e7e8a867c79e3c565",
-            "page_count": 1,
-            "status": "success",
-            "text_chars": 1880,
-            "text_words": 313,
-            "token_multiset_sha256": "dd8249619f4986cac4e0ac9d9a1b45fd8d91a59372d405ad40d58c3a99a755e6",
-            "xhtml_bytes": 3575603
-          },
-          "raw_normalized_observation_sha256": "f40ab18d222102962206f787d6a1f3e7c7fd053089297088a68e9f4dc414103a",
-          "role": "independent-open-source-parser"
-        },
-        "libreoffice": {
-          "engine_id": "libreoffice",
-          "exact_version": "LibreOffice 24.2.7.2 420(Build:2)",
-          "invocation_mode": "libreoffice-pub-import-pdf-export-v1",
-          "lineage_group": "libmspub",
-          "raw_normalized_observation": {
-            "normalized_text_sha256": "e6b2835c7c5735c4b09a21b1812d2e2a6ed2768d55a3c74465aed596a7733efb",
-            "page_count": 1,
-            "status": "success",
-            "text_chars": 1874,
-            "text_words": 307,
-            "token_multiset_sha256": "7bbc802a3daba3a5f57415c334c623b57ef77503e9c5694ee0b6893d8aa0c25e"
-          },
-          "raw_normalized_observation_sha256": "a7d43d48258634285f80b38ca6938c56a594d68bfe6aeeabcf20531c0eaf9498",
-          "role": "downstream-consumer-of-libmspub-import-filter"
-        }
-      },
-      "fixture_sha256": "0d2278960a0101ced0a1ba6d5922f5a26ea37b76b3ab00ef21e21873359d4a5a",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/15",
-      "source_provenance": {
-        "candidate_id": null,
-        "source_filename": null,
-        "source_repo": null,
-        "source_type": null
-      },
-      "structural_context": {
-        "coarse_structure_fingerprint": "ef579db3ed7098eca12bc9888066eaf50f3640420283cdaa2a103af7368b615d",
-        "family": "mature-0x2c",
-        "family_authority": "chaptera-mature-viewer-success",
-        "topology_fingerprint": "57ab7311218d04bbc94897b59d12da9a4da971d902f2430bb2afd77da3f989fe"
-      }
-    },
-    {
-      "byte_len": 293888,
-      "classifications": [
-        {
-          "classification": "semantic-mismatch",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-viewer-document-pages-v1",
-            "normalization_method": "len(document.pages)",
-            "observation_sha256": "7bb65a97ef73f340650d1481a340854b55b8dbd529650da952c2a77c69a81d1e",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "page_count",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 0,
-          "raw_disagreement_sha256": "d0845ff259306b3627a8f573c7d90c78e67be34c03c89427f2d616d5d3e25109",
-          "raw_kind": "page_count_mismatch",
-          "reason_code": "metric-semantics-not-proven-equivalent",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-svg-surface-count-v1",
-            "normalization_method": "count XHTML SVG elements",
-            "observation_sha256": "1d5e244d733e514f68b7c58ad82a91e266449bb889aab9e3e0cabe8ea546df0f",
-            "role": "independent-open-source-parser"
-          }
-        },
-        {
-          "classification": "semantic-mismatch",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-story-text-nfkc-whitespace-v1",
-            "normalization_method": "concatenate canonical Story text, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "7bb65a97ef73f340650d1481a340854b55b8dbd529650da952c2a77c69a81d1e",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "normalized_text_sha256",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 1,
-          "raw_disagreement_sha256": "4c869d65869b27a5d81ff71baa315506cc7d8754cb79fce8d8229d2f5b1d1dee",
-          "raw_kind": "normalized_text_mismatch",
-          "reason_code": "metric-semantics-not-proven-equivalent",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-text-nfkc-whitespace-v1",
-            "normalization_method": "XHTML text elements, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "1d5e244d733e514f68b7c58ad82a91e266449bb889aab9e3e0cabe8ea546df0f",
-            "role": "independent-open-source-parser"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-viewer-document-pages-v1",
-            "normalization_method": "len(document.pages)",
-            "observation_sha256": "7bb65a97ef73f340650d1481a340854b55b8dbd529650da952c2a77c69a81d1e",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "page_count",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 2,
-          "raw_disagreement_sha256": "de6be49b24841bc1e028ce169a8e008618b8500211b4183c36d2f1f95bee641b",
-          "raw_kind": "page_count_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-export-page-count-v1",
-            "normalization_method": "pdfinfo Pages over exported PDF",
-            "observation_sha256": "e0960ee05dfd4d11bf0fc46efa256d02f1c1607fb06002a25cece486b231aec3",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-story-text-nfkc-whitespace-v1",
-            "normalization_method": "concatenate canonical Story text, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "7bb65a97ef73f340650d1481a340854b55b8dbd529650da952c2a77c69a81d1e",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "normalized_text_sha256",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 3,
-          "raw_disagreement_sha256": "8195cec69f2d3954addb1466e7957e4ac280e405c32eaec8dd8328f56f209c55",
-          "raw_kind": "normalized_text_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-text-nfkc-whitespace-v1",
-            "normalization_method": "pdftotext -layout output, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "e0960ee05dfd4d11bf0fc46efa256d02f1c1607fb06002a25cece486b231aec3",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-text-nfkc-whitespace-v1",
-            "normalization_method": "XHTML text elements, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "1d5e244d733e514f68b7c58ad82a91e266449bb889aab9e3e0cabe8ea546df0f",
-            "role": "independent-open-source-parser"
-          },
-          "metric_id": "normalized_text_sha256",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 4,
-          "raw_disagreement_sha256": "60e951d7750ba31a5340272f609eeb10211b4eb5193779826205bdb4af282f01",
-          "raw_kind": "normalized_text_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-text-nfkc-whitespace-v1",
-            "normalization_method": "pdftotext -layout output, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "e0960ee05dfd4d11bf0fc46efa256d02f1c1607fb06002a25cece486b231aec3",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        }
-      ],
-      "engine_observations": {
-        "chaptera": {
-          "engine_id": "chaptera",
-          "exact_version": "15e4fad546569daa5fff62cd1df5671f4637267c",
-          "invocation_mode": "chaptera-producer-a-viewer-json-v1",
-          "lineage_group": "chaptera",
-          "raw_normalized_observation": {
-            "diagnostic_count": 5,
-            "image_count": 2,
-            "normalized_text_sha256": "d711741acfbd5ce10be9421bd0e0c6b99dbbe5eff16a06f929ae4d18e3919d13",
-            "page_count": 6,
-            "scene_node_count": 13,
-            "scene_surface_count": 6,
-            "status": "success",
-            "story_count": 10,
-            "text_chars": 312,
-            "text_words": 64,
-            "token_multiset_sha256": "712fa556fd8fd394205983038ab67316f7b49d8328e16aa03b0fd866cfb4c33b"
-          },
-          "raw_normalized_observation_sha256": "7bb65a97ef73f340650d1481a340854b55b8dbd529650da952c2a77c69a81d1e",
-          "role": "canonical-public-consumer-under-test"
-        },
-        "libmspub": {
-          "engine_id": "libmspub",
-          "exact_version": "pub2raw 0.1.4",
-          "invocation_mode": "pub2xhtml-xhtml-export-v1",
-          "lineage_group": "libmspub",
-          "raw_normalized_observation": {
-            "normalized_text_sha256": "4af7369a60cf4d7cb76e2fc8940e22a035788402a497f29c6eaeecd838cd3ece",
-            "page_count": 1,
-            "status": "success",
-            "text_chars": 312,
-            "text_words": 64,
-            "token_multiset_sha256": "712fa556fd8fd394205983038ab67316f7b49d8328e16aa03b0fd866cfb4c33b",
-            "xhtml_bytes": 251853
-          },
-          "raw_normalized_observation_sha256": "1d5e244d733e514f68b7c58ad82a91e266449bb889aab9e3e0cabe8ea546df0f",
-          "role": "independent-open-source-parser"
-        },
-        "libreoffice": {
-          "engine_id": "libreoffice",
-          "exact_version": "LibreOffice 24.2.7.2 420(Build:2)",
-          "invocation_mode": "libreoffice-pub-import-pdf-export-v1",
-          "lineage_group": "libmspub",
-          "raw_normalized_observation": {
-            "normalized_text_sha256": "417fd5664a8bd2394286609dffba3e73ca80f0764468eb981631865afd843f2d",
-            "page_count": 1,
-            "status": "success",
-            "text_chars": 312,
-            "text_words": 64,
-            "token_multiset_sha256": "712fa556fd8fd394205983038ab67316f7b49d8328e16aa03b0fd866cfb4c33b"
-          },
-          "raw_normalized_observation_sha256": "e0960ee05dfd4d11bf0fc46efa256d02f1c1607fb06002a25cece486b231aec3",
-          "role": "downstream-consumer-of-libmspub-import-filter"
-        }
-      },
-      "fixture_sha256": "0d480e415b26cb2d026794278fa911d6411786b3f238928e506ef0217723cb50",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/16",
-      "source_provenance": {
-        "candidate_id": null,
-        "source_filename": null,
-        "source_repo": null,
-        "source_type": null
-      },
-      "structural_context": {
-        "coarse_structure_fingerprint": "312488ca4f5e90283570d343f48e82773a105fc087a16400d98d68f8e3b94e5c",
-        "family": "mature-0x2c",
-        "family_authority": "chaptera-mature-viewer-success",
-        "topology_fingerprint": "4a835f54d3984b8f34d130e0645bf2f59cda5277eb5eb909169e50530ef0e752"
-      }
-    },
-    {
-      "byte_len": 1107456,
-      "classifications": [
-        {
-          "classification": "semantic-mismatch",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-viewer-document-pages-v1",
-            "normalization_method": "len(document.pages)",
-            "observation_sha256": "118b8ee5c0ce5230d7ff5cd46991bae230f8b1db5eb5d2266d2be871feba6172",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "page_count",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 0,
-          "raw_disagreement_sha256": "bc5a274c8c5b5735f93a67c3e69dc381b85929d85b103deba94571d9479c2b41",
-          "raw_kind": "page_count_mismatch",
-          "reason_code": "metric-semantics-not-proven-equivalent",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-svg-surface-count-v1",
-            "normalization_method": "count XHTML SVG elements",
-            "observation_sha256": "706ae319518407ca3d782f7d4a008cef36150ed3d4731630446944db6acacd34",
-            "role": "independent-open-source-parser"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-viewer-document-pages-v1",
-            "normalization_method": "len(document.pages)",
-            "observation_sha256": "118b8ee5c0ce5230d7ff5cd46991bae230f8b1db5eb5d2266d2be871feba6172",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "page_count",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 1,
-          "raw_disagreement_sha256": "5b9393ba32d764fc88c09862c1792997497aa74b0f2debbc5bda4b439167ee0c",
-          "raw_kind": "page_count_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-export-page-count-v1",
-            "normalization_method": "pdfinfo Pages over exported PDF",
-            "observation_sha256": "8617821e607d7142467ec4480ede7ec02510a53bf91cf238860aba0c375fe36d",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-story-text-nfkc-whitespace-v1",
-            "normalization_method": "concatenate canonical Story text, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "118b8ee5c0ce5230d7ff5cd46991bae230f8b1db5eb5d2266d2be871feba6172",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "normalized_text_sha256",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 2,
-          "raw_disagreement_sha256": "67f98aba7f39218cc2500ab6311bd1d737259b622452ebdc0443757f2a84d9cf",
-          "raw_kind": "normalized_text_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-text-nfkc-whitespace-v1",
-            "normalization_method": "pdftotext -layout output, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "8617821e607d7142467ec4480ede7ec02510a53bf91cf238860aba0c375fe36d",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-svg-surface-count-v1",
-            "normalization_method": "count XHTML SVG elements",
-            "observation_sha256": "706ae319518407ca3d782f7d4a008cef36150ed3d4731630446944db6acacd34",
-            "role": "independent-open-source-parser"
-          },
-          "metric_id": "page_count",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 3,
-          "raw_disagreement_sha256": "e4b7264bfb3c35b8b2ae13017060b91ae8e7a4aa5bc5dd16c3f4251c24dc2d87",
-          "raw_kind": "page_count_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-export-page-count-v1",
-            "normalization_method": "pdfinfo Pages over exported PDF",
-            "observation_sha256": "8617821e607d7142467ec4480ede7ec02510a53bf91cf238860aba0c375fe36d",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        }
-      ],
-      "engine_observations": {
-        "chaptera": {
-          "engine_id": "chaptera",
-          "exact_version": "15e4fad546569daa5fff62cd1df5671f4637267c",
-          "invocation_mode": "chaptera-producer-a-viewer-json-v1",
-          "lineage_group": "chaptera",
-          "raw_normalized_observation": {
-            "diagnostic_count": 8,
-            "image_count": 11,
-            "normalized_text_sha256": "f40f5c1f4b2155c1aa84afbb9ba4df9ed79de4657ed8f7b6660aa6f355314565",
-            "page_count": 9,
-            "scene_node_count": 48,
-            "scene_surface_count": 9,
-            "status": "success",
-            "story_count": 25,
-            "text_chars": 8122,
-            "text_words": 1298,
-            "token_multiset_sha256": "1cdff792a171dc66568cdb4e29208020228544bdea7fd6c026cbf4d791800f38"
-          },
-          "raw_normalized_observation_sha256": "118b8ee5c0ce5230d7ff5cd46991bae230f8b1db5eb5d2266d2be871feba6172",
-          "role": "canonical-public-consumer-under-test"
-        },
-        "libmspub": {
-          "engine_id": "libmspub",
-          "exact_version": "pub2raw 0.1.4",
-          "invocation_mode": "pub2xhtml-xhtml-export-v1",
-          "lineage_group": "libmspub",
-          "raw_normalized_observation": {
-            "normalized_text_sha256": null,
-            "page_count": 0,
-            "status": "success",
-            "text_chars": 0,
-            "text_words": 0,
-            "token_multiset_sha256": null,
-            "xhtml_bytes": 1306665
-          },
-          "raw_normalized_observation_sha256": "706ae319518407ca3d782f7d4a008cef36150ed3d4731630446944db6acacd34",
-          "role": "independent-open-source-parser"
-        },
-        "libreoffice": {
-          "engine_id": "libreoffice",
-          "exact_version": "LibreOffice 24.2.7.2 420(Build:2)",
-          "invocation_mode": "libreoffice-pub-import-pdf-export-v1",
-          "lineage_group": "libmspub",
-          "raw_normalized_observation": {
-            "normalized_text_sha256": "302e69c985f135338bb89805fab1adcc753039c4a1ac5d11d639544535ccc406",
-            "page_count": 4,
-            "status": "success",
-            "text_chars": 8122,
-            "text_words": 1298,
-            "token_multiset_sha256": "62ae453b93ccabce24459aaeedc4e00b0e1a2584881cc29e9ab52de960d62e9c"
-          },
-          "raw_normalized_observation_sha256": "8617821e607d7142467ec4480ede7ec02510a53bf91cf238860aba0c375fe36d",
-          "role": "downstream-consumer-of-libmspub-import-filter"
-        }
-      },
-      "fixture_sha256": "0ec56aa214799a6d52cf164395dacf040c2da2130039b7a622a57a2fbf088c60",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/17",
-      "source_provenance": {
-        "candidate_id": null,
-        "source_filename": null,
-        "source_repo": null,
-        "source_type": null
-      },
-      "structural_context": {
-        "coarse_structure_fingerprint": "7f379774bd676995e420d384e247c9f52b270d11640e5b0193ddc6e2ed3b2c74",
-        "family": "mature-0x2c",
-        "family_authority": "chaptera-mature-viewer-success",
-        "topology_fingerprint": "35878be65a159dfdaafc4dc4f238456db57ac9bf6e29102cdd8d23d34dace356"
-      }
-    },
-    {
-      "byte_len": 237056,
-      "classifications": [
-        {
-          "classification": "semantic-mismatch",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-viewer-document-pages-v1",
-            "normalization_method": "len(document.pages)",
-            "observation_sha256": "7ac243fa1680bfbfca0b6da7e27b83424ae7fbcd7d85f513bf304e2f18a87e56",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "page_count",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 0,
-          "raw_disagreement_sha256": "fcdeabf17a723b254fc6c2cfbf78281dd25447f06798d062206d5f7e8730da77",
-          "raw_kind": "page_count_mismatch",
-          "reason_code": "metric-semantics-not-proven-equivalent",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-svg-surface-count-v1",
-            "normalization_method": "count XHTML SVG elements",
-            "observation_sha256": "1ef26d6541f043a703cd776cd64d241f9c846114c10197738053110b10470cba",
-            "role": "independent-open-source-parser"
-          }
-        },
-        {
-          "classification": "semantic-mismatch",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-story-text-nfkc-whitespace-v1",
-            "normalization_method": "concatenate canonical Story text, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "7ac243fa1680bfbfca0b6da7e27b83424ae7fbcd7d85f513bf304e2f18a87e56",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "normalized_text_sha256",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 1,
-          "raw_disagreement_sha256": "b8a6f788f11f2d653082a4d92c07a695d37ff157486ef3cfb82078da806f15fa",
-          "raw_kind": "normalized_text_mismatch",
-          "reason_code": "metric-semantics-not-proven-equivalent",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-text-nfkc-whitespace-v1",
-            "normalization_method": "XHTML text elements, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "1ef26d6541f043a703cd776cd64d241f9c846114c10197738053110b10470cba",
-            "role": "independent-open-source-parser"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-viewer-document-pages-v1",
-            "normalization_method": "len(document.pages)",
-            "observation_sha256": "7ac243fa1680bfbfca0b6da7e27b83424ae7fbcd7d85f513bf304e2f18a87e56",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "page_count",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 2,
-          "raw_disagreement_sha256": "0fcafeb888216fbff820bace56f6bfc4eda1c3fcfc53a51d2aef8691eacfa76b",
-          "raw_kind": "page_count_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-export-page-count-v1",
-            "normalization_method": "pdfinfo Pages over exported PDF",
-            "observation_sha256": "e4ba660b18ea100db1f634eb2357487df1cbcfe2aa0c1116401ac8d96801b692",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-story-text-nfkc-whitespace-v1",
-            "normalization_method": "concatenate canonical Story text, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "7ac243fa1680bfbfca0b6da7e27b83424ae7fbcd7d85f513bf304e2f18a87e56",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "normalized_text_sha256",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 3,
-          "raw_disagreement_sha256": "29535dd783b4a57f079ff2ca5d3e67b5706d0391c748919077683b38ddff2b97",
-          "raw_kind": "normalized_text_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-text-nfkc-whitespace-v1",
-            "normalization_method": "pdftotext -layout output, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "e4ba660b18ea100db1f634eb2357487df1cbcfe2aa0c1116401ac8d96801b692",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-text-nfkc-whitespace-v1",
-            "normalization_method": "XHTML text elements, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "1ef26d6541f043a703cd776cd64d241f9c846114c10197738053110b10470cba",
-            "role": "independent-open-source-parser"
-          },
-          "metric_id": "normalized_text_sha256",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 4,
-          "raw_disagreement_sha256": "0c2069ba3106ac9184fcf10f0abf876430865952e6e7ea94ea749f4e5aa5a8f0",
-          "raw_kind": "normalized_text_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-text-nfkc-whitespace-v1",
-            "normalization_method": "pdftotext -layout output, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "e4ba660b18ea100db1f634eb2357487df1cbcfe2aa0c1116401ac8d96801b692",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        }
-      ],
-      "engine_observations": {
-        "chaptera": {
-          "engine_id": "chaptera",
-          "exact_version": "15e4fad546569daa5fff62cd1df5671f4637267c",
-          "invocation_mode": "chaptera-producer-a-viewer-json-v1",
-          "lineage_group": "chaptera",
-          "raw_normalized_observation": {
-            "diagnostic_count": 7,
-            "image_count": 0,
-            "normalized_text_sha256": "5f50c906cd58701e3c22c354c2ff0e5cb6bc077e7ff334eda381cc78628dabdc",
-            "page_count": 7,
-            "scene_node_count": 24,
-            "scene_surface_count": 7,
-            "status": "success",
-            "story_count": 19,
-            "text_chars": 2683,
-            "text_words": 480,
-            "token_multiset_sha256": "7420d9155f607f4d3d78e5c0d79f00af705eb3cebda94c407355501560c14cb2"
-          },
-          "raw_normalized_observation_sha256": "7ac243fa1680bfbfca0b6da7e27b83424ae7fbcd7d85f513bf304e2f18a87e56",
-          "role": "canonical-public-consumer-under-test"
-        },
-        "libmspub": {
-          "engine_id": "libmspub",
-          "exact_version": "pub2raw 0.1.4",
-          "invocation_mode": "pub2xhtml-xhtml-export-v1",
-          "lineage_group": "libmspub",
-          "raw_normalized_observation": {
-            "normalized_text_sha256": "caae252e1c1da4da24eb40f3d86fb359c8b8badde585e024fb680d494ec2d663",
-            "page_count": 2,
-            "status": "success",
-            "text_chars": 3869,
-            "text_words": 700,
-            "token_multiset_sha256": "e5025afc4a7a9860c7fda0a2fad476056d677b981ac5f752f9f9121a65381edb",
-            "xhtml_bytes": 243970
-          },
-          "raw_normalized_observation_sha256": "1ef26d6541f043a703cd776cd64d241f9c846114c10197738053110b10470cba",
-          "role": "independent-open-source-parser"
-        },
-        "libreoffice": {
-          "engine_id": "libreoffice",
-          "exact_version": "LibreOffice 24.2.7.2 420(Build:2)",
-          "invocation_mode": "libreoffice-pub-import-pdf-export-v1",
-          "lineage_group": "libmspub",
-          "raw_normalized_observation": {
-            "normalized_text_sha256": "eb5e2e00e24d0520bcf3b822252aa8f74ac8ba17363338c7e74ef4a74cb99ace",
-            "page_count": 2,
-            "status": "success",
-            "text_chars": 3507,
-            "text_words": 629,
-            "token_multiset_sha256": "b02eabef1b63526210576596eb2c56cc515686b340968a72de5872a6823348b6"
-          },
-          "raw_normalized_observation_sha256": "e4ba660b18ea100db1f634eb2357487df1cbcfe2aa0c1116401ac8d96801b692",
-          "role": "downstream-consumer-of-libmspub-import-filter"
-        }
-      },
-      "fixture_sha256": "0f5f2280f4afc4cad36576b503236096e5d11e3404fd0104e2ae9114a1bdff22",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/18",
-      "source_provenance": {
-        "candidate_id": null,
-        "source_filename": null,
-        "source_repo": null,
-        "source_type": null
-      },
-      "structural_context": {
-        "coarse_structure_fingerprint": "358682f52f74f6e823dcb0bce857e14f9717421fbf7ab566701e0d342e964da4",
-        "family": "mature-0x2c",
-        "family_authority": "chaptera-mature-viewer-success",
-        "topology_fingerprint": "43528aab83ef5e36719da5729a59b78dfa136941fa5803f49b75bca6ec64bb28"
-      }
-    },
-    {
-      "byte_len": 122880,
-      "classifications": [
-        {
-          "classification": "semantic-mismatch",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-viewer-document-pages-v1",
-            "normalization_method": "len(document.pages)",
-            "observation_sha256": "ac5c32a02220ea113570c1e36d08a90e5a99232331263d3f06ea8ee4faaa36b3",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "page_count",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 0,
-          "raw_disagreement_sha256": "f48aec3adef6cd97278460e26e36ffa978330562f7d89d9d39d8898f8522217d",
-          "raw_kind": "page_count_mismatch",
-          "reason_code": "metric-semantics-not-proven-equivalent",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-svg-surface-count-v1",
-            "normalization_method": "count XHTML SVG elements",
-            "observation_sha256": "ce17848370d50ac6f2b446f9f8cba611928663a479f1351975b5e622cb97e07d",
-            "role": "independent-open-source-parser"
-          }
-        },
-        {
-          "classification": "semantic-mismatch",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-story-text-nfkc-whitespace-v1",
-            "normalization_method": "concatenate canonical Story text, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "ac5c32a02220ea113570c1e36d08a90e5a99232331263d3f06ea8ee4faaa36b3",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "normalized_text_sha256",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 1,
-          "raw_disagreement_sha256": "e4049a892b66b25c3d6f584b1e472dae3fe262ae26c7f091ff9e419b3ca3cbc6",
-          "raw_kind": "normalized_text_mismatch",
-          "reason_code": "metric-semantics-not-proven-equivalent",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-text-nfkc-whitespace-v1",
-            "normalization_method": "XHTML text elements, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "ce17848370d50ac6f2b446f9f8cba611928663a479f1351975b5e622cb97e07d",
-            "role": "independent-open-source-parser"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-viewer-document-pages-v1",
-            "normalization_method": "len(document.pages)",
-            "observation_sha256": "ac5c32a02220ea113570c1e36d08a90e5a99232331263d3f06ea8ee4faaa36b3",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "page_count",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 2,
-          "raw_disagreement_sha256": "50806e8fdbf7182549f15ccc22bb49a6cdc3e864dd0bc3b85527d2280df4eee1",
-          "raw_kind": "page_count_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-export-page-count-v1",
-            "normalization_method": "pdfinfo Pages over exported PDF",
-            "observation_sha256": "43d89e85b8814c969cf085633e7ceeeceff6877dd4cd2e0bca729497f23059e8",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "chaptera",
-            "lineage_group": "chaptera",
-            "metric_semantics_version": "chaptera-story-text-nfkc-whitespace-v1",
-            "normalization_method": "concatenate canonical Story text, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "ac5c32a02220ea113570c1e36d08a90e5a99232331263d3f06ea8ee4faaa36b3",
-            "role": "canonical-public-consumer-under-test"
-          },
-          "metric_id": "normalized_text_sha256",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 3,
-          "raw_disagreement_sha256": "446f4bd40a2b8f1023ff7bc4542b33125caaeb6477f4ace482f66ce97d7a69a9",
-          "raw_kind": "normalized_text_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-text-nfkc-whitespace-v1",
-            "normalization_method": "pdftotext -layout output, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "43d89e85b8814c969cf085633e7ceeeceff6877dd4cd2e0bca729497f23059e8",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        },
-        {
-          "classification": "correlated-oracle",
-          "left": {
-            "capability": "partial",
-            "engine_id": "libmspub",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libmspub-xhtml-text-nfkc-whitespace-v1",
-            "normalization_method": "XHTML text elements, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "ce17848370d50ac6f2b446f9f8cba611928663a479f1351975b5e622cb97e07d",
-            "role": "independent-open-source-parser"
-          },
-          "metric_id": "normalized_text_sha256",
-          "promotion_candidate": false,
-          "raw_disagreement_index": 4,
-          "raw_disagreement_sha256": "b312e5e16599e339af5b6b972f9a70b0473bff4bc65559bdc253d102d9043170",
-          "raw_kind": "normalized_text_mismatch",
-          "reason_code": "dependent-parser-lineage",
-          "right": {
-            "capability": "partial",
-            "engine_id": "libreoffice",
-            "lineage_group": "libmspub",
-            "metric_semantics_version": "libreoffice-pdf-text-nfkc-whitespace-v1",
-            "normalization_method": "pdftotext -layout output, NFKC, collapse whitespace, SHA-256",
-            "observation_sha256": "43d89e85b8814c969cf085633e7ceeeceff6877dd4cd2e0bca729497f23059e8",
-            "role": "downstream-consumer-of-libmspub-import-filter"
-          }
-        }
-      ],
-      "engine_observations": {
-        "chaptera": {
-          "engine_id": "chaptera",
-          "exact_version": "15e4fad546569daa5fff62cd1df5671f4637267c",
-          "invocation_mode": "chaptera-producer-a-viewer-json-v1",
-          "lineage_group": "chaptera",
-          "raw_normalized_observation": {
-            "diagnostic_count": 8,
-            "image_count": 0,
-            "normalized_text_sha256": "d2f980d678e00b5fc76cf3ed7d7cf21cceffce4d03e57207c8ae1df233082eb2",
-            "page_count": 6,
-            "scene_node_count": 16,
-            "scene_surface_count": 6,
-            "status": "success",
-            "story_count": 8,
-            "text_chars": 4528,
-            "text_words": 673,
-            "token_multiset_sha256": "c5d018131fe69f14120f16653867811b388a32bceed33c2c823e0b79a4b53639"
-          },
-          "raw_normalized_observation_sha256": "ac5c32a02220ea113570c1e36d08a90e5a99232331263d3f06ea8ee4faaa36b3",
-          "role": "canonical-public-consumer-under-test"
-        },
-        "libmspub": {
-          "engine_id": "libmspub",
-          "exact_version": "pub2raw 0.1.4",
-          "invocation_mode": "pub2xhtml-xhtml-export-v1",
-          "lineage_group": "libmspub",
-          "raw_normalized_observation": {
-            "normalized_text_sha256": "c254544a407a4cc69fc172721353cb84b951008067d1e80c2c73bf90e95c2347",
-            "page_count": 2,
-            "status": "success",
-            "text_chars": 20957,
-            "text_words": 3210,
-            "token_multiset_sha256": "80141f1b76a8db3f9b8a31df74c7f6614d0d831ca2bff7b97da7028e3037d079",
-            "xhtml_bytes": 218580
-          },
-          "raw_normalized_observation_sha256": "ce17848370d50ac6f2b446f9f8cba611928663a479f1351975b5e622cb97e07d",
-          "role": "independent-open-source-parser"
-        },
-        "libreoffice": {
-          "engine_id": "libreoffice",
-          "exact_version": "LibreOffice 24.2.7.2 420(Build:2)",
-          "invocation_mode": "libreoffice-pub-import-pdf-export-v1",
-          "lineage_group": "libmspub",
-          "raw_normalized_observation": {
-            "normalized_text_sha256": "6fe1cebe5602abc26619b040295eee5e6d520d9016e269f02fd078a073e3673f",
-            "page_count": 2,
-            "status": "success",
-            "text_chars": 5389,
-            "text_words": 830,
-            "token_multiset_sha256": "e108e89809db3c1a06a12aa0e6b2500f2b39a6f7654d4cd538e9b732cd0e69c1"
-          },
-          "raw_normalized_observation_sha256": "43d89e85b8814c969cf085633e7ceeeceff6877dd4cd2e0bca729497f23059e8",
-          "role": "downstream-consumer-of-libmspub-import-filter"
-        }
-      },
-      "fixture_sha256": "0f9f0e31c740185698dd7130addaee2162e696f1adbf64680fe08b5c008d656b",
-      "record_locator": "pub-corpus/data/oracle-differential/latest.json#records/19",
-      "source_provenance": {
-        "candidate_id": null,
-        "source_filename": null,
-        "source_repo": null,
-        "source_type": null
-      },
-      "structural_context": {
-        "coarse_structure_fingerprint": "2d980b71bf136a1d480f5f29da60317b0363a62c587841acd267238e5f26eadd",
-        "family": "mature-0x2c",
-        "family_authority": "chaptera-mature-viewer-success",
-        "topology_fingerprint": "78694e4e35389283489f71d3400632839531fea91eee1bfa5f8b9425dc04d10c"
       }
     }
   ],
