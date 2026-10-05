@@ -112,6 +112,8 @@ def inspect_pub(path: Path, manifest_row: dict[str, Any]) -> dict[str, Any]:
     storages: list[str] = []
     app = ""
     parse_error: str | None = None
+    contents_family = "missing"
+    contents_serialization_revision: int | None = None
 
     try:
         ole = olefile.OleFileIO(str(path))
@@ -130,6 +132,15 @@ def inspect_pub(path: Path, manifest_row: dict[str, Any]) -> dict[str, Any]:
                         "size_bucket": size_bucket(len(payload)),
                     }
                 )
+                if name.split("/")[-1].lower() == "contents":
+                    if payload[:4] == bytes.fromhex("E8AC2200"):
+                        contents_family = "family_0x22"
+                    elif payload[:4] == bytes.fromhex("E8AC2C00"):
+                        contents_family = "family_0x2c"
+                    else:
+                        contents_family = "unknown"
+                    if len(payload) >= 14:
+                        contents_serialization_revision = struct.unpack_from("<H", payload, 12)[0]
             metadata = ole.get_metadata()
             app = decode_metadata_value(getattr(metadata, "creating_application", None))
         finally:
@@ -180,6 +191,8 @@ def inspect_pub(path: Path, manifest_row: dict[str, Any]) -> dict[str, Any]:
         "storage_count": len(storages),
         "declared_stream_bytes": sum(x["size"] for x in streams),
         "publisher_hints": hints,
+        "contents_family": contents_family,
+        "contents_serialization_revision": contents_serialization_revision,
         "creating_application": app,
         "streams": streams,
         "storages": storages,
@@ -217,6 +230,12 @@ def main() -> int:
     coarse_counts = Counter(row["coarse_structure_fingerprint"] for row in records)
     source_counts = Counter((row["source"].get("source_type") or "unknown") for row in records)
     document_hints = Counter(row["provenance_document_hint"] for row in records)
+    contents_families = Counter(row["contents_family"] for row in records)
+    contents_revisions = Counter(
+        str(row["contents_serialization_revision"])
+        for row in records
+        if row["contents_serialization_revision"] is not None
+    )
 
     receipt = {
         "schema": SCHEMA,
@@ -228,6 +247,8 @@ def main() -> int:
         "unique_coarse_structure_count": len(coarse_counts),
         "source_type_counts": dict(sorted(source_counts.items())),
         "provenance_document_hint_counts": dict(sorted(document_hints.items())),
+        "contents_family_counts": dict(sorted(contents_families.items())),
+        "contents_serialization_revision_counts": dict(sorted(contents_revisions.items())),
         "largest_topology_clusters": [
             {"fingerprint": fp, "count": count}
             for fp, count in topology_counts.most_common(20)
@@ -259,6 +280,7 @@ def main() -> int:
                 "corpus_file_count": len(records),
                 "unique_topology_count": len(topology_counts),
                 "unique_coarse_structure_count": len(coarse_counts),
+                "contents_family_counts": dict(sorted(contents_families.items())),
                 "errors": len(errors),
                 "receipt_sha256": receipt["receipt_sha256"],
             },
