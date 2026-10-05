@@ -1,0 +1,114 @@
+{
+  "schema_version": "chaptera.publisher-parity.tranche.v1",
+  "task": "AIR-EDITOR-PUBLISHER-PARITY-SWEEP-01",
+  "scope": "current-shell tranche 1: open, text entry/formatting, paragraph alignment, page navigation, history, master read-only projection",
+  "chaptera_source": {
+    "repository": "HeisLuka/rar",
+    "commit": "8751688f1509397f4d2c591e6f7b12d6a9fed4a5",
+    "path": "apps/chaptera-desktop/src/main.rs",
+    "blob_sha": "f503783c771310998086420a05e06af4e3acda99"
+  },
+  "publisher_sources": {
+    "keyboard": "https://support.microsoft.com/en-us/publisher/keyboard-shortcuts-in-publisher",
+    "text_box": "https://support.microsoft.com/en-us/publisher/add-text-and-link-text-boxes-in-publisher",
+    "paragraph_alignment": "https://support.microsoft.com/en-us/publisher/align-text-within-a-text-box",
+    "master_pages": "https://support.microsoft.com/en-us/publisher/create-and-edit-master-pages"
+  },
+  "rows": [
+    {
+      "id": "open-publication-ctrl-o",
+      "verdict": "MATCH",
+      "chaptera": "Top-level Ctrl+O invokes the PUB picker.",
+      "chaptera_evidence": ["main.rs:3805-3809"],
+      "publisher": "Ctrl+O displays the Open Publication dialog.",
+      "publisher_source": "keyboard",
+      "owner": null,
+      "notes": "Invocation intent matches; Chaptera opens immutable source PUB into its own product model."
+    },
+    {
+      "id": "enter-text-editing",
+      "verdict": "MISMATCH",
+      "chaptera": "A text object is first selected, then an explicit Edit Text button enters canvas text mode; active mode supports caret repositioning and canonical Story typing.",
+      "chaptera_evidence": ["main.rs:3655-3686", "main.rs:2725-2779", "main.rs:2887-2922"],
+      "publisher": "Publisher's ordinary text-box workflow is to click/type in a text box; text entry is directly contextual to the text box.",
+      "publisher_source": "text_box",
+      "owner": "EDITOR-TEXT-SESSION-GESTURES-01",
+      "owner_state": "DONE / Closed",
+      "notes": "Existing owner deliberately admitted explicit Edit Text as the safe V1 entry. Record divergence; do not duplicate the owner."
+    },
+    {
+      "id": "text-bold-italic-shortcuts",
+      "verdict": "MISMATCH",
+      "chaptera": "Current main has no Ctrl+B/Ctrl+I shell route or Bold/Italic control in main.rs; canvas text input ignores ctrl/command/alt modified keys.",
+      "chaptera_evidence": ["main.rs:2887-2922", "full-file scan: no 'bold' or 'italic' token"],
+      "publisher": "Ctrl+B makes text bold and Ctrl+I italicizes text.",
+      "publisher_source": "keyboard",
+      "owner": "EDITOR-TEXT-RANGE-FORMAT-UI-01",
+      "owner_state": "DONE / Closed historical owner; current-main delivery drift",
+      "notes": "Canonical formatting authority already exists. Sweep does not invent a second formatting model or add underline."
+    },
+    {
+      "id": "paragraph-align-left-center-right",
+      "verdict": "MISMATCH",
+      "chaptera": "Current main exposes no paragraph-alignment UI or paragraph command in chaptera-desktop main.rs.",
+      "chaptera_evidence": ["full-file scan: no 'paragraph', SetParagraphAlignmentOverride, or ClearParagraphAlignmentOverride token"],
+      "publisher": "Selected paragraphs can be aligned Left, Center, or Right from Publisher's Paragraph controls.",
+      "publisher_source": "paragraph_alignment",
+      "owner": "EDITOR-PARAGRAPH-ALIGN-UI-01",
+      "owner_state": "TODO / Runnable now",
+      "notes": "Both canonical producers AUTHORING-PARAGRAPH-ALIGN-01 and LAYOUT-PARAGRAPH-ALIGN-01 are DONE; stale Waiting upstream routing was corrected by this sweep."
+    },
+    {
+      "id": "page-next-previous-shortcuts",
+      "verdict": "MISMATCH",
+      "chaptera": "Clickable page thumbnails/labels change selected_page and clear canvas selection, but current top-level keyboard route has no Ctrl+PageUp/Ctrl+PageDown branch.",
+      "chaptera_evidence": ["main.rs:1452-1518", "main.rs:3805-3809", "full-file scan: no Key::PageUp/PageDown"],
+      "publisher": "Ctrl+PageDown moves to the next page and Ctrl+PageUp to the previous page.",
+      "publisher_source": "keyboard",
+      "owner": "EDITOR-PAGE-NAV-SHORTCUTS-01",
+      "owner_state": "TODO / Waiting upstream",
+      "notes": "Reuse selected_page/sidebar navigation; no duplicate task."
+    },
+    {
+      "id": "undo-redo-shortcuts",
+      "verdict": "MISMATCH",
+      "chaptera": "Undo/Redo are visible and call the canonical history methods, but current top-level keyboard route has no Ctrl+Z/Ctrl+Y bindings.",
+      "chaptera_evidence": ["main.rs:1222-1255", "main.rs:2264-2288", "main.rs:3805-3809", "full-file scan: no Key::Z/Key::Y top-level route"],
+      "publisher": "Ctrl+Z (or Alt+Backspace) undoes; Ctrl+Y (or F4) redoes.",
+      "publisher_source": "keyboard",
+      "owner": "EDITOR-DESKTOP-HISTORY-SHORTCUTS-01",
+      "owner_state": "TODO / Waiting upstream",
+      "notes": "History authority already exists; this is binding/reachability only."
+    },
+    {
+      "id": "master-projection-readonly-on-publication-page",
+      "verdict": "MATCH",
+      "chaptera": "Projected objects are explicitly read-only in the normal page workspace; image replacement rejects projected/read-only instances.",
+      "chaptera_evidence": ["main.rs:1632-1638", "main.rs:2542-2613"],
+      "publisher": "Elements added in Master Page view cannot be edited in normal publication view; master editing happens in a separate Master Page view.",
+      "publisher_source": "master_pages",
+      "owner": null,
+      "notes": "This validates the normal-page read-only projection law only. Ctrl+M/master-edit mode is not a currently reachable Chaptera interaction and is not fabricated by this tranche."
+    }
+  ],
+  "summary": {
+    "match": 2,
+    "mismatch": 5,
+    "unknown": 0,
+    "chaptera_only": 0,
+    "duplicate_owners_created": 0,
+    "highest_frequency_mismatch_candidates": [
+      "enter-text-editing",
+      "undo-redo-shortcuts",
+      "page-next-previous-shortcuts",
+      "text-bold-italic-shortcuts",
+      "paragraph-align-left-center-right"
+    ]
+  },
+  "guardrails": {
+    "publisher_claims_are_public_documentation_only": true,
+    "pub_wire_format_claims_allowed": false,
+    "full_sweep_complete": false,
+    "ctrl_u_ctrl_j_ctrl_m_new_bindings_authorized": false
+  }
+}
