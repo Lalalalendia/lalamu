@@ -1,0 +1,27 @@
+{
+  "argument_changes": [
+    {"added_arguments":[{"name":"Abbreviation","required":false,"type":"String"},{"name":"AddHyperlinkToWebNavBar","required":false,"type":"Boolean"},{"name":"Description","required":false,"type":"String"},{"name":"IsTwoPageMaster","required":false,"type":"Boolean"}],"removed_arguments":[],"requiredness_changes":[],"topic_id":"pbmthAdd"},
+    {"added_arguments":[{"name":"AddHyperLinkToWebNavBar","required":false,"type":"Boolean"}],"removed_arguments":[],"requiredness_changes":[],"topic_id":"pbmthAddWizardPage"},
+    {"added_arguments":[{"name":"PlateReplaceWith","required":false,"type":"Plate"},{"name":"ReplaceTint","required":false,"type":"pbReplaceTint"}],"removed_arguments":[],"requiredness_changes":[],"topic_id":"pbmthDelete"},
+    {"added_arguments":[{"name":"Destination","required":false,"type":"PbMailMergeDestination"},{"name":"Filename","required":false,"type":"String"}],"removed_arguments":[],"requiredness_changes":[],"topic_id":"pbmthExecute"},
+    {"added_arguments":[],"removed_arguments":[],"requiredness_changes":[{"name":"Field","required_2002":true,"required_2003":false,"type":"String"}],"topic_id":"pbmthFindRecord"},
+    {"added_arguments":[{"name":"Range","required":false,"type":"TextRange"}],"removed_arguments":[],"requiredness_changes":[],"topic_id":"pbmthInsert"},
+    {"added_arguments":[{"name":"After","required":false,"type":"Boolean"},{"name":"Page","required":true,"type":"Long"}],"removed_arguments":[],"requiredness_changes":[],"topic_id":"pbmthMove"},
+    {"added_arguments":[{"name":"Index","required":false,"type":"Long"}],"removed_arguments":[],"requiredness_changes":[],"topic_id":"pbproRange"}
+  ],
+  "schema_version": "chaptera.devhelp-xver.signature-argument-diff.v2",
+  "signature_changes": [
+    {
+      "p2002":["expression.Add (BeforeColumn)","expression.Add (BeforeRow)","expression.Add (Column, Comparison, Conjunction, bstrCompareTo, DeferUpdate)","expression.Add (Count, After, DuplicateObjectsOnPage)","expression.Add (Font, ParagraphFormat, StyleName, BasedOn)","expression.Add (Name, Value)","expression.Add (PlateColor)","expression.Add (Position, Alignment, Leader)","expression.Add (Position, Type)","expression.Add (Text, Address, RelativePage, PageID, TextToDisplay)"],
+      "p2003":["expression.Add (BeforeColumn)","expression.Add (BeforeRow)","expression.Add (Column, Comparison, Conjunction, bstrCompareTo, DeferUpdate)","expression.Add (Count, After, [DuplicateObjectsOnPage], [AddHyperlinkToWebNavBar])","expression.Add (Font, ParagraphFormat, StyleName, BasedOn)","expression.Add (Name, Value)","expression.Add (PlateColor)","expression.Add (Position, Alignment, Leader)","expression.Add (Position, Type)","expression.Add (Text, Address, RelativePage, PageID, TextToDisplay)","expression.Add ([IsTwoPageMaster], [Abbreviation], [Description], )"],
+      "topic_id":"pbmthAdd"
+    },
+    {"p2002":["expression.AddWizardPage (After, PageType)"],"p2003":["expression.AddWizardPage (After, PageType, [AddHyperLinkToWebNavBar])"],"topic_id":"pbmthAddWizardPage"},
+    {"p2002":["expression.Delete","expression.Delete (Index)"],"p2003":["expression.Delete","expression.Delete (Index)","expression.Delete (PlateReplaceWith, ReplaceTint)"],"topic_id":"pbmthDelete"},
+    {"p2002":["expression.Execute (Pause)"],"p2003":["expression.Execute","expression.Execute (Pause, Destination, Filename)"],"topic_id":"pbmthExecute"},
+    {"p2002":["expression.Insert (Index, SegmentType, EditingType, X1, Y1, X2, Y2, X3, Y3)"],"p2003":["expression.Insert (Index, SegmentType, EditingType, X1, Y1, X2, Y2, X3, Y3)","expression.Insert (Range)"],"topic_id":"pbmthInsert"},
+    {"p2002":["expression.Move (Left, Top)","expression.Move (Unit, Size)"],"p2003":["expression.Move (Left, Top)","expression.Move (Page, [After])","expression.Move (Unit, Size)"],"topic_id":"pbmthMove"},
+    {"p2002":["expression.SaveAs (FileName, Format, AddToRecentFiles)"],"p2003":["expression.SaveAs ([FileName], [Format], [AddToRecentFiles])"],"topic_id":"pbmthSaveAs"},
+    {"p2002":["expression.Range"],"p2003":["expression.Range","expression.Range (Index)"],"topic_id":"pbproRange"}
+  ]
+}
