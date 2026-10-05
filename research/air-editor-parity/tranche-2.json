@@ -1,0 +1,228 @@
+{
+  "schema_version": "chaptera.publisher-parity.tranche.v2",
+  "task": "AIR-EDITOR-PUBLISHER-PARITY-SWEEP-01",
+  "task_id": "PUB-T-722",
+  "tranche": 2,
+  "scope": "current-shell object geometry, selection keyboard, grouping/z-order readiness, and semantic clipboard reachability",
+  "chaptera_source": {
+    "repository": "HeisLuka/rar",
+    "commit": "f1ddae8f60c4437dd4a809642c8057f69dac8b6b",
+    "path": "apps/chaptera-desktop/src/main.rs",
+    "blob_sha": "f503783c771310998086420a05e06af4e3acda99"
+  },
+  "publisher_sources": {
+    "keyboard": "https://support.microsoft.com/en-us/publisher/keyboard-shortcuts-in-publisher",
+    "move_object": "https://support.microsoft.com/en-us/publisher/move-an-object",
+    "resize_object": "https://support.microsoft.com/en-us/publisher/resize-a-picture-shape-text-box-or-other-object",
+    "group_ungroup": "https://support.microsoft.com/en-gb/publisher/group-and-ungroup-text-boxes-pictures-and-other-objects-in-publisher",
+    "z_order": "https://support.microsoft.com/en-us/publisher/move-an-object-forward-or-backward",
+    "copy_paste_objects": "https://support.microsoft.com/en-us/publisher/copy-and-paste-objects-in-publisher"
+  },
+  "rows": [
+    {
+      "id": "ordinary-object-drag",
+      "verdict": "MATCH",
+      "delivery_class": "shipped",
+      "chaptera": "Direct page-local movable objects begin a MoveTransaction on primary drag, update transient preview bounds during pointer motion, and commit one move on drag stop.",
+      "chaptera_evidence": [
+        "main.rs:3377-3395",
+        "main.rs:3418-3453",
+        "main.rs:2694-2720",
+        "embedded test canvas_drag_commits_exactly_one_move_and_syncs_undo_redo"
+      ],
+      "publisher": "A selected object or group can be repositioned by dragging it.",
+      "publisher_source": "move_object",
+      "owner": null,
+      "notes": "Ordinary drag law matches at the user-interaction level. Exact snap/threshold policy is not inferred from Publisher."
+    },
+    {
+      "id": "shift-straight-line-drag",
+      "verdict": "MISMATCH",
+      "delivery_class": "planned-capability",
+      "chaptera": "Current canvas drag path does not consume Shift as a movement constraint; it feeds pointer coordinates directly to MoveTransaction.",
+      "chaptera_evidence": [
+        "main.rs:3377-3453",
+        "full current-file audit: no Shift constraint in object MoveTransaction canvas route"
+      ],
+      "publisher": "Holding Shift while dragging constrains object movement to a straight line.",
+      "publisher_source": "move_object",
+      "owner": "EDITOR-MOVE-MODIFIERS-01",
+      "owner_state": "TODO / Parked / P1",
+      "discriminator": "AIR-MOVE-SHIFT-AXIS-01",
+      "notes": "Reuse the existing owner. Exact axis choice/tie/mid-drag transition remains with the bounded discriminator rather than being guessed."
+    },
+    {
+      "id": "ordinary-handle-resize",
+      "verdict": "MATCH",
+      "delivery_class": "shipped",
+      "chaptera": "Eight visible resize handles admit a ResizeTransaction, render a transient preview and commit one ResizeNode-style change on drag stop.",
+      "chaptera_evidence": [
+        "main.rs:3352-3371",
+        "main.rs:3401-3416",
+        "main.rs:3437-3445",
+        "main.rs:3696-3703",
+        "main.rs:2722-2740"
+      ],
+      "publisher": "Selected objects expose sizing handles that resize the object when dragged.",
+      "publisher_source": "resize_object",
+      "owner": null,
+      "notes": "Match is limited to ordinary handle-drag resizing; object-specific picture constraints remain capability-gated."
+    },
+    {
+      "id": "ctrl-shift-resize-constraints",
+      "verdict": "MISMATCH",
+      "delivery_class": "planned-capability",
+      "chaptera": "Current ordinary-object canvas resize route does not feed Ctrl/Shift modifier state into the resize transaction.",
+      "chaptera_evidence": [
+        "main.rs:3352-3445",
+        "main.rs:3015 only reads Ctrl for zoom; no resize-modifier routing in canvas gesture"
+      ],
+      "publisher": "Ctrl while dragging keeps the object center fixed; Shift on a corner handle preserves proportions; Ctrl+Shift combines both behaviors.",
+      "publisher_source": "resize_object",
+      "owner": "EDITOR-RESIZE-MODIFIERS-01",
+      "owner_state": "TODO / Waiting upstream / P1",
+      "notes": "The deterministic geometry law is already owned by INTERACTION-RESIZE-CONSTRAINTS-01. No duplicate modifier model is created."
+    },
+    {
+      "id": "shift-click-multi-selection",
+      "verdict": "MISMATCH",
+      "delivery_class": "current-main-delivery-drift",
+      "chaptera": "SceneSelectionState stores a set and primary item, but the reachable canvas click/drag path currently finishes through select_only(), which clears the set before inserting one instance.",
+      "chaptera_evidence": [
+        "main.rs:159-183",
+        "main.rs:3754-3768"
+      ],
+      "publisher": "Publisher documents selecting multiple objects by holding Shift while selecting additional objects; grouped-object guidance also uses Shift-click selection.",
+      "publisher_source": "group_ungroup",
+      "owner": "EDITOR-DESKTOP-MULTISELECT-RESTORE-01",
+      "owner_state": "TODO / Waiting upstream / P0",
+      "notes": "Historical/canonical multi-selection semantics already exist; this row is shell restoration, not a new selection model."
+    },
+    {
+      "id": "canvas-arrow-nudge",
+      "verdict": "MISMATCH",
+      "delivery_class": "current-main-delivery-drift",
+      "chaptera": "The current top-level update path exposes Ctrl+O but no canvas Arrow-key object-nudge route. ArrowLeft/ArrowRight handling in process_canvas_text_input belongs to Story caret/selection.",
+      "chaptera_evidence": [
+        "main.rs:3806-3813",
+        "main.rs:2903-2922"
+      ],
+      "publisher": "Arrow keys nudge a selected object; Publisher also documents an Alt+Arrow object-move escape hatch when the insertion cursor is inside the selected text object.",
+      "publisher_source": "keyboard",
+      "owner": "EDITOR-DESKTOP-SELECTION-KEYBOARD-RESTORE-01",
+      "owner_state": "IN PROGRESS / In progress / P0",
+      "notes": "Current collision-safe bridge is already restoring the closed nudge/focus law; do not add another keyboard router."
+    },
+    {
+      "id": "canvas-object-select-all",
+      "verdict": "MISMATCH",
+      "delivery_class": "current-main-delivery-drift",
+      "chaptera": "Current shell has no reachable canvas Ctrl/Cmd+A object Select All route; Ctrl/Cmd+A seen in GUI tests targets a multiline text widget rather than canonical canvas selection.",
+      "chaptera_evidence": [
+        "main.rs:3806-3813",
+        "GUI test around main.rs:5317-5332 exercises multiline text input Ctrl+A, not canvas object selection"
+      ],
+      "publisher": "Ctrl+A selects all objects on the page when focus is not inside a text box; with insertion focus in a text box it selects Story text.",
+      "publisher_source": "keyboard",
+      "owner": "EDITOR-DESKTOP-SELECTION-KEYBOARD-RESTORE-01",
+      "owner_state": "IN PROGRESS / In progress / P0",
+      "notes": "The existing restore owner explicitly owns the Story-vs-canvas focus split."
+    },
+    {
+      "id": "escape-clear-object-selection",
+      "verdict": "MISMATCH",
+      "delivery_class": "current-main-delivery-drift",
+      "chaptera": "Escape is currently handled inside active Story text mode to exit text editing, but there is no final top-level canvas fallback that clears object selection.",
+      "chaptera_evidence": [
+        "main.rs:2903-2905",
+        "main.rs:3806-3813"
+      ],
+      "publisher": "Publisher documents Escape clearing a selected object/selection, with deeper context-specific Escape behavior handled by focus.",
+      "publisher_source": "keyboard",
+      "owner": "EDITOR-DESKTOP-SELECTION-KEYBOARD-RESTORE-01",
+      "owner_state": "IN PROGRESS / In progress / P0",
+      "notes": "Reuse current routing bridge and existing Escape precedence law; no second tool/focus model."
+    },
+    {
+      "id": "group-ungroup-reachability",
+      "verdict": "MISMATCH",
+      "delivery_class": "not-yet-shipped-capability",
+      "chaptera": "Current main has no reachable authored Group/Ungroup command in the desktop shell.",
+      "chaptera_evidence": [
+        "current main.rs full-file interaction audit: no Group/Ungroup command route"
+      ],
+      "publisher": "Publisher exposes Group/Ungroup for selected objects and documents multi-object selection before grouping; Ctrl+Shift+G is the keyboard route.",
+      "publisher_source": "group_ungroup",
+      "owner": "EDITOR-AUTHORED-GROUP-UI-01",
+      "owner_state": "TODO / Waiting upstream / P1",
+      "notes": "This is an admitted-but-not-shipped capability, not a regression from a closed shell feature. Non-contiguous authored grouping already has EDITOR-AUTHORED-GROUP-SET-UI-01."
+    },
+    {
+      "id": "bring-send-z-order-reachability",
+      "verdict": "MISMATCH",
+      "delivery_class": "not-yet-shipped-capability",
+      "chaptera": "Current scene hit testing uses z_order/paint_order to choose the topmost object, but current main exposes no authored Bring/Send mutation command.",
+      "chaptera_evidence": [
+        "main.rs:186-212",
+        "current main.rs full-file interaction audit: no authored Bring/Send command route"
+      ],
+      "publisher": "Publisher exposes Bring to Front, Send to Back, Bring Forward and Send Backward; keyboard aliases include Alt+F6 / Alt+Shift+F6.",
+      "publisher_source": "z_order",
+      "owner": "EDITOR-AUTHORED-ZORDER-UI-01",
+      "owner_state": "TODO / Waiting upstream / P1",
+      "notes": "Authored stacking semantics already have their own authority chain. Hit-test paint order is not treated as authoring authority."
+    },
+    {
+      "id": "semantic-copy-cut-paste-routing",
+      "verdict": "MISMATCH",
+      "delivery_class": "not-yet-shipped-capability",
+      "chaptera": "Current shell has no canonical focus/capability router for Ctrl/Cmd+C/X/V across selected Story text versus selected document objects.",
+      "chaptera_evidence": [
+        "main.rs:3806-3813",
+        "main.rs:1686-1703 exposes search-result text copy conveniences only"
+      ],
+      "publisher": "Publisher documents Copy, Cut and Paste over selected text or objects, including Ctrl+C/Ctrl+X/Ctrl+V and legacy Insert/Delete aliases.",
+      "publisher_source": "keyboard",
+      "owner": "EDITOR-CLIPBOARD-01",
+      "owner_state": "TODO / Parked / P0",
+      "notes": "Base semantic clipboard routing already owns the focus split; object-set and Story-range extensions have separate existing owners."
+    },
+    {
+      "id": "search-copy-match-and-full-story",
+      "verdict": "CHAPTERA-ONLY",
+      "delivery_class": "shipped-successor-convenience",
+      "chaptera": "Search results expose Copy match and Copy full story buttons that place recovered text on the OS clipboard.",
+      "chaptera_evidence": [
+        "main.rs:1686-1703"
+      ],
+      "publisher": "No exact Publisher analogue is required for this Chaptera recovery/search convenience.",
+      "publisher_source": "keyboard",
+      "owner": null,
+      "notes": "Do not misclassify these buttons as semantic document object/text editing clipboard parity."
+    }
+  ],
+  "summary": {
+    "match": 2,
+    "mismatch": 9,
+    "unknown": 0,
+    "chaptera_only": 1,
+    "duplicate_owners_created": 0,
+    "current_main_delivery_drift_rows": 4,
+    "not_yet_shipped_capability_rows": 3,
+    "highest_frequency_mismatch_candidates": [
+      "canvas-arrow-nudge",
+      "canvas-object-select-all",
+      "escape-clear-object-selection",
+      "shift-click-multi-selection",
+      "semantic-copy-cut-paste-routing"
+    ]
+  },
+  "guardrails": {
+    "full_sweep_complete": false,
+    "pub_wire_format_claims_allowed": false,
+    "duplicate_semantic_owners_allowed": false,
+    "nonshipped_shortcut_bindings_authorized": false,
+    "current_main_delivery_drift_is_not_semantic_task_duplication": true,
+    "publisher_undocumented_micro_laws_may_be_guessed": false
+  }
+}

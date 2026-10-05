@@ -1,0 +1,105 @@
+name: editor-publisher-parity-tranche-2
+
+on:
+  push:
+    branches:
+      - air-editor-publisher-parity-sweep-01-tranche2
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate parity matrix
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          p = Path("research/air-editor-parity/tranche-2.json")
+          r = json.loads(p.read_text(encoding="utf-8"))
+          assert r["schema_version"] == "chaptera.publisher-parity.tranche.v2"
+          assert r["task"] == "AIR-EDITOR-PUBLISHER-PARITY-SWEEP-01"
+          assert r["task_id"] == "PUB-T-722"
+          assert r["tranche"] == 2
+          assert r["chaptera_source"]["commit"] == "f1ddae8f60c4437dd4a809642c8057f69dac8b6b"
+          assert r["chaptera_source"]["blob_sha"] == "f503783c771310998086420a05e06af4e3acda99"
+
+          rows = r["rows"]
+          ids = [row["id"] for row in rows]
+          assert len(rows) == 12
+          assert len(ids) == len(set(ids))
+
+          allowed = {"MATCH", "MISMATCH", "UNKNOWN", "CHAPTERA-ONLY"}
+          counts = {value: 0 for value in allowed}
+          for row in rows:
+              assert row["verdict"] in allowed
+              counts[row["verdict"]] += 1
+              assert row["chaptera_evidence"]
+              assert row["publisher_source"] in r["publisher_sources"]
+              if row["verdict"] == "MISMATCH":
+                  assert row.get("owner"), row["id"]
+                  assert row.get("owner_state"), row["id"]
+
+          assert counts == {
+              "MATCH": 2,
+              "MISMATCH": 9,
+              "UNKNOWN": 0,
+              "CHAPTERA-ONLY": 1,
+          }
+          assert r["summary"]["match"] == 2
+          assert r["summary"]["mismatch"] == 9
+          assert r["summary"]["unknown"] == 0
+          assert r["summary"]["chaptera_only"] == 1
+          assert r["summary"]["duplicate_owners_created"] == 0
+          assert r["summary"]["current_main_delivery_drift_rows"] == 4
+          assert r["summary"]["not_yet_shipped_capability_rows"] == 3
+
+          guards = r["guardrails"]
+          assert guards["full_sweep_complete"] is False
+          assert guards["pub_wire_format_claims_allowed"] is False
+          assert guards["duplicate_semantic_owners_allowed"] is False
+          assert guards["nonshipped_shortcut_bindings_authorized"] is False
+          assert guards["current_main_delivery_drift_is_not_semantic_task_duplication"] is True
+          assert guards["publisher_undocumented_micro_laws_may_be_guessed"] is False
+
+          print(json.dumps({
+              "rows": len(rows),
+              "match": counts["MATCH"],
+              "mismatch": counts["MISMATCH"],
+              "chaptera_only": counts["CHAPTERA-ONLY"],
+              "owners": sorted({row["owner"] for row in rows if row.get("owner")}),
+          }, sort_keys=True))
+          PY
+
+      - name: Revalidate pinned Chaptera source blob
+        run: |
+          python - <<'PY'
+          import hashlib
+          import urllib.request
+
+          commit = "f1ddae8f60c4437dd4a809642c8057f69dac8b6b"
+          path = "apps/chaptera-desktop/src/main.rs"
+          url = f"https://raw.githubusercontent.com/HeisLuka/rar/{commit}/{path}"
+          data = urllib.request.urlopen(url, timeout=30).read()
+          blob = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+          assert blob == "f503783c771310998086420a05e06af4e3acda99", blob
+          text = data.decode("utf-8")
+          assert "fn select_only" in text
+          assert "self.canvas_selection.select_only(instance_id);" in text
+          assert "MoveTransaction::begin" in text
+          assert "ResizeTransaction::begin" in text
+          assert "input.modifiers.ctrl && input.key_pressed(egui::Key::O)" in text
+          assert 'ui.button("Copy match")' in text
+          assert 'ui.button("Copy full story")' in text
+          print({"bytes": len(data), "blob": blob})
+          PY
