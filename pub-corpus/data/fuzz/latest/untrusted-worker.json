@@ -1,7 +1,7 @@
 {
   "chaptera_upstream_commit": "15e4fad546569daa5fff62cd1df5671f4637267c",
-  "github_run_id": "39906321532",
-  "github_sha": "d01ad85ca0ac769bea0d23561aa65ba819bae1d9",
+  "github_run_id": "40066541077",
+  "github_sha": "ec17954e400d73a95c3a08d2900196ea8a5b45e5",
   "iterations": 160,
   "outcome_counts": {
     "non-interesting": 160
