@@ -1,0 +1,104 @@
+{
+  "enum_group_changes": [
+    {
+      "diff": [{
+        "added_constants": {"count": 1, "values": ["pbWebControlHotSpot"]},
+        "added_type": false,
+        "removed_constants": {"count": 0, "values": []},
+        "removed_type": false,
+        "type": "PbWebControlType",
+        "value_changes": []
+      }],
+      "topic_id": "pbmthAddWebControl"
+    },
+    {
+      "diff": [{
+        "added_constants": {"count": 3, "values": ["pbReplaceTintKeepTints", "pbReplaceTintMaintainLuminosity", "pbReplaceTintUseDefault"]},
+        "added_type": true,
+        "removed_constants": {"count": 0, "values": []},
+        "removed_type": false,
+        "type": "ReplaceTint",
+        "value_changes": []
+      }],
+      "topic_id": "pbmthDelete"
+    },
+    {
+      "diff": [{
+        "added_constants": {"count": 3, "values": ["pbMergeToExistingPublication", "pbMergeToNewPublication", "pbSendToPrinter"]},
+        "added_type": true,
+        "removed_constants": {"count": 0, "values": []},
+        "removed_type": false,
+        "type": "PbMailMergeDestination",
+        "value_changes": []
+      }],
+      "topic_id": "pbmthExecute"
+    },
+    {
+      "diff": [{
+        "added_constants": {"count": 0, "values": []},
+        "added_type": false,
+        "removed_constants": {"count": 3, "values": ["pbHelpPrintTroubleshooter", "pbHelpTutorials", "pbHelpUsingHelp"]},
+        "removed_type": false,
+        "type": "PbHelpType",
+        "value_changes": []
+      }],
+      "topic_id": "pbmthHelp"
+    },
+    {
+      "diff": [{
+        "added_constants": {"count": 1, "values": ["pbFileHTMLFiltered"]},
+        "added_type": false,
+        "removed_constants": {"count": 0, "values": []},
+        "removed_type": false,
+        "type": "PbFileFormat",
+        "value_changes": []
+      }],
+      "topic_id": "pbmthSaveAs"
+    },
+    {
+      "diff": [{
+        "added_constants": {
+          "count": 180,
+          "sample": [
+            "msoLanguageIDAfrikaans", "msoLanguageIDAlbanian", "msoLanguageIDAmharic",
+            "msoLanguageIDArabic", "msoLanguageIDArabicAlgeria", "msoLanguageIDArabicBahrain",
+            "msoLanguageIDArabicEgypt", "msoLanguageIDArabicIraq", "msoLanguageIDArabicJordan",
+            "msoLanguageIDArabicKuwait", "msoLanguageIDArabicLebanon", "msoLanguageIDArabicLibya",
+            "msoLanguageIDVenda", "msoLanguageIDVietnamese", "msoLanguageIDWelsh",
+            "msoLanguageIDXhosa", "msoLanguageIDZulu"
+          ],
+          "sha256": "46fcc9ac78e733b6ee6c02be7416c8a1a88c3099dede8c73b3ae1804b403cf23"
+        },
+        "added_type": true,
+        "removed_constants": {"count": 0, "values": []},
+        "removed_type": false,
+        "type": "MsoLanguageID",
+        "value_changes": []
+      }],
+      "topic_id": "pbproLanguage"
+    },
+    {
+      "diff": [{
+        "added_constants": {"count": 2, "values": ["pbOrientationLandscape", "pbOrientationPortrait"]},
+        "added_type": true,
+        "removed_constants": {"count": 0, "values": []},
+        "removed_type": false,
+        "type": "PbOrientationType",
+        "value_changes": []
+      }],
+      "topic_id": "pbproOrientation"
+    },
+    {
+      "diff": [{
+        "added_constants": {"count": 3, "values": ["pbCatalogMergeArea", "pbWebNavigationBar", "pbWebWebNavigationBar"]},
+        "added_type": false,
+        "removed_constants": {"count": 0, "values": []},
+        "removed_type": false,
+        "type": "PbShapeType",
+        "value_changes": []
+      }],
+      "topic_id": "pbproType"
+    }
+  ],
+  "schema_version": "chaptera.devhelp-xver.enum-diff.v1"
+}

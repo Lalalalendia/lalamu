@@ -1,0 +1,52 @@
+{
+  "schema_version": "chaptera.devhelp-xver.continuity-crosscheck.v1",
+  "current_tlb": {
+    "notion_run_page_id": "3e532a84-beec-813f-a51a-e7eaa51f1b34",
+    "publisher_generation": "Publisher 16",
+    "type_library_version": "2.3",
+    "sha256": "7a831d3eabf88bc7c11fd4fd6eff4b75638d8bb5097eb3c5279332260153a3c9",
+    "type_count": 237,
+    "funcdesc_count": 3015,
+    "vardesc_count": 1129,
+    "decode_errors": 0,
+    "historical_introduction_dating_allowed": false
+  },
+  "current_microsoft_learn": [
+    {
+      "surface": "Document.BeginCustomUndoAction(ActionName)",
+      "url": "https://learn.microsoft.com/en-us/office/vba/api/publisher.document.begincustomundoaction",
+      "corroborates": "2003-added BeginCustomUndoAction topic remains a live Publisher Object Model method"
+    },
+    {
+      "surface": "Document.EndCustomUndoAction",
+      "url": "https://learn.microsoft.com/en-us/office/vba/api/publisher.document.endcustomundoaction",
+      "corroborates": "2003-added EndCustomUndoAction topic remains a live Publisher Object Model method"
+    },
+    {
+      "surface": "Pages.Add(Count, After, DuplicateObjectsOnPage, AddHyperlinkToWebNavBar)",
+      "url": "https://learn.microsoft.com/en-us/office/vba/api/publisher.pages.add",
+      "corroborates": "the 2003 Add overload with AddHyperlinkToWebNavBar survives in the current documented API"
+    },
+    {
+      "surface": "Pages.AddWizardPage(After, PageType, AddHyperlinkToWebNavBar)",
+      "url": "https://learn.microsoft.com/en-us/office/vba/api/publisher.pages.addwizardpage",
+      "corroborates": "the 2003-added optional navigation-bar parameter survives in the current documented API"
+    },
+    {
+      "surface": "MailMerge.Execute(Pause, Destination, FileName) -> Document",
+      "url": "https://learn.microsoft.com/en-us/office/vba/api/publisher.mailmerge.execute",
+      "corroborates": "the 2003 Destination/FileName signature and PbMailMergeDestination family survive in the current documented API"
+    },
+    {
+      "surface": "Document.SaveAs(... Format:=pbFileHTMLFiltered)",
+      "url": "https://learn.microsoft.com/en-us/office/vba/api/publisher.document.saveas",
+      "corroborates": "the 2003 PbFileFormat addition pbFileHTMLFiltered survives in the current documented API"
+    }
+  ],
+  "interpretation": {
+    "continuity_corroborated": true,
+    "historical_2002_to_2003_chronology_authority": "pinned VBAPB10.CHM pair",
+    "current_tlb_or_docs_substitute_for_historical_pair": false,
+    "pub_wire_format_claims_allowed": false
+  }
+}
