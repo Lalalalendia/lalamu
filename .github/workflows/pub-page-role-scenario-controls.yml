@@ -1,0 +1,99 @@
+name: PUB page-role scenario controls
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "pub-corpus/scripts/page_role_sweep.py"
+      - "pub-corpus/scripts/scenario_control_probe.py"
+      - "pub-corpus/tools/page-role-probe/**"
+      - ".github/workflows/pub-page-role-scenario-controls.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "pub-corpus/scripts/page_role_sweep.py"
+      - "pub-corpus/scripts/scenario_control_probe.py"
+      - "pub-corpus/tools/page-role-probe/**"
+      - ".github/workflows/pub-page-role-scenario-controls.yml"
+  schedule:
+    - cron: "41 6 * * 2,5"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pub-page-role-scenario-controls
+  cancel-in-progress: false
+
+jobs:
+  controls:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch current public Chaptera source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --depth 1 https://github.com/HeisLuka/rar.git upstream/rar
+          echo "CHAPTERA_UPSTREAM_COMMIT=$(git -C upstream/rar rev-parse HEAD)" >> "$GITHUB_ENV"
+
+      - name: Build page-role probe against current Chaptera
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.94.1 --profile minimal
+          cargo +1.94.1 build \
+            --release \
+            --manifest-path pub-corpus/tools/page-role-probe/Cargo.toml
+
+      - name: Replay pinned Publisher11 controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            pub-corpus/scripts/page_role_sweep.py \
+            pub-corpus/scripts/scenario_control_probe.py
+          python pub-corpus/scripts/scenario_control_probe.py \
+            --probe-bin pub-corpus/tools/page-role-probe/target/release/lalamu-page-role-probe
+
+      - name: Upload scenario-control receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: pub-page-role-scenario-controls-v1
+          path: pub-corpus/data/page-role-sweep/scenario-controls.json
+          if-no-files-found: error
+
+      - name: Publish changed scenario-control receipt
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$(git status --porcelain -- pub-corpus/data/page-role-sweep/scenario-controls.json)" ]]; then
+            echo "Scenario-control receipt unchanged."
+            exit 0
+          fi
+
+          git config user.name "lalamu-lab-bot"
+          git config user.email "lalamu-lab-bot@users.noreply.github.com"
+          git add -- pub-corpus/data/page-role-sweep/scenario-controls.json
+          git commit -m "lab: refresh PUB page-role scenario controls"
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push raced with main on attempt ${attempt}; retrying."
+          done
+          exit 1
