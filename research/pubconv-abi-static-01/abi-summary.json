@@ -1,0 +1,136 @@
+{
+  "schema_version": "chaptera.pubconv-abi-static.summary.v1",
+  "measurement": {
+    "issue": 17,
+    "pull_request": 18,
+    "head_sha": "bd88a1306f5a010c2bf1247003462f5e2da4172c",
+    "workflow_run": 36425916359,
+    "artifact_id": 10971209011,
+    "artifact_digest": "sha256:b07a42fa413328ff2fa82f182d7b4b77278385524edbd0ea55521578a62ce77b"
+  },
+  "source": {
+    "package": "X12-30247.exe",
+    "package_byte_len": 233139240,
+    "package_sha256": "6caa1d57b0b91485beb7cfbd38a44ab723043651a117223ef7ac735bf920c6dd",
+    "dll": "PUBCONV.DLL",
+    "dll_byte_len": 590144,
+    "dll_sha256": "124f5b115979f4e4c0aab882851c399228174482bb124b8309860567a5980dbc",
+    "file_version": "12.0.4518.1014",
+    "pe_checksum": 652414,
+    "machine": "i386"
+  },
+  "shared_static_lifecycle_gate": {
+    "absolute_va": "0x3456A674",
+    "hr_init_write_site_rva": "0x1FC43",
+    "hr_get_inbound_check_site_rva": "0x2042F",
+    "hr_get_outbound_check_site_rva": "0x20497",
+    "interpretation": "HrInitFileConverterDll writes this absolute global from data reached through its positive EBP+8 stack reference; both converter getter exports test the same global for zero at entry.",
+    "runtime_activation_proven": false
+  },
+  "exports": [
+    {
+      "name": "HrGetInboundConverter",
+      "ordinal": 1,
+      "entry_rva": "0x2042B",
+      "entry_direct_jump_target_rva": null,
+      "reachable_ret_site_rva": "0x20491",
+      "reachable_ret_bytes": "c20400",
+      "reachable_ret_cleanup": 4,
+      "positive_ebp_stack_refs": [{"site_rva":"0x2047A","offset":8,"instruction":"push dword ptr [ebp + 8]"}],
+      "positive_esp_stack_refs": [],
+      "shared_internal_call_pattern": {
+        "pre_call_push_site_rva": "0x20440",
+        "pre_call_push_immediate": 12,
+        "call_site_rva": "0x20442",
+        "target_rva": "0x71478",
+        "post_call_writes": [
+          {"site_rva":"0x2044C","effect":"[eax+4] = 0"},
+          {"site_rva":"0x20450","effect":"[eax+8] = 0"},
+          {"site_rva":"0x20454","effect":"[eax] = 0x344E39BC"}
+        ]
+      },
+      "cfg_blocks": 10,
+      "cfg_instructions": 38,
+      "cfg_bounds_hit": false,
+      "normalized_abi_fingerprint_sha256": "9892510106583c8ea2aee69a17712908846929f9017c2f862347955f407c307f"
+    },
+    {
+      "name": "HrGetOutboundConverter",
+      "ordinal": 2,
+      "entry_rva": "0x20494",
+      "entry_direct_jump_target_rva": null,
+      "reachable_ret_site_rva": "0x204E1",
+      "reachable_ret_bytes": "c20400",
+      "reachable_ret_cleanup": 4,
+      "positive_ebp_stack_refs": [{"site_rva":"0x204CC","offset":8,"instruction":"push dword ptr [ebp + 8]"}],
+      "positive_esp_stack_refs": [],
+      "shared_internal_call_pattern": {
+        "pre_call_push_site_rva": "0x204A7",
+        "pre_call_push_immediate": 8,
+        "call_site_rva": "0x204A9",
+        "target_rva": "0x71478",
+        "post_call_writes": [
+          {"site_rva":"0x204B3","effect":"[eax+4] = 0"},
+          {"site_rva":"0x204B7","effect":"[eax] = 0x344E39E8"}
+        ]
+      },
+      "cfg_blocks": 9,
+      "cfg_instructions": 27,
+      "cfg_bounds_hit": false,
+      "normalized_abi_fingerprint_sha256": "b98ec1f1ae6bd4af243822c52d3eb599d0867d06f72efbe4daca6f33d4519a49"
+    },
+    {
+      "name": "HrInitFileConverterDll",
+      "ordinal": 3,
+      "entry_rva": "0x1FC15",
+      "entry_direct_jump_target_rva": null,
+      "reachable_ret_site_rva": "0x1FC5D",
+      "reachable_ret_bytes": "c20400",
+      "reachable_ret_cleanup": 4,
+      "positive_ebp_stack_refs": [{"site_rva":"0x1FC3D","offset":8,"instruction":"mov eax, dword ptr [ebp + 8]"}],
+      "positive_esp_stack_refs": [],
+      "direct_call_targets": [
+        {"site_rva":"0x1FC27","target_rva":"0x7146C"},
+        {"site_rva":"0x1FC49","target_rva":"0x6D0E5"}
+      ],
+      "cfg_blocks": 4,
+      "cfg_instructions": 22,
+      "cfg_bounds_hit": false,
+      "normalized_abi_fingerprint_sha256": "6a9ca9a8f795007a7dd38178baa05f0f3a0f0aea33d65bd2e4be9f24e360ae81"
+    },
+    {
+      "name": "TerminateFileConverterDll",
+      "ordinal": 4,
+      "entry_rva": "0x1FB48",
+      "entry_direct_jump_target_rva": "0x6D19F",
+      "reachable_ret_site_rva": "0x6D1B7",
+      "reachable_ret_bytes": "c3",
+      "reachable_ret_cleanup": 0,
+      "positive_ebp_stack_refs": [],
+      "positive_esp_stack_refs": [],
+      "direct_call_targets": [
+        {"site_rva":"0x6D19F","target_rva":"0x33728"},
+        {"site_rva":"0x6D1A4","target_rva":"0x56A81"}
+      ],
+      "import_call_targets": [
+        {"site_rva":"0x6D1B1","target":"USER32.dll!ReleaseDC"}
+      ],
+      "cfg_blocks": 2,
+      "cfg_instructions": 7,
+      "cfg_bounds_hit": false,
+      "normalized_abi_fingerprint_sha256": "6cc84e42156b0b311fad6ab7be1312ffd8fa582d0fea3b5d1898d2db910715d9"
+    }
+  ],
+  "bounded_interpretation": {
+    "exports_1_2_3_observe_ret4_and_positive_ebp_plus8": true,
+    "this_is_compatible_with_one_observed_positive_frame_stack_slot_but_is_not_a_prototype_claim": true,
+    "inbound_and_outbound_share_internal_target_rva_0x71478_but_have_distinct_pre_call_immediates_and_post_call_state_writes": true,
+    "terminate_is_a_direct_jump_thunk_to_rva_0x6D19F_with_reachable_ret0": true,
+    "prototype_inference_authorized": false,
+    "argument_meaning_or_type_inference_authorized": false,
+    "runtime_activation_observed": false,
+    "reader_writer_role_inference_authorized": false,
+    "pub_wire_format_claim_authorized": false,
+    "parent_pub_t_64_closed": false
+  }
+}
