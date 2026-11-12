@@ -1,0 +1,36 @@
+name: editor-publisher-parity-tranche-1
+
+on:
+  push:
+    branches:
+      - air-editor-publisher-parity-sweep-01-tranche1
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile tools/validate_editor_parity_tranche.py
+      - run: python tools/validate_editor_parity_tranche.py research/air-editor-parity/tranche-1.json
+      - name: Enforce existing-owner law
+        run: |
+          python - <<'PY'
+          import json
+          r = json.load(open("research/air-editor-parity/tranche-1.json", encoding="utf-8"))
+          mismatches = [row for row in r["rows"] if row["verdict"] == "MISMATCH"]
+          assert len(mismatches) == 5
+          assert all(row.get("owner") for row in mismatches)
+          assert r["summary"]["duplicate_owners_created"] == 0
+          assert r["guardrails"]["full_sweep_complete"] is False
+          assert r["guardrails"]["pub_wire_format_claims_allowed"] is False
+          assert r["guardrails"]["ctrl_u_ctrl_j_ctrl_m_new_bindings_authorized"] is False
+          print("owners:", ", ".join(sorted({row["owner"] for row in mismatches})))
+          PY
